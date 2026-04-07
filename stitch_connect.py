@@ -91,14 +91,8 @@ def build_prompt(brand_intel: dict, design_brief: dict) -> str:
 
 
 def call_gemini(prompt: str, model: str) -> str:
-    """Call the Gemini API and return the generated text."""
-    try:
-        import google.generativeai as genai
-    except ImportError:
-        sys.exit(
-            "ERROR: google-generativeai is not installed.\n"
-            "Run:  pip install google-generativeai"
-        )
+    """Call the Gemini REST API and return the generated text."""
+    import urllib.request
 
     api_key = os.environ.get("GOOGLE_API_KEY")
     if not api_key:
@@ -107,22 +101,33 @@ def call_gemini(prompt: str, model: str) -> str:
             "Get a key at https://aistudio.google.com/app/apikey"
         )
 
-    genai.configure(api_key=api_key)
-
-    gemini = genai.GenerativeModel(
-        model_name=model,
-        system_instruction=SYSTEM_PROMPT,
+    url = (
+        f"https://generativelanguage.googleapis.com/v1beta/models/"
+        f"{model}:generateContent?key={api_key}"
     )
+    payload = json.dumps({
+        "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.4,
+            "maxOutputTokens": 32768,
+        },
+    }).encode()
 
     print(f"[stitch] Calling Gemini model: {model} …")
-    response = gemini.generate_content(
-        prompt,
-        generation_config=genai.types.GenerationConfig(
-            temperature=0.4,
-            max_output_tokens=32768,
-        ),
+    req = urllib.request.Request(
+        url,
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
     )
-    return response.text
+    with urllib.request.urlopen(req, timeout=300) as resp:
+        data = json.loads(resp.read())
+
+    try:
+        return data["candidates"][0]["content"]["parts"][0]["text"]
+    except (KeyError, IndexError) as exc:
+        sys.exit(f"ERROR: Unexpected Gemini response: {data}\n{exc}")
 
 
 def extract_html(raw: str) -> str:
