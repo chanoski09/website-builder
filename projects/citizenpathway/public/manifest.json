@@ -1,0 +1,13 @@
+{
+  "name": "Citizen Pathway",
+  "short_name": "Citizen Pathway",
+  "description": "Study for the U.S. naturalization civics test with flashcards, voice practice, and an AI mock interview.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b6bcb",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
