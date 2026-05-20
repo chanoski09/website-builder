@@ -86,14 +86,9 @@ header{background:var(--primary);border-bottom:3px solid var(--accent);color:#ff
 /* SIDEBAR */
 aside{background:var(--panel);border-right:1px solid var(--border);position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h));overflow-y:auto;padding:.9rem .85rem}
 .sb-title{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-bottom:.5rem;border-bottom:2px solid var(--accent);margin-bottom:.8rem}
-.toc-grp-btn{display:flex;align-items:center;gap:.3rem;width:100%;padding:.3rem .45rem;background:none;border:none;border-radius:6px;font-size:.75rem;font-weight:600;color:var(--text-2, var(--text));text-align:left;cursor:pointer;transition:background var(--t),color var(--t);margin-bottom:.04rem}
-.toc-grp-btn:hover,.toc-grp-btn.active{background:var(--blue-light);color:var(--blue)}
-[data-theme="dark"] .toc-grp-btn:hover,[data-theme="dark"] .toc-grp-btn.active{background:rgba(88,166,255,.1);color:var(--primary)}
-.toc-grp-btn .grp-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.toc-cnt{background:var(--border);color:var(--muted);font-size:.62rem;padding:.07rem .33rem;border-radius:999px;font-weight:700;flex-shrink:0}
-.toc-entries{padding-left:.7rem;padding-bottom:.15rem}
-.toc-link{display:block;padding:.17rem .38rem;font-size:.72rem;color:var(--muted);text-decoration:none;border-radius:4px;border-left:2px solid transparent;transition:all var(--t);line-height:1.4}
-.toc-link:hover{color:var(--blue);border-left-color:var(--accent);background:var(--bg-2,var(--bg))}
+.toc-select{width:100%;padding:.5rem .65rem;border:1px solid var(--border);border-radius:7px;background:var(--bg-2,var(--bg));color:var(--text);font-size:.8rem;font-family:inherit;cursor:pointer;transition:border-color var(--t);outline:none;margin-top:.2rem}
+.toc-select:focus{border-color:var(--blue,var(--secondary))}
+[data-theme="dark"] .toc-select{background:var(--bg-2);border-color:var(--border-2)}
 
 /* MAIN */
 main{padding:1.2rem 1.4rem;min-width:0}
@@ -210,6 +205,23 @@ footer strong{color:var(--text-2,var(--text))}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
+/* SUBPART CHIPS */
+.subpart-chips{display:flex;flex-wrap:wrap;gap:.28rem;padding:.42rem 0 .1rem;border-top:1px dashed var(--border);width:100%}
+.subpart-chip{display:inline-flex;align-items:center;padding:.18rem .52rem;border-radius:999px;border:1.5px solid var(--border);font-size:.72rem;font-weight:500;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);white-space:nowrap;user-select:none;font-family:inherit}
+.subpart-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(200,16,46,.06)}
+.subpart-chip.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+/* EMPTY PROMPT */
+.empty-prompt{text-align:center;padding:4rem 1rem;color:var(--muted)}
+.empty-prompt .empty-ico{font-size:3rem;margin-bottom:.75rem}
+.empty-prompt p{font-size:.95rem;margin-bottom:.35rem}
+.empty-prompt .empty-sub{font-size:.8rem;color:var(--faint,var(--muted))}
+/* DIFF DETAIL BOX */
+.diff-detail{margin-top:.45rem;padding:.38rem .55rem;background:var(--bg-2,var(--bg));border:1px dashed var(--border);border-radius:4px;font-size:.82rem;line-height:1.6}
+.diff-detail-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-right:.45rem}
+/* KEYBOARD HINT */
+.kbd-hint{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);font-size:.72rem;color:var(--faint,var(--muted));pointer-events:none;transition:opacity var(--t)}
+.search-bar input:not(:placeholder-shown) ~ .kbd-hint,.search-bar input:focus ~ .kbd-hint{opacity:0}
+
 @media print{
   header{position:static}
   aside,.search-section,.view-toggle{display:none!important}
@@ -242,7 +254,9 @@ footer strong{color:var(--text-2,var(--text))}
 <div class="layout">
   <aside id="sidebar">
     <div class="sb-title">Contents</div>
-    <div id="toc"></div>
+    <select id="tocSelect" class="toc-select" aria-label="Jump to FAR part">
+      <option value="">— All sections —</option>
+    </select>
   </aside>
 
   <main>
@@ -251,16 +265,18 @@ footer strong{color:var(--text-2,var(--text))}
         <span class="s-icon">&#128269;</span>
         <input type="search" id="searchInput" autocomplete="off" spellcheck="false"
                aria-label="Search FAR sections and topics">
+        <span class="kbd-hint" aria-hidden="true">press / to search</span>
         <button class="clear-btn" id="clearBtn" aria-label="Clear search" tabindex="-1">&times;</button>
       </div>
       <div class="filter-row">
-        <div class="chips" id="chips" role="list" aria-label="Filter by FAR part"></div>
+        <div class="chips" id="chips" role="list" aria-label="Filter by FAR part number"></div>
         <div class="view-toggle" role="group" aria-label="Comparison view mode">
           <button class="vbtn active" data-view="sbs">Side by Side</button>
           <button class="vbtn" data-view="legacy">Legacy Only</button>
           <button class="vbtn" data-view="rfo">RFO Only</button>
         </div>
       </div>
+      <div class="subpart-chips" id="subpartChips" role="list" aria-label="Filter by FAR section" hidden></div>
     </div>
     <div class="r-status" id="rStatus" aria-live="polite"></div>
     <div id="results" role="region" aria-label="FAR comparison results"></div>
@@ -1372,61 +1388,52 @@ function makeSubpara(label, contentFrag, extraClass) {
   return div;
 }
 
+function makeDiffDetail(diffContent) {
+  const box = document.createElement('div');
+  box.className = 'diff-detail';
+  const lbl = document.createElement('span');
+  lbl.className = 'diff-detail-lbl';
+  lbl.textContent = 'Changes:';
+  box.appendChild(lbl);
+  box.appendChild(diffContent);
+  return box;
+}
+
 function buildLegacyBlock(row) {
   if (row.kind === 'matched') {
+    const sp = makeSubpara(row.legacy.label, document.createTextNode(row.legacy.text.trim()), '');
     const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
     const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
     const ops = diffTokens(legacyTokens, rfoTokens);
-    const hasChanges = ops.some(o => o.type === 'rem');
-    if (!hasChanges) {
-      const frag = document.createDocumentFragment();
-      frag.appendChild(document.createTextNode(row.legacy.text.trim()));
-      const note = document.createElement('span');
-      note.className = 'nochange';
-      note.textContent = ' — no removals';
-      frag.appendChild(note);
-      return makeSubpara(row.legacy.label, frag, '');
+    if (ops.some(o => o.type === 'rem')) {
+      sp.appendChild(makeDiffDetail(renderDiffOps(ops, 'legacy')));
     }
-    return makeSubpara(row.legacy.label, renderDiffOps(ops, 'legacy'), '');
+    return sp;
   }
   if (row.kind === 'legacy-only') {
     return makeSubpara(row.legacy.label, renderPlain(row.legacy.text.trim(), 'legacy-removed'), 'unmatched-legacy');
   }
-  // rfo-only: placeholder on legacy side
   const frag = document.createDocumentFragment();
-  const note = document.createElement('em');
-  note.className = 'nochange';
-  note.textContent = '(removed in RFO)';
-  frag.appendChild(note);
+  frag.appendChild(Object.assign(document.createElement('em'), {className:'nochange', textContent:'(removed in RFO)'}));
   return makeSubpara(row.rfo.label, frag, 'unmatched-rfo');
 }
 
 function buildRfoBlock(row) {
   if (row.kind === 'matched') {
+    const sp = makeSubpara(row.rfo.label, document.createTextNode(row.rfo.text.trim()), '');
     const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
     const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
     const ops = diffTokens(legacyTokens, rfoTokens);
-    const hasChanges = ops.some(o => o.type === 'add' || o.type === 'rem');
-    if (!hasChanges) {
-      const frag = document.createDocumentFragment();
-      frag.appendChild(document.createTextNode(row.rfo.text.trim()));
-      const note = document.createElement('span');
-      note.className = 'nochange';
-      note.textContent = ' — no changes';
-      frag.appendChild(note);
-      return makeSubpara(row.rfo.label, frag, '');
+    if (ops.some(o => o.type === 'add' || o.type === 'rem')) {
+      sp.appendChild(makeDiffDetail(renderDiffOps(ops, 'rfo')));
     }
-    return makeSubpara(row.rfo.label, renderDiffOps(ops, 'rfo'), '');
+    return sp;
   }
   if (row.kind === 'rfo-only') {
     return makeSubpara(row.rfo.label, renderPlain(row.rfo.text.trim(), 'rfo-added'), 'unmatched-rfo');
   }
-  // legacy-only: placeholder on rfo side
   const frag = document.createDocumentFragment();
-  const note = document.createElement('em');
-  note.className = 'nochange';
-  note.textContent = '(no corresponding text in RFO)';
-  frag.appendChild(note);
+  frag.appendChild(Object.assign(document.createElement('em'), {className:'nochange', textContent:'(no corresponding text in RFO)'}));
   return makeSubpara(row.legacy.label, frag, 'unmatched-legacy');
 }
 
@@ -1528,6 +1535,7 @@ function renderEntry(entry) {
 //  SEARCH & DISPLAY
 // ═══════════════════════════════════════════════════════════════════
 let activeGroup = null;
+let activeSubpart = null;
 let currentView = 'sbs';
 
 function scoreEntry(entry, terms) {
@@ -1557,11 +1565,13 @@ function showResults(entries) {
     return;
   }
 
-  status.textContent = entries.length + ' entr' + (entries.length === 1 ? 'y' : 'ies');
+  status.textContent = (activeGroup || activeSubpart)
+    ? 'Showing ' + entries.length + ' of ' + KB.length + ' entries'
+    : entries.length + ' entr' + (entries.length === 1 ? 'y' : 'ies');
 
-  entries.forEach((entry, idx) => {
+  entries.forEach((entry) => {
     const card = document.createElement('div');
-    card.className = 'r-card' + (idx === 0 ? ' expanded' : '');
+    card.className = 'r-card';
     card.id = 'result-' + entry.id;
 
     // Header (clickable)
@@ -1569,7 +1579,7 @@ function showResults(entries) {
     hdr.className = 'card-hdr';
     hdr.setAttribute('role', 'button');
     hdr.setAttribute('tabindex', '0');
-    hdr.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
+    hdr.setAttribute('aria-expanded', 'false');
     hdr.setAttribute('aria-controls', 'body-' + entry.id);
 
     const titleBlk = document.createElement('div');
@@ -1616,13 +1626,17 @@ function showResults(entries) {
     hdr.addEventListener('click', toggle);
     hdr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 
-    // Pre-render first card
-    if (idx === 0) body.appendChild(renderEntry(entry));
-
     card.appendChild(hdr);
     card.appendChild(body);
     container.appendChild(card);
   });
+}
+
+function showEmptyState() {
+  const container = document.getElementById('results');
+  const status = document.getElementById('rStatus');
+  container.innerHTML = '<div class="empty-prompt"><div class="empty-ico">&#128270;</div><p>Search for a FAR topic or select a part number above.</p><p class="empty-sub">e.g. "competition", "6.001", "sole source"</p></div>';
+  status.textContent = KB.length + ' entries available';
 }
 
 function runSearch() {
@@ -1630,10 +1644,11 @@ function runSearch() {
   const terms = raw ? raw.split(/\s+/) : [];
 
   let pool = KB;
-  if (activeGroup) pool = pool.filter(e => e.group === activeGroup);
+  if (activeSubpart) pool = pool.filter(e => e.id === activeSubpart);
+  else if (activeGroup) pool = pool.filter(e => e.group === activeGroup);
 
-  if (!terms.length && !activeGroup) {
-    showResults(KB);
+  if (!terms.length && !activeGroup && !activeSubpart) {
+    showEmptyState();
     return;
   }
 
@@ -1657,7 +1672,15 @@ document.getElementById('searchInput').addEventListener('input', () => {
 });
 document.getElementById('clearBtn').addEventListener('click', () => {
   document.getElementById('searchInput').value = '';
-  runSearch();
+  activeGroup = null;
+  activeSubpart = null;
+  document.getElementById('subpartChips').hidden = true;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  const allChip = document.querySelector('.chip');
+  if (allChip) allChip.classList.add('active');
+  const sel = document.getElementById('tocSelect');
+  if (sel) sel.value = '';
+  showEmptyState();
   document.getElementById('searchInput').focus();
 });
 
@@ -1701,15 +1724,17 @@ function buildChips() {
 
   const all = document.createElement('button');
   all.className = 'chip active';
-  all.setAttribute('role', 'listitem');
   all.appendChild(document.createTextNode('All'));
   all.appendChild(makeChipCount(KB.length));
   all.addEventListener('click', () => {
     activeGroup = null;
+    activeSubpart = null;
+    document.getElementById('subpartChips').hidden = true;
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     all.classList.add('active');
-    runSearch();
-    buildTOC();
+    const sel = document.getElementById('tocSelect');
+    if (sel) sel.value = '';
+    showEmptyState();
   });
   container.appendChild(all);
 
@@ -1717,12 +1742,55 @@ function buildChips() {
     const count = KB.filter(e => e.group === group).length;
     const btn = document.createElement('button');
     btn.className = 'chip';
-    btn.setAttribute('role', 'listitem');
-    btn.appendChild(document.createTextNode(group.replace(/^Part \d+ — /, 'Pt ')));
+    const numMatch = group.match(/^Part (\d+)/);
+    const label = numMatch ? numMatch[1] : (group === 'RFO Overview' ? 'RFO' : group.substring(0, 8));
+    btn.appendChild(document.createTextNode(label));
     btn.appendChild(makeChipCount(count));
+    btn.title = group;
     btn.addEventListener('click', () => {
       activeGroup = group;
+      activeSubpart = null;
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const sel = document.getElementById('tocSelect');
+      if (sel) sel.value = group;
+      buildSubpartChips(group);
+      runSearch();
+    });
+    container.appendChild(btn);
+  });
+}
+
+function buildSubpartChips(group) {
+  const container = document.getElementById('subpartChips');
+  container.innerHTML = '';
+  container.hidden = false;
+
+  const entries = KB.filter(e => e.group === group);
+  const numMatch = group.match(/^Part (\d+)/);
+  const partLabel = numMatch ? numMatch[1] : 'Part';
+
+  const clearBtn = document.createElement('button');
+  clearBtn.className = 'subpart-chip active';
+  clearBtn.textContent = 'All ' + partLabel;
+  clearBtn.addEventListener('click', () => {
+    activeSubpart = null;
+    document.querySelectorAll('.subpart-chip').forEach(c => c.classList.remove('active'));
+    clearBtn.classList.add('active');
+    runSearch();
+  });
+  container.appendChild(clearBtn);
+
+  entries.forEach(entry => {
+    const m = entry.title.match(/^FAR ([\d]+\.[\d]+\w*)/);
+    const secLabel = m ? m[1] : entry.title.substring(0, 12);
+    const btn = document.createElement('button');
+    btn.className = 'subpart-chip';
+    btn.textContent = secLabel;
+    btn.title = entry.title;
+    btn.addEventListener('click', () => {
+      activeSubpart = entry.id;
+      document.querySelectorAll('.subpart-chip').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
       runSearch();
     });
@@ -1732,64 +1800,35 @@ function buildChips() {
 
 
 // ═══════════════════════════════════════════════════════════════════
-//  SIDEBAR TOC
+//  SIDEBAR TOC SELECT
 // ═══════════════════════════════════════════════════════════════════
-function buildTOC() {
-  const toc = document.getElementById('toc');
-  toc.innerHTML = '';
-
-  const groups = {};
-  KB.forEach(e => {
-    if (!groups[e.group]) groups[e.group] = [];
-    groups[e.group].push(e);
+function buildTocSelect() {
+  const sel = document.getElementById('tocSelect');
+  if (!sel) return;
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">— All sections —</option>';
+  const groups = [...new Set(KB.map(e => e.group))];
+  groups.forEach(group => {
+    const opt = document.createElement('option');
+    opt.value = group;
+    opt.textContent = group;
+    sel.appendChild(opt);
   });
-
-  for (const [group, entries] of Object.entries(groups)) {
-    const grpDiv = document.createElement('div');
-
-    const grpBtn = document.createElement('button');
-    grpBtn.className = 'toc-grp-btn' + (activeGroup === group ? ' active' : '');
-    const shortName = group.replace(/^Part \d+ — /, '').substring(0, 22);
-    grpBtn.innerHTML = '<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + sanitize(shortName) + '</span>';
-    const cnt = document.createElement('span');
-    cnt.className = 'toc-cnt';
-    cnt.textContent = entries.length;
-    grpBtn.appendChild(cnt);
-
-    grpBtn.addEventListener('click', () => {
-      if (activeGroup === group) {
-        activeGroup = null;
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        document.querySelector('.chip').classList.add('active');
-      } else {
-        activeGroup = group;
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  sel.value = activeGroup || '';
+  if (!sel._wired) {
+    sel._wired = true;
+    sel.addEventListener('change', () => {
+      activeGroup = sel.value || null;
+      activeSubpart = null;
+      document.getElementById('subpartChips').hidden = true;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      if (!activeGroup) {
+        const allChip = document.querySelector('.chip');
+        if (allChip) allChip.classList.add('active');
       }
+      if (activeGroup) buildSubpartChips(activeGroup);
       runSearch();
-      buildTOC();
     });
-
-    const entriesDiv = document.createElement('div');
-    entriesDiv.className = 'toc-entries';
-    entries.forEach(e => {
-      const a = document.createElement('a');
-      a.className = 'toc-link';
-      a.href = '#result-' + e.id;
-      a.textContent = e.title.replace(/^FAR \d+\.\d+\w* — /, '');
-      a.addEventListener('click', ev => {
-        ev.preventDefault();
-        const el = document.getElementById('result-' + e.id);
-        if (el) {
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-          if (!el.classList.contains('expanded')) el.querySelector('.card-hdr').click();
-        }
-      });
-      entriesDiv.appendChild(a);
-    });
-
-    grpDiv.appendChild(grpBtn);
-    grpDiv.appendChild(entriesDiv);
-    toc.appendChild(grpDiv);
   }
 }
 
@@ -1861,12 +1900,12 @@ function initTypewriter() {
   initDarkMode();
   initTypewriter();
   buildChips();
-  buildTOC();
-  showResults(KB);
+  buildTocSelect();
+  showEmptyState();
 
   // Entry count badge
   const countEl = document.getElementById('entryCount');
-  if (countEl) countEl.textContent = KB.length + ' entries';
+  if (countEl) countEl.textContent = KB.length + ' sections';
 
   // "/" shortcut to focus search
   document.addEventListener('keydown', e => {
