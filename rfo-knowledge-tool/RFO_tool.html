@@ -1948,6 +1948,7 @@ document.body.dataset.view = 'sbs';
 function buildChips() {
   const container = document.getElementById('chips');
   container.innerHTML = '';
+  document.getElementById('subpartChips').hidden = true;
   const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
   const groups = [...new Set(pool.map(e => e.group))];
 
@@ -2008,7 +2009,7 @@ function buildSubpartChips(group) {
   container.hidden = false;
 
   const entries = KB.filter(e => e.group === group);
-  const numMatch = group.match(/^Part (\d+)/);
+  const numMatch = group.match(/^(?:DFARS |AFARS )?Part (\d+)/);
   const partLabel = numMatch ? numMatch[1] : 'Part';
 
   const clearBtn = document.createElement('button');
