@@ -486,18 +486,42 @@ function alignBullets(legacy, rfo) {
 // ═══════════════════════════════════════════════════════════════════
 //  FAR TEXT PARSER
 // ═══════════════════════════════════════════════════════════════════
+// Classify a label like "(a)", "(1)", "(i)" into a level family:
+//   'alpha'   — (a)(b)(c)...(z) lowercase letters
+//   'ALPHA'   — (A)(B)(C)... uppercase letters
+//   'num'     — (1)(2)(3)...
+//   'roman'   — (i)(ii)(iii)... lowercase roman
+//   'other'   — anything else
+function labelLevel(label) {
+  const inner = label.replace(/[()]/g, '');
+  if (/^[ivxlcdm]+$/.test(inner)) return 'roman';
+  if (/^[a-z]$/.test(inner))      return 'alpha';
+  if (/^[A-Z]$/.test(inner))      return 'ALPHA';
+  if (/^\d+$/.test(inner))        return 'num';
+  return 'other';
+}
+
+// Detect the dominant top-level label style for a given text by looking at
+// the first label that appears. We only split paragraphs at that level so
+// sub-bullets (e.g. "(1)" under "(b)") stay inline with their parent.
+function detectTopLevel(rawText) {
+  const m = rawText.match(/^\s*(\([a-zA-Z0-9]{1,4}\))/m);
+  return m ? labelLevel(m[1]) : 'alpha';
+}
+
 function parseFarSubparas(rawText) {
+  const topLevel = detectTopLevel(rawText);
   const lines = rawText.split('\n');
   const result = [];
   let current = null;
 
   for (const line of lines) {
     const m = line.match(/^(\s*)(\([a-zA-Z0-9]{1,4}\))\s+(.*)/);
-    if (m && m[1].length === 0) {
+    // Only treat as a paragraph break if the label is at the TOP LEVEL
+    // for this section. Sub-bullets get folded back into their parent.
+    if (m && m[1].length === 0 && labelLevel(m[2]) === topLevel) {
       if (current) result.push(current);
       current = {label: m[2], text: m[3]};
-    } else if (m && m[1].length > 0 && current) {
-      current.text += ' ' + line.trim();
     } else if (current) {
       const trimmed = line.trim();
       if (trimmed) current.text += ' ' + trimmed;
