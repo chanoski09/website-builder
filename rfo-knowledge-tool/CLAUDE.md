@@ -1,77 +1,89 @@
-# RFO Knowledge Tool — Project Context
+# FORGE — FAR Overhaul Reference & Guidance Engine
 
 ## What This Is
-A single-file, offline, self-contained HTML knowledge base for the **411th Contract Support Brigade** comparing the **Legacy FAR (48 C.F.R.)** side-by-side against the **Revolutionary FAR Overhaul (RFO, April 2025)** with word-level diff highlighting.
+A hosted single-file HTML app for the **411th Contract Support Brigade** comparing Legacy FAR, RFO, DFARS, and AFARS side-by-side with word-level diff highlighting.
 
-## Working File
-`RFO_tool.html` — everything lives here: styles, markup, KB data, and all JavaScript. No build step, no server, no dependencies. Open in any browser by double-clicking.
+**Developed by:** SFC Ho Tony & SFC Napit Rabin — 411th CSB
+
+## Working Files
+| File | Purpose |
+|------|---------|
+| `RFO_tool.html` | App shell — styles, markup, all JavaScript logic |
+| `kb.json` | All 64 knowledge-base entries — **edit this to update content** |
+
+The app fetches `kb.json` at load time. Update the JSON, push to GitHub, and every visitor gets fresh data on their next page load. No app code changes needed.
 
 ## Architecture
 ```
+RFO_tool.html          ← app shell (styles + JS engine, no KB data)
+kb.json                ← all KB entries (edit to update content)
+
 RFO_tool.html
 ├── <style nonce="rfo2026">   CSS (tokens, layout, components, dark mode, print)
-├── <body>                    Header, sidebar, search section, results, footer
-└── <script nonce="rfo2026"> KB data + all JS logic
-    ├── const KB = [...]      ~55 knowledge base entries
+├── <body>                    Header, sidebar, reg-filter, chips, results, footer
+└── <script nonce="rfo2026"> All JS logic
+    ├── let KB = []           populated at load from kb.json
     ├── Diff engine           stripMarkers → diffTokenize → diffTokens (LCS)
-    ├── Rendering             renderDiffOps, renderPlain, buildLegacyBlock, buildRfoBlock
-    ├── Alignment             wordSet, jaccard, alignBullets (Jaccard fallback)
-    ├── FAR parser            parseFarSubparas, alignByLabel (label-first alignment)
-    ├── Entry renderer        renderEntry (branches on legacyText/rfoText presence)
-    └── UI                    showResults, runSearch, buildChips, buildTOC, dark mode, typewriter
+    ├── Rendering             makeDiffDetail, buildLegacyBlock, buildRfoBlock
+    ├── Alignment             wordSet, jaccard, alignBullets, alignByLabel
+    ├── FAR parser            parseFarSubparas (handles (a),(b),(1) labels)
+    ├── Entry renderer        renderEntry (FAR-text path + editorial fallback)
+    └── UI                    showResults, runSearch, buildChips, buildSubpartChips,
+                              buildTocSelect, buildTocSelect, dark mode, typewriter
 ```
 
 ## KB Entry Schema
-```js
+```json
 {
-  id:          "far-6-001",
-  group:       "Part 6 — Competition Requirements",
-  title:       "FAR 6.001 — Applicability",
-  keywords:    ["applicability", "6.001", "competition"],
-  summary:     "Short editorial summary shown in collapsed card.",
-  deepLinks:   [{ label: "acquisition.gov", url: "https://www.acquisition.gov/far-overhaul" }],
-  sources:     ["eCFR (48 C.F.R. 6.001)", "FAR Overhaul Apr. 2025"],
+  "id":        "far-6-001",
+  "group":     "Part 6 — Competition Requirements",
+  "title":     "FAR 6.001 — Applicability",
+  "keywords":  ["applicability", "6.001", "competition"],
+  "summary":   "Short editorial summary shown in collapsed card.",
+  "deepLinks": [{ "label": "acquisition.gov", "url": "https://www.acquisition.gov/far-overhaul" }],
+  "sources":   ["eCFR (48 C.F.R. 6.001)", "FAR Overhaul Apr. 2025"],
 
-  // ── REAL FAR TEXT (unlocks word-level sub-paragraph diff) ──
-  legacyText:  `This part applies to all acquisitions except— (a) ...`,
-  rfoText:     `This part applies to all acquisitions except— (a) ... (but see 13.501)`,
+  "legacyText": "TODO: paste legacy FAR sub-paragraph text here",
+  "rfoText":    "TODO: paste RFO sub-paragraph text here",
 
-  // ── EDITORIAL BULLETS (drive search + fallback display) ──
-  legacy: [{ t: "Summary of legacy provision.", s: "eCFR (48 C.F.R. 6.001)" }],
-  rfo:    [{ t: "Summary of RFO change.",       s: "FAR Overhaul Apr. 2025" }]
+  "legacy": [{ "t": "Summary of legacy provision.", "s": "eCFR (48 C.F.R. 6.001)" }],
+  "rfo":    [{ "t": "Summary of RFO change.",       "s": "FAR Overhaul Apr. 2025" }]
 }
 ```
 
-## Loading Real FAR Text
-- Find the entry in `const KB = [...]` by its `id`
-- Replace `legacyText: "TODO: paste..."` with the actual FAR prose (use template literals)
-- Replace `rfoText:    "TODO: paste..."` with the actual RFO prose
-- Sub-paragraphs labeled `(a)`, `(b)`, `(1)`, `(2)` etc. are parsed and aligned automatically
-- The full word-level diff activates immediately — no other code changes needed
+**DFARS entries** use group `"DFARS Part 206 — ..."`, title `"DFARS 206.001 — ..."`.  
+**AFARS entries** use group `"AFARS Part 5106 — ..."`, title `"AFARS 5106.001 — ..."`.
 
-## Currently Seeded
-- **FAR 6.001 Applicability** — full legacy + RFO text loaded, sub-paragraphs (a)–(f) diff live
+## Updating Content (Monthly RFO Updates)
+
+### Edit a single entry
+1. Open `kb.json` in GitHub → click pencil icon
+2. Find entry by `id` (Ctrl+F)
+3. Replace `"TODO: paste..."` in `legacyText` / `rfoText` with actual regulatory text
+4. Commit to `main` → done. FORGE serves updated data on next page load.
+
+### Add a new entry
+1. Copy any existing entry block in `kb.json`
+2. Assign a new unique `id`
+3. Fill in all fields; add to the array
+4. Commit to `main`
+
+### Multiline text in legacyText / rfoText
+Use `\n` for line breaks within JSON strings:
+```json
+"legacyText": "This part applies to all acquisitions except—\n(a) Contracts awarded using simplified acquisition..."
+```
+
+## Monthly Reminder
+A GitHub Action (`.github/workflows/forge-data-reminder.yml`) automatically opens an issue on the 1st of every month listing the sources to check and step-by-step update instructions.
 
 ## Security Constraints (must never remove)
 | Item | Location | Why |
 |------|----------|-----|
 | `nonce="rfo2026"` | All `<script>` and `<style>` tags | CSP requires it |
-| `sanitize()` | Search input handler | XSS prevention |
+| `connect-src 'self'` | CSP meta tag | Allows fetch of kb.json |
+| `sanitize()` | Search input + error messages | XSS prevention |
 | `safeUrl()` | All external links | Rejects non-http/https |
-
-## Key Design Decisions
-- **Dark mode** — `localStorage` persistence + `prefers-color-scheme` detection
-- **Typewriter placeholder** — respects `prefers-reduced-motion`, pauses on focus
-- **`/` shortcut** — focuses search from anywhere on the page
-- **Backward compatible** — entries without `legacyText`/`rfoText` fall back to editorial bullet diff
-- **Print styles** — sidebar and controls hidden; diff panes shown in clean two-column layout
-
-## Data Source
-**Workbook: RFO/Legacy FAR Workbook 26055** — not yet loaded. To add data:
-1. Open the workbook, copy legacy + RFO text for a section
-2. Find the matching KB entry (search by `id` in the source)
-3. Paste into `legacyText` / `rfoText` as a template literal
-4. Upload/share the updated file
 
 ## PR / Branch
 - Branch: `claude/far-rfo-handoff-plan-ySZSe`
