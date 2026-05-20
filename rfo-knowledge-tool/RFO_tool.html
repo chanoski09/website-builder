@@ -205,6 +205,16 @@ footer strong{color:var(--text-2,var(--text))}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
+/* REGULATION FILTER */
+.reg-filter{display:flex;gap:.38rem;margin-bottom:.6rem;flex-wrap:wrap}
+.reg-btn{padding:.26rem .72rem;border-radius:6px;border:1.5px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);font-family:inherit;white-space:nowrap}
+.reg-btn:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary))}
+.reg-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.reg-btn.active[data-reg="dfars"]{background:#1a5fa0;border-color:#1a5fa0}
+.reg-btn.active[data-reg="afars"]{background:#7b3f00;border-color:#7b3f00}
+[data-theme="dark"] .reg-btn.active{background:var(--secondary);border-color:var(--secondary);color:#0d1117}
+[data-theme="dark"] .reg-btn.active[data-reg="dfars"]{background:#388bfd;border-color:#388bfd}
+[data-theme="dark"] .reg-btn.active[data-reg="afars"]{background:#e3a04f;border-color:#e3a04f;color:#0d1117}
 /* SUBPART CHIPS */
 .subpart-chips{display:flex;flex-wrap:wrap;gap:.28rem;padding:.42rem 0 .1rem;border-top:1px dashed var(--border);width:100%}
 .subpart-chip{display:inline-flex;align-items:center;padding:.18rem .52rem;border-radius:999px;border:1.5px solid var(--border);font-size:.72rem;font-weight:500;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);white-space:nowrap;user-select:none;font-family:inherit}
@@ -268,8 +278,14 @@ footer strong{color:var(--text-2,var(--text))}
         <span class="kbd-hint" aria-hidden="true">press / to search</span>
         <button class="clear-btn" id="clearBtn" aria-label="Clear search" tabindex="-1">&times;</button>
       </div>
+      <div class="reg-filter" id="regFilter" role="group" aria-label="Filter by regulation">
+        <button class="reg-btn active" data-reg="all">All Regs</button>
+        <button class="reg-btn" data-reg="far">FAR / RFO</button>
+        <button class="reg-btn" data-reg="dfars">DFARS</button>
+        <button class="reg-btn" data-reg="afars">AFARS</button>
+      </div>
       <div class="filter-row">
-        <div class="chips" id="chips" role="list" aria-label="Filter by FAR part number"></div>
+        <div class="chips" id="chips" role="list" aria-label="Filter by part number"></div>
         <div class="view-toggle" role="group" aria-label="Comparison view mode">
           <button class="vbtn active" data-view="sbs">Side by Side</button>
           <button class="vbtn" data-view="legacy">Legacy Only</button>
@@ -1141,6 +1157,208 @@ const KB = [
   ]
 }
 
+,
+
+// ══════════════════════════════════════════════════════════════════
+//  DFARS — Defense Federal Acquisition Regulation Supplement
+// ══════════════════════════════════════════════════════════════════
+{
+  id:"dfars-206-001", group:"DFARS Part 206 — Competition Requirements",
+  title:"DFARS 206.001 — Applicability",
+  keywords:["dfars","206","competition","dod","defense","applicability"],
+  summary:"DFARS Part 206 supplements FAR Part 6 for DoD acquisitions, adding DoD-specific procedures for J&A approvals, class deviations, and congressional notification thresholds.",
+  deepLinks:[{label:"DFARS 206",url:"https://www.acquisition.gov/dfars/part-206-competition-requirements"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 206)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 206 text here",
+  rfoText:"TODO: paste revised DFARS 206 text here",
+  legacy:[{t:"DoD sole-source J&A approval thresholds: up to $750K (Contracting Officer), $15M (Head of Contracting Activity), above $15M (Service Acquisition Executive).",s:"DFARS 206.304"}],
+  rfo:[{t:"Revised approval thresholds and electronic J&A posting requirements updated to align with revised FAR Part 6 competition framework.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-212-001", group:"DFARS Part 212 — Commercial Products/Services",
+  title:"DFARS 212.102 — Applicability of FAR Part 12 Procedures",
+  keywords:["dfars","212","commercial","products","services","defense","acquisition","item determination"],
+  summary:"DoD commercial item determination procedures, NDAA-driven definition changes, and senior procurement executive waiver authority for non-commercial acquisitions.",
+  deepLinks:[{label:"DFARS 212",url:"https://www.acquisition.gov/dfars/part-212-acquisition-commercial-products-and-commercial-services"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 212)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 212.102 text here",
+  rfoText:"TODO: paste revised DFARS 212.102 text here",
+  legacy:[{t:"DoD required a written determination that a product/service met the commercial item definition before using Part 12 procedures; SPE waiver required otherwise.",s:"DFARS 212.102"}],
+  rfo:[{t:"Aligned with RFO terminology shift to 'commercial products' and 'commercial services'; updated determination process and NDAA annual authorization adjustments.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-213-001", group:"DFARS Part 213 — Simplified Acquisition",
+  title:"DFARS 213.301 — Governmentwide Commercial Purchase Card",
+  keywords:["dfars","213","simplified","micro-purchase","purchase card","GPC","gpc","threshold"],
+  summary:"DoD micro-purchase and SAP thresholds; Government Purchase Card (GPC) mandatory use policy; MICC/PARC oversight requirements.",
+  deepLinks:[{label:"DFARS 213",url:"https://www.acquisition.gov/dfars/part-213-simplified-acquisition-procedures"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 213)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 213 text here",
+  rfoText:"TODO: paste revised DFARS 213 text here",
+  legacy:[{t:"Micro-purchase threshold for DoD is $10,000 inside U.S.; mandatory GPC use for purchases at or below micro-purchase threshold; SAP ceiling $250,000 for DoD.",s:"DFARS 213.301/213.201"}],
+  rfo:[{t:"Thresholds and GPC policy reviewed against revised FAR Part 13; electronic ordering system use requirements updated.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-215-001", group:"DFARS Part 215 — Contracting by Negotiation",
+  title:"DFARS 215.403-1 — Certified Cost or Pricing Data Requirements (TINA)",
+  keywords:["dfars","215","tina","truth in negotiations","certified cost","pricing data","threshold","negotiations"],
+  summary:"DoD Truth in Negotiations Act (TINA) thresholds, exceptions, and waivers; cost or pricing data certification requirements for DoD contracts.",
+  deepLinks:[{label:"DFARS 215",url:"https://www.acquisition.gov/dfars/part-215-contracting-negotiation"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 215)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 215.403-1 text here",
+  rfoText:"TODO: paste revised DFARS 215.403-1 text here",
+  legacy:[{t:"TINA threshold at $2M; certified cost or pricing data required above threshold unless exception applies (adequate price competition, catalog/market price, waiver).",s:"DFARS 215.403-1"}],
+  rfo:[{t:"TINA threshold and exception criteria reviewed; alignment with revised FAR Part 15 cost realism and price analysis requirements.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-219-001", group:"DFARS Part 219 — Small Business Programs",
+  title:"DFARS 219.502-2 — Total Small Business Set-Asides",
+  keywords:["dfars","219","small business","set-aside","rule of two","osa","office of small business","defense"],
+  summary:"DoD small business set-aside requirements, goal achievement, and mandatory coordination with Office of Small Business Programs (OSBP).",
+  deepLinks:[{label:"DFARS 219",url:"https://www.acquisition.gov/dfars/part-219-small-business-programs"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 219)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 219.502-2 text here",
+  rfoText:"TODO: paste revised DFARS 219.502-2 text here",
+  legacy:[{t:"DoD mandated coordination with OSBP before setting aside acquisitions above $150K; rule of two applied with additional DoD guidance on expectation of fair market price.",s:"DFARS 219.502-2"}],
+  rfo:[{t:"Set-aside procedures updated; DoD-specific small business goal reporting aligned with revised FAR Part 19 reorganization consolidating all set-aside authority.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-225-001", group:"DFARS Part 225 — Foreign Acquisition",
+  title:"DFARS 225.7002 — Restrictions on Specialty Metals",
+  keywords:["dfars","225","specialty metals","berry amendment","buy american","foreign acquisition","titanium","steel"],
+  summary:"Berry Amendment specialty metals restriction: titanium, steel, tungsten, and other specialty metals in weapons systems must be melted or produced in the U.S.",
+  deepLinks:[{label:"DFARS 225",url:"https://www.acquisition.gov/dfars/part-225-foreign-acquisition"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 225)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 225.7002 text here",
+  rfoText:"TODO: paste revised DFARS 225.7002 text here",
+  legacy:[{t:"Specialty metals (titanium, steel alloys, tungsten) used in DoD weapons systems must be melted or produced in the U.S. or qualifying countries; exceptions for commercial items and de minimis.",s:"DFARS 225.7002"}],
+  rfo:[{t:"Qualifying country list and de minimis exception thresholds reviewed; electronic recordkeeping of specialty metal origin updated.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-237-001", group:"DFARS Part 237 — Service Contracting",
+  title:"DFARS 237.102 — Prohibition on Personal Services Contracts",
+  keywords:["dfars","237","personal services","inherently governmental","service contract","prohibition","defense"],
+  summary:"DoD prohibition on personal services contracts; inherently governmental function determinations; contractor manpower reporting requirements.",
+  deepLinks:[{label:"DFARS 237",url:"https://www.acquisition.gov/dfars/part-237-service-contracting"}],
+  sources:["DFARS (48 C.F.R. Chapter 2, Part 237)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 237.102 text here",
+  rfoText:"TODO: paste revised DFARS 237.102 text here",
+  legacy:[{t:"DoD prohibited personal services unless specifically authorized by statute; annual contractor manpower reporting via Army CMR system required for all service contracts.",s:"DFARS 237.102"}],
+  rfo:[{t:"Inherently governmental function criteria clarified; contractor manpower reporting thresholds and system updated.",s:"Revised DFARS"}]
+},
+{
+  id:"dfars-252-001", group:"DFARS Part 252 — Solicitation Provisions & Clauses",
+  title:"DFARS 252.204-7012 — Safeguarding Covered Defense Information (CMMC)",
+  keywords:["dfars","252","cmmc","cybersecurity","CDI","CUI","safeguarding","clause","NIST 800-171"],
+  summary:"Mandatory DFARS clause requiring contractors to implement NIST SP 800-171 controls and report cyber incidents within 72 hours; underpins CMMC compliance.",
+  deepLinks:[{label:"DFARS 252.204-7012",url:"https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting"}],
+  sources:["DFARS (48 C.F.R. 252.204-7012)","Revised DFARS"],
+  legacyText:"TODO: paste legacy DFARS 252.204-7012 clause text here",
+  rfoText:"TODO: paste revised DFARS 252.204-7012 text here",
+  legacy:[{t:"Required contractors handling CDI to implement NIST SP 800-171 controls; 72-hour cyber incident reporting to DoD; flow-down to subcontractors mandatory.",s:"DFARS 252.204-7012"}],
+  rfo:[{t:"CMMC level requirements incorporated; continuous monitoring and annual assessment requirements added; cloud environment guidelines updated.",s:"Revised DFARS"}]
+},
+
+// ══════════════════════════════════════════════════════════════════
+//  AFARS — Army Federal Acquisition Regulation Supplement
+// ══════════════════════════════════════════════════════════════════
+{
+  id:"afars-5101-001", group:"AFARS Part 5101 — General",
+  title:"AFARS 5101.602-2 — Responsibilities of Contracting Officers",
+  keywords:["afars","5101","contracting officer","responsibility","authority","army","HCA","PARC","MICC"],
+  summary:"Army-specific contracting officer authority thresholds, Head of Contracting Activity (HCA) delegations, and PARC/MICC coordination requirements.",
+  deepLinks:[{label:"AFARS Part 5101",url:"https://www.acquisition.gov/afars/part-5101-federal-acquisition-regulations-system"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5101.602-2 text here",
+  rfoText:"TODO: paste revised AFARS 5101.602-2 text here",
+  legacy:[{t:"Army HCA delegated authority to PCOs at specified dollar thresholds; MICC contracting officers subject to PARC oversight for acquisitions above $10M.",s:"AFARS 5101.602-2"}],
+  rfo:[{t:"Delegation thresholds and PARC coordination requirements reviewed against revised FAR Part 1 authority framework.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5106-001", group:"AFARS Part 5106 — Competition Requirements",
+  title:"AFARS 5106.302-1 — Army Advocate for Competition",
+  keywords:["afars","5106","competition","advocate","army","J&A","sole source","competition advocate"],
+  summary:"Army Competition Advocate program; Army-specific J&A approval authorities and competition challenge procedures.",
+  deepLinks:[{label:"AFARS Part 5106",url:"https://www.acquisition.gov/afars/part-5106-competition-requirements"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5106 text here",
+  rfoText:"TODO: paste revised AFARS 5106 text here",
+  legacy:[{t:"Army Competition Advocate reviews and approves sole-source justifications; field activity competition advocates required for all Army contracting offices above $50M annual spend.",s:"AFARS 5106.501"}],
+  rfo:[{t:"Competition advocate program updated; challenge procedures aligned with revised FAR Part 6 and DFARS Part 206 J&A threshold changes.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5107-001", group:"AFARS Part 5107 — Acquisition Planning",
+  title:"AFARS 5107.104 — General Procedures for Acquisition Planning",
+  keywords:["afars","5107","acquisition plan","army","HA","PARC","milestone","program management"],
+  summary:"Army acquisition plan approval thresholds, milestone coordination with Program Executive Office (PEO), and Army Acquisition Executive (AAE) oversight.",
+  deepLinks:[{label:"AFARS Part 5107",url:"https://www.acquisition.gov/afars/part-5107-acquisition-planning"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5107.104 text here",
+  rfoText:"TODO: paste revised AFARS 5107 text here",
+  legacy:[{t:"Written acquisition plans required for all acquisitions above $10M; PARC approval required above $100M; AAE notification required for ACAT programs.",s:"AFARS 5107.104"}],
+  rfo:[{t:"Acquisition planning thresholds and PEO/AAE coordination requirements reviewed; aligned with revised FAR Part 7 planning streamlining.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5115-001", group:"AFARS Part 5115 — Contracting by Negotiation",
+  title:"AFARS 5115.408 — Solicitation Provisions and Contract Clauses",
+  keywords:["afars","5115","negotiation","source selection","SSEB","cost realism","BAFO","army"],
+  summary:"Army source selection procedures, Source Selection Evaluation Board (SSEB) composition requirements, and best value continuum implementation.",
+  deepLinks:[{label:"AFARS Part 5115",url:"https://www.acquisition.gov/afars/part-5115-contracting-negotiation"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5115 text here",
+  rfoText:"TODO: paste revised AFARS 5115 text here",
+  legacy:[{t:"Army SSEB must include technical, cost, and past performance panels; SSA must be independent of SSEB for acquisitions above $100M; Army Contracting Guide provides mandatory templates.",s:"AFARS 5115.303"}],
+  rfo:[{t:"SSEB composition and documentation requirements updated; best value criteria flexibility increased per revised FAR Part 15.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5119-001", group:"AFARS Part 5119 — Small Business Programs",
+  title:"AFARS 5119.201 — Army Office of Small Business Programs",
+  keywords:["afars","5119","small business","OSBP","army","goals","set-aside","8a","HUBZone","SDVOSB","WOSB"],
+  summary:"Army OSBP coordination requirements, small business goal reporting to ASA(ALT), and mandatory review procedures before market research completion.",
+  deepLinks:[{label:"AFARS Part 5119",url:"https://www.acquisition.gov/afars/part-5119-small-business-programs"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5119.201 text here",
+  rfoText:"TODO: paste revised AFARS 5119 text here",
+  legacy:[{t:"Army OSBP must review all acquisitions above $150K not already set aside; annual goals reported to ASA(ALT); mandatory small business specialist review for IDIQ task orders.",s:"AFARS 5119.201"}],
+  rfo:[{t:"OSBP review thresholds updated; aligned with revised FAR Part 19 consolidation of set-aside authority and expanded SDVOSB priority.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5131-001", group:"AFARS Part 5131 — Contract Cost Principles",
+  title:"AFARS 5131.201 — Army Business Systems Requirements",
+  keywords:["afars","5131","business systems","MMAS","IPPE","EVMS","earned value","cost accounting","DCAA"],
+  summary:"Army contractor business system oversight: MMAS, IPPE, EVMS compliance for major Army programs; DCAA audit coordination.",
+  deepLinks:[{label:"AFARS Part 5131",url:"https://www.acquisition.gov/afars/part-5131-contract-cost-principles-and-procedures"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5131 text here",
+  rfoText:"TODO: paste revised AFARS 5131 text here",
+  legacy:[{t:"EVMS required on cost/incentive contracts above $20M; Army MMAS compliance reviews conducted by DCAA; business system deficiencies may result in payment withholds.",s:"AFARS 5131.201"}],
+  rfo:[{t:"Business system review thresholds and withhold procedures aligned with revised DFARS and FAR cost principle changes.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5137-001", group:"AFARS Part 5137 — Service Contracting",
+  title:"AFARS 5137.102 — Service Contract Policy and Army Contractor Manpower Reporting",
+  keywords:["afars","5137","service contract","CMR","contractor manpower","inherently governmental","army","CMRA"],
+  summary:"Army Contractor Manpower Reporting Application (CMRA) mandatory annual reporting for all service contracts; performance-based requirements.",
+  deepLinks:[{label:"AFARS Part 5137",url:"https://www.acquisition.gov/afars/part-5137-service-contracting"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5137 text here",
+  rfoText:"TODO: paste revised AFARS 5137 text here",
+  legacy:[{t:"All Army service contracts must include CMRA reporting requirement; contractors report labor hours, functions, and inherently governmental adjacency annually; CO must review reports.",s:"AFARS 5137.102"}],
+  rfo:[{t:"CMRA reporting system and data elements updated; alignment with revised FAR Part 37 performance-based service acquisition requirements.",s:"Revised AFARS"}]
+},
+{
+  id:"afars-5152-001", group:"AFARS Part 5152 — Solicitation Provisions & Clauses",
+  title:"AFARS 5152.225-5900 — Army-Unique Clauses and Local Provisions",
+  keywords:["afars","5152","clause","provision","army unique","local clause","MICC","installation"],
+  summary:"Army-unique solicitation provisions and contract clauses including CMRA reporting clause, Army EEO clause, and installation access/security requirements.",
+  deepLinks:[{label:"AFARS Part 5152",url:"https://www.acquisition.gov/afars/part-5152-solicitation-provisions-and-contract-clauses"}],
+  sources:["AFARS (Army)","Revised AFARS"],
+  legacyText:"TODO: paste legacy AFARS 5152 clause text here",
+  rfoText:"TODO: paste revised AFARS 5152 text here",
+  legacy:[{t:"AFARS included mandatory clauses for CMRA reporting (5152.237-5901), contractor access to Army installations, and Army-specific EEO/labor standards supplements.",s:"AFARS 5152"}],
+  rfo:[{t:"Clause library reviewed; obsolete clauses removed; cybersecurity and installation access clauses updated to reference current DoD/Army security requirements.",s:"Revised AFARS"}]
+}
+
 ]; // end KB
 
 
@@ -1505,7 +1723,10 @@ function renderEntry(entry) {
   legacyPane.className = 'diff-pane legacy-pane';
   const legHdr = document.createElement('div');
   legHdr.className = 'pane-hdr';
-  legHdr.innerHTML = '&#128308; Legacy FAR';
+  const regType = getGroupRegType(entry.group);
+  legHdr.innerHTML = regType === 'dfars' ? '&#128308; Legacy DFARS'
+                   : regType === 'afars' ? '&#128308; Legacy AFARS'
+                   : '&#128308; Legacy FAR';
   legacyPane.appendChild(legHdr);
   const legContent = document.createElement('div');
   legContent.className = 'pane-content';
@@ -1517,7 +1738,9 @@ function renderEntry(entry) {
   rfoPane.className = 'diff-pane rfo-pane';
   const rfoHdr = document.createElement('div');
   rfoHdr.className = 'pane-hdr';
-  rfoHdr.innerHTML = '&#128994; RFO (Apr 2025)';
+  rfoHdr.innerHTML = regType === 'dfars' ? '&#128994; Revised DFARS'
+                   : regType === 'afars' ? '&#128994; Revised AFARS'
+                   : '&#128994; RFO (Apr 2025)';
   rfoPane.appendChild(rfoHdr);
   const rfoContent = document.createElement('div');
   rfoContent.className = 'pane-content';
@@ -1536,7 +1759,14 @@ function renderEntry(entry) {
 // ═══════════════════════════════════════════════════════════════════
 let activeGroup = null;
 let activeSubpart = null;
+let activeRegType = null;
 let currentView = 'sbs';
+
+function getGroupRegType(group) {
+  if (group && group.startsWith('DFARS')) return 'dfars';
+  if (group && group.startsWith('AFARS')) return 'afars';
+  return 'far';
+}
 
 function scoreEntry(entry, terms) {
   if (!terms.length) return 1;
@@ -1635,15 +1865,16 @@ function showResults(entries) {
 function showEmptyState() {
   const container = document.getElementById('results');
   const status = document.getElementById('rStatus');
-  container.innerHTML = '<div class="empty-prompt"><div class="empty-ico">&#128270;</div><p>Search for a FAR topic or select a part number above.</p><p class="empty-sub">e.g. "competition", "6.001", "sole source"</p></div>';
-  status.textContent = KB.length + ' entries available';
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  container.innerHTML = '<div class="empty-prompt"><div class="empty-ico">&#128270;</div><p>Search for a topic or select a part number above.</p><p class="empty-sub">e.g. "competition", "6.001", "206.001", "sole source"</p></div>';
+  status.textContent = pool.length + ' entries available';
 }
 
 function runSearch() {
   const raw   = document.getElementById('searchInput').value.trim();
   const terms = raw ? raw.split(/\s+/) : [];
 
-  let pool = KB;
+  let pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
   if (activeSubpart) pool = pool.filter(e => e.id === activeSubpart);
   else if (activeGroup) pool = pool.filter(e => e.group === activeGroup);
 
@@ -1674,10 +1905,13 @@ document.getElementById('clearBtn').addEventListener('click', () => {
   document.getElementById('searchInput').value = '';
   activeGroup = null;
   activeSubpart = null;
+  activeRegType = null;
   document.getElementById('subpartChips').hidden = true;
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  const allChip = document.querySelector('.chip');
-  if (allChip) allChip.classList.add('active');
+  document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
+  const allRegBtn = document.querySelector('.reg-btn[data-reg="all"]');
+  if (allRegBtn) allRegBtn.classList.add('active');
+  buildChips();
   const sel = document.getElementById('tocSelect');
   if (sel) sel.value = '';
   showEmptyState();
@@ -1713,7 +1947,9 @@ document.body.dataset.view = 'sbs';
 // ═══════════════════════════════════════════════════════════════════
 function buildChips() {
   const container = document.getElementById('chips');
-  const groups = [...new Set(KB.map(e => e.group))];
+  container.innerHTML = '';
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  const groups = [...new Set(pool.map(e => e.group))];
 
   function makeChipCount(n) {
     const s = document.createElement('span');
@@ -1722,10 +1958,17 @@ function buildChips() {
     return s;
   }
 
+  function chipLabel(group) {
+    const m = group.match(/^(?:DFARS |AFARS )?Part (\d+)/);
+    if (m) return m[1];
+    if (group === 'RFO Overview') return 'RFO';
+    return group.substring(0, 8);
+  }
+
   const all = document.createElement('button');
-  all.className = 'chip active';
+  all.className = 'chip' + (activeGroup === null ? ' active' : '');
   all.appendChild(document.createTextNode('All'));
-  all.appendChild(makeChipCount(KB.length));
+  all.appendChild(makeChipCount(pool.length));
   all.addEventListener('click', () => {
     activeGroup = null;
     activeSubpart = null;
@@ -1739,12 +1982,10 @@ function buildChips() {
   container.appendChild(all);
 
   groups.forEach(group => {
-    const count = KB.filter(e => e.group === group).length;
+    const count = pool.filter(e => e.group === group).length;
     const btn = document.createElement('button');
-    btn.className = 'chip';
-    const numMatch = group.match(/^Part (\d+)/);
-    const label = numMatch ? numMatch[1] : (group === 'RFO Overview' ? 'RFO' : group.substring(0, 8));
-    btn.appendChild(document.createTextNode(label));
+    btn.className = 'chip' + (activeGroup === group ? ' active' : '');
+    btn.appendChild(document.createTextNode(chipLabel(group)));
     btn.appendChild(makeChipCount(count));
     btn.title = group;
     btn.addEventListener('click', () => {
@@ -1782,7 +2023,7 @@ function buildSubpartChips(group) {
   container.appendChild(clearBtn);
 
   entries.forEach(entry => {
-    const m = entry.title.match(/^FAR ([\d]+\.[\d]+\w*)/);
+    const m = entry.title.match(/^(?:FAR|DFARS|AFARS)\s+([\d]+\.[\d]+\w*)/);
     const secLabel = m ? m[1] : entry.title.substring(0, 12);
     const btn = document.createElement('button');
     btn.className = 'subpart-chip';
@@ -1807,7 +2048,8 @@ function buildTocSelect() {
   if (!sel) return;
   const prev = sel.value;
   sel.innerHTML = '<option value="">— All sections —</option>';
-  const groups = [...new Set(KB.map(e => e.group))];
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  const groups = [...new Set(pool.map(e => e.group))];
   groups.forEach(group => {
     const opt = document.createElement('option');
     opt.value = group;
@@ -1899,6 +2141,24 @@ function initTypewriter() {
 (function init() {
   initDarkMode();
   initTypewriter();
+
+  // Regulation filter
+  document.querySelectorAll('.reg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeRegType = btn.dataset.reg === 'all' ? null : btn.dataset.reg;
+      activeGroup = null;
+      activeSubpart = null;
+      document.getElementById('subpartChips').hidden = true;
+      document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sel = document.getElementById('tocSelect');
+      if (sel) sel.value = '';
+      buildChips();
+      buildTocSelect();
+      showEmptyState();
+    });
+  });
+
   buildChips();
   buildTocSelect();
   showEmptyState();
