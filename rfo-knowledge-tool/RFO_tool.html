@@ -457,26 +457,15 @@ function renderDiffOps(ops, mode) {
     if (op.type === 'eq') {
       frag.appendChild(document.createTextNode(op.text));
     } else if (op.type === 'rem') {
-      if (mode === 'rfo') {
-        const s = document.createElement('span');
-        s.className = 'rem';
-        s.textContent = op.text;
-        frag.appendChild(s);
-      } else {
-        const s = document.createElement('span');
-        s.className = 'rem';
-        s.textContent = op.text;
-        frag.appendChild(s);
-      }
-    } else if (op.type === 'add') {
-      if (mode === 'legacy') {
-        // don't show additions in legacy pane
-      } else {
-        const s = document.createElement('span');
-        s.className = 'add';
-        s.textContent = op.text;
-        frag.appendChild(s);
-      }
+      const s = document.createElement('span');
+      s.className = 'rem';
+      s.textContent = op.text;
+      frag.appendChild(s);
+    } else if (op.type === 'add' && mode !== 'legacy') {
+      const s = document.createElement('span');
+      s.className = 'add';
+      s.textContent = op.text;
+      frag.appendChild(s);
     }
   }
   return frag;
@@ -653,42 +642,48 @@ function makeDiffDetail(diffContent) {
   return box;
 }
 
-function buildLegacyBlock(row) {
-  if (row.kind === 'matched') {
-    const sp = makeSubpara(row.legacy.label, document.createTextNode(row.legacy.text.trim()), '');
-    const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
-    const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
-    const ops = diffTokens(legacyTokens, rfoTokens);
-    if (ops.some(o => o.type === 'rem')) {
-      sp.appendChild(makeDiffDetail(renderDiffOps(ops, 'legacy')));
-    }
-    return sp;
-  }
-  if (row.kind === 'legacy-only') {
-    return makeSubpara(row.legacy.label, renderPlain(row.legacy.text.trim(), 'legacy-removed'), 'unmatched-legacy');
-  }
-  const frag = document.createDocumentFragment();
-  frag.appendChild(Object.assign(document.createElement('em'), {className:'nochange', textContent:'(removed in RFO)'}));
-  return makeSubpara(row.rfo.label, frag, 'unmatched-rfo');
+function buildPaneSource(srcText) {
+  const div = document.createElement('div');
+  div.className = 'pane-source';
+  div.textContent = '📄 ' + srcText;
+  return div;
 }
 
-function buildRfoBlock(row) {
+// Compute the diff once for a matched row and stash it on the row.
+function ensureDiffOps(row) {
+  if (row.ops || row.kind !== 'matched') return;
+  const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
+  const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
+  row.ops = diffTokens(legacyTokens, rfoTokens);
+}
+
+// side === 'legacy' renders legacy pane; side === 'rfo' renders RFO pane.
+function buildPaneBlock(row, side) {
+  const isLegacy = side === 'legacy';
   if (row.kind === 'matched') {
-    const sp = makeSubpara(row.rfo.label, document.createTextNode(row.rfo.text.trim()), '');
-    const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
-    const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
-    const ops = diffTokens(legacyTokens, rfoTokens);
-    if (ops.some(o => o.type === 'add' || o.type === 'rem')) {
-      sp.appendChild(makeDiffDetail(renderDiffOps(ops, 'rfo')));
-    }
+    ensureDiffOps(row);
+    const own = isLegacy ? row.legacy : row.rfo;
+    const sp = makeSubpara(own.label, document.createTextNode(own.text.trim()), '');
+    const shouldShow = isLegacy
+      ? row.ops.some(o => o.type === 'rem')
+      : row.ops.some(o => o.type === 'add' || o.type === 'rem');
+    if (shouldShow) sp.appendChild(makeDiffDetail(renderDiffOps(row.ops, side)));
     return sp;
   }
-  if (row.kind === 'rfo-only') {
-    return makeSubpara(row.rfo.label, renderPlain(row.rfo.text.trim(), 'rfo-added'), 'unmatched-rfo');
+  const ownOnly = isLegacy ? 'legacy-only' : 'rfo-only';
+  if (row.kind === ownOnly) {
+    const own = isLegacy ? row.legacy : row.rfo;
+    const mode = isLegacy ? 'legacy-removed' : 'rfo-added';
+    const cls  = isLegacy ? 'unmatched-legacy' : 'unmatched-rfo';
+    return makeSubpara(own.label, renderPlain(own.text.trim(), mode), cls);
   }
+  // The opposite side has the only entry — render a placeholder note.
+  const other = isLegacy ? row.rfo : row.legacy;
+  const noteText = isLegacy ? '(removed in RFO)' : '(no corresponding text in RFO)';
+  const otherCls = isLegacy ? 'unmatched-rfo' : 'unmatched-legacy';
   const frag = document.createDocumentFragment();
-  frag.appendChild(Object.assign(document.createElement('em'), {className:'nochange', textContent:'(no corresponding text in RFO)'}));
-  return makeSubpara(row.legacy.label, frag, 'unmatched-legacy');
+  frag.appendChild(Object.assign(document.createElement('em'), {className: 'nochange', textContent: noteText}));
+  return makeSubpara(other.label, frag, otherCls);
 }
 
 
@@ -760,40 +755,26 @@ function renderEntry(entry) {
   const legHdr = document.createElement('div');
   legHdr.className = 'pane-hdr';
   const regType = getGroupRegType(entry.group);
-  legHdr.innerHTML = regType === 'dfars' ? '&#128308; Legacy DFARS'
-                   : regType === 'afars' ? '&#128308; Legacy AFARS'
-                   : '&#128308; Legacy FAR';
+  legHdr.innerHTML = REG_LABELS[regType].legacy;
   legacyPane.appendChild(legHdr);
   const legContent = document.createElement('div');
   legContent.className = 'pane-content';
-  rows.forEach(row => legContent.appendChild(buildLegacyBlock(row)));
+  rows.forEach(row => legContent.appendChild(buildPaneBlock(row, 'legacy')));
   legacyPane.appendChild(legContent);
-  if (entry.sources && entry.sources[0]) {
-    const legSrc = document.createElement('div');
-    legSrc.className = 'pane-source';
-    legSrc.textContent = '📄 ' + entry.sources[0];
-    legacyPane.appendChild(legSrc);
-  }
+  if (entry.sources?.[0]) legacyPane.appendChild(buildPaneSource(entry.sources[0]));
 
   // RFO pane
   const rfoPane = document.createElement('div');
   rfoPane.className = 'diff-pane rfo-pane';
   const rfoHdr = document.createElement('div');
   rfoHdr.className = 'pane-hdr';
-  rfoHdr.innerHTML = regType === 'dfars' ? '&#128994; Revised DFARS'
-                   : regType === 'afars' ? '&#128994; Revised AFARS'
-                   : '&#128994; RFO (Apr 2025)';
+  rfoHdr.innerHTML = REG_LABELS[regType].revised;
   rfoPane.appendChild(rfoHdr);
   const rfoContent = document.createElement('div');
   rfoContent.className = 'pane-content';
-  rows.forEach(row => rfoContent.appendChild(buildRfoBlock(row)));
+  rows.forEach(row => rfoContent.appendChild(buildPaneBlock(row, 'rfo')));
   rfoPane.appendChild(rfoContent);
-  if (entry.sources && entry.sources[1]) {
-    const rfoSrc = document.createElement('div');
-    rfoSrc.className = 'pane-source';
-    rfoSrc.textContent = '📄 ' + entry.sources[1];
-    rfoPane.appendChild(rfoSrc);
-  }
+  if (entry.sources?.[1]) rfoPane.appendChild(buildPaneSource(entry.sources[1]));
 
   grid.appendChild(legacyPane);
   grid.appendChild(rfoPane);
@@ -813,7 +794,7 @@ function renderEntry(entry) {
 let activeGroup = null;
 let activeSubpart = null;
 let activeRegType = null;
-let currentView = 'sbs';
+let openKbdModal, closeKbdModal;
 
 function getGroupRegType(group) {
   if (group && group.startsWith('DFARS')) return 'dfars';
@@ -821,18 +802,39 @@ function getGroupRegType(group) {
   return 'far';
 }
 
-function scoreEntry(entry, terms) {
-  if (!terms.length) return 1;
+const REG_LABELS = {
+  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (Apr 2025)'},
+  dfars: {legacy: '&#128308; Legacy DFARS', revised: '&#128994; Revised DFARS'},
+  afars: {legacy: '&#128308; Legacy AFARS', revised: '&#128994; Revised AFARS'},
+};
+
+function parsePartNum(group)    { return group?.match(/^(?:DFARS |AFARS )?Part (\d+)/)?.[1] ?? null; }
+function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.\d+\w*)/)?.[1] ?? null; }
+
+function buildSearchIndex() {
+  for (const e of KB) {
+    e._lc = {
+      title:    (e.title    || '').toLowerCase(),
+      id:       (e.id       || '').toLowerCase(),
+      group:    (e.group    || '').toLowerCase(),
+      summary:  (e.summary  || '').toLowerCase(),
+      keywords: (e.keywords || []).map(k => k.toLowerCase()),
+      bullets:  [...(e.legacy || []), ...(e.rfo || [])].map(b => b.t).join(' ').toLowerCase(),
+    };
+  }
+}
+
+function scoreEntry(entry, lowerTerms) {
+  if (!lowerTerms.length) return 1;
+  const lc = entry._lc;
   let score = 0;
-  for (const term of terms) {
-    const t = term.toLowerCase();
-    if (entry.title.toLowerCase().includes(t))   score += 12;
-    if (entry.id.toLowerCase().includes(t))       score += 10;
-    if (entry.keywords.some(k => k.toLowerCase().includes(t))) score += 8;
-    if (entry.group.toLowerCase().includes(t))    score += 6;
-    if (entry.summary.toLowerCase().includes(t))  score += 4;
-    const bullets = [...(entry.legacy||[]), ...(entry.rfo||[])].map(b => b.t).join(' ');
-    if (bullets.toLowerCase().includes(t))        score += 2;
+  for (const t of lowerTerms) {
+    if (lc.title.includes(t))    score += 12;
+    if (lc.id.includes(t))       score += 10;
+    if (lc.keywords.some(k => k.includes(t))) score += 8;
+    if (lc.group.includes(t))    score += 6;
+    if (lc.summary.includes(t))  score += 4;
+    if (lc.bullets.includes(t))  score += 2;
   }
   return score;
 }
@@ -844,7 +846,9 @@ function showResults(entries) {
 
   if (!entries.length) {
     let msg = 'No matching entries. Try different keywords.';
-    if (activeRegType && activeGroup) {
+    if (activeSubpart) {
+      msg = 'No matches in the selected section. Try clearing the section filter.';
+    } else if (activeRegType && activeGroup) {
       msg = 'No ' + activeRegType.toUpperCase() + ' entries in "' + activeGroup + '". Try clearing a filter.';
     } else if (activeRegType) {
       msg = 'No ' + activeRegType.toUpperCase() + ' entries match your search. Try different keywords.';
@@ -938,40 +942,67 @@ function showEmptyState() {
   status.textContent = pool.length + ' entries available';
 }
 
+// Reset group/subpart filter UI to the "All" baseline. Pass {clearRegType: true}
+// to also reset the reg-filter row (used by the global Clear button).
+function resetFilters(opts = {}) {
+  activeGroup = null;
+  activeSubpart = null;
+  document.getElementById('subpartChips').hidden = true;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  const allChip = document.querySelector('#chips .chip');
+  if (allChip) allChip.classList.add('active');
+  const sel = document.getElementById('tocSelect');
+  if (sel) sel.value = '';
+  if (opts.clearRegType) {
+    activeRegType = null;
+    document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
+    const allRegBtn = document.querySelector('.reg-btn[data-reg="all"]');
+    if (allRegBtn) allRegBtn.classList.add('active');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  TEXT-NODE WALK / TRANSFORM
+// ═══════════════════════════════════════════════════════════════════
+// transformFn(textNodeValue) → DocumentFragment|null  (null = skip node)
+function walkTextNodes(el, transformFn, acceptNodeFilter) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, acceptNodeFilter || null);
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+  for (const tn of nodes) {
+    const frag = transformFn(tn.nodeValue);
+    if (frag) tn.parentNode.replaceChild(frag, tn);
+  }
+}
+
 // ═══════════════════════════════════════════════════════════════════
 //  SEARCH HIGHLIGHTING
 // ═══════════════════════════════════════════════════════════════════
 function highlightText(el, terms) {
   if (!terms.length) return;
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-  const nodes = [];
-  let node;
-  while ((node = walker.nextNode())) nodes.push(node);
-  for (const textNode of nodes) {
-    const text = textNode.nodeValue;
-    let hasMatch = false;
-    for (const t of terms) {
-      if (text.toLowerCase().includes(t.toLowerCase())) { hasMatch = true; break; }
-    }
-    if (!hasMatch) continue;
+  const lowerTerms = terms.map(t => t.toLowerCase());
+  walkTextNodes(el, text => {
+    const lower = text.toLowerCase();
+    if (!lowerTerms.some(t => lower.includes(t))) return null;
     const frag = document.createDocumentFragment();
-    let remaining = text;
-    while (remaining) {
-      let best = {idx: remaining.length, term: ''};
-      for (const t of terms) {
-        const i = remaining.toLowerCase().indexOf(t.toLowerCase());
-        if (i !== -1 && i < best.idx) best = {idx: i, term: t};
+    let pos = 0;
+    while (pos < text.length) {
+      let best = {idx: text.length, len: 0};
+      for (const t of lowerTerms) {
+        const i = lower.indexOf(t, pos);
+        if (i !== -1 && i < best.idx) best = {idx: i, len: t.length};
       }
-      if (!best.term) { frag.appendChild(document.createTextNode(remaining)); break; }
-      if (best.idx > 0) frag.appendChild(document.createTextNode(remaining.slice(0, best.idx)));
+      if (!best.len) { frag.appendChild(document.createTextNode(text.slice(pos))); break; }
+      if (best.idx > pos) frag.appendChild(document.createTextNode(text.slice(pos, best.idx)));
       const mark = document.createElement('mark');
       mark.className = 'search-hl';
-      mark.textContent = remaining.slice(best.idx, best.idx + best.term.length);
+      mark.textContent = text.slice(best.idx, best.idx + best.len);
       frag.appendChild(mark);
-      remaining = remaining.slice(best.idx + best.term.length);
+      pos = best.idx + best.len;
     }
-    textNode.parentNode.replaceChild(frag, textNode);
-  }
+    return frag;
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1004,14 +1035,7 @@ function showSkeleton() {
 function triggerSearch(query) {
   const input = document.getElementById('searchInput');
   input.value = query;
-  activeGroup = null;
-  activeSubpart = null;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  const allChip = document.querySelector('#chips .chip');
-  if (allChip) allChip.classList.add('active');
-  document.getElementById('subpartChips').hidden = true;
-  const sel = document.getElementById('tocSelect');
-  if (sel) sel.value = '';
+  resetFilters();
   runSearch();
   window.scrollTo({top: 0, behavior: 'smooth'});
   input.focus();
@@ -1019,25 +1043,19 @@ function triggerSearch(query) {
 
 function linkifyRefs(el) {
   const REF_RE = /\b(\d{1,2}\.\d{1,4}(?:-\d+)?(?:\([a-z]\))?)\b/g;
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      let p = node.parentElement;
-      while (p && p !== el) {
-        if (p.classList && (p.classList.contains('diff-detail') || p.classList.contains('ref-link'))) {
-          return NodeFilter.FILTER_REJECT;
-        }
-        p = p.parentElement;
+  const acceptNode = node => {
+    let p = node.parentElement;
+    while (p && p !== el) {
+      if (p.classList && (p.classList.contains('diff-detail') || p.classList.contains('ref-link'))) {
+        return NodeFilter.FILTER_REJECT;
       }
-      return NodeFilter.FILTER_ACCEPT;
+      p = p.parentElement;
     }
-  });
-  const nodes = [];
-  let node;
-  while ((node = walker.nextNode())) nodes.push(node);
-  for (const textNode of nodes) {
-    const text = textNode.nodeValue;
+    return NodeFilter.FILTER_ACCEPT;
+  };
+  walkTextNodes(el, text => {
     REF_RE.lastIndex = 0;
-    if (!REF_RE.test(text)) continue;
+    if (!REF_RE.test(text)) return null;
     REF_RE.lastIndex = 0;
     const frag = document.createDocumentFragment();
     let last = 0, m;
@@ -1053,8 +1071,8 @@ function linkifyRefs(el) {
       last = m.index + m[0].length;
     }
     if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-    textNode.parentNode.replaceChild(frag, textNode);
-  }
+    return frag;
+  }, acceptNode);
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1065,12 +1083,10 @@ function initKbdShortcuts() {
   if (!modal) return;
   const overlay = document.getElementById('kbdOverlay');
   const closeBtn = document.getElementById('kbdClose');
-  function openModal() { modal.hidden = false; closeBtn.focus(); }
-  function closeModal() { modal.hidden = true; }
-  overlay.addEventListener('click', closeModal);
-  closeBtn.addEventListener('click', closeModal);
-  window._openKbdModal = openModal;
-  window._closeKbdModal = closeModal;
+  openKbdModal  = () => { modal.hidden = false; closeBtn.focus(); };
+  closeKbdModal = () => { modal.hidden = true; };
+  overlay.addEventListener('click', closeKbdModal);
+  closeBtn.addEventListener('click', closeKbdModal);
 }
 
 function runSearch() {
@@ -1091,8 +1107,9 @@ function runSearch() {
     return;
   }
 
+  const lowerTerms = terms.map(t => t.toLowerCase());
   const scored = pool
-    .map(e => ({entry: e, score: scoreEntry(e, terms)}))
+    .map(e => ({entry: e, score: scoreEntry(e, lowerTerms)}))
     .filter(x => x.score > 0)
     .sort((a, b) => b.score - a.score);
 
@@ -1106,17 +1123,8 @@ document.getElementById('searchInput').addEventListener('input', () => {
 });
 document.getElementById('clearBtn').addEventListener('click', () => {
   document.getElementById('searchInput').value = '';
-  activeGroup = null;
-  activeSubpart = null;
-  activeRegType = null;
-  document.getElementById('subpartChips').hidden = true;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
-  const allRegBtn = document.querySelector('.reg-btn[data-reg="all"]');
-  if (allRegBtn) allRegBtn.classList.add('active');
+  resetFilters({clearRegType: true});
   buildChips();
-  const sel = document.getElementById('tocSelect');
-  if (sel) sel.value = '';
   showEmptyState();
   document.getElementById('searchInput').focus();
 });
@@ -1127,18 +1135,13 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 // ═══════════════════════════════════════════════════════════════════
 document.querySelectorAll('.vbtn').forEach(btn => {
   btn.addEventListener('click', () => {
+    const view = btn.dataset.view;
     document.querySelectorAll('.vbtn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    currentView = btn.dataset.view;
-    document.body.dataset.view = currentView;
-    // Re-render open cards
-    document.querySelectorAll('.r-card.expanded .card-body').forEach(body => {
-      const entryId = body.id.replace('body-', '');
-      const entry = KB.find(e => e.id === entryId);
-      if (entry) {
-        body.innerHTML = '';
-        body.appendChild(renderEntry(entry));
-      }
+    document.body.dataset.view = view;
+    document.querySelectorAll('.r-card.expanded .diff-wrap').forEach(w => {
+      w.classList.remove('diff-sbs', 'diff-legacy', 'diff-rfo');
+      w.classList.add('diff-' + view);
     });
   });
 });
@@ -1163,8 +1166,8 @@ function buildChips() {
   }
 
   function chipLabel(group) {
-    const m = group.match(/^(?:DFARS |AFARS )?Part (\d+)/);
-    if (m) return m[1];
+    const num = parsePartNum(group);
+    if (num) return num;
     if (group === 'RFO Overview') return 'RFO';
     return group.substring(0, 8);
   }
@@ -1174,13 +1177,7 @@ function buildChips() {
   all.appendChild(document.createTextNode('All'));
   all.appendChild(makeChipCount(pool.length));
   all.addEventListener('click', () => {
-    activeGroup = null;
-    activeSubpart = null;
-    document.getElementById('subpartChips').hidden = true;
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    all.classList.add('active');
-    const sel = document.getElementById('tocSelect');
-    if (sel) sel.value = '';
+    resetFilters();
     showEmptyState();
   });
   container.appendChild(all);
@@ -1212,8 +1209,7 @@ function buildSubpartChips(group) {
   container.hidden = false;
 
   const entries = KB.filter(e => e.group === group);
-  const numMatch = group.match(/^(?:DFARS |AFARS )?Part (\d+)/);
-  const partLabel = numMatch ? numMatch[1] : 'Part';
+  const partLabel = parsePartNum(group) || 'Part';
 
   const clearBtn = document.createElement('button');
   clearBtn.className = 'subpart-chip active';
@@ -1227,8 +1223,7 @@ function buildSubpartChips(group) {
   container.appendChild(clearBtn);
 
   entries.forEach(entry => {
-    const m = entry.title.match(/^(?:FAR|DFARS|AFARS)\s+([\d]+\.[\d]+\w*)/);
-    const secLabel = m ? m[1] : entry.title.substring(0, 12);
+    const secLabel = parseSectionNum(entry.title) || entry.title.substring(0, 12);
     const btn = document.createElement('button');
     btn.className = 'subpart-chip';
     btn.textContent = secLabel;
@@ -1250,7 +1245,6 @@ function buildSubpartChips(group) {
 function buildTocSelect() {
   const sel = document.getElementById('tocSelect');
   if (!sel) return;
-  const prev = sel.value;
   sel.innerHTML = '<option value="">— All sections —</option>';
   const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
   const groups = [...new Set(pool.map(e => e.group))];
@@ -1261,21 +1255,17 @@ function buildTocSelect() {
     sel.appendChild(opt);
   });
   sel.value = activeGroup || '';
-  if (!sel._wired) {
-    sel._wired = true;
-    sel.addEventListener('change', () => {
-      activeGroup = sel.value || null;
-      activeSubpart = null;
-      document.getElementById('subpartChips').hidden = true;
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      if (!activeGroup) {
-        const allChip = document.querySelector('.chip');
-        if (allChip) allChip.classList.add('active');
-      }
-      if (activeGroup) buildSubpartChips(activeGroup);
-      runSearch();
-    });
+}
+
+function onTocSelectChange() {
+  const sel = document.getElementById('tocSelect');
+  resetFilters();
+  if (sel.value) {
+    activeGroup = sel.value;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    buildSubpartChips(activeGroup);
   }
+  runSearch();
 }
 
 
@@ -1346,24 +1336,26 @@ function initTypewriter() {
   initDarkMode();
   initTypewriter();
   initKbdShortcuts();
+  document.getElementById('tocSelect')?.addEventListener('change', onTocSelectChange);
 
   // Keyboard shortcuts (/ to search, ? for shortcuts panel, Esc to close)
   document.addEventListener('keydown', e => {
     const inp = document.getElementById('searchInput');
     const modal = document.getElementById('kbdModal');
-    const isTyping = document.activeElement === inp || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'SELECT';
+    const ae = document.activeElement;
+    const isTyping = ae === inp ||
+                     (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) ||
+                     (ae && ae.isContentEditable);
     if (e.key === '/' && !isTyping) {
       e.preventDefault();
       inp.focus();
-    }
-    if (e.key === '?' && !isTyping && modal && modal.hidden) {
+    } else if (e.key === '?' && !isTyping && modal && modal.hidden) {
       e.preventDefault();
-      if (window._openKbdModal) window._openKbdModal();
-    }
-    if (e.key === 'Escape') {
+      openKbdModal && openKbdModal();
+    } else if (e.key === 'Escape') {
       if (modal && !modal.hidden) {
-        if (window._closeKbdModal) window._closeKbdModal();
-      } else if (document.activeElement === inp) {
+        closeKbdModal && closeKbdModal();
+      } else if (ae === inp) {
         inp.blur();
       }
     }
@@ -1396,16 +1388,12 @@ function initTypewriter() {
     const res = await fetch('./kb.json');
     if (!res.ok) throw new Error('Server returned ' + res.status);
     const data = await res.json();
-    // Support both legacy array format and new {meta, entries} format
-    if (Array.isArray(data)) {
-      KB = data;
-    } else {
-      KB = data.entries || [];
-      if (data.meta && data.meta.lastUpdated) {
-        const updEl = document.getElementById('footerUpdated');
-        if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
-      }
+    KB = data.entries || [];
+    if (data.meta?.lastUpdated) {
+      const updEl = document.getElementById('footerUpdated');
+      if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
     }
+    buildSearchIndex();
   } catch (err) {
     document.getElementById('results').innerHTML =
       '<div class="empty-prompt"><div class="empty-ico">&#9888;</div>' +
