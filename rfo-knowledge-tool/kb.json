@@ -4293,11 +4293,11 @@
       "keywords": [
         "6.000",
         "scope",
-        "prescribes",
-        "policies",
-        "competition"
+        "competition",
+        "part 6",
+        "overview"
       ],
-      "summary": "This part prescribes policies and procedures for full and open competition.",
+      "summary": "Scope of Part 6 — prescribes the policies and procedures that govern when full and open competition is required and when other-than-full-and-open competition is permitted.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4328,15 +4328,13 @@
       "group": "Part 6 — Competition Requirements",
       "title": "FAR 6.001 — Applicability",
       "keywords": [
-        "applicability",
         "6.001",
+        "applicability",
         "competition",
-        "exceptions",
-        "part 6",
-        "scope",
-        "13.501"
+        "simplified acquisition",
+        "orders"
       ],
-      "summary": "Defines when Part 6 competition requirements apply. The RFO adds an explicit cross-reference to 13.501 in the Part 13 exception, clarifying that commercial sole-source acquisitions under subpart 13.5 remain subject to competition policy.",
+      "summary": "Defines when Part 6 competition requirements apply. The RFO adds an explicit cross-reference to FAR 13.5 (simplified acquisition) and clarifies coverage of orders under multiple-award contracts.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -4377,13 +4375,11 @@
       "keywords": [
         "6.002",
         "limitations",
-        "supplies",
-        "services",
-        "another",
-        "avoid",
-        "requirements"
+        "evasion",
+        "interagency",
+        "competition"
       ],
-      "summary": "No agency may contract for supplies or services from another agency to avoid the requirements of this part.",
+      "summary": "Prohibits agencies from contracting with another agency to evade the competition requirements of this part. Agencies cannot use interagency vehicles solely to bypass Part 6.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4415,15 +4411,12 @@
       "title": "FAR 6.003 — Advocates for competition",
       "keywords": [
         "6.003",
-        "advocates",
+        "advocate",
         "competition",
-        "requires",
-        "executive",
-        "designate",
-        "resource",
-        "advocate"
+        "agency",
+        "41 USC 1705"
       ],
-      "summary": "(a) 41 U.S.C.",
+      "summary": "Requires each agency to designate an Advocate for Competition under 41 U.S.C. 1705 — a senior official responsible for promoting full and open competition and challenging barriers to it.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4454,14 +4447,13 @@
       "group": "Part 6 — Competition Requirements",
       "title": "FAR 6.101 — Full and Open Competition",
       "keywords": [
-        "full and open competition",
         "6.101",
+        "full and open",
         "competition",
-        "sealed bid",
-        "negotiation",
-        "competitive"
+        "baseline",
+        "maximum practicable"
       ],
-      "summary": "Subpart 6.1 defines the baseline requirement for full and open competition. RFO clarifies 'maximum practicable competition' and updates methods list.",
+      "summary": "Subpart 6.1 establishes full and open competition as the baseline for federal acquisitions. The RFO clarifies 'maximum practicable competition' standards and the documentation required when competition is restricted.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -4493,15 +4485,12 @@
       "title": "FAR 6.102 — Full and open competition after excluding sources",
       "keywords": [
         "6.102",
-        "full",
-        "open",
-        "competition",
-        "after",
-        "excluding",
-        "sources",
-        "agencies"
+        "excluding sources",
+        "alternate",
+        "mobilization",
+        "critical needs"
       ],
-      "summary": "(a) Agencies may contract by providing for full and open competition after excluding one or more sources under\nauthorities specified in this section (see 10 U.S.C.",
+      "summary": "Permits full and open competition after excluding one or more sources to overcome a barrier to competition (e.g., to establish or maintain alternate sources, or to meet critical needs).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4533,15 +4522,12 @@
       "title": "FAR 6.103 — Other than full and open competition",
       "keywords": [
         "6.103",
-        "other",
-        "than",
-        "full",
-        "open",
-        "competition",
-        "agencies",
-        "without"
+        "sole source",
+        "other than full and open",
+        "authorities",
+        "exceptions"
       ],
-      "summary": "(a) Agencies may contract without providing for full and open competition under authorities specified in this section (see\n10 U.S.C.",
+      "summary": "Lists the seven statutory authorities under which agencies may contract without providing for full and open competition (sole source) — including only one responsible source, unusual urgency, industrial mobilization, and national security.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4575,13 +4561,11 @@
         "6.104",
         "justification",
         "approval",
-        "support",
-        "under",
-        "except",
-        "officers",
-        "require"
+        "J&A",
+        "sole source",
+        "approval authority"
       ],
-      "summary": "(a) A justification and approval must support procedures under 6.103, except 6.103-5 and 6.103-7.",
+      "summary": "Requires a written Justification and Approval (J&A) for any sole-source acquisition under 6.103 (with limited exceptions). Approval authority scales with dollar value.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -4612,20 +4596,14 @@
       "group": "Part 6 — Competition Requirements",
       "title": "FAR 6.301 — Availability of the Justification (legacy 6.305)",
       "keywords": [
-        "availability",
-        "sdvosb",
-        "wosb",
-        "6.305",
-        "small business",
-        "hubzone",
-        "set-aside",
-        "8(a)",
-        "competition",
-        "justification",
         "6.301",
-        "GPE"
+        "J&A availability",
+        "public posting",
+        "SAM.gov",
+        "redaction",
+        "6.305"
       ],
-      "summary": "Public availability requirements for justifications of other-than-full-and-open-competition. RFO 6.301 took over this content from legacy FAR 6.305. The legacy 6.301 (\"Policy\") was consolidated into the new Subpart 6.1.",
+      "summary": "Public availability requirements for J&A documents. The RFO renumbers this section from legacy FAR 6.305 and clarifies SAM.gov posting timelines and redaction procedures for proprietary information.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -9361,14 +9339,11 @@
       "keywords": [
         "13.000",
         "scope",
-        "implements",
-        "simplified",
-        "acquisition",
-        "noncommercial",
-        "products",
-        "services"
+        "simplified acquisition",
+        "SAT",
+        "noncommercial"
       ],
-      "summary": "This part implements simplified procedures for the acquisition of noncommercial products and services valued at or below\nthe simplified acquisition threshold (SAT) in accordance with 41 U.S.C.",
+      "summary": "Scope of Part 13 — implements simplified procedures for non-commercial acquisitions at or below the simplified acquisition threshold (SAT). Commercial items use Part 12 instead.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9401,14 +9376,11 @@
       "keywords": [
         "13.001",
         "applicability",
-        "there",
-        "commercial",
-        "products",
-        "services",
-        "satisfy",
-        "needs"
+        "noncommercial",
+        "commercial first",
+        "SAT"
       ],
-      "summary": "(a) The procedures in this part may be used only if—\n      (1) There are no commercial products or commercial services that can satisfy the agency’s needs (see part 12); and\n      (2) The supplies or services are not available from a required source (see part 8).",
+      "summary": "Limits Part 13 use to acquisitions where no commercial products or services are available. The RFO tightens applicability — commercial supplies/services must use Part 12 procedures even below the SAT.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9441,14 +9413,11 @@
       "keywords": [
         "13.101",
         "competition",
-        "agencies",
-        "promote",
-        "maximum",
-        "extent",
-        "practicable",
-        "procuring"
+        "maximum practicable",
+        "quotations",
+        "13.106"
       ],
-      "summary": "(a) Agencies must promote competition to the maximum extent practicable when procuring noncommercial products and\nservices valued at or below the SAT.",
+      "summary": "Requires agencies to promote competition to the maximum extent practicable when procuring noncommercial items under simplified procedures. Replaces legacy FAR 13.106 (Soliciting Competition).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9480,15 +9449,12 @@
       "title": "FAR 13.102 — Small business",
       "keywords": [
         "13.102",
-        "small",
-        "business",
-        "acquisitions",
-        "supplies",
-        "services",
-        "anticipated",
-        "dollar"
+        "small business",
+        "set-aside",
+        "rule of two",
+        "SAT"
       ],
-      "summary": "Acquisitions of supplies or services that have an anticipated dollar value above the MPT, but at or below the SAT, must be\nset aside for small business concerns (see part 19).",
+      "summary": "Acquisitions above the micro-purchase threshold but at or below the SAT are automatically reserved for small business concerns unless the CO determines no reasonable expectation of two or more responsible small businesses.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9520,15 +9486,12 @@
       "title": "FAR 13.103 — Quality assurance",
       "keywords": [
         "13.103",
-        "quality",
-        "assurance",
-        "generally",
+        "quality assurance",
         "inspection",
         "acceptance",
-        "should",
         "destination"
       ],
-      "summary": "Generally, inspection and acceptance should be at destination.",
+      "summary": "Quality assurance under simplified procedures — inspection and acceptance generally occur at destination. Streamlined relative to Part 46 requirements.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9560,15 +9523,12 @@
       "title": "FAR 13.201 — Procedures",
       "keywords": [
         "13.201",
-        "follow",
-        "simplified",
-        "issuing",
-        "requests",
+        "procedures",
+        "RFQ",
         "quotations",
-        "agencies",
-        "encouraged"
+        "12.201-1"
       ],
-      "summary": "Follow the simplified procedures at 12.201-1 for issuing requests for quotations (RFQs).",
+      "summary": "Procedures for soliciting and receiving quotations under simplified procedures. RFO directs use of the streamlined RFQ procedures at FAR 12.201-1.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9601,14 +9561,11 @@
       "keywords": [
         "13.202",
         "evaluation",
-        "follow",
-        "establishing",
         "factors",
-        "process",
-        "evaluate",
-        "quotations"
+        "quotations",
+        "12.203"
       ],
-      "summary": "Follow the procedures in 12.203 when establishing evaluation factors and a process to evaluate quotations in an efficient\nand minimally burdensome manner.",
+      "summary": "Establishes evaluation factors and processes for quotations under simplified procedures. Follows 12.203 evaluation framework — commercial best-practice based.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9641,14 +9598,10 @@
       "keywords": [
         "13.203",
         "award",
-        "price",
-        "reasonableness",
-        "officer",
-        "determine",
-        "reasonable",
-        "whenever"
+        "price reasonableness",
+        "documentation"
       ],
-      "summary": "(a) Price reasonableness.",
+      "summary": "Award procedures under simplified acquisition — requires a price-reasonableness determination and documentation of the basis for award.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9680,15 +9633,11 @@
       "title": "FAR 13.204 — Contract clauses",
       "keywords": [
         "13.204",
-        "clauses",
-        "include",
-        "prescribed",
-        "elsewhere",
-        "purchase",
-        "orders",
+        "contract clauses",
+        "purchase orders",
         "noncommercial"
       ],
-      "summary": "(a) Include clauses prescribed elsewhere in the FAR in purchase orders for noncommercial supplies or services valued at\nor below the SAT as required or applicable based on the clause prescriptions.",
+      "summary": "Lists the contract clauses to include in purchase orders for noncommercial supplies or services under simplified procedures.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9721,14 +9670,11 @@
       "keywords": [
         "13.301",
         "notifications",
-        "comply",
-        "award",
-        "notice",
-        "posting",
-        "requirements",
-        "request"
+        "award notice",
+        "5.3",
+        "posting"
       ],
-      "summary": "Comply with the award notice posting requirements in subpart 5.3.",
+      "summary": "Award and post-award notification requirements under simplified procedures — comply with the public posting requirements in Subpart 5.3.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9760,15 +9706,12 @@
       "title": "FAR 13.302 — Cancellations and terminations",
       "keywords": [
         "13.302",
-        "cancellations",
-        "terminations",
-        "government",
-        "withdraw",
-        "amend",
-        "cancel",
-        "purchase"
+        "cancellation",
+        "termination",
+        "purchase orders",
+        "consideration"
       ],
-      "summary": "(a) The Government may withdraw, amend, or cancel purchase orders by written notice to the supplier at any time before\nacceptance of the order occurs (see 12.201-1(b)).",
+      "summary": "Procedures for cancelling or terminating purchase orders. The Government may withdraw, amend, or cancel orders by written notice; cancellation of accepted orders requires consideration.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9802,13 +9745,10 @@
         "13.303",
         "financing",
         "payments",
-        "unless",
-        "regulations",
-        "permit",
-        "otherwise",
-        "provide"
+        "advances",
+        "SAT"
       ],
-      "summary": "(a) Unless agency regulations permit otherwise, do not provide financing for purchases valued at or below the SAT.",
+      "summary": "Generally prohibits contract financing for purchases at or below the SAT unless agency regulations authorize it. Use commercial financing (Subpart 32.2) for any authorized advances.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -9840,15 +9780,12 @@
       "title": "FAR 13.401 — General",
       "keywords": [
         "13.401",
+        "micro-purchase",
+        "MPT",
         "general",
-        "follow",
-        "making",
-        "purchases",
-        "valued",
-        "below",
-        "while"
+        "12.4"
       ],
-      "summary": "(a) Follow the procedure in 12.4 when making purchases valued at or below the MPT.",
+      "summary": "General policy for micro-purchases (purchases at or below the micro-purchase threshold). Follow the streamlined procedures at FAR 12.4.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10559,14 +10496,11 @@
       "keywords": [
         "15.000",
         "scope",
-        "addresses",
-        "policies",
+        "negotiation",
         "competitive",
-        "noncompetitive",
-        "negotiated",
-        "acquisitions"
+        "sole source"
       ],
-      "summary": "This part addresses policies and procedures used in competitive and noncompetitive negotiated acquisitions.",
+      "summary": "Scope of Part 15 — addresses policies and procedures for negotiated acquisitions (both competitive and noncompetitive) when sealed bidding (Part 14) is not used.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10600,13 +10534,10 @@
         "15.001",
         "definitions",
         "deficiency",
-        "offer",
-        "conform",
-        "material",
-        "requirement",
-        "affects"
+        "discussions",
+        "proposal"
       ],
-      "summary": "As used in this part—\n   Deficiency is any part of an offer that does not conform to a material requirement of a RFP.",
+      "summary": "Defines key Part 15 terms including 'deficiency,' 'discussions,' 'proposal modification,' 'proposal revision,' and 'weakness.' These definitions drive evaluation and exchange procedures.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10639,14 +10570,11 @@
       "keywords": [
         "15.002",
         "types",
-        "negotiated",
-        "acquisition",
+        "competitive",
         "noncompetitive",
-        "acquisitions",
-        "source",
-        "process"
+        "sole source"
       ],
-      "summary": "(a) Noncompetitive acquisitions.",
+      "summary": "Identifies the two types of negotiated acquisition: noncompetitive (sole source) and competitive. Establishes baseline policies for each.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10679,14 +10607,11 @@
       "keywords": [
         "15.100",
         "scope",
-        "addresses",
-        "policies",
-        "preparing",
-        "requests",
-        "proposals",
-        "receiving"
+        "RFP",
+        "presolicitation",
+        "subpart 15.1"
       ],
-      "summary": "This subpart addresses policies and procedures for preparing requests for proposals (RFPs) and receiving proposals.",
+      "summary": "Scope of Subpart 15.1 — addresses preparing requests for proposals (RFPs), receiving proposals, and managing exchanges with industry before solicitation.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10718,15 +10643,13 @@
       "title": "FAR 15.101 — Early exchanges with industry",
       "keywords": [
         "15.101",
-        "early",
-        "exchanges",
-        "industry",
-        "general",
-        "information",
-        "among",
-        "interested"
+        "industry exchanges",
+        "RFI",
+        "industry day",
+        "pre-RFP",
+        "early exchanges"
       ],
-      "summary": "(a) General.",
+      "summary": "Authorizes and encourages early exchanges with industry (one-on-ones, RFIs, draft RFPs, industry days) to improve understanding of agency needs and refine acquisition strategy.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10758,15 +10681,11 @@
       "title": "FAR 15.102 — Structuring a request for proposals",
       "keywords": [
         "15.102",
-        "structuring",
-        "request",
-        "proposals",
-        "method",
-        "issued",
-        "writing",
-        "orally"
+        "RFP structure",
+        "proposal instructions",
+        "evaluation factors"
       ],
-      "summary": "(a) Method.",
+      "summary": "Requires structuring RFPs to facilitate clear and concise proposals — proposal preparation instructions and evaluation factors must be cross-walked.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10798,15 +10717,12 @@
       "title": "FAR 15.103 — Developing a competitive source selection approach",
       "keywords": [
         "15.103",
-        "developing",
-        "competitive",
-        "source",
-        "selection",
-        "approach",
-        "select",
-        "proposal"
+        "best value",
+        "source selection",
+        "tradeoff",
+        "LPTA"
       ],
-      "summary": "The goal of source selection is to select the proposal that represents the best value to the Government.",
+      "summary": "Sets the goal of source selection: select the proposal representing the best value to the Government. Frames the best-value continuum from LPTA to tradeoff.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10838,15 +10754,12 @@
       "title": "FAR 15.104 — Establishing competitive evaluation factors and significant subfactors",
       "keywords": [
         "15.104",
-        "establishing",
-        "competitive",
-        "evaluation",
-        "factors",
-        "significant",
+        "evaluation factors",
         "subfactors",
-        "general"
+        "award decision",
+        "criteria"
       ],
-      "summary": "(a) General.A competitive award decision is based on evaluation factors and significant subfactors that are tailored to\nthe acquisition.",
+      "summary": "Establishing competitive evaluation factors and subfactors. Award decision must be based on the factors and subfactors stated in the solicitation.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10878,15 +10791,12 @@
       "title": "FAR 15.106 — Amending a request for proposal",
       "keywords": [
         "15.106",
-        "amending",
-        "request",
-        "proposal",
-        "general",
-        "government",
+        "amending RFP",
+        "amendment",
         "changes",
-        "requirements"
+        "notification"
       ],
-      "summary": "(a) General.",
+      "summary": "Procedures for amending an RFP — when to amend, how to notify offerors, and how to handle proposals already received.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10922,11 +10832,9 @@
         "modification",
         "revision",
         "withdrawal",
-        "proposals",
-        "offerors",
-        "responsible"
+        "closing"
       ],
-      "summary": "(a) Submission.",
+      "summary": "Rules for submission, modification, revision, and withdrawal of proposals before and after the closing date.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10958,15 +10866,12 @@
       "title": "FAR 15.108 — Receiving proposals",
       "keywords": [
         "15.108",
-        "receiving",
-        "proposals",
+        "receiving proposals",
+        "late proposals",
         "marking",
-        "there",
-        "electronic",
-        "record",
-        "officers"
+        "safeguards"
       ],
-      "summary": "(a) Marking.",
+      "summary": "Procedures for receiving and marking proposals — includes safeguards against unauthorized disclosure and rules for handling late proposals.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -10998,15 +10903,12 @@
       "title": "FAR 15.109 — Uniform contract format",
       "keywords": [
         "15.109",
-        "uniform",
-        "format",
-        "should",
-        "include",
-        "parts",
-        "award",
-        "officers"
+        "UCF",
+        "uniform contract format",
+        "schedule",
+        "parts I-IV"
       ],
-      "summary": "RFPs using the uniform contract format should include Parts I, II, III, and IV.",
+      "summary": "Uniform Contract Format (UCF) — RFPs should include Parts I (Schedule), II (Clauses), III (List of Documents), and IV (Representations).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11038,15 +10940,12 @@
       "title": "FAR 15.110 — Solicitation provisions and contract clauses",
       "keywords": [
         "15.110",
-        "solicitation",
         "provisions",
         "clauses",
-        "insert",
-        "provision",
-        "instructions",
-        "offerors"
+        "52.215-1",
+        "instructions to offerors"
       ],
-      "summary": "(a) Insert the provision at 52.215-1, Instructions to Offerors—Competitive Acquisition, in all competitive RFPs where the\nGovernment intends to award a contract without negotiations.",
+      "summary": "Prescribes the solicitation provision FAR 52.215-1 (Instructions to Offerors—Competitive Acquisition) in all competitive negotiated solicitations.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11079,14 +10978,11 @@
       "keywords": [
         "15.200",
         "scope",
-        "addresses",
-        "policies",
-        "evaluating",
-        "negotiating",
-        "competitive",
-        "proposals"
+        "evaluation",
+        "discussions",
+        "source selection"
       ],
-      "summary": "This subpart addresses policies and procedures for evaluating and negotiating competitive proposals and awarding\ncontracts.",
+      "summary": "Scope of Subpart 15.2 — addresses policies and procedures for evaluating and negotiating competitive proposals, conducting discussions, and making the source selection decision.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11117,18 +11013,15 @@
       "group": "Part 15 — Contracting by Negotiation",
       "title": "FAR 15.201 — Source Selection Responsibilities (legacy 15.303)",
       "keywords": [
-        "SSA",
-        "communications",
-        "15.303",
         "15.201",
-        "RFI",
-        "industry",
         "source selection",
-        "responsibilities",
-        "pre-solicitation",
-        "industry exchanges"
+        "SSA",
+        "SSEB",
+        "SSAC",
+        "15.303",
+        "responsibilities"
       ],
-      "summary": "Under the legacy FAR, source selection responsibilities were at 15.303. The RFO renumbered them to 15.201 and renamed the SSA role with updated bullets. (Legacy 15.201 \"Exchanges with industry\" was consolidated elsewhere in the revised Part 15.)",
+      "summary": "Establishes the Source Selection Authority (SSA) and the responsibilities for source selection. RFO renumbers this from legacy FAR 15.303 and consolidates SSA, SSEB, and SSAC roles.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -11160,15 +11053,12 @@
       "title": "FAR 15.202 — Evaluating competitive proposals",
       "keywords": [
         "15.202",
-        "evaluating",
-        "competitive",
-        "proposals",
-        "general",
-        "proposal",
-        "evaluation",
-        "assessment"
+        "evaluating proposals",
+        "strengths",
+        "weaknesses",
+        "deficiencies"
       ],
-      "summary": "(a) General.",
+      "summary": "Procedures for evaluating competitive proposals against the solicitation's stated evaluation factors and subfactors. Includes strengths, weaknesses, deficiencies, and risks.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11200,15 +11090,11 @@
       "title": "FAR 15.203 — Competitive award without negotiation",
       "keywords": [
         "15.203",
-        "competitive",
-        "award",
-        "without",
-        "negotiation",
-        "officers",
-        "awards",
-        "negotiations"
+        "no discussions",
+        "initial proposals",
+        "award without negotiation"
       ],
-      "summary": "Contracting officers may make competitive awards without negotiations if the RFP states that the Government intends to\nevaluate proposals and make award without negotiation.",
+      "summary": "Authorizes competitive award without negotiations when the RFP states the Government intends to evaluate proposals and award without discussions (commonly called 'award on initial proposals').",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11240,15 +11126,12 @@
       "title": "FAR 15.205 — Source selection decision",
       "keywords": [
         "15.205",
-        "source",
-        "selection",
-        "decision",
-        "represent",
-        "independent",
-        "judgement",
-        "based"
+        "source selection decision",
+        "SSA",
+        "comparative",
+        "documentation"
       ],
-      "summary": "The source selection decision must represent the SSA’s independent judgement and be based on a comparative assessment\nof proposals against all source selection criteria in the RFP.",
+      "summary": "Source selection decision — the SSA's independent integrated assessment based on a comparative analysis of proposals against the evaluation factors. Must be documented.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11280,15 +11163,12 @@
       "title": "FAR 15.206 — Preaward notices and debriefings",
       "keywords": [
         "15.206",
-        "preaward",
-        "notices",
-        "debriefings",
-        "definition",
-        "meaning",
-        "forth",
-        "federal"
+        "preaward notice",
+        "debriefing",
+        "competitive range",
+        "excluded"
       ],
-      "summary": "(a) Definition.",
+      "summary": "Preaward notices and debriefings for offerors excluded from the competitive range or not selected for award. Specifies content, timing, and procedures.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11321,14 +11201,11 @@
       "keywords": [
         "15.300",
         "scope",
-        "addresses",
         "postaward",
-        "actions",
-        "considerations",
-        "negotiated",
-        "contracts"
+        "debriefing",
+        "protests"
       ],
-      "summary": "This subpart addresses postaward actions and considerations for negotiated contracts.",
+      "summary": "Scope of Subpart 15.3 — addresses postaward actions and considerations for negotiated contracts: debriefings, mistakes, defective data, and protests.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11360,14 +11237,12 @@
       "title": "FAR 15.301 — Postaward debriefing of offerors",
       "keywords": [
         "15.301",
-        "postaward",
         "debriefing",
-        "offerors",
-        "definition",
-        "meaning",
-        "forth"
+        "postaward",
+        "unsuccessful",
+        "protest tolling"
       ],
-      "summary": "Definition—\n   Day, as used in this section, has the meaning set forth at part 33.",
+      "summary": "Postaward debriefing of unsuccessful offerors — content, timing (typically within 5 days of request), and limits on protected information.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11400,14 +11275,11 @@
       "keywords": [
         "15.302",
         "protests",
-        "against",
         "award",
-        "negotiated",
-        "acquisitions",
-        "handled",
-        "accordance"
+        "part 33",
+        "GAO"
       ],
-      "summary": "(a) Protests against award in negotiated acquisitions must be handled in accordance with part 33.",
+      "summary": "Protests against award in negotiated acquisitions must be handled in accordance with Part 33 (Protests, Disputes & Appeals).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11439,15 +11311,12 @@
       "title": "FAR 15.303 — Discovery of mistakes",
       "keywords": [
         "15.303",
-        "discovery",
         "mistakes",
-        "proposal",
-        "disclosed",
-        "after",
-        "award",
-        "processed"
+        "postaward",
+        "proposal errors",
+        "14.407"
       ],
-      "summary": "Mistakes in a contractor's proposal that are disclosed after award must be processed substantially in accordance with the\nprocedures for mistakes in bids in part 14.",
+      "summary": "Discovery of mistakes in a contractor's proposal disclosed after award — process substantially the same as mistakes in bids under FAR 14.407.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11479,15 +11348,12 @@
       "title": "FAR 15.304 — Defective certified cost or pricing data after award",
       "keywords": [
         "15.304",
-        "defective",
-        "certified",
-        "cost",
-        "pricing",
-        "data",
-        "after",
-        "award"
+        "defective data",
+        "TINA",
+        "cost or pricing data",
+        "price reduction"
       ],
-      "summary": "(a) (1) If, after award, certified cost or pricing data are found to be inaccurate, incomplete, or noncurrent as of the date of\nfinal agreement on price or an earlier date agreed upon by the parties given on the contractor's or subcontractor's Certificate\nof Current Cost or…",
+      "summary": "Defective certified cost or pricing data discovered after award — agency must take action to reduce the contract price by the amount of the defect.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11519,15 +11385,12 @@
       "title": "FAR 15.305 — Estimating systems",
       "keywords": [
         "15.305",
-        "estimating",
-        "systems",
-        "cognizant",
+        "estimating systems",
         "audit",
-        "activities",
-        "appropriate",
-        "establish"
+        "DCAA",
+        "adequacy"
       ],
-      "summary": "(a) Cognizant audit activities, when appropriate, must establish and manage regular programs for reviewing selected\ncontractors' estimating systems or methods, in order to reduce the scope of reviews to be performed on individual proposals,\nexpedite the negotiation process, and increase the reliability of proposals.",
+      "summary": "Contractor estimating systems — cognizant audit activities must establish programs to review and evaluate contractor estimating systems for adequacy and reliability.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11560,14 +11423,12 @@
       "keywords": [
         "15.400",
         "scope",
-        "contains",
+        "cost",
         "price",
         "negotiation",
-        "policies",
-        "pricing",
-        "negotiated"
+        "pricing"
       ],
-      "summary": "This subpart contains cost and price negotiation policies and procedures for pricing negotiated prime contracts (including\nsubcontracts) and contract modifications, including modifications to contracts awarded by sealed bidding.",
+      "summary": "Scope of Subpart 15.4 — cost and price negotiation policies and procedures for negotiated prime contracts and modifications.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11601,13 +11462,10 @@
         "15.401",
         "definitions",
         "price",
-        "means",
-        "profit",
-        "applicable",
-        "subcontract",
-        "except"
+        "cost analysis",
+        "fee"
       ],
-      "summary": "As used in this subpart—\n   Price means cost plus any fee or profit applicable to the contract type.",
+      "summary": "Defines 'price' (cost plus fee/profit) and other Subpart 15.4 terms used in cost and price analysis.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11639,15 +11497,12 @@
       "title": "FAR 15.402 — General",
       "keywords": [
         "15.402",
-        "general",
-        "requirement",
-        "pricing",
-        "establishing",
-        "reasonableness",
-        "offered",
-        "prices"
+        "cost or pricing data",
+        "TINA",
+        "exceptions",
+        "commercial"
       ],
-      "summary": "(a) Requirement for cost or pricing data.",
+      "summary": "General policy on requirements for cost or pricing data — when certified cost or pricing data is required and when exceptions apply (commercial item, adequate price competition, prices set by law).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11678,14 +11533,13 @@
       "group": "Part 15 — Contracting by Negotiation",
       "title": "FAR 15.404 — Proposal Analysis Techniques",
       "keywords": [
-        "price analysis",
         "15.404",
-        "proposal",
+        "proposal analysis",
+        "price analysis",
         "cost analysis",
-        "fair and reasonable",
-        "TINA"
+        "market-based"
       ],
-      "summary": "Price analysis techniques updated to emphasize market-based pricing; catalog price reliance expanded; cost analysis triggers adjusted.",
+      "summary": "Proposal analysis techniques. The RFO emphasizes market-based pricing and expands the role of catalog/market prices; deemphasizes detailed cost analysis when adequate price competition exists.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -11717,15 +11571,12 @@
       "title": "FAR 15.404-1 — Price analysis",
       "keywords": [
         "15.404-1",
-        "price",
-        "analysis",
-        "general",
-        "process",
-        "examining",
-        "evaluating",
-        "proposed"
+        "price analysis",
+        "reasonableness",
+        "comparison",
+        "market"
       ],
-      "summary": "(a) General.",
+      "summary": "Price analysis — comparing proposed prices to historical, market, or competitive prices to determine reasonableness without examining underlying costs.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11757,15 +11608,12 @@
       "title": "FAR 15.404-2 — Cost analysis",
       "keywords": [
         "15.404-2",
-        "cost",
-        "analysis",
-        "general",
-        "review",
-        "evaluation",
-        "separate",
-        "elements"
+        "cost analysis",
+        "cost elements",
+        "cost realism",
+        "fee"
       ],
-      "summary": "(a) General.",
+      "summary": "Cost analysis — review and evaluation of a proposal's separate cost elements (labor, materials, overhead) and proposed profit/fee, including assessment of cost realism and reasonableness.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11797,15 +11645,12 @@
       "title": "FAR 15.404-4 — Technical cost or price analysis",
       "keywords": [
         "15.404-4",
-        "technical",
-        "cost",
-        "price",
-        "analysis",
+        "technical analysis",
         "labor",
         "materials",
-        "minimum"
+        "cost realism"
       ],
-      "summary": "(a) Labor and materials.",
+      "summary": "Technical cost analysis — coordination with technical personnel to assess proposed labor mixes, hours, materials, and equipment needed to perform the requirement.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11837,15 +11682,12 @@
       "title": "FAR 15.406 — Data to support proposal analysis",
       "keywords": [
         "15.406",
-        "data",
-        "support",
-        "proposal",
-        "analysis",
-        "field",
-        "pricing",
-        "assistance"
+        "field pricing",
+        "DCAA",
+        "DCMA",
+        "audit support"
       ],
-      "summary": "(a) Field pricing assistance.",
+      "summary": "Data to support proposal analysis — field pricing assistance, audit support, and information from DCAA, DCMA, and other government agencies.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11877,15 +11719,12 @@
       "title": "FAR 15.407 — Price negotiation",
       "keywords": [
         "15.407",
-        "price",
-        "negotiation",
-        "purpose",
-        "performing",
-        "analysis",
-        "develop",
-        "position"
+        "price negotiation",
+        "objective",
+        "range",
+        "PNM"
       ],
-      "summary": "(a) The purpose of performing cost or price analysis is to develop a negotiation position that permits the contracting\nofficer and the offeror an opportunity to reach agreement on a fair and reasonable price.",
+      "summary": "Price negotiation — purpose, methods, and documentation of the negotiation position (objective, range, and final negotiated price).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11918,14 +11757,10 @@
       "keywords": [
         "15.500",
         "scope",
-        "contains",
-        "policies",
-        "submission",
-        "receipt",
-        "evaluation",
-        "acceptance"
+        "unsolicited proposals",
+        "innovation"
       ],
-      "summary": "This subpart contains policies and procedures for the submission, receipt, evaluation, and acceptance or rejection of\nunsolicited proposals.",
+      "summary": "Scope of Subpart 15.5 — policies and procedures for unsolicited proposals: submission, receipt, evaluation, and acceptance.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11958,14 +11793,10 @@
       "keywords": [
         "15.501",
         "definitions",
-        "advertising",
-        "material",
-        "means",
-        "designed",
-        "acquaint",
-        "government"
+        "unsolicited proposal",
+        "advertising material"
       ],
-      "summary": "As used in this subpart—\n   Advertising material means material designed to acquaint the Government with a prospective contractor's present\nproducts, services, or potential capabilities, or designed to stimulate the Government's interest in buying such products or\nservices.",
+      "summary": "Defines 'unsolicited proposal,' 'advertising material,' and related Subpart 15.5 terms used in evaluating offerings submitted outside a competitive solicitation.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -11997,15 +11828,12 @@
       "title": "FAR 15.502 — General",
       "keywords": [
         "15.502",
-        "general",
-        "purpose",
-        "unsolicited",
-        "proposals",
-        "allow",
-        "unique",
-        "innovative"
+        "unsolicited proposal",
+        "policy",
+        "innovation",
+        "integrity"
       ],
-      "summary": "(a) Purpose.",
+      "summary": "General policy on unsolicited proposals — agencies must encourage innovative ideas while protecting the integrity of competitive procurement processes.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12038,14 +11866,11 @@
       "keywords": [
         "15.504",
         "receipt",
-        "initial",
-        "review",
-        "unsolicited",
-        "proposals",
-        "agencies",
-        "establish"
+        "initial review",
+        "control",
+        "disposition"
       ],
-      "summary": "(a) Agencies must establish procedures for controlling the receipt, evaluation, and timely disposition of unsolicited\nproposals.",
+      "summary": "Receipt and initial review of unsolicited proposals — agencies must establish controlled procedures for handling, evaluating, and disposing of unsolicited submissions.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12079,13 +11904,10 @@
         "15.505",
         "evaluation",
         "unsolicited",
-        "proposals",
-        "agencies",
-        "evaluate",
-        "energy",
-        "savings"
+        "ESPC",
+        "energy savings"
       ],
-      "summary": "(a) Agencies must evaluate unsolicited proposals for energy savings performance contracts in accordance with the\nprocedures in 10 CFR 436.33(b).",
+      "summary": "Detailed evaluation of unsolicited proposals — including special procedures for energy savings performance contracts.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12117,15 +11939,12 @@
       "title": "FAR 15.506 — Criteria for acceptance and negotiation of an unsolicited proposal",
       "keywords": [
         "15.506",
-        "criteria",
         "acceptance",
-        "negotiation",
-        "unsolicited",
-        "proposal",
-        "officers",
-        "begin"
+        "sole source",
+        "innovative",
+        "criteria"
       ],
-      "summary": "Contracting officers may begin negotiations on a sole source basis only when—\n   (a) An unsolicited proposal receives a favorable comprehensive evaluation;\n   (b) A justification and approval is obtained in accordance with part 6;\n   (c) The agency technical office sponsoring…",
+      "summary": "Criteria for accepting and negotiating unsolicited proposals on a sole-source basis — the proposal must offer an innovative approach not otherwise available to the agency.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12158,14 +11977,11 @@
       "keywords": [
         "16.000",
         "scope",
-        "prescribes",
-        "policies",
-        "selecting",
-        "appropriate",
-        "circumstances",
-        "acquisition"
+        "contract types",
+        "risk",
+        "selection"
       ],
-      "summary": "This part prescribes policies and procedures for selecting contract type(s) appropriate to the circumstances of the\nacquisition.",
+      "summary": "Scope of Part 16 — prescribes policies and procedures for selecting the contract type appropriate to the circumstances of the acquisition. Balances risk between Government and contractor.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12198,14 +12014,11 @@
       "keywords": [
         "16.001",
         "definitions",
-        "award",
-        "board",
-        "means",
-        "individuals",
-        "identified",
-        "designated"
+        "award fee",
+        "IDIQ",
+        "task order"
       ],
-      "summary": "As used in this part-\n   Award-Fee Board means the team of individuals identified in the award-fee plan who have been designated to assist the\nFee-Determining Official in making award-fee determinations.",
+      "summary": "Defines key Part 16 terms including 'Award-Fee Board,' 'definite-quantity contract,' 'indefinite-delivery contract,' and 'task order.'",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12236,15 +12049,13 @@
       "group": "Part 16 — Contract Types",
       "title": "FAR 16.101 — Selecting Contract Types",
       "keywords": [
-        "contract type",
         "16.101",
-        "selection",
+        "selecting",
         "risk",
-        "FFP",
-        "fixed price",
-        "cost reimbursement"
+        "fixed-price preference",
+        "documentation"
       ],
-      "summary": "Risk allocation framework preserved; stronger preference for fixed-price; documentation requirements for cost-type selection updated.",
+      "summary": "Selecting contract types — risk allocation framework. RFO strengthens the preference for fixed-price and tightens documentation requirements when cost-reimbursement is selected.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -12276,15 +12087,12 @@
       "title": "FAR 16.102 — Negotiating contract type",
       "keywords": [
         "16.102",
-        "negotiating",
-        "type",
-        "selecting",
-        "generally",
-        "matter",
-        "negotiation",
-        "requires"
+        "negotiating type",
+        "judgment",
+        "risk",
+        "price"
       ],
-      "summary": "(a) (1) Selecting the contract type is generally a matter for negotiation and requires the exercise of sound judgment.",
+      "summary": "Negotiating contract type — selection is a matter for negotiation requiring exercise of sound judgment. The objective is to negotiate the type and price that places reasonable risk on the contractor.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12317,14 +12125,11 @@
       "keywords": [
         "16.103",
         "documenting",
-        "type",
-        "except",
-        "identified",
-        "paragraph",
-        "document",
-        "explain"
+        "rationale",
+        "acquisition plan",
+        "contract file"
       ],
-      "summary": "(a) Except as identified in paragraph (b) of this section, document and explain in the acquisition plan, or in the contract file\nif a written acquisition plan is not required by agency procedures-\n       (1) Why the contract type selected must be used to meet the agency's needs.",
+      "summary": "Documenting the contract type selection in the acquisition plan or contract file — explain why the selected type is appropriate given the requirement, risk, and contractor's accounting system.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12356,15 +12161,11 @@
       "title": "FAR 16.104 — Solicitation provision",
       "keywords": [
         "16.104",
-        "solicitation",
         "provision",
-        "officer",
-        "complete",
-        "insert",
-        "provides",
-        "opportunity"
+        "52.216-1",
+        "type of contract"
       ],
-      "summary": "The contracting officer may complete and insert the provision at 52.216-1, Type of Contract, in a solicitation.",
+      "summary": "Authorizes the contracting officer to insert provision FAR 52.216-1 (Type of Contract) in solicitations when proposed pricing arrangement varies.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12396,15 +12197,12 @@
       "title": "FAR 16.201 — General",
       "keywords": [
         "16.201",
-        "general",
-        "fixed",
-        "price",
-        "types",
-        "contracts",
-        "provide",
-        "appropriate"
+        "fixed-price",
+        "firm price",
+        "risk",
+        "general"
       ],
-      "summary": "(a) Fixed-price types of contracts provide for a firm price or, in appropriate cases, an adjustable price.",
+      "summary": "General policy on fixed-price contracts — provide a firm price or, when authorized, a price that is adjustable. Place the risk and full responsibility for costs on the contractor.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12436,15 +12234,12 @@
       "title": "FAR 16.203 — Fixed-price contracts with economic price        16.403-1     Cost incentives",
       "keywords": [
         "16.203",
-        "fixed",
-        "price",
-        "contracts",
-        "economic",
-        "cost",
-        "incentives",
-        "adjustment"
+        "EPA",
+        "economic price adjustment",
+        "indices",
+        "escalation"
       ],
-      "summary": "adjustment.",
+      "summary": "Fixed-price contracts with economic price adjustment (EPA) — allow upward and downward revision of the contract price based on specific contingencies (labor, materials, indices).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12476,15 +12271,11 @@
       "title": "FAR 16.204 — Fixed-price contracts with prospective price     16.404-2     Fixed-price incentive (successive targets)",
       "keywords": [
         "16.204",
-        "fixed",
-        "price",
-        "contracts",
-        "prospective",
-        "incentive",
-        "successive",
-        "targets"
+        "prospective redetermination",
+        "fixed-price",
+        "periodic"
       ],
-      "summary": "redetermination.",
+      "summary": "Fixed-price contracts with prospective price redetermination — initial firm fixed price for the first period, with redetermined prices for subsequent periods.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12516,15 +12307,11 @@
       "title": "FAR 16.205 — Fixed-ceiling-price contracts with retroactive   16.500     Scope",
       "keywords": [
         "16.205",
-        "fixed",
-        "ceiling",
-        "price",
-        "contracts",
-        "retroactive",
-        "scope",
-        "redetermination"
+        "retroactive redetermination",
+        "R&D",
+        "ceiling price"
       ],
-      "summary": "price redetermination.",
+      "summary": "Fixed-ceiling-price contracts with retroactive price redetermination — used for research and development contracts at or below the simplified acquisition threshold.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12556,15 +12343,12 @@
       "title": "FAR 16.206 — Firm-fixed-price, level-of-effort term           16.502-2   Application",
       "keywords": [
         "16.206",
-        "firm",
-        "fixed",
-        "price",
-        "level",
-        "effort",
-        "term",
-        "application"
+        "level of effort",
+        "FFP",
+        "research",
+        "study"
       ],
-      "summary": "contracts.",
+      "summary": "Firm-fixed-price, level-of-effort term contracts — investigation, study, or research with a stated level of effort over a stated time period for a fixed dollar amount.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12596,15 +12380,12 @@
       "title": "FAR 16.301-1 — Description",
       "keywords": [
         "16.301-1",
+        "cost-reimbursement",
         "description",
-        "reimbursement",
-        "contracts",
-        "allow",
-        "allowable",
-        "incurred",
-        "costs"
+        "allowable costs",
+        "ceiling"
       ],
-      "summary": "Cost-reimbursement contracts allow for the reimbursement of allowable incurred costs.",
+      "summary": "Description of cost-reimbursement contracts — reimburse the contractor for allowable incurred costs to the extent prescribed in the contract. Establish an estimated total cost and ceiling.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12636,15 +12417,11 @@
       "title": "FAR 16.301-2 — Application",
       "keywords": [
         "16.301-2",
+        "cost-reimbursement",
         "application",
-        "officer",
-        "reimbursement",
-        "contracts",
-        "requirements",
-        "cannot",
-        "sufficiently"
+        "uncertainty"
       ],
-      "summary": "(a) The contracting officer must use cost-reimbursement contracts only when-\n      (1) The requirements cannot be sufficiently defined to allow for a fixed-price type contract (see part 7); or\n      (2) Uncertainties involved in contract performance do not permit costs to be…",
+      "summary": "Application of cost-reimbursement contracts — only appropriate when uncertainties in performance do not permit costs to be estimated with sufficient accuracy to use any fixed-price type.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12677,14 +12454,10 @@
       "keywords": [
         "16.301-3",
         "limitations",
-        "reimbursement",
-        "written",
-        "acquisition",
-        "approved",
-        "accounting",
-        "system"
+        "acquisition plan",
+        "accounting system"
       ],
-      "summary": "(a) A cost-reimbursement contract may be used only when-\n       (1) A written acquisition plan has been approved;\n       (2) The contractor’s accounting system can adequately segregate, accumulate and allocate costs specifically attributed\nto the contract or order during…",
+      "summary": "Limitations on use of cost-reimbursement contracts — requires written acquisition plan, adequate contractor accounting system, and determination that no fixed-price type is suitable.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12716,12 +12489,12 @@
       "title": "FAR 16.302 — Cost contracts",
       "keywords": [
         "16.302",
-        "cost",
-        "contracts",
-        "reimbursement",
-        "include"
+        "cost contract",
+        "no fee",
+        "nonprofit",
+        "educational"
       ],
-      "summary": "A cost contract is a cost-reimbursement contract that does not include fee.",
+      "summary": "Cost contracts — cost-reimbursement contract that does not include fee. Generally used with nonprofit educational institutions or other nonprofit organizations.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12753,15 +12526,12 @@
       "title": "FAR 16.303 — Cost-sharing contracts",
       "keywords": [
         "16.303",
-        "cost",
-        "sharing",
-        "contracts",
-        "reimbursement",
-        "include",
-        "government",
-        "reimburses"
+        "cost-sharing",
+        "contractor share",
+        "no fee",
+        "mutual benefit"
       ],
-      "summary": "A cost-sharing contract is a cost-reimbursement contract that does not include fee, and the Government reimburses only\na portion of the allowable costs.",
+      "summary": "Cost-sharing contracts — cost-reimbursement contract in which the contractor receives no fee and absorbs a portion of the costs in expectation of compensating benefits.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12794,14 +12564,11 @@
       "keywords": [
         "16.305",
         "clauses",
-        "officer",
-        "insert",
-        "clause",
-        "allowable",
-        "payment",
-        "solicitations"
+        "52.216-7",
+        "allowable cost",
+        "limitation of cost"
       ],
-      "summary": "(a) (1) The contracting officer must insert the clause at 52.216-7, Allowable Cost and Payment, in solicitations and\ncontracts when a cost-reimbursement contract or a time-and-materials contract (other than a contract for a commercial\nproduct or commercial service) is anticipated.",
+      "summary": "Contract clauses for cost-reimbursement contracts — including FAR 52.216-7 (Allowable Cost and Payment) and limitation-of-cost / limitation-of-funds clauses.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12833,15 +12600,12 @@
       "title": "FAR 16.404 — Fixed-price incentive contracts",
       "keywords": [
         "16.404",
-        "fixed",
-        "price",
-        "incentive",
-        "contracts",
-        "description",
-        "established",
-        "formula"
+        "FPI",
+        "fixed-price incentive",
+        "target cost",
+        "share ratio"
       ],
-      "summary": "(a) Description.",
+      "summary": "Fixed-price incentive contracts — adjust profit and establish the final contract price by applying a formula based on the relationship of final negotiated cost to target cost.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12873,15 +12637,12 @@
       "title": "FAR 16.405 — Cost-plus-incentive-fee contracts",
       "keywords": [
         "16.405",
-        "cost",
-        "plus",
-        "incentive",
-        "contracts",
-        "reimbursement",
-        "adjusts",
-        "initially"
+        "CPIF",
+        "incentive fee",
+        "target cost",
+        "share ratio"
       ],
-      "summary": "The cost-plus-incentive-fee contract is a cost-reimbursement contract that adjusts the initially negotiated fee based on a\nformula comparing total allowable costs to total target costs.",
+      "summary": "Cost-plus-incentive-fee (CPIF) contracts — cost-reimbursement contract that adjusts the initially negotiated fee based on the relationship of total allowable costs to target costs.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12914,14 +12675,10 @@
       "keywords": [
         "16.406",
         "clauses",
-        "insert",
-        "clause",
         "incentive",
-        "price",
-        "revision",
-        "target"
+        "52.216-16"
       ],
-      "summary": "(a) Insert the clause at 52.216-16, Incentive Price Revision-Firm Target, in solicitations and contracts when a fixed-\nprice incentive (firm target) contract is contemplated.",
+      "summary": "Contract clauses for incentive contracts — including FAR 52.216-16 (Incentive Price Revision—Firm Target) and related variants.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12954,14 +12711,11 @@
       "keywords": [
         "16.500",
         "scope",
-        "prescribes",
-        "policies",
-        "making",
-        "awards",
-        "indefinite",
-        "delivery"
+        "IDIQ",
+        "indefinite-delivery",
+        "ordering"
       ],
-      "summary": "(a) This subpart prescribes policies and procedures for making awards of indefinite-delivery contracts and subsequent\norders and establishes a preference for making multiple awards of indefinite-quantity contracts.",
+      "summary": "Scope of Subpart 16.5 — policies and procedures for awarding and ordering under indefinite-delivery contracts (ID/IQ, requirements, definite-quantity).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -12992,14 +12746,13 @@
       "group": "Part 16 — Contract Types",
       "title": "FAR 16.505 — Ordering Under ID/IQ Contracts",
       "keywords": [
-        "task order",
-        "delivery order",
         "16.505",
+        "ordering",
         "IDIQ",
         "fair opportunity",
-        "competition"
+        "task orders"
       ],
-      "summary": "Solicitation provisions and contract clauses for ID/IQ ordering. The RFO streamlined 16.505 from detailed ordering procedures to a focused clause-prescription section. The detailed ordering procedures (fair opportunity, exceptions, protests) moved to the new RFO 16.506–16.508 series.",
+      "summary": "Ordering procedures under ID/IQ contracts. The RFO streamlined this section from detailed mandatory steps to principles-based fair-opportunity requirements.",
       "deepLinks": [
         {
           "label": "acquisition.gov/far-overhaul",
@@ -13031,15 +12784,12 @@
       "title": "FAR 16.506 — Postaward procedures for placement of task and delivery orders",
       "keywords": [
         "16.506",
-        "postaward",
-        "placement",
-        "task",
-        "delivery",
-        "orders",
-        "within",
-        "scope"
+        "postaward orders",
+        "scope",
+        "ordering period",
+        "quantity limits"
       ],
-      "summary": "(a) Orders must be within the scope, issued within the specified ordering period, and be within the maximum value of the\ncontract.",
+      "summary": "Postaward procedures for placing orders under ID/IQ contracts — orders must be within scope, issued during the ordering period, and within stated quantity limits.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -13072,14 +12822,11 @@
       "keywords": [
         "16.508",
         "protests",
-        "orders",
-        "protest",
-        "under",
-        "authorized",
-        "connection",
-        "issuance"
+        "task order",
+        "$25 million",
+        "scope"
       ],
-      "summary": "(a) No protest under part 33 is authorized in connection with the issuance or proposed issuance of an order under a task-\norder contract or delivery-order contract, except—\n      (1) A protest on the grounds that the order increases the scope, period, or maximum value of the…",
+      "summary": "Protests of orders under ID/IQ contracts — generally not authorized under Part 33, except for orders exceeding $25 million or alleging the order increases the scope, period, or maximum value of the contract.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -13111,14 +12858,12 @@
       "title": "FAR 16.600 — Scope",
       "keywords": [
         "16.600",
-        "scope",
-        "materials",
-        "contracts",
-        "labor",
-        "fixed",
-        "price"
+        "time and materials",
+        "T&M",
+        "labor hour",
+        "last resort"
       ],
-      "summary": "Time-and-materials contracts and labor-hour contracts are not fixed-price contracts.",
+      "summary": "Time-and-materials and labor-hour contracts — neither is a fixed-price contract. Use only when no other contract type is suitable.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -13150,15 +12895,12 @@
       "title": "FAR 16.601 — Time-and-materials contracts",
       "keywords": [
         "16.601",
-        "time",
+        "T&M",
+        "labor rates",
         "materials",
-        "contracts",
-        "definitions",
-        "purposes",
-        "direct",
-        "means"
+        "description"
       ],
-      "summary": "Definitions for the purposes of Time-and-Materials Contracts.",
+      "summary": "Time-and-materials contracts — direct labor hours at specified fixed hourly rates plus materials at cost (or other reimbursement basis).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -13190,15 +12932,11 @@
       "title": "FAR 16.602 — Labor-hour contracts",
       "keywords": [
         "16.602",
-        "labor",
-        "hour",
-        "contracts",
-        "description",
-        "variation",
-        "materials",
-        "differing"
+        "labor hour",
+        "labor only",
+        "T&M variant"
       ],
-      "summary": "Description.",
+      "summary": "Labor-hour contracts — variant of T&M where the contractor furnishes only labor (no materials). Same suitability and ceiling-price rules apply.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -13231,14 +12969,11 @@
       "keywords": [
         "16.701",
         "scope",
-        "prescribes",
-        "policies",
-        "establishing",
-        "basic",
-        "agreements",
-        "ordering"
+        "basic agreement",
+        "BOA",
+        "ordering agreement"
       ],
-      "summary": "This subpart prescribes policies and procedures for establishing and using basic agreements and basic ordering\nagreements.",
+      "summary": "Scope of Subpart 16.7 — policies and procedures for establishing and using basic agreements and basic ordering agreements (not contracts themselves).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14311,14 +14046,11 @@
       "keywords": [
         "19.000",
         "scope",
-        "implements",
-        "acquisition",
-        "related",
-        "sections",
-        "small",
-        "business"
+        "small business",
+        "Small Business Act",
+        "15 USC 631"
       ],
-      "summary": "(a) This part implements the acquisition-related sections of the Small Business Act (15 U.S.C.",
+      "summary": "Scope of Part 19 — implements the acquisition-related sections of the Small Business Act (15 U.S.C. 631 et seq.). Establishes small business set-aside and socioeconomic preferences.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14351,14 +14083,13 @@
       "keywords": [
         "19.001",
         "definitions",
-        "alaska",
-        "native",
-        "corporation",
-        "means",
-        "regional",
-        "village"
+        "ANC",
+        "HUBZone",
+        "SDVOSB",
+        "WOSB",
+        "8(a)"
       ],
-      "summary": "As used in this part—\n   Alaska Native Corporation (ANC) means any Regional Corporation, Village Corporation, Urban Corporation, or Group\nCorporation organized under the laws of the state of Alaska in accordance with the Alaska Native Claims Settlement Act\n(43 U.S.C.",
+      "summary": "Defines key Part 19 terms including 'Alaska Native Corporation,' 'HUBZone,' 'service-disabled veteran-owned,' 'women-owned,' and '8(a) participant.'",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14390,15 +14121,12 @@
       "title": "FAR 19.101 — Small business goals",
       "keywords": [
         "19.101",
-        "small",
-        "business",
         "goals",
-        "government",
+        "maximum practicable",
         "policy",
-        "provide",
-        "maximum"
+        "opportunities"
       ],
-      "summary": "(a) It is the Government’s policy to provide maximum practicable opportunities in its acquisitions to small business and\nother small business socioeconomic categories (i.e.",
+      "summary": "Government policy to provide maximum practicable opportunities to small businesses, including socioeconomic categories — sets the framework for set-asides and goals.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14431,14 +14159,11 @@
       "keywords": [
         "19.102",
         "coordination",
-        "helps",
-        "personnel",
-        "ensure",
-        "their",
-        "meets",
-        "small"
+        "SBA",
+        "agency goals",
+        "procurement center"
       ],
-      "summary": "(a) SBA helps contracting personnel ensure their agency meets their small business goals.",
+      "summary": "Coordination with the SBA — SBA helps contracting personnel ensure their agency meets small business goals through procurement assistance and oversight.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14470,15 +14195,11 @@
       "title": "FAR 19.103 — Small business size standards",
       "keywords": [
         "19.103",
-        "small",
-        "business",
-        "size",
-        "standards",
-        "locating",
-        "north",
-        "american"
+        "size standards",
+        "NAICS",
+        "SBA table"
       ],
-      "summary": "(a) Locating size standards and North American Industry Classification System codes.",
+      "summary": "Small business size standards — locating applicable size standards and NAICS codes for each acquisition. SBA maintains the size standards table.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14510,15 +14231,12 @@
       "title": "FAR 19.105 — Historically Underutilized Business Zone        19.201-5    Protesting a firm's status as a service-",
       "keywords": [
         "19.105",
-        "historically",
-        "underutilized",
-        "business",
-        "zone",
-        "protesting",
-        "firm",
-        "status"
+        "HUBZone",
+        "set-aside",
+        "preference",
+        "underutilized"
       ],
-      "summary": "(HUBZone) Program.",
+      "summary": "Historically Underutilized Business Zone (HUBZone) Program — preference for small businesses located in qualified HUBZones, with set-aside and price evaluation authorities.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14550,15 +14268,12 @@
       "title": "FAR 19.106 — Service-Disabled Veteran-Owned Small                        Small Business Program",
       "keywords": [
         "19.106",
-        "service",
-        "disabled",
+        "SDVOSB",
+        "service-disabled",
         "veteran",
-        "owned",
-        "small",
-        "business",
-        "program"
+        "set-aside"
       ],
-      "summary": "Business (SDVOSB) Program.",
+      "summary": "Service-Disabled Veteran-Owned Small Business (SDVOSB) Program — sole-source and set-aside authorities for businesses owned and controlled by service-disabled veterans.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14590,15 +14305,12 @@
       "title": "FAR 19.107 — Women-Owned Small Business (WOSB)               19.205      Evaluating and awarding set-asides",
       "keywords": [
         "19.107",
-        "women",
-        "owned",
-        "small",
-        "business",
-        "wosb",
-        "evaluating",
-        "awarding"
+        "WOSB",
+        "women-owned",
+        "EDWOSB",
+        "set-aside"
       ],
-      "summary": "Program.",
+      "summary": "Women-Owned Small Business (WOSB) Program — sole-source and set-aside authorities for women-owned small businesses, including economically disadvantaged (EDWOSB) variants.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14630,15 +14342,12 @@
       "title": "FAR 19.108 — Contracting With the Small Business             19.207      Evaluating offers using the HUBZone price",
       "keywords": [
         "19.108",
-        "small",
-        "business",
-        "evaluating",
-        "offers",
-        "hubzone",
-        "price",
-        "administration"
+        "8(a)",
+        "business development",
+        "disadvantaged",
+        "SBA"
       ],
-      "summary": "Administration (the 8(a) Program)                           evaluation preference.",
+      "summary": "Contracting with SBA under the 8(a) Business Development Program — sole-source and competitive set-asides for socially and economically disadvantaged small businesses.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14670,15 +14379,12 @@
       "title": "FAR 19.109 — Small business subcontracting plans",
       "keywords": [
         "19.109",
-        "small",
-        "business",
-        "subcontracting",
-        "plans",
-        "except",
-        "stated",
-        "paragraph"
+        "subcontracting plan",
+        "goals",
+        "large business",
+        "SBA"
       ],
-      "summary": "(a) (1) Except as stated in paragraph (b) of this section, 15 U.S.C.",
+      "summary": "Small business subcontracting plans — required for contracts above the threshold offering subcontracting opportunities. Plan must include goals for each socioeconomic category.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14710,15 +14416,12 @@
       "title": "FAR 19.110 — Price evaluation preference for HUBZone small business concerns",
       "keywords": [
         "19.110",
-        "price",
-        "evaluation",
-        "preference",
-        "hubzone",
-        "small",
-        "business",
-        "concerns"
+        "HUBZone",
+        "price preference",
+        "10 percent",
+        "evaluation"
       ],
-      "summary": "(a) Use the price evaluation preference for HUBZone small business concerns in acquisitions conducted using full and\nopen competition.",
+      "summary": "Price evaluation preference for HUBZone small business concerns in acquisitions using full and open competition — typically 10 percent.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14751,14 +14454,11 @@
       "keywords": [
         "19.112",
         "reserves",
-        "accordance",
-        "small",
-        "business",
-        "officers",
-        "their",
-        "discretion"
+        "partial set-aside",
+        "multiple-award",
+        "Jobs Act"
       ],
-      "summary": "(a) In accordance with section 1331 of the Small Business Jobs Act of 2010 (15 U.S.C.",
+      "summary": "Reserves for small business under the Small Business Jobs Act of 2010 (15 U.S.C. 644(j)) — partial set-asides for orders under multiple-award contracts.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14790,13 +14490,14 @@
       "title": "FAR 19.201 — Small Business Size & Socioeconomic Status Determination",
       "keywords": [
         "19.201",
-        "small business",
+        "representation",
         "size",
         "socioeconomic",
-        "representation",
-        "NAICS"
+        "NAICS",
+        "19.301",
+        "19.302"
       ],
-      "summary": "Determination of small business size and socioeconomic status. Offerors must represent in good faith their size status using the NAICS code in the solicitation.",
+      "summary": "Small business size and socioeconomic status determination. Offerors must represent in good faith their size status using the NAICS code in the solicitation. Replaces legacy 19.301 and 19.302.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14829,14 +14530,11 @@
       "keywords": [
         "19.202",
         "encouraging",
-        "small",
-        "business",
-        "responses",
-        "officers",
-        "provide",
-        "concern"
+        "outreach",
+        "response",
+        "industry"
       ],
-      "summary": "Contracting officers must provide to any small business concern, upon its request—\n   (a) A copy of solicitations with respect to any contract to be awarded;\n   (b) The name and telephone number of an agency contact to answer questions related to the prospective contract; and\n  …",
+      "summary": "Contracting officers must encourage small business responses — provide copies of solicitations, attend industry days, and engage outreach upon request.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14868,15 +14566,12 @@
       "title": "FAR 19.203 — Equal low bids",
       "keywords": [
         "19.203",
-        "equal",
-        "bids",
-        "event",
-        "awards",
-        "first",
-        "small",
-        "business"
+        "equal bids",
+        "tie",
+        "priority",
+        "14.408-6"
       ],
-      "summary": "(a) In the event of equal low bids (see 14.408-6), make awards first to small business concerns that are also labor surplus\narea concerns, and second to small business concerns that are not also labor surplus area concerns.",
+      "summary": "Equal low bids — when bids are tied, award first to small business concerns (see 14.408-6). Provides priority order among socioeconomic categories.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14908,15 +14603,12 @@
       "title": "FAR 19.204 — Certificate of Competency",
       "keywords": [
         "19.204",
-        "certificate",
-        "competency",
-        "issues",
-        "stating",
-        "purpose",
-        "receiving",
-        "performing"
+        "COC",
+        "certificate of competency",
+        "responsibility",
+        "SBA"
       ],
-      "summary": "A Certificate of Competency (COC) is the certificate SBA issues stating that, for the purpose of receiving and performing\na specific Government contract, the holder is responsible with respect to all elements of responsibility, including, but not\nlimited to, capability,…",
+      "summary": "Certificate of Competency (COC) — issued by SBA stating that a small business is competent and responsible to perform a specific contract.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14948,15 +14640,12 @@
       "title": "FAR 19.205 — Evaluating and awarding set-asides",
       "keywords": [
         "19.205",
+        "set-aside award",
+        "one offer",
         "evaluating",
-        "awarding",
-        "asides",
-        "officer",
-        "receives",
-        "acceptable",
-        "offer"
+        "responsible"
       ],
-      "summary": "(a) If the contracting officer receives only one acceptable offer from a responsible small business concern in response to a\nset-aside, the contracting officer should make an award to that firm.",
+      "summary": "Evaluating and awarding set-asides — when only one acceptable offer is received from a responsible small business, the CO may award.",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -14988,15 +14677,11 @@
       "title": "FAR 19.207 — Evaluating offers using the HUBZone price evaluation preference",
       "keywords": [
         "19.207",
-        "evaluating",
-        "offers",
-        "hubzone",
-        "price",
-        "evaluation",
-        "preference",
-        "officer"
+        "HUBZone preference",
+        "price evaluation",
+        "large business"
       ],
-      "summary": "The contracting officer must give offers from HUBZone small business concerns a price evaluation preference by adding a\nfactor of 10 percent to all offers, except—\n   (a) Offers from HUBZone small business concerns that have not waived the evaluation preference; or\n   (b)…",
+      "summary": "Evaluating offers using the HUBZone price evaluation preference — apply the preference to non-HUBZone large business offers only (not to other small businesses).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
@@ -15028,15 +14713,12 @@
       "title": "FAR 19.301 — Small business size rerepresentations",
       "keywords": [
         "19.301",
-        "small",
-        "business",
+        "rerepresentation",
         "size",
-        "rerepresentations",
-        "represented",
-        "itself",
-        "concern"
+        "option exercise",
+        "long-term"
       ],
-      "summary": "(a) A contractor that represented itself as a small business concern before contract award must rerepresent its size status\nin accordance with the clause at 52.219-28, Postaward Small Business Program Rerepresentation, for the North American\nIndustry Classification System…",
+      "summary": "Small business size rerepresentations — a contractor must rerepresent its size status at specific events (long-term contract anniversaries, exercise of options, merger/acquisition).",
       "deepLinks": [
         {
           "label": "acquisition.gov",
