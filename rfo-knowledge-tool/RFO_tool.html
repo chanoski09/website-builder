@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'nonce-rfo2026'; style-src 'nonce-rfo2026'; connect-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'nonce-rfo2026'; style-src 'nonce-rfo2026'; connect-src 'self'; worker-src 'self';">
 <title>FORGE — FAR Overhaul Reference & Guidance Engine | 411th CSB</title>
 <style nonce="rfo2026">
 :root {
@@ -243,6 +243,45 @@ footer strong{color:var(--text-2,var(--text))}
   .diff-sbs .diff-grid{grid-template-columns:1fr 1fr}
   body{background:#fff;color:#000}
 }
+
+/* SEARCH HIGHLIGHT */
+mark.search-hl{background:rgba(255,212,0,.5);color:inherit;border-radius:2px;padding:0 1px}
+[data-theme="dark"] mark.search-hl{background:rgba(255,200,0,.28);color:inherit}
+
+/* LOADING SKELETON */
+@keyframes skel-shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+.skeleton-card .card-hdr{cursor:default}
+.skeleton-card .card-hdr:hover{background:none}
+.sk-line{display:block;border-radius:4px;background:linear-gradient(90deg,var(--border) 25%,var(--bg-2,var(--bg)) 50%,var(--border) 75%);background-size:800px 100%;animation:skel-shimmer 1.5s ease infinite}
+.sk-badge{height:.72rem;width:6rem;margin-bottom:.42rem}
+.sk-title{height:1.05rem;width:60%;margin-bottom:.35rem}
+.sk-summary{height:.82rem;width:88%}
+
+/* KEYBOARD SHORTCUTS MODAL */
+.kbd-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center}
+.kbd-modal[hidden]{display:none}
+.kbd-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.kbd-modal-box{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;min-width:300px;max-width:420px;box-shadow:var(--shadow-lg);z-index:1}
+.kbd-modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;font-size:.95rem;font-weight:700;color:var(--primary)}
+[data-theme="dark"] .kbd-modal-hdr{color:var(--text)}
+.kbd-modal-close{background:none;border:1px solid var(--border);border-radius:6px;width:28px;height:28px;cursor:pointer;color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;padding:0}
+.kbd-modal-close:hover{background:var(--bg-2);color:var(--text)}
+.kbd-table{width:100%;border-collapse:collapse;font-size:.87rem}
+.kbd-table tr+tr td{border-top:1px solid var(--border)}
+.kbd-table td{padding:.5rem .3rem;color:var(--text-2,var(--text));vertical-align:middle}
+.kbd-table td:first-child{width:130px;white-space:nowrap}
+kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px solid var(--border-2,var(--border));border-bottom-width:2px;border-radius:5px;font-family:Consolas,monospace;font-size:.78rem;color:var(--text);margin-right:.2rem;line-height:1.4}
+.kbd-hint-small{font-size:.72rem;color:var(--faint,var(--muted));margin-top:1rem;text-align:center}
+
+/* CROSS-REFERENCE LINK BUTTONS */
+.ref-link{display:inline;background:none;border:none;padding:0;font:inherit;font-size:inherit;color:var(--blue,var(--secondary));cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;line-height:inherit}
+.ref-link:hover{text-decoration-style:solid;color:var(--primary)}
+
+/* PANE SOURCE FOOTER */
+.pane-source{padding:.3rem .8rem;font-size:.67rem;color:var(--muted);border-top:1px solid var(--border);background:var(--panel-2,var(--bg));font-style:italic}
+
+/* FOOTER DATE */
+.footer-updated{color:var(--faint,var(--muted))}
 </style>
 </head>
 <body>
@@ -304,9 +343,27 @@ footer strong{color:var(--text-2,var(--text))}
   <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
   Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (Apr. 2025) &bull;
   <em>For training — verify all citations against official sources before operational use.</em>
+  <span id="footerUpdated" class="footer-updated"></span>
   <br>
   <span class="footer-credit">Developed by SFC Ho Tony &amp; SFC Napit Rabin &mdash; 411th CSB</span>
 </footer>
+
+<div id="kbdModal" class="kbd-modal" hidden role="dialog" aria-modal="true" aria-labelledby="kbdModalTitle">
+  <div class="kbd-modal-overlay" id="kbdOverlay"></div>
+  <div class="kbd-modal-box">
+    <div class="kbd-modal-hdr">
+      <span id="kbdModalTitle">Keyboard Shortcuts</span>
+      <button class="kbd-modal-close" id="kbdClose" aria-label="Close shortcuts panel">&times;</button>
+    </div>
+    <table class="kbd-table" role="presentation">
+      <tr><td><kbd>/</kbd></td><td>Focus search bar</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Blur search / close panel</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Expand / collapse focused card</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Show this shortcuts panel</td></tr>
+    </table>
+    <p class="kbd-hint-small">Press <kbd>Esc</kbd> or click outside to close</p>
+  </div>
+</div>
 
 <script nonce="rfo2026">
 'use strict';
@@ -711,6 +768,12 @@ function renderEntry(entry) {
   legContent.className = 'pane-content';
   rows.forEach(row => legContent.appendChild(buildLegacyBlock(row)));
   legacyPane.appendChild(legContent);
+  if (entry.sources && entry.sources[0]) {
+    const legSrc = document.createElement('div');
+    legSrc.className = 'pane-source';
+    legSrc.textContent = '📄 ' + entry.sources[0];
+    legacyPane.appendChild(legSrc);
+  }
 
   // RFO pane
   const rfoPane = document.createElement('div');
@@ -725,10 +788,21 @@ function renderEntry(entry) {
   rfoContent.className = 'pane-content';
   rows.forEach(row => rfoContent.appendChild(buildRfoBlock(row)));
   rfoPane.appendChild(rfoContent);
+  if (entry.sources && entry.sources[1]) {
+    const rfoSrc = document.createElement('div');
+    rfoSrc.className = 'pane-source';
+    rfoSrc.textContent = '📄 ' + entry.sources[1];
+    rfoPane.appendChild(rfoSrc);
+  }
 
   grid.appendChild(legacyPane);
   grid.appendChild(rfoPane);
   wrap.appendChild(grid);
+
+  // Linkify cross-references in main text (not inside diff-detail boxes)
+  linkifyRefs(legContent);
+  linkifyRefs(rfoContent);
+
   return wrap;
 }
 
@@ -769,7 +843,15 @@ function showResults(entries) {
   container.innerHTML = '';
 
   if (!entries.length) {
-    container.innerHTML = '<div class="empty"><div class="empty-ico">&#128269;</div><p>No matching entries. Try different keywords.</p></div>';
+    let msg = 'No matching entries. Try different keywords.';
+    if (activeRegType && activeGroup) {
+      msg = 'No ' + activeRegType.toUpperCase() + ' entries in "' + activeGroup + '". Try clearing a filter.';
+    } else if (activeRegType) {
+      msg = 'No ' + activeRegType.toUpperCase() + ' entries match your search. Try different keywords.';
+    } else if (activeGroup) {
+      msg = 'No entries in that part match your search. Try fewer keywords.';
+    }
+    container.innerHTML = '<div class="empty"><div class="empty-ico">&#128269;</div><p>' + sanitize(msg) + '</p></div>';
     status.textContent = 'No results';
     return;
   }
@@ -839,6 +921,13 @@ function showResults(entries) {
     card.appendChild(body);
     container.appendChild(card);
   });
+
+  // Highlight matched search terms in visible card headers
+  const rawQ = document.getElementById('searchInput').value.trim();
+  const hlTerms = rawQ ? rawQ.split(/\s+/) : [];
+  if (hlTerms.length) {
+    container.querySelectorAll('.card-title,.card-summary,.card-group-badge').forEach(el => highlightText(el, hlTerms));
+  }
 }
 
 function showEmptyState() {
@@ -847,6 +936,141 @@ function showEmptyState() {
   const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
   container.innerHTML = '<div class="empty-prompt"><div class="empty-ico">&#128270;</div><p>Search for a topic or select a part number above.</p><p class="empty-sub">e.g. "competition", "6.001", "206.001", "sole source"</p></div>';
   status.textContent = pool.length + ' entries available';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  SEARCH HIGHLIGHTING
+// ═══════════════════════════════════════════════════════════════════
+function highlightText(el, terms) {
+  if (!terms.length) return;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  let node;
+  while ((node = walker.nextNode())) nodes.push(node);
+  for (const textNode of nodes) {
+    const text = textNode.nodeValue;
+    let hasMatch = false;
+    for (const t of terms) {
+      if (text.toLowerCase().includes(t.toLowerCase())) { hasMatch = true; break; }
+    }
+    if (!hasMatch) continue;
+    const frag = document.createDocumentFragment();
+    let remaining = text;
+    while (remaining) {
+      let best = {idx: remaining.length, term: ''};
+      for (const t of terms) {
+        const i = remaining.toLowerCase().indexOf(t.toLowerCase());
+        if (i !== -1 && i < best.idx) best = {idx: i, term: t};
+      }
+      if (!best.term) { frag.appendChild(document.createTextNode(remaining)); break; }
+      if (best.idx > 0) frag.appendChild(document.createTextNode(remaining.slice(0, best.idx)));
+      const mark = document.createElement('mark');
+      mark.className = 'search-hl';
+      mark.textContent = remaining.slice(best.idx, best.idx + best.term.length);
+      frag.appendChild(mark);
+      remaining = remaining.slice(best.idx + best.term.length);
+    }
+    textNode.parentNode.replaceChild(frag, textNode);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  LOADING SKELETON
+// ═══════════════════════════════════════════════════════════════════
+function showSkeleton() {
+  const container = document.getElementById('results');
+  container.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const card = document.createElement('div');
+    card.className = 'r-card skeleton-card';
+    const hdr = document.createElement('div');
+    hdr.className = 'card-hdr';
+    const blk = document.createElement('div');
+    blk.className = 'card-title-blk';
+    ['sk-line sk-badge', 'sk-line sk-title', 'sk-line sk-summary'].forEach(cls => {
+      const d = document.createElement('div');
+      d.className = cls;
+      blk.appendChild(d);
+    });
+    hdr.appendChild(blk);
+    card.appendChild(hdr);
+    container.appendChild(card);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  CROSS-REFERENCE LINKS
+// ═══════════════════════════════════════════════════════════════════
+function triggerSearch(query) {
+  const input = document.getElementById('searchInput');
+  input.value = query;
+  activeGroup = null;
+  activeSubpart = null;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  const allChip = document.querySelector('#chips .chip');
+  if (allChip) allChip.classList.add('active');
+  document.getElementById('subpartChips').hidden = true;
+  const sel = document.getElementById('tocSelect');
+  if (sel) sel.value = '';
+  runSearch();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  input.focus();
+}
+
+function linkifyRefs(el) {
+  const REF_RE = /\b(\d{1,2}\.\d{1,4}(?:-\d+)?(?:\([a-z]\))?)\b/g;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      let p = node.parentElement;
+      while (p && p !== el) {
+        if (p.classList && (p.classList.contains('diff-detail') || p.classList.contains('ref-link'))) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        p = p.parentElement;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  let node;
+  while ((node = walker.nextNode())) nodes.push(node);
+  for (const textNode of nodes) {
+    const text = textNode.nodeValue;
+    REF_RE.lastIndex = 0;
+    if (!REF_RE.test(text)) continue;
+    REF_RE.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0, m;
+    while ((m = REF_RE.exec(text)) !== null) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const btn = document.createElement('button');
+      btn.className = 'ref-link';
+      btn.textContent = m[0];
+      btn.title = 'Jump to ' + m[1];
+      const q = m[1];
+      btn.addEventListener('click', e => { e.stopPropagation(); triggerSearch(q); });
+      frag.appendChild(btn);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    textNode.parentNode.replaceChild(frag, textNode);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  KEYBOARD SHORTCUTS PANEL
+// ═══════════════════════════════════════════════════════════════════
+function initKbdShortcuts() {
+  const modal = document.getElementById('kbdModal');
+  if (!modal) return;
+  const overlay = document.getElementById('kbdOverlay');
+  const closeBtn = document.getElementById('kbdClose');
+  function openModal() { modal.hidden = false; closeBtn.focus(); }
+  function closeModal() { modal.hidden = true; }
+  overlay.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  window._openKbdModal = openModal;
+  window._closeKbdModal = closeModal;
 }
 
 function runSearch() {
@@ -1121,16 +1345,27 @@ function initTypewriter() {
 (async function init() {
   initDarkMode();
   initTypewriter();
+  initKbdShortcuts();
 
-  // "/" shortcut (wire early so it works during load)
+  // Keyboard shortcuts (/ to search, ? for shortcuts panel, Esc to close)
   document.addEventListener('keydown', e => {
-    if (e.key === '/' && document.activeElement !== document.getElementById('searchInput')) {
+    const inp = document.getElementById('searchInput');
+    const modal = document.getElementById('kbdModal');
+    const isTyping = document.activeElement === inp || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'SELECT';
+    if (e.key === '/' && !isTyping) {
       e.preventDefault();
-      document.getElementById('searchInput').focus();
+      inp.focus();
+    }
+    if (e.key === '?' && !isTyping && modal && modal.hidden) {
+      e.preventDefault();
+      if (window._openKbdModal) window._openKbdModal();
     }
     if (e.key === 'Escape') {
-      const inp = document.getElementById('searchInput');
-      if (document.activeElement === inp) { inp.blur(); }
+      if (modal && !modal.hidden) {
+        if (window._closeKbdModal) window._closeKbdModal();
+      } else if (document.activeElement === inp) {
+        inp.blur();
+      }
     }
   });
 
@@ -1152,16 +1387,25 @@ function initTypewriter() {
     });
   });
 
-  // Show loading state
-  document.getElementById('results').innerHTML =
-    '<div class="empty-prompt"><div class="empty-ico">&#9201;</div><p>Loading FORGE data&hellip;</p></div>';
+  // Show loading skeleton
+  showSkeleton();
   document.getElementById('rStatus').textContent = 'Loading…';
 
   // Fetch knowledge base
   try {
     const res = await fetch('./kb.json');
     if (!res.ok) throw new Error('Server returned ' + res.status);
-    KB = await res.json();
+    const data = await res.json();
+    // Support both legacy array format and new {meta, entries} format
+    if (Array.isArray(data)) {
+      KB = data;
+    } else {
+      KB = data.entries || [];
+      if (data.meta && data.meta.lastUpdated) {
+        const updEl = document.getElementById('footerUpdated');
+        if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
+      }
+    }
   } catch (err) {
     document.getElementById('results').innerHTML =
       '<div class="empty-prompt"><div class="empty-ico">&#9888;</div>' +
@@ -1178,6 +1422,11 @@ function initTypewriter() {
   buildChips();
   buildTocSelect();
   showEmptyState();
+
+  // Register service worker for offline caching
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
 })();
 </script>
 </body>
