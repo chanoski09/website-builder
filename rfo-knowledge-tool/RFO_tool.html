@@ -67,11 +67,18 @@ html{scroll-behavior:smooth}
 body{font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.6;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
 
 /* HEADER */
-header{background:var(--primary);border-bottom:3px solid var(--accent);color:#fff;padding:0 1.5rem;height:var(--hdr-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 2px 16px rgba(0,0,0,.35);position:sticky;top:0;z-index:200}
+header{background:linear-gradient(120deg,#001a3a 0%,#002147 45%,#0d3a6e 100%);border-bottom:3px solid var(--accent);color:#fff;padding:0 1.5rem;height:var(--hdr-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 2px 16px rgba(0,0,0,.35);position:sticky;top:0;z-index:200}
+[data-theme="dark"] header{background:linear-gradient(120deg,#0d1117 0%,#101a2c 55%,#15233c 100%)}
 .hdr-brand{display:flex;align-items:center;gap:.85rem;flex:1;min-width:0}
-.hdr-emblem{width:38px;height:38px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
-.hdr-title h1{font-size:1.1rem;font-weight:700;letter-spacing:-.015em;line-height:1.2}
-.hdr-title p{font-size:.72rem;opacity:.62;margin-top:.06rem;letter-spacing:.01em}
+.hdr-emblem{width:38px;height:38px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,215,80,.45);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;color:#ffd75e}
+.hdr-title{min-width:0}
+.hdr-title h1{font-size:1.1rem;font-weight:700;letter-spacing:-.015em;line-height:1.2;white-space:nowrap}
+.hdr-title p{font-size:.72rem;opacity:.62;margin-top:.06rem;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:720px){
+  header{padding:0 .9rem}
+  .hdr-title p,.hbadge-rfo,.kbd-hint{display:none}
+  .hdr-emblem{width:32px;height:32px;font-size:1rem}
+}
 .hdr-right{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
 .hbadge{font-size:.66rem;font-weight:700;letter-spacing:.07em;padding:.22rem .58rem;border-radius:4px;text-transform:uppercase;white-space:nowrap}
 .hbadge-rfo{background:var(--accent);color:#fff}
@@ -113,6 +120,8 @@ main{padding:1.2rem 1.4rem;min-width:0}
 [data-theme="dark"] .chip.active{background:var(--secondary);border-color:var(--secondary);color:#0d1117}
 .chip-cnt{background:rgba(255,255,255,.22);border-radius:999px;padding:0 .3rem;font-size:.64rem;font-weight:700;letter-spacing:.01em}
 .chip:not(.active) .chip-cnt{background:var(--border);color:var(--muted)}
+.chip.chip-hidden{display:none}
+.chip-more{border-style:dashed;color:var(--blue,var(--secondary));font-weight:600}
 /* Segmented view toggle */
 .view-toggle{display:flex;background:var(--bg-2,var(--bg));border:1px solid var(--border);border-radius:8px;padding:3px;gap:2px;flex-shrink:0}
 .vbtn{padding:.27rem .68rem;border:none;border-radius:5px;background:transparent;color:var(--muted);font-size:.75rem;font-weight:500;cursor:pointer;transition:all var(--t);white-space:nowrap;font-family:inherit}
@@ -126,7 +135,7 @@ main{padding:1.2rem 1.4rem;min-width:0}
 /* RESULT CARD */
 .r-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.85rem;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow var(--t),border-color var(--t),transform var(--t)}
 .r-card:hover{box-shadow:var(--shadow-md)}
-.r-card.expanded{border-color:var(--border-2,var(--border));box-shadow:var(--shadow-md)}
+.r-card.expanded{border-color:var(--border-2,var(--border));box-shadow:inset 3px 0 0 var(--secondary),var(--shadow-md)}
 .card-hdr{padding:.95rem 1.15rem;cursor:pointer;display:flex;align-items:flex-start;gap:.7rem;user-select:none;transition:background var(--t)}
 .card-hdr:hover{background:var(--bg-2,var(--bg))}
 .r-card.expanded .card-hdr{border-bottom:1px solid var(--border);background:var(--panel-2,var(--bg))}
@@ -282,6 +291,55 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 
 /* FOOTER DATE */
 .footer-updated{color:var(--faint,var(--muted))}
+
+/* EMPTY-STATE LAUNCHPAD */
+.empty-prompt .qs-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint,var(--muted));margin:1.6rem 0 .55rem}
+.qs-chips{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;max-width:520px;margin:0 auto}
+.qs-chip{padding:.34rem .8rem;border-radius:999px;border:1.5px solid var(--border);background:var(--panel);color:var(--text-2,var(--text));font-size:.8rem;font-weight:500;cursor:pointer;transition:all var(--t);font-family:inherit}
+.qs-chip:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light);transform:translateY(-1px)}
+[data-theme="dark"] .qs-chip:hover{background:rgba(88,166,255,.1)}
+.stat-tiles{display:flex;gap:.65rem;justify-content:center;margin:1.5rem auto 0;max-width:460px}
+.stat-tile{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.75rem .5rem;cursor:pointer;transition:all var(--t);font-family:inherit;text-align:center}
+.stat-tile:hover{border-color:var(--blue,var(--secondary));box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.stat-num{font-size:1.35rem;font-weight:800;color:var(--primary);line-height:1.15}
+[data-theme="dark"] .stat-num{color:var(--secondary)}
+.stat-lbl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:.15rem}
+
+/* DIFF COLOR LEGEND */
+.legend-row{display:flex;gap:.9rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:1.4rem;font-size:.74rem;color:var(--muted)}
+.legend-item{display:inline-flex;align-items:center;gap:.32rem}
+.legend-swatch{display:inline-block;padding:.04rem .34rem;border-radius:3px;font-size:.7rem;font-weight:600}
+.legend-swatch.sw-add{background:var(--add-bg);color:var(--add-text)}
+.legend-swatch.sw-rem{background:var(--rem-bg);color:var(--rem-text);text-decoration:line-through}
+.diff-legend{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;font-size:.72rem;color:var(--muted);margin-bottom:.65rem}
+.diff-legend[hidden]{display:none}
+
+/* SIDEBAR INFO BLOCKS */
+.sb-block{margin-top:1.3rem}
+.sb-block .legend-row{justify-content:flex-start;margin-top:.15rem;gap:.45rem;flex-direction:column;align-items:flex-start}
+.sb-tips{list-style:none;padding:0;margin-top:.15rem}
+.sb-tips li{font-size:.73rem;color:var(--muted);padding:.28rem 0;line-height:1.45;display:flex;gap:.4rem;align-items:baseline}
+.sb-tips kbd{font-size:.68rem;padding:.06rem .32rem;flex-shrink:0}
+
+/* COPY CITATION BUTTON */
+.copy-btn{flex-shrink:0;margin-top:.25rem;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--panel);color:var(--muted);cursor:pointer;font-size:.78rem;display:flex;align-items:center;justify-content:center;transition:all var(--t);opacity:0}
+.r-card:hover .copy-btn,.copy-btn:focus-visible,.copy-btn.copied{opacity:1}
+.copy-btn:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light)}
+.copy-btn.copied{border-color:var(--add-text);color:var(--add-text);background:var(--add-bg)}
+@media(hover:none){.copy-btn{opacity:1}}
+
+/* BACK TO TOP */
+.top-btn{position:fixed;right:1.3rem;bottom:1.3rem;z-index:300;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:var(--primary);color:#fff;font-size:1.05rem;cursor:pointer;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease}
+.top-btn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.top-btn:hover{background:var(--secondary)}
+[data-theme="dark"] .top-btn{background:var(--secondary);color:#0d1117}
+
+/* OFFSCREEN TEXTAREA (clipboard fallback) */
+.offscreen-ta{position:fixed;left:-9999px;top:0;opacity:0}
+
+/* KEYBOARD FOCUS RINGS */
+.chip:focus-visible,.subpart-chip:focus-visible,.reg-btn:focus-visible,.vbtn:focus-visible,.qs-chip:focus-visible,.stat-tile:focus-visible,.card-hdr:focus-visible,.dark-btn:focus-visible,.top-btn:focus-visible{outline:2px solid var(--blue,var(--secondary));outline-offset:2px}
+@media print{.top-btn,.copy-btn{display:none!important}}
 </style>
 </head>
 <body>
@@ -307,13 +365,29 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
     <select id="tocSelect" class="toc-select" aria-label="Jump to FAR part">
       <option value="">— All sections —</option>
     </select>
+    <div class="sb-block">
+      <div class="sb-title">Reading the diff</div>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>
+        <span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>
+      </div>
+    </div>
+    <div class="sb-block">
+      <div class="sb-title">Tips</div>
+      <ul class="sb-tips">
+        <li><kbd>/</kbd> jump to search</li>
+        <li><kbd>?</kbd> all shortcuts</li>
+        <li><span>Click a part chip, then a section chip to drill down</span></li>
+        <li><span>Hover a card &amp; click &#9112; to copy its citation</span></li>
+      </ul>
+    </div>
   </aside>
 
   <main>
     <div class="search-section">
       <div class="search-bar">
         <span class="s-icon">&#128269;</span>
-        <input type="search" id="searchInput" autocomplete="off" spellcheck="false"
+        <input type="search" id="searchInput" autocomplete="off" spellcheck="false" placeholder=" "
                aria-label="Search FAR sections and topics">
         <span class="kbd-hint" aria-hidden="true">press / to search</span>
         <button class="clear-btn" id="clearBtn" aria-label="Clear search" tabindex="-1">&times;</button>
@@ -335,9 +409,15 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
       <div class="subpart-chips" id="subpartChips" role="list" aria-label="Filter by FAR section" hidden></div>
     </div>
     <div class="r-status" id="rStatus" aria-live="polite"></div>
+    <div class="diff-legend" id="diffLegend" hidden>
+      <span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>
+      <span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>
+    </div>
     <div id="results" role="region" aria-label="FAR comparison results"></div>
   </main>
 </div>
+
+<button class="top-btn" id="topBtn" aria-label="Back to top" aria-hidden="true" tabindex="-1">&#8593;</button>
 
 <footer>
   <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
@@ -794,6 +874,7 @@ function renderEntry(entry) {
 let activeGroup = null;
 let activeSubpart = null;
 let activeRegType = null;
+let chipsExpanded = false;
 let openKbdModal, closeKbdModal;
 
 function getGroupRegType(group) {
@@ -843,6 +924,7 @@ function showResults(entries) {
   const container = document.getElementById('results');
   const status    = document.getElementById('rStatus');
   container.innerHTML = '';
+  document.getElementById('diffLegend').hidden = !entries.length;
 
   if (!entries.length) {
     let msg = 'No matching entries. Try different keywords.';
@@ -901,7 +983,18 @@ function showResults(entries) {
     chevron.setAttribute('aria-hidden', 'true');
     chevron.textContent = '▼';
 
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.title = 'Copy citation';
+    copyBtn.setAttribute('aria-label', 'Copy citation: ' + entry.title);
+    copyBtn.textContent = '⧉';
+    copyBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      copyCitation(entry, copyBtn);
+    });
+
     hdr.appendChild(titleBlk);
+    hdr.appendChild(copyBtn);
     hdr.appendChild(chevron);
 
     // Body
@@ -919,7 +1012,7 @@ function showResults(entries) {
       hdr.setAttribute('aria-expanded', card.classList.contains('expanded'));
     }
     hdr.addEventListener('click', toggle);
-    hdr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    hdr.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target === hdr) { e.preventDefault(); toggle(); } });
 
     card.appendChild(hdr);
     card.appendChild(body);
@@ -934,12 +1027,94 @@ function showResults(entries) {
   }
 }
 
+const QUICK_SEARCHES = ['sole source', 'simplified acquisition', '15.201', 'commercial products', 'set-aside', 'market research'];
+
 function showEmptyState() {
   const container = document.getElementById('results');
   const status = document.getElementById('rStatus');
+  document.getElementById('diffLegend').hidden = true;
   const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
-  container.innerHTML = '<div class="empty-prompt"><div class="empty-ico">&#128270;</div><p>Search for a topic or select a part number above.</p><p class="empty-sub">e.g. "competition", "6.001", "206.001", "sole source"</p></div>';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'empty-prompt';
+  wrap.innerHTML =
+    '<div class="empty-ico">&#9878;&#65039;</div>' +
+    '<p>Compare any FAR section before and after the RFO overhaul.</p>' +
+    '<p class="empty-sub">Search a topic or section number, or pick a part chip above.</p>' +
+    '<div class="qs-label">Try one of these</div>';
+
+  const qs = document.createElement('div');
+  qs.className = 'qs-chips';
+  QUICK_SEARCHES.forEach(q => {
+    const b = document.createElement('button');
+    b.className = 'qs-chip';
+    b.textContent = q;
+    b.addEventListener('click', () => {
+      document.getElementById('searchInput').value = q;
+      runSearch();
+    });
+    qs.appendChild(b);
+  });
+  wrap.appendChild(qs);
+
+  if (KB.length) {
+    const tiles = document.createElement('div');
+    tiles.className = 'stat-tiles';
+    [['far', 'FAR / RFO'], ['dfars', 'DFARS'], ['afars', 'AFARS']].forEach(([reg, label]) => {
+      const n = KB.filter(e => getGroupRegType(e.group) === reg).length;
+      const tile = document.createElement('button');
+      tile.className = 'stat-tile';
+      tile.title = 'Browse ' + label + ' entries';
+      const num = document.createElement('div');
+      num.className = 'stat-num';
+      num.textContent = n;
+      const lbl = document.createElement('div');
+      lbl.className = 'stat-lbl';
+      lbl.textContent = label;
+      tile.appendChild(num);
+      tile.appendChild(lbl);
+      tile.addEventListener('click', () => {
+        document.querySelector('.reg-btn[data-reg="' + reg + '"]')?.click();
+      });
+      tiles.appendChild(tile);
+    });
+    wrap.appendChild(tiles);
+  }
+
+  const legend = document.createElement('div');
+  legend.className = 'legend-row';
+  legend.innerHTML =
+    '<span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>' +
+    '<span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>';
+  wrap.appendChild(legend);
+
+  container.innerHTML = '';
+  container.appendChild(wrap);
   status.textContent = pool.length + ' entries available';
+}
+
+function copyCitation(entry, btn) {
+  const text = entry.title + ' — ' + entry.group;
+  const done = () => {
+    btn.classList.add('copied');
+    btn.textContent = '✓';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '⧉'; }, 1400);
+  };
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.className = 'offscreen-ta';
+    document.body.appendChild(ta);
+    ta.select();
+    try { if (document.execCommand('copy')) done(); } catch (e) { /* clipboard unavailable */ }
+    ta.remove();
+  };
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
 }
 
 // Reset group/subpart filter UI to the "All" baseline. Pass {clearRegType: true}
@@ -1182,10 +1357,16 @@ function buildChips() {
   });
   container.appendChild(all);
 
-  groups.forEach(group => {
+  // Collapse long chip lists behind a "+N more" toggle (mobile-friendly)
+  const CHIP_LIMIT = 14;
+  const activeIdx = groups.indexOf(activeGroup);
+  const collapsed = !chipsExpanded && groups.length > CHIP_LIMIT && activeIdx < CHIP_LIMIT;
+
+  groups.forEach((group, idx) => {
     const count = pool.filter(e => e.group === group).length;
     const btn = document.createElement('button');
-    btn.className = 'chip' + (activeGroup === group ? ' active' : '');
+    btn.className = 'chip' + (activeGroup === group ? ' active' : '')
+                  + (collapsed && idx >= CHIP_LIMIT ? ' chip-hidden' : '');
     btn.appendChild(document.createTextNode(chipLabel(group)));
     btn.appendChild(makeChipCount(count));
     btn.title = group;
@@ -1201,6 +1382,19 @@ function buildChips() {
     });
     container.appendChild(btn);
   });
+
+  if (groups.length > CHIP_LIMIT) {
+    const moreBtn = document.createElement('button');
+    moreBtn.className = 'chip chip-more';
+    moreBtn.textContent = collapsed ? '+' + (groups.length - CHIP_LIMIT) + ' more' : '− less';
+    moreBtn.setAttribute('aria-expanded', String(!collapsed));
+    moreBtn.addEventListener('click', () => {
+      chipsExpanded = collapsed;
+      buildChips();
+      if (activeGroup) buildSubpartChips(activeGroup);
+    });
+    container.appendChild(moreBtn);
+  }
 }
 
 function buildSubpartChips(group) {
@@ -1212,7 +1406,7 @@ function buildSubpartChips(group) {
   const partLabel = parsePartNum(group) || 'Part';
 
   const clearBtn = document.createElement('button');
-  clearBtn.className = 'subpart-chip active';
+  clearBtn.className = 'subpart-chip' + (activeSubpart ? '' : ' active');
   clearBtn.textContent = 'All ' + partLabel;
   clearBtn.addEventListener('click', () => {
     activeSubpart = null;
@@ -1225,7 +1419,7 @@ function buildSubpartChips(group) {
   entries.forEach(entry => {
     const secLabel = parseSectionNum(entry.title) || entry.title.substring(0, 12);
     const btn = document.createElement('button');
-    btn.className = 'subpart-chip';
+    btn.className = 'subpart-chip' + (activeSubpart === entry.id ? ' active' : '');
     btn.textContent = secLabel;
     btn.title = entry.title;
     btn.addEventListener('click', () => {
@@ -1337,6 +1531,16 @@ function initTypewriter() {
   initTypewriter();
   initKbdShortcuts();
   document.getElementById('tocSelect')?.addEventListener('change', onTocSelectChange);
+
+  // Back-to-top button
+  const topBtn = document.getElementById('topBtn');
+  topBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  window.addEventListener('scroll', () => {
+    const show = window.scrollY > 500;
+    topBtn.classList.toggle('show', show);
+    topBtn.setAttribute('aria-hidden', String(!show));
+    topBtn.tabIndex = show ? 0 : -1;
+  }, {passive: true});
 
   // Keyboard shortcuts (/ to search, ? for shortcuts panel, Esc to close)
   document.addEventListener('keydown', e => {
