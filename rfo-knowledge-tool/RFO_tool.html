@@ -338,8 +338,45 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 .offscreen-ta{position:fixed;left:-9999px;top:0;opacity:0}
 
 /* KEYBOARD FOCUS RINGS */
-.chip:focus-visible,.subpart-chip:focus-visible,.reg-btn:focus-visible,.vbtn:focus-visible,.qs-chip:focus-visible,.stat-tile:focus-visible,.card-hdr:focus-visible,.dark-btn:focus-visible,.top-btn:focus-visible{outline:2px solid var(--blue,var(--secondary));outline-offset:2px}
+.chip:focus-visible,.subpart-chip:focus-visible,.reg-btn:focus-visible,.vbtn:focus-visible,.qs-chip:focus-visible,.stat-tile:focus-visible,.card-hdr:focus-visible,.dark-btn:focus-visible,.top-btn:focus-visible,.info-btn:focus-visible,.related-link:focus-visible,.footer-link:focus-visible{outline:2px solid var(--blue,var(--secondary));outline-offset:2px}
 @media print{.top-btn,.copy-btn{display:none!important}}
+
+/* RELOCATION BADGE + row highlight */
+.reloc-badge{display:inline-block;margin-left:.4rem;font-size:.62rem;font-weight:700;color:var(--blue,var(--secondary));background:var(--blue-light);border:1px solid var(--blue,var(--secondary));border-radius:999px;padding:.02rem .42rem;vertical-align:middle;white-space:nowrap}
+[data-theme="dark"] .reloc-badge{background:rgba(88,166,255,.12)}
+.subpara.relocated{border-color:var(--blue,var(--secondary));background:rgba(0,102,204,.045)}
+[data-theme="dark"] .subpara.relocated{background:rgba(88,166,255,.07)}
+
+/* PANE EDITION SUBTITLE */
+.pane-edition{font-weight:500;font-size:.62rem;text-transform:none;letter-spacing:0;opacity:.72;margin-left:.4rem}
+
+/* RELATED SUPPLEMENTS ROW */
+.related-row{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.15rem 0 .7rem;font-size:.75rem}
+.related-lbl{font-weight:700;color:var(--muted);text-transform:uppercase;font-size:.63rem;letter-spacing:.05em}
+.related-link{display:inline-flex;align-items:center;gap:.32rem;padding:.14rem .52rem;border-radius:6px;border:1px solid var(--border);background:var(--panel);color:var(--text-2,var(--text));cursor:pointer;font-family:inherit;font-size:.74rem;transition:all var(--t)}
+.related-link:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light)}
+.related-link .rl-reg{font-weight:700;font-size:.58rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
+
+/* HEADER INFO BUTTON */
+.info-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,215,80,.4);color:rgba(255,255,255,.9);border-radius:7px;height:34px;padding:0 .62rem;cursor:pointer;font-size:.75rem;font-weight:600;display:flex;align-items:center;gap:.3rem;transition:background var(--t);flex-shrink:0;white-space:nowrap}
+.info-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ABOUT / DATA-CURRENCY MODAL (reuses .kbd-modal shell) */
+.about-box{max-width:580px;max-height:82vh;overflow-y:auto;text-align:left}
+.about-box h4{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:1.15rem 0 .45rem}
+.about-box h4:first-of-type{margin-top:.2rem}
+.about-box p{font-size:.85rem;color:var(--text-2,var(--text));margin-bottom:.5rem;line-height:1.55}
+.ed-table{width:100%;border-collapse:collapse;font-size:.8rem;margin-bottom:.3rem}
+.ed-table td{border:1px solid var(--border);padding:.34rem .5rem;vertical-align:top}
+.ed-table td:first-child{font-weight:600;white-space:nowrap;width:32%}
+.ed-table tr:nth-child(2n) td{background:var(--bg-2,var(--bg))}
+.about-note{font-size:.78rem;color:var(--muted);background:var(--bg-2,var(--bg));border:1px dashed var(--border);border-radius:6px;padding:.55rem .65rem;line-height:1.5;margin-top:.3rem}
+
+/* FOOTER LINK BUTTON */
+.footer-link{background:none;border:none;color:var(--secondary);cursor:pointer;font:inherit;font-size:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;padding:0}
+.footer-link:hover{color:var(--primary)}
+[data-theme="dark"] .footer-link:hover{color:var(--text)}
+@media print{.info-btn,.footer-link{display:none!important}}
 </style>
 </head>
 <body>
@@ -355,6 +392,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
   <div class="hdr-right">
     <span class="hbadge hbadge-rfo">RFO &bull; Apr 2025</span>
     <span class="hbadge hbadge-count" id="entryCount"></span>
+    <button class="info-btn" id="aboutBtn" aria-label="Data currency and editions">&#8505; Data</button>
     <button class="dark-btn" id="darkBtn" aria-label="Toggle dark mode">&#9790;</button>
   </div>
 </header>
@@ -423,6 +461,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
   <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
   Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (Apr. 2025) &bull;
   <em>For training — verify all citations against official sources before operational use.</em>
+  &bull; <button class="footer-link" id="aboutLink" type="button">Data currency &amp; editions</button>
   <span id="footerUpdated" class="footer-updated"></span>
   <br>
   <span class="footer-credit">Developed by SFC Ho Tony &amp; SFC Napit Rabin &mdash; 411th CSB</span>
@@ -442,6 +481,17 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
       <tr><td><kbd>?</kbd></td><td>Show this shortcuts panel</td></tr>
     </table>
     <p class="kbd-hint-small">Press <kbd>Esc</kbd> or click outside to close</p>
+  </div>
+</div>
+
+<div id="aboutModal" class="kbd-modal" hidden role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
+  <div class="kbd-modal-overlay" id="aboutOverlay"></div>
+  <div class="kbd-modal-box about-box">
+    <div class="kbd-modal-hdr">
+      <span id="aboutModalTitle">Data Currency &amp; Editions</span>
+      <button class="kbd-modal-close" id="aboutClose" aria-label="Close data panel">&times;</button>
+    </div>
+    <div id="aboutBody"></div>
   </div>
 </div>
 
@@ -688,7 +738,41 @@ function alignByLabel(legacyParas, rfoParas) {
       rows.push({kind:'rfo-only', legacy: null, rfo: rp});
     }
   }
-  return rows;
+  return relocateUnmatched(rows);
+}
+
+// Second pass: pair leftover legacy-only + rfo-only paragraphs by CONTENT
+// similarity (not label). A strong match means the text was relocated /
+// renumbered rather than deleted — so we surface the new paragraph number
+// instead of an alarming "no corresponding text" placeholder.
+function relocateUnmatched(rows) {
+  const legIdx = [], rfoIdx = [];
+  rows.forEach((r, i) => {
+    if (r.kind === 'legacy-only') legIdx.push(i);
+    else if (r.kind === 'rfo-only') rfoIdx.push(i);
+  });
+  if (!legIdx.length || !rfoIdx.length) return rows;
+  const rfoSets = rfoIdx.map(i => wordSet(stripMarkers(rows[i].rfo.text)));
+  const usedRfo = new Set();
+  for (const li of legIdx) {
+    // Only flag a true paragraph move: both sides must carry a label
+    // (e.g. (a)→(c)). Unlabeled preamble shifts are structural noise, not
+    // the "renumbered paragraph" case the relocation badge is meant for.
+    if (!rows[li].legacy.label) continue;
+    const lset = wordSet(stripMarkers(rows[li].legacy.text));
+    let bestK = -1, best = 0.34;  // conservative — avoid false relocations
+    for (let k = 0; k < rfoIdx.length; k++) {
+      if (usedRfo.has(k) || !rows[rfoIdx[k]].rfo.label) continue;
+      const s = jaccard(lset, rfoSets[k]);
+      if (s > best) { best = s; bestK = k; }
+    }
+    if (bestK >= 0) {
+      usedRfo.add(bestK);
+      rows[li] = {kind: 'relocated', legacy: rows[li].legacy, rfo: rows[rfoIdx[bestK]].rfo};
+      rows[rfoIdx[bestK]] = null;
+    }
+  }
+  return rows.filter(Boolean);
 }
 
 
@@ -729,21 +813,59 @@ function buildPaneSource(srcText) {
   return div;
 }
 
+// Small edition/date subtitle shown in a pane header so users always know
+// which version is being compared (addresses version-transparency feedback).
+function makePaneEdition(editionText) {
+  const span = document.createElement('span');
+  span.className = 'pane-edition';
+  span.textContent = editionText ? '· ' + editionText : '';
+  return span;
+}
+
+// Jump directly to a specific entry: surface it via search, then expand it.
+function navigateToEntry(entry) {
+  const input = document.getElementById('searchInput');
+  input.value = parseSectionNum(entry.title) || entry.title;
+  resetFilters();
+  runSearch();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  requestAnimationFrame(() => {
+    const card = document.getElementById('result-' + entry.id);
+    if (!card) return;
+    const hdr = card.querySelector('.card-hdr');
+    if (hdr && !card.classList.contains('expanded')) hdr.click();
+    card.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+}
+
 // Compute the diff once for a matched row and stash it on the row.
 function ensureDiffOps(row) {
-  if (row.ops || row.kind !== 'matched') return;
+  if (row.ops || (row.kind !== 'matched' && row.kind !== 'relocated')) return;
   const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
   const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
   row.ops = diffTokens(legacyTokens, rfoTokens);
 }
 
 // side === 'legacy' renders legacy pane; side === 'rfo' renders RFO pane.
-function buildPaneBlock(row, side) {
+// regType ('far'|'dfars'|'afars') drives reg-aware placeholder wording.
+function buildPaneBlock(row, side, regType) {
   const isLegacy = side === 'legacy';
-  if (row.kind === 'matched') {
+  const L = REG_LABELS[regType] || REG_LABELS.far;
+
+  if (row.kind === 'matched' || row.kind === 'relocated') {
     ensureDiffOps(row);
     const own = isLegacy ? row.legacy : row.rfo;
-    const sp = makeSubpara(own.label, document.createTextNode(own.text.trim()), '');
+    const sp = makeSubpara(own.label, document.createTextNode(own.text.trim()),
+                           row.kind === 'relocated' ? 'relocated' : '');
+    if (row.kind === 'relocated') {
+      const other = isLegacy ? row.rfo : row.legacy;
+      const badge = document.createElement('span');
+      badge.className = 'reloc-badge';
+      badge.textContent = isLegacy
+        ? '→ now ' + (other.label || 'unlabeled') + ' in ' + L.revisedShort
+        : '← was ' + (other.label || 'unlabeled') + ' in ' + L.legacyShort;
+      sp.appendChild(badge);
+    }
     const shouldShow = isLegacy
       ? row.ops.some(o => o.type === 'rem')
       : row.ops.some(o => o.type === 'add' || o.type === 'rem');
@@ -758,8 +880,11 @@ function buildPaneBlock(row, side) {
     return makeSubpara(own.label, renderPlain(own.text.trim(), mode), cls);
   }
   // The opposite side has the only entry — render a placeholder note.
+  // Reg-aware and non-alarming: unmatched ≠ deleted (may be renumbered).
   const other = isLegacy ? row.rfo : row.legacy;
-  const noteText = isLegacy ? '(removed in RFO)' : '(no corresponding text in RFO)';
+  const noteText = isLegacy
+    ? '(new in ' + L.revisedShort + ' — no ' + L.legacyShort + ' counterpart)'
+    : '(no direct counterpart in ' + L.revisedShort + ' — may be renumbered or consolidated)';
   const otherCls = isLegacy ? 'unmatched-rfo' : 'unmatched-legacy';
   const frag = document.createDocumentFragment();
   frag.appendChild(Object.assign(document.createElement('em'), {className: 'nochange', textContent: noteText}));
@@ -777,6 +902,32 @@ function renderEntry(entry) {
 
   const wrap = document.createElement('div');
   wrap.className = 'diff-wrap diff-' + view;
+  const regType = getGroupRegType(entry.group);
+
+  // Related supplements (cross-supplement navigation: FAR ↔ DFARS ↔ AFARS)
+  const siblings = siblingEntries(entry);
+  if (siblings.length) {
+    const rel = document.createElement('div');
+    rel.className = 'related-row';
+    const lbl = document.createElement('span');
+    lbl.className = 'related-lbl';
+    lbl.textContent = 'Related supplements:';
+    rel.appendChild(lbl);
+    siblings.forEach(sib => {
+      const btn = document.createElement('button');
+      btn.className = 'related-link';
+      btn.type = 'button';
+      const reg = document.createElement('span');
+      reg.className = 'rl-reg';
+      reg.textContent = sib.regType.toUpperCase();
+      btn.appendChild(reg);
+      btn.appendChild(document.createTextNode(parseSectionNum(sib.entry.title) || sib.entry.title));
+      btn.title = 'Jump to ' + sib.entry.title;
+      btn.addEventListener('click', e => { e.stopPropagation(); navigateToEntry(sib.entry); });
+      rel.appendChild(btn);
+    });
+    wrap.appendChild(rel);
+  }
 
   // Source row
   const srcRow = document.createElement('div');
@@ -834,12 +985,12 @@ function renderEntry(entry) {
   legacyPane.className = 'diff-pane legacy-pane';
   const legHdr = document.createElement('div');
   legHdr.className = 'pane-hdr';
-  const regType = getGroupRegType(entry.group);
   legHdr.innerHTML = REG_LABELS[regType].legacy;
+  legHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.legacy));
   legacyPane.appendChild(legHdr);
   const legContent = document.createElement('div');
   legContent.className = 'pane-content';
-  rows.forEach(row => legContent.appendChild(buildPaneBlock(row, 'legacy')));
+  rows.forEach(row => legContent.appendChild(buildPaneBlock(row, 'legacy', regType)));
   legacyPane.appendChild(legContent);
   if (entry.sources?.[0]) legacyPane.appendChild(buildPaneSource(entry.sources[0]));
 
@@ -849,10 +1000,11 @@ function renderEntry(entry) {
   const rfoHdr = document.createElement('div');
   rfoHdr.className = 'pane-hdr';
   rfoHdr.innerHTML = REG_LABELS[regType].revised;
+  rfoHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.revised));
   rfoPane.appendChild(rfoHdr);
   const rfoContent = document.createElement('div');
   rfoContent.className = 'pane-content';
-  rows.forEach(row => rfoContent.appendChild(buildPaneBlock(row, 'rfo')));
+  rows.forEach(row => rfoContent.appendChild(buildPaneBlock(row, 'rfo', regType)));
   rfoPane.appendChild(rfoContent);
   if (entry.sources?.[1]) rfoPane.appendChild(buildPaneSource(entry.sources[1]));
 
@@ -884,13 +1036,51 @@ function getGroupRegType(group) {
 }
 
 const REG_LABELS = {
-  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (Apr 2025)'},
-  dfars: {legacy: '&#128308; Legacy DFARS', revised: '&#128994; Revised DFARS'},
-  afars: {legacy: '&#128308; Legacy AFARS', revised: '&#128994; Revised AFARS'},
+  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (Apr 2025)', revisedShort: 'RFO',           legacyShort: 'legacy FAR'},
+  dfars: {legacy: '&#128308; Legacy DFARS', revised: '&#128994; Revised DFARS',  revisedShort: 'Revised DFARS', legacyShort: 'legacy DFARS'},
+  afars: {legacy: '&#128308; Legacy AFARS', revised: '&#128994; Revised AFARS',  revisedShort: 'Revised AFARS', legacyShort: 'legacy AFARS'},
 };
 
+// Fallback edition strings — overridden by kb.json meta.versions at load.
+let KB_VERSIONS = {
+  far:   {legacy: 'eCFR 48 CFR · pre-overhaul', revised: 'RFO · Apr 2025 issuance'},
+  dfars: {legacy: 'DFARS · FY2020 edition',     revised: 'DFARS · FY2020 edition'},
+  afars: {legacy: 'AFARS · rev. 11 Jul 2025',   revised: 'AFARS · rev. 11 Jul 2025'},
+};
+let KB_CURRENCY = '';
+let KB_MAINT = null;
+
 function parsePartNum(group)    { return group?.match(/^(?:DFARS |AFARS )?Part (\d+)/)?.[1] ?? null; }
-function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.\d+\w*)/)?.[1] ?? null; }
+function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.[0-9A-Za-z-]+)/)?.[1] ?? null; }
+
+// ── Cross-supplement sibling index ──────────────────────────────────
+// FAR part N ↔ DFARS part (200+N) ↔ AFARS part (5100+N), same section suffix.
+// e.g. FAR 6.001 ↔ DFARS 206.001 ↔ AFARS 5106.001.
+let KB_SECTION_INDEX = new Map();
+function buildCrossRefIndex() {
+  KB_SECTION_INDEX = new Map();
+  for (const e of KB) {
+    const sec = parseSectionNum(e.title);
+    if (sec) KB_SECTION_INDEX.set(getGroupRegType(e.group) + ':' + sec, e);
+  }
+}
+function siblingEntries(entry) {
+  const sec = parseSectionNum(entry.title);
+  if (!sec || sec.indexOf('.') < 0) return [];
+  const lead = parseInt(sec.slice(0, sec.indexOf('.')), 10);
+  const sub  = sec.slice(sec.indexOf('.') + 1);
+  const rt   = getGroupRegType(entry.group);
+  const farPart = rt === 'dfars' ? lead - 200 : rt === 'afars' ? lead - 5100 : lead;
+  if (!(farPart > 0)) return [];
+  const targets = [['far', farPart], ['dfars', farPart + 200], ['afars', farPart + 5100]];
+  const out = [];
+  for (const [trt, tlead] of targets) {
+    if (trt === rt) continue;
+    const hit = KB_SECTION_INDEX.get(trt + ':' + tlead + '.' + sub);
+    if (hit) out.push({regType: trt, entry: hit});
+  }
+  return out;
+}
 
 function buildSearchIndex() {
   for (const e of KB) {
@@ -1264,6 +1454,70 @@ function initKbdShortcuts() {
   closeBtn.addEventListener('click', closeKbdModal);
 }
 
+// ── Data-currency / editions panel ──────────────────────────────────
+let openAboutModal, closeAboutModal;
+function initAboutModal() {
+  const modal = document.getElementById('aboutModal');
+  if (!modal) return;
+  const overlay  = document.getElementById('aboutOverlay');
+  const closeBtn = document.getElementById('aboutClose');
+  buildAboutBody();
+  openAboutModal  = () => { modal.hidden = false; closeBtn.focus(); };
+  closeAboutModal = () => { modal.hidden = true; };
+  overlay.addEventListener('click', closeAboutModal);
+  closeBtn.addEventListener('click', closeAboutModal);
+  document.getElementById('aboutBtn')?.addEventListener('click', () => openAboutModal());
+  document.getElementById('aboutLink')?.addEventListener('click', () => openAboutModal());
+}
+
+// Builds the panel from meta (versions / currency / maintenance) using only
+// textContent + typed rows — no innerHTML with data, so nothing is injectable.
+function buildAboutBody() {
+  const body = document.getElementById('aboutBody');
+  if (!body) return;
+  body.textContent = '';
+
+  const REG_ROWS = [
+    ['far',   'FAR / RFO'],
+    ['dfars', 'DFARS'],
+    ['afars', 'AFARS'],
+  ];
+  const h = txt => { const e = document.createElement('h4'); e.textContent = txt; return e; };
+  const p = txt => { const e = document.createElement('p');  e.textContent = txt; return e; };
+
+  body.appendChild(h('Editions being compared'));
+  const table = document.createElement('table');
+  table.className = 'ed-table';
+  REG_ROWS.forEach(([rt, label]) => {
+    const v = KB_VERSIONS[rt] || {};
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td'); td1.textContent = label;
+    const td2 = document.createElement('td');
+    td2.textContent = 'Legacy: ' + (v.legacy || '—') + '  ·  Revised: ' + (v.revised || '—');
+    tr.appendChild(td1); tr.appendChild(td2);
+    table.appendChild(tr);
+  });
+  body.appendChild(table);
+
+  if (KB_CURRENCY) {
+    body.appendChild(h('Currency'));
+    const note = document.createElement('div');
+    note.className = 'about-note';
+    note.textContent = KB_CURRENCY;
+    body.appendChild(note);
+  }
+
+  if (KB_MAINT) {
+    body.appendChild(h('Update & maintenance'));
+    if (KB_MAINT.owner)   body.appendChild(p('Owner: ' + KB_MAINT.owner));
+    if (KB_MAINT.cadence) body.appendChild(p('Cadence: ' + KB_MAINT.cadence));
+    if (KB_MAINT.process) body.appendChild(p('Process: ' + KB_MAINT.process));
+  }
+
+  body.appendChild(h('Roadmap'));
+  body.appendChild(p('Full three-way side-by-side comparison (RFO ↔ DFARS ↔ AFARS, like the DAU tool) is planned. Today, use the "Related supplements" links inside each entry to jump between a FAR section and its DFARS/AFARS counterparts.'));
+}
+
 function runSearch() {
   const raw   = document.getElementById('searchInput').value.trim();
   const terms = raw ? raw.split(/\s+/) : [];
@@ -1557,7 +1811,10 @@ function initTypewriter() {
       e.preventDefault();
       openKbdModal && openKbdModal();
     } else if (e.key === 'Escape') {
-      if (modal && !modal.hidden) {
+      const aboutModal = document.getElementById('aboutModal');
+      if (aboutModal && !aboutModal.hidden) {
+        closeAboutModal && closeAboutModal();
+      } else if (modal && !modal.hidden) {
         closeKbdModal && closeKbdModal();
       } else if (ae === inp) {
         inp.blur();
@@ -1597,7 +1854,11 @@ function initTypewriter() {
       const updEl = document.getElementById('footerUpdated');
       if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
     }
+    if (data.meta?.versions)     KB_VERSIONS = data.meta.versions;
+    if (data.meta?.currencyNote) KB_CURRENCY = data.meta.currencyNote;
+    if (data.meta?.maintenance)  KB_MAINT    = data.meta.maintenance;
     buildSearchIndex();
+    buildCrossRefIndex();
   } catch (err) {
     document.getElementById('results').innerHTML =
       '<div class="empty-prompt"><div class="empty-ico">&#9888;</div>' +
@@ -1613,6 +1874,7 @@ function initTypewriter() {
 
   buildChips();
   buildTocSelect();
+  initAboutModal();
   showEmptyState();
 
   // Register service worker for offline caching

@@ -3,7 +3,27 @@
     "lastUpdated": "2026-05-21",
     "description": "FORGE Knowledge Base — FAR vs RFO comparison entries for 411th CSB",
     "version": "1.0",
-    "entryCount": 945
+    "entryCount": 945,
+    "versions": {
+      "far": {
+        "legacy": "eCFR 48 CFR · pre-overhaul baseline",
+        "revised": "RFO · Apr 2025 issuance"
+      },
+      "dfars": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · FY2020 edition"
+      },
+      "afars": {
+        "legacy": "AFARS · rev. 11 Jul 2025",
+        "revised": "AFARS · rev. 11 Jul 2025"
+      }
+    },
+    "currencyNote": "RFO text reflects the April 2025 overhaul issuance. Sections amended afterward (e.g., FAR Part 5 updates in Aug 2025 and Mar 2026) may not yet be reflected. DFARS and AFARS entries are representative samples drawn from the editions listed above. Always verify against acquisition.gov and the DoD/Army policy sites before operational use.",
+    "maintenance": {
+      "owner": "411th CSB — SFC Ho Tony & SFC Napit Rabin",
+      "cadence": "Reviewed monthly (an automated reminder issue opens on the 1st) and on major RFO/DFARS/AFARS releases.",
+      "process": "Edit kb.json, commit to the repo, and the site auto-redeploys. Each entry cites its source edition."
+    }
   },
   "entries": [
     {
