@@ -3,7 +3,7 @@
     "lastUpdated": "2026-05-21",
     "description": "FORGE Knowledge Base — FAR vs RFO comparison entries for 411th CSB",
     "version": "1.0",
-    "entryCount": 1120,
+    "entryCount": 1126,
     "versions": {
       "far": {
         "legacy": "eCFR 48 CFR · pre-overhaul baseline",
@@ -44465,6 +44465,245 @@
           "s": "FAR Overhaul (RFO)"
         }
       ]
+    },
+    {
+      "id": "far-52-212-4",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.212-4 — Contract Terms and Conditions—Commercial Products and Commercial Services",
+      "keywords": [
+        "52.212-4",
+        "commercial",
+        "terms",
+        "conditions",
+        "payment",
+        "acceptance",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Contract Terms and Conditions—Commercial Products and Commercial Services.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.212-4)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Standard terms and conditions for acquiring commercial products and services (inspection, acceptance, payment, disputes, changes, termination), prescribed at legacy 12.301(b)(3).",
+          "s": "eCFR (48 C.F.R. 52.212-4)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Substantially revised and expanded (~45% new text). Now prescribed at 12.205(b)(3), adds a Definitions paragraph incorporating FAR 52.202-1, and restructures several paragraphs. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
+    },
+    {
+      "id": "far-52-225-3",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.225-3 — Buy American—Free Trade Agreements—Israeli Trade Act",
+      "keywords": [
+        "52.225-3",
+        "buy american",
+        "free trade",
+        "israeli",
+        "supplies",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Buy American—Free Trade Agreements—Israeli Trade Act.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.225-3)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Buy American, Free Trade Agreement, and Israeli Trade Act evaluation and certification for supply contracts.",
+          "s": "eCFR (48 C.F.R. 52.225-3)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Minor revision — primarily cross-reference renumbering (prescription moved from 25.1101 to 25.601); substantive terms largely unchanged. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
+    },
+    {
+      "id": "far-52-225-11",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.225-11 — Buy American—Construction Materials Under Trade Agreements",
+      "keywords": [
+        "52.225-11",
+        "buy american",
+        "construction",
+        "materials",
+        "trade",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Buy American—Construction Materials Under Trade Agreements.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.225-11)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Buy American restrictions on construction materials, with Trade Agreements exceptions.",
+          "s": "eCFR (48 C.F.R. 52.225-11)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Moderate revision — cross-reference renumbering (25.1102 to 25.602) plus added/expanded provisions. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
+    },
+    {
+      "id": "far-52-230-6",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.230-6 — Administration of Cost Accounting Standards",
+      "keywords": [
+        "52.230-6",
+        "cost accounting",
+        "cas",
+        "disclosure",
+        "administration",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Administration of Cost Accounting Standards.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.230-6)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Procedures for administering Cost Accounting Standards (CAS) — disclosure statements, cost-impact proposals, and adjustments.",
+          "s": "eCFR (48 C.F.R. 52.230-6)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Heavily rewritten — nearly the entire clause is restructured; review the full official text carefully before use. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
+    },
+    {
+      "id": "far-52-232-12",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.232-12 — Advance Payments",
+      "keywords": [
+        "52.232-12",
+        "advance payments",
+        "financing",
+        "special account",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Advance Payments.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.232-12)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Terms governing advance payments — requirements, special account, interest, security, and repayment.",
+          "s": "eCFR (48 C.F.R. 52.232-12)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Revised under the RFO; the change is substantial and the automated comparison could not capture it reliably — consult the official text for specifics. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
+    },
+    {
+      "id": "far-52-232-16",
+      "group": "Part 52 — Solicitation Provisions and Contract Clauses",
+      "title": "FAR 52.232-16 — Progress Payments",
+      "keywords": [
+        "52.232-16",
+        "progress payments",
+        "financing",
+        "liquidation",
+        "clause",
+        "part 52"
+      ],
+      "summary": "Revised under the RFO overhaul — summary only; this clause is lengthy/table-based, so see the official text before contract use. Progress Payments.",
+      "deepLinks": [
+        {
+          "label": "Official text — acquisition.gov (FAR Overhaul Part 52)",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        }
+      ],
+      "sources": [
+        "eCFR (48 C.F.R. 52.232-16)",
+        "FAR Overhaul (RFO)"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "Progress-payment terms — computation, liquidation, title, and reporting.",
+          "s": "eCFR (48 C.F.R. 52.232-16)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Moderate revision — cross-references updated (e.g., FAR 31.205-10) plus minor edits; core mechanics largely retained. — For the exact, authoritative wording, use the official FAR Overhaul text (link in this card) before applying this clause to a contract.",
+          "s": "FAR Overhaul (RFO)"
+        }
+      ],
+      "summaryOnly": true
     }
   ]
 }

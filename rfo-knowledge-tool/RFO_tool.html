@@ -350,6 +350,14 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 /* PANE EDITION SUBTITLE */
 .pane-edition{font-weight:500;font-size:.62rem;text-transform:none;letter-spacing:0;opacity:.72;margin-left:.4rem}
 
+/* SUMMARY-ONLY CLAUSE NOTE */
+.summary-note{border:1px solid var(--border);border-left:3px solid var(--secondary);border-radius:8px;background:var(--panel-2,var(--bg));padding:.7rem .9rem;margin-top:.4rem}
+.summary-note-tag{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--secondary);margin-bottom:.5rem}
+[data-theme="dark"] .summary-note-tag{color:var(--primary)}
+.summary-note-chg{font-size:.9rem;line-height:1.6;color:var(--text);margin-bottom:.55rem}
+.summary-note-leg{font-size:.83rem;line-height:1.55;color:var(--muted)}
+.summary-note-leg strong{color:var(--text-2,var(--text))}
+
 /* PER-ENTRY DATES STRIP */
 .entry-dates{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.1rem 0 .6rem;font-size:.73rem;color:var(--muted)}
 .entry-dates .date-chip{display:inline-flex;align-items:baseline;gap:.25rem}
@@ -981,6 +989,34 @@ function renderEntry(entry) {
     srcRow.appendChild(a);
   });
   wrap.appendChild(srcRow);
+
+  // Summary-only entries (large/table-heavy clauses): show a clean change
+  // summary + pointer to the official text instead of a two-pane diff.
+  if (entry.summaryOnly) {
+    const box = document.createElement('div');
+    box.className = 'summary-note';
+    const tag = document.createElement('div');
+    tag.className = 'summary-note-tag';
+    tag.textContent = '📄 Summary of changes — refer to the official text before contract use';
+    box.appendChild(tag);
+    if (entry.rfo && entry.rfo[0]) {
+      const chg = document.createElement('p');
+      chg.className = 'summary-note-chg';
+      chg.textContent = entry.rfo[0].t;
+      box.appendChild(chg);
+    }
+    if (entry.legacy && entry.legacy[0]) {
+      const leg = document.createElement('p');
+      leg.className = 'summary-note-leg';
+      const b = document.createElement('strong');
+      b.textContent = 'Legacy clause: ';
+      leg.appendChild(b);
+      leg.appendChild(document.createTextNode(entry.legacy[0].t));
+      box.appendChild(leg);
+    }
+    wrap.appendChild(box);
+    return wrap;
+  }
 
   // Stub banner
   if (!hasFarText && entry.legacyText && entry.legacyText.startsWith('TODO')) {
