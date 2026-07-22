@@ -7,7 +7,7 @@
     "versions": {
       "far": {
         "legacy": "eCFR 48 CFR · pre-overhaul baseline",
-        "revised": "RFO · Apr 2025 issuance"
+        "revised": "RFO · eff. 17 Apr 2026"
       },
       "dfars": {
         "legacy": "DFARS · FY2020 edition",
@@ -18,11 +18,203 @@
         "revised": "AFARS · rev. 11 Jul 2025"
       }
     },
-    "currencyNote": "RFO text reflects the April 2025 overhaul issuance. Sections amended afterward (e.g., FAR Part 5 updates in Aug 2025 and Mar 2026) may not yet be reflected. DFARS and AFARS entries are representative samples drawn from the editions listed above. Always verify against acquisition.gov and the DoD/Army policy sites before operational use.",
+    "currencyNote": "The Revolutionary FAR Overhaul (RFO) is effective 17 Apr 2026 for Volume 1 (Parts 1–51). Individual Parts may be issued or amended on different dates — each entry shows that Part’s issuance and last-updated date, sourced from acquisition.gov’s FAR Part & Deviation Guide. Always verify against acquisition.gov before operational use.",
     "maintenance": {
       "owner": "411th CSB — SFC Ho Tony & SFC Napit Rabin",
       "cadence": "Reviewed monthly (an automated reminder issue opens on the 1st) and on major RFO/DFARS/AFARS releases.",
       "process": "Edit kb.json, commit to the repo, and the site auto-redeploys. Each entry cites its source edition."
+    },
+    "rfoEffective": "17 Apr 2026",
+    "rfoScope": "Vol. 1 · Parts 1–51",
+    "partDates": {
+      "1": {
+        "issued": "",
+        "updated": ""
+      },
+      "2": {
+        "issued": "",
+        "updated": ""
+      },
+      "3": {
+        "issued": "",
+        "updated": ""
+      },
+      "4": {
+        "issued": "",
+        "updated": ""
+      },
+      "5": {
+        "issued": "",
+        "updated": ""
+      },
+      "6": {
+        "issued": "",
+        "updated": ""
+      },
+      "7": {
+        "issued": "",
+        "updated": ""
+      },
+      "8": {
+        "issued": "",
+        "updated": ""
+      },
+      "9": {
+        "issued": "",
+        "updated": ""
+      },
+      "10": {
+        "issued": "",
+        "updated": ""
+      },
+      "11": {
+        "issued": "",
+        "updated": ""
+      },
+      "12": {
+        "issued": "",
+        "updated": ""
+      },
+      "13": {
+        "issued": "",
+        "updated": ""
+      },
+      "14": {
+        "issued": "",
+        "updated": ""
+      },
+      "15": {
+        "issued": "",
+        "updated": ""
+      },
+      "16": {
+        "issued": "",
+        "updated": ""
+      },
+      "17": {
+        "issued": "",
+        "updated": ""
+      },
+      "18": {
+        "issued": "",
+        "updated": ""
+      },
+      "19": {
+        "issued": "",
+        "updated": ""
+      },
+      "22": {
+        "issued": "",
+        "updated": ""
+      },
+      "23": {
+        "issued": "",
+        "updated": ""
+      },
+      "24": {
+        "issued": "",
+        "updated": ""
+      },
+      "25": {
+        "issued": "",
+        "updated": ""
+      },
+      "26": {
+        "issued": "",
+        "updated": ""
+      },
+      "27": {
+        "issued": "",
+        "updated": ""
+      },
+      "28": {
+        "issued": "",
+        "updated": ""
+      },
+      "29": {
+        "issued": "",
+        "updated": ""
+      },
+      "30": {
+        "issued": "",
+        "updated": ""
+      },
+      "31": {
+        "issued": "",
+        "updated": ""
+      },
+      "32": {
+        "issued": "",
+        "updated": ""
+      },
+      "33": {
+        "issued": "",
+        "updated": ""
+      },
+      "34": {
+        "issued": "",
+        "updated": ""
+      },
+      "35": {
+        "issued": "",
+        "updated": ""
+      },
+      "36": {
+        "issued": "",
+        "updated": ""
+      },
+      "37": {
+        "issued": "",
+        "updated": ""
+      },
+      "39": {
+        "issued": "",
+        "updated": ""
+      },
+      "40": {
+        "issued": "",
+        "updated": ""
+      },
+      "41": {
+        "issued": "",
+        "updated": ""
+      },
+      "42": {
+        "issued": "",
+        "updated": ""
+      },
+      "43": {
+        "issued": "",
+        "updated": ""
+      },
+      "44": {
+        "issued": "",
+        "updated": ""
+      },
+      "45": {
+        "issued": "",
+        "updated": ""
+      },
+      "46": {
+        "issued": "",
+        "updated": ""
+      },
+      "47": {
+        "issued": "",
+        "updated": ""
+      },
+      "48": {
+        "issued": "",
+        "updated": ""
+      },
+      "49": {
+        "issued": "",
+        "updated": ""
+      },
+      "50": {
+        "issued": "",
+        "updated": ""
+      }
     }
   },
   "entries": [

@@ -350,6 +350,11 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 /* PANE EDITION SUBTITLE */
 .pane-edition{font-weight:500;font-size:.62rem;text-transform:none;letter-spacing:0;opacity:.72;margin-left:.4rem}
 
+/* PER-ENTRY DATES STRIP */
+.entry-dates{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.1rem 0 .6rem;font-size:.73rem;color:var(--muted)}
+.entry-dates .date-chip{display:inline-flex;align-items:baseline;gap:.25rem}
+.entry-dates .date-chip strong{font-weight:700;color:var(--text-2,var(--text))}
+
 /* RELATED SUPPLEMENTS ROW */
 .related-row{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.15rem 0 .7rem;font-size:.75rem}
 .related-lbl{font-weight:700;color:var(--muted);text-transform:uppercase;font-size:.63rem;letter-spacing:.05em}
@@ -390,7 +395,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
     </div>
   </div>
   <div class="hdr-right">
-    <span class="hbadge hbadge-rfo">RFO &bull; Apr 2025</span>
+    <span class="hbadge hbadge-rfo">RFO &bull; Eff 17 Apr 2026</span>
     <span class="hbadge hbadge-count" id="entryCount"></span>
     <button class="info-btn" id="aboutBtn" aria-label="Data currency and editions">&#8505; Data</button>
     <button class="dark-btn" id="darkBtn" aria-label="Toggle dark mode">&#9790;</button>
@@ -459,7 +464,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 
 <footer>
   <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
-  Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (Apr. 2025) &bull;
+  Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (RFO — effective 17 Apr 2026, Vol. 1 Parts 1&ndash;51) &bull;
   <em>For training — verify all citations against official sources before operational use.</em>
   &bull; <button class="footer-link" id="aboutLink" type="button">Data currency &amp; editions</button>
   <span id="footerUpdated" class="footer-updated"></span>
@@ -822,6 +827,30 @@ function makePaneEdition(editionText) {
   return span;
 }
 
+// Per-entry dates strip: RFO effective date (all Vol.1 Parts) plus this
+// Part's issuance / last-updated dates when known (source: acquisition.gov
+// FAR Part & Deviation Guide). Only shown for FAR/RFO entries.
+function makeDatesLine(entry, regType) {
+  if (regType !== 'far') return null;
+  const part = parsePartNum(entry.group);
+  const pd = part && KB_PART_DATES ? KB_PART_DATES[part] : null;
+  const row = document.createElement('div');
+  row.className = 'entry-dates';
+  const chip = (label, val) => {
+    const s = document.createElement('span');
+    s.className = 'date-chip';
+    const b = document.createElement('strong');
+    b.textContent = label + ' ';
+    s.appendChild(b);
+    s.appendChild(document.createTextNode(val));
+    return s;
+  };
+  row.appendChild(chip('📅 RFO effective', KB_RFO_EFFECTIVE + ' (' + KB_RFO_SCOPE + ')'));
+  if (pd && pd.issued)  row.appendChild(chip('· Part ' + part + ' issued', pd.issued));
+  if (pd && pd.updated) row.appendChild(chip('· last updated', pd.updated));
+  return row;
+}
+
 // Jump directly to a specific entry: surface it via search, then expand it.
 function navigateToEntry(entry) {
   const input = document.getElementById('searchInput');
@@ -928,6 +957,10 @@ function renderEntry(entry) {
     });
     wrap.appendChild(rel);
   }
+
+  // Dates strip (RFO effective + per-Part issuance / last-updated)
+  const datesLine = makeDatesLine(entry, regType);
+  if (datesLine) wrap.appendChild(datesLine);
 
   // Source row
   const srcRow = document.createElement('div');
@@ -1036,19 +1069,25 @@ function getGroupRegType(group) {
 }
 
 const REG_LABELS = {
-  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (Apr 2025)', revisedShort: 'RFO',           legacyShort: 'legacy FAR'},
+  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (eff. 17 Apr 2026)', revisedShort: 'RFO',    legacyShort: 'legacy FAR'},
   dfars: {legacy: '&#128308; Legacy DFARS', revised: '&#128994; Revised DFARS',  revisedShort: 'Revised DFARS', legacyShort: 'legacy DFARS'},
   afars: {legacy: '&#128308; Legacy AFARS', revised: '&#128994; Revised AFARS',  revisedShort: 'Revised AFARS', legacyShort: 'legacy AFARS'},
 };
 
 // Fallback edition strings — overridden by kb.json meta.versions at load.
 let KB_VERSIONS = {
-  far:   {legacy: 'eCFR 48 CFR · pre-overhaul', revised: 'RFO · Apr 2025 issuance'},
+  far:   {legacy: 'eCFR 48 CFR · pre-overhaul', revised: 'RFO · eff. 17 Apr 2026'},
   dfars: {legacy: 'DFARS · FY2020 edition',     revised: 'DFARS · FY2020 edition'},
   afars: {legacy: 'AFARS · rev. 11 Jul 2025',   revised: 'AFARS · rev. 11 Jul 2025'},
 };
 let KB_CURRENCY = '';
 let KB_MAINT = null;
+
+// RFO effective date + per-Part issuance/last-updated dates (from
+// acquisition.gov's FAR Part & Deviation Guide). Overridden by kb.json meta.
+let KB_RFO_EFFECTIVE = '17 Apr 2026';
+let KB_RFO_SCOPE     = 'Vol. 1 · Parts 1–51';
+let KB_PART_DATES    = {};  // { "6": { issued: "…", updated: "…" }, … }
 
 function parsePartNum(group)    { return group?.match(/^(?:DFARS |AFARS )?Part (\d+)/)?.[1] ?? null; }
 function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.[0-9A-Za-z-]+)/)?.[1] ?? null; }
@@ -1485,6 +1524,9 @@ function buildAboutBody() {
   const h = txt => { const e = document.createElement('h4'); e.textContent = txt; return e; };
   const p = txt => { const e = document.createElement('p');  e.textContent = txt; return e; };
 
+  body.appendChild(h('RFO effective date'));
+  body.appendChild(p(KB_RFO_EFFECTIVE + ' — ' + KB_RFO_SCOPE + '. Individual Parts carry their own issuance and last-updated dates (shown on each entry), sourced from acquisition.gov’s FAR Part & Deviation Guide.'));
+
   body.appendChild(h('Editions being compared'));
   const table = document.createElement('table');
   table.className = 'ed-table';
@@ -1854,9 +1896,12 @@ function initTypewriter() {
       const updEl = document.getElementById('footerUpdated');
       if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
     }
-    if (data.meta?.versions)     KB_VERSIONS = data.meta.versions;
-    if (data.meta?.currencyNote) KB_CURRENCY = data.meta.currencyNote;
-    if (data.meta?.maintenance)  KB_MAINT    = data.meta.maintenance;
+    if (data.meta?.versions)      KB_VERSIONS = data.meta.versions;
+    if (data.meta?.currencyNote)  KB_CURRENCY = data.meta.currencyNote;
+    if (data.meta?.maintenance)   KB_MAINT    = data.meta.maintenance;
+    if (data.meta?.rfoEffective)  KB_RFO_EFFECTIVE = data.meta.rfoEffective;
+    if (data.meta?.rfoScope)      KB_RFO_SCOPE     = data.meta.rfoScope;
+    if (data.meta?.partDates)     KB_PART_DATES    = data.meta.partDates;
     buildSearchIndex();
     buildCrossRefIndex();
   } catch (err) {
