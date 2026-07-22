@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'nonce-rfo2026'; style-src 'nonce-rfo2026'; connect-src 'self'; worker-src 'self';">
+<title>FORGE — FAR Overhaul Reference & Guidance Engine | 411th CSB</title>
+<style nonce="rfo2026">
+:root {
+  --primary: #002147;
+  --secondary: #1355a2;
+  --accent: #c8102e;
+  --blue: #0066cc;
+  --blue-light: #e8f0fe;
+  --bg: #f1f5f9;
+  --bg-2: #e8eef5;
+  --panel: #ffffff;
+  --panel-2: #f8fafd;
+  --text: #0f1923;
+  --text-2: #374151;
+  --muted: #64748b;
+  --faint: #94a3b8;
+  --border: #d1dbe8;
+  --border-2: #b8c5d6;
+  --add-bg: #d1fae5;
+  --add-text: #065f46;
+  --rem-bg: #fee2e2;
+  --rem-text: #991b1b;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.09), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 28px rgba(0,0,0,.11), 0 4px 8px rgba(0,0,0,.04);
+  --sidebar-w: 260px;
+  --radius: 12px;
+  --hdr-h: 64px;
+  --t: 150ms ease;
+  /* keep legacy aliases */
+  --shadow: var(--shadow-sm);
+}
+[data-theme="dark"] {
+  --primary: #58a6ff;
+  --secondary: #388bfd;
+  --blue: #388bfd;
+  --blue-light: rgba(88,166,255,.12);
+  --bg: #0d1117;
+  --bg-2: #161b22;
+  --panel: #1c2128;
+  --panel-2: #22272e;
+  --text: #e6edf3;
+  --text-2: #adbac7;
+  --muted: #768390;
+  --faint: #545d68;
+  --border: #2d333b;
+  --border-2: #373e47;
+  --add-bg: #1a3a2a;
+  --add-text: #56d364;
+  --rem-bg: #3d1515;
+  --rem-text: #f85149;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.3);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.35);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.45);
+  --shadow-lg: 0 8px 28px rgba(0,0,0,.55);
+  --shadow: var(--shadow-sm);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-size:15px;line-height:1.6;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+header{background:linear-gradient(120deg,#001a3a 0%,#002147 45%,#0d3a6e 100%);border-bottom:3px solid var(--accent);color:#fff;padding:0 1.5rem;height:var(--hdr-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 2px 16px rgba(0,0,0,.35);position:sticky;top:0;z-index:200}
+[data-theme="dark"] header{background:linear-gradient(120deg,#0d1117 0%,#101a2c 55%,#15233c 100%)}
+.hdr-brand{display:flex;align-items:center;gap:.85rem;flex:1;min-width:0}
+.hdr-emblem{width:38px;height:38px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,215,80,.45);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;color:#ffd75e}
+.hdr-title{min-width:0}
+.hdr-title h1{font-size:1.1rem;font-weight:700;letter-spacing:-.015em;line-height:1.2;white-space:nowrap}
+.hdr-title p{font-size:.72rem;opacity:.62;margin-top:.06rem;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:720px){
+  header{padding:0 .9rem}
+  .hdr-title p,.hbadge-rfo,.kbd-hint{display:none}
+  .hdr-emblem{width:32px;height:32px;font-size:1rem}
+}
+.hdr-right{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.hbadge{font-size:.66rem;font-weight:700;letter-spacing:.07em;padding:.22rem .58rem;border-radius:4px;text-transform:uppercase;white-space:nowrap}
+.hbadge-rfo{background:var(--accent);color:#fff}
+.hbadge-count{background:rgba(255,255,255,.13);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.18)}
+.dark-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.88);border-radius:7px;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background var(--t);flex-shrink:0}
+.dark-btn:hover{background:rgba(255,255,255,.2)}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;max-width:1500px;margin:0 auto;min-height:calc(100vh - var(--hdr-h))}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{display:none!important}}
+
+/* SIDEBAR */
+aside{background:var(--panel);border-right:1px solid var(--border);position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h));overflow-y:auto;padding:.9rem .85rem}
+.sb-title{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-bottom:.5rem;border-bottom:2px solid var(--accent);margin-bottom:.8rem}
+.toc-select{width:100%;padding:.5rem .65rem;border:1px solid var(--border);border-radius:7px;background:var(--bg-2,var(--bg));color:var(--text);font-size:.8rem;font-family:inherit;cursor:pointer;transition:border-color var(--t);outline:none;margin-top:.2rem}
+.toc-select:focus{border-color:var(--blue,var(--secondary))}
+[data-theme="dark"] .toc-select{background:var(--bg-2);border-color:var(--border-2)}
+
+/* MAIN */
+main{padding:1.2rem 1.4rem;min-width:0}
+
+/* SEARCH */
+.search-section{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:.95rem 1.15rem;margin-bottom:1.1rem;box-shadow:var(--shadow-sm)}
+.search-bar{position:relative;margin-bottom:.7rem}
+.search-bar input{width:100%;padding:.72rem 2.6rem .72rem 2.85rem;font-size:.97rem;border:2px solid var(--border-2,var(--border));border-radius:8px;background:var(--bg-2,var(--bg));color:var(--text);outline:none;transition:border-color var(--t),box-shadow var(--t),background var(--t);font-family:inherit}
+.search-bar input:focus{border-color:var(--blue,var(--secondary));background:var(--panel);box-shadow:0 0 0 3px rgba(0,102,204,.12)}
+[data-theme="dark"] .search-bar input:focus{box-shadow:0 0 0 3px rgba(88,166,255,.15)}
+.search-bar input::placeholder{color:var(--faint,var(--muted))}
+.s-icon{position:absolute;left:.82rem;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:.95rem}
+.clear-btn{position:absolute;right:.55rem;top:50%;transform:translateY(-50%);background:var(--border);border:none;color:var(--muted);font-size:1rem;cursor:pointer;width:26px;height:26px;border-radius:50%;display:none;align-items:center;justify-content:center;line-height:1;transition:background var(--t)}
+.clear-btn:hover{background:var(--border-2,var(--border));color:var(--text)}
+.search-bar input:not(:placeholder-shown) ~ .clear-btn{display:flex}
+.filter-row{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:.32rem;flex:1}
+.chip{display:inline-flex;align-items:center;gap:.28rem;padding:.23rem .62rem;border-radius:999px;border:1.5px solid var(--border);font-size:.75rem;font-weight:500;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);white-space:nowrap;user-select:none}
+.chip:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light)}
+[data-theme="dark"] .chip:hover{background:rgba(88,166,255,.1)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600}
+[data-theme="dark"] .chip.active{background:var(--secondary);border-color:var(--secondary);color:#0d1117}
+.chip-cnt{background:rgba(255,255,255,.22);border-radius:999px;padding:0 .3rem;font-size:.64rem;font-weight:700;letter-spacing:.01em}
+.chip:not(.active) .chip-cnt{background:var(--border);color:var(--muted)}
+.chip.chip-hidden{display:none}
+.chip-more{border-style:dashed;color:var(--blue,var(--secondary));font-weight:600}
+/* Segmented view toggle */
+.view-toggle{display:flex;background:var(--bg-2,var(--bg));border:1px solid var(--border);border-radius:8px;padding:3px;gap:2px;flex-shrink:0}
+.vbtn{padding:.27rem .68rem;border:none;border-radius:5px;background:transparent;color:var(--muted);font-size:.75rem;font-weight:500;cursor:pointer;transition:all var(--t);white-space:nowrap;font-family:inherit}
+.vbtn:hover{color:var(--text)}
+.vbtn.active{background:var(--panel);color:var(--primary);font-weight:600;box-shadow:var(--shadow-xs)}
+[data-theme="dark"] .vbtn.active{background:var(--panel-2,var(--panel));color:var(--text)}
+
+/* RESULT STATUS */
+.r-status{font-size:.8rem;color:var(--muted);margin-bottom:.65rem;font-weight:500}
+
+/* RESULT CARD */
+.r-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.85rem;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow var(--t),border-color var(--t),transform var(--t)}
+.r-card:hover{box-shadow:var(--shadow-md)}
+.r-card.expanded{border-color:var(--border-2,var(--border));box-shadow:inset 3px 0 0 var(--secondary),var(--shadow-md)}
+.card-hdr{padding:.95rem 1.15rem;cursor:pointer;display:flex;align-items:flex-start;gap:.7rem;user-select:none;transition:background var(--t)}
+.card-hdr:hover{background:var(--bg-2,var(--bg))}
+.r-card.expanded .card-hdr{border-bottom:1px solid var(--border);background:var(--panel-2,var(--bg))}
+.card-title-blk{flex:1;min-width:0}
+.card-group-badge{display:inline-flex;align-items:center;font-size:.66rem;font-weight:700;background:var(--blue-light);color:var(--blue,var(--secondary));padding:.1rem .45rem;border-radius:4px;margin-bottom:.3rem;letter-spacing:.02em;text-transform:uppercase}
+[data-theme="dark"] .card-group-badge{background:rgba(88,166,255,.12);color:var(--primary)}
+.card-title{font-size:.975rem;font-weight:700;color:var(--primary);margin-bottom:.22rem;line-height:1.3}
+[data-theme="dark"] .card-title{color:var(--text)}
+.card-summary{font-size:.845rem;color:var(--muted);line-height:1.5}
+.card-chevron{color:var(--faint,var(--muted));font-size:.75rem;transition:transform .22s ease,background var(--t),color var(--t);flex-shrink:0;margin-top:.25rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--border)}
+.r-card.expanded .card-chevron{transform:rotate(180deg);background:var(--primary);color:#fff}
+[data-theme="dark"] .r-card.expanded .card-chevron{background:var(--secondary);color:#0d1117}
+
+/* CARD BODY */
+.card-body{display:none;border-top:1px solid var(--border);padding:.95rem 1.15rem;animation:fadeUp .18s ease}
+.r-card.expanded .card-body{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* DATA STUB BANNER */
+.stub-banner{background:var(--bg);border:1px dashed var(--border);border-radius:6px;padding:.5rem .75rem;font-size:.78rem;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
+
+/* SOURCES */
+.src-row{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.7rem}
+.src-tag{font-size:.7rem;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:.1rem .38rem;border-radius:3px}
+.src-link{font-size:.7rem;color:var(--secondary);text-decoration:none;background:var(--bg);border:1px solid var(--border);padding:.1rem .38rem;border-radius:3px;transition:background .14s}
+.src-link:hover{background:var(--border)}
+
+/* DIFF CONTAINER */
+.diff-wrap{margin-top:.5rem}
+.diff-grid{display:grid;gap:.65rem}
+.diff-sbs .diff-grid{grid-template-columns:1fr 1fr}
+.diff-legacy .diff-grid{grid-template-columns:1fr}
+.diff-rfo .diff-grid{grid-template-columns:1fr}
+.diff-legacy .rfo-pane{display:none}
+.diff-rfo .legacy-pane{display:none}
+.diff-pane{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.pane-hdr{padding:.42rem .8rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:.35rem}
+.legacy-pane{border-color:rgba(185,28,28,.22)}
+.rfo-pane{border-color:rgba(21,128,61,.22)}
+.legacy-pane .pane-hdr{background:rgba(254,226,226,.65);color:#991b1b;border-bottom:2px solid rgba(185,28,28,.18)}
+[data-theme="dark"] .legacy-pane .pane-hdr{background:rgba(61,21,21,.55);color:#f85149;border-bottom-color:rgba(218,54,51,.28)}
+.rfo-pane .pane-hdr{background:rgba(220,252,231,.65);color:#166534;border-bottom:2px solid rgba(21,128,61,.18)}
+[data-theme="dark"] .rfo-pane .pane-hdr{background:rgba(26,58,42,.55);color:#56d364;border-bottom-color:rgba(46,160,67,.28)}
+.pane-content{padding:.7rem .8rem;font-size:.865rem;line-height:1.65}
+
+/* SUB-PARAGRAPHS */
+.subpara{padding:.45rem .6rem;margin:.38rem 0;border:1px solid var(--border);border-radius:5px}
+.subpara:first-child{margin-top:0}
+.subpara:last-child{margin-bottom:0}
+.subpara.unmatched-legacy{border:1.5px dashed var(--rem-text);background:rgba(254,226,226,.2)}
+[data-theme="dark"] .subpara.unmatched-legacy{background:rgba(69,10,10,.2)}
+.subpara.unmatched-rfo{border:1.5px dashed var(--add-text);background:rgba(220,252,231,.2)}
+[data-theme="dark"] .subpara.unmatched-rfo{background:rgba(20,83,45,.2)}
+.plabel{display:inline-block;background:var(--primary);color:#fff;font-size:.62rem;font-weight:700;padding:.07rem .32rem;border-radius:3px;margin-right:.35rem;font-family:Consolas,monospace;vertical-align:middle;flex-shrink:0}
+[data-theme="dark"] .plabel{background:var(--secondary);color:#0f172a}
+.ptext{display:inline}
+.nochange{font-style:italic;color:var(--muted);font-size:.8rem}
+
+/* DIFF TOKENS */
+.add{background:var(--add-bg);color:var(--add-text);font-weight:600;border-radius:3px;padding:1px 2px}
+.rem{background:var(--rem-bg);color:var(--rem-text);text-decoration:line-through;text-decoration-thickness:1.5px;border-radius:3px;padding:1px 2px}
+
+/* BULLET FALLBACK */
+.blist{list-style:none;padding:0}
+.bitem{padding:.32rem .5rem;border-left:3px solid var(--border);margin-bottom:.32rem;font-size:.855rem}
+.bitem .stag{display:inline-block;font-size:.66rem;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:.04rem .28rem;border-radius:3px;margin-left:.35rem;vertical-align:middle}
+
+/* EMPTY */
+.empty{text-align:center;padding:3.5rem 1rem;color:var(--muted)}
+.empty-ico{font-size:2.8rem;margin-bottom:.65rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.1rem 1.5rem;text-align:center;font-size:.73rem;color:var(--muted);background:var(--panel)}
+footer strong{color:var(--text-2,var(--text))}
+.footer-credit{display:inline-block;margin-top:.35rem;font-size:.72rem;color:var(--muted);letter-spacing:.01em}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* REGULATION FILTER */
+.reg-filter{display:flex;gap:.38rem;margin-bottom:.6rem;flex-wrap:wrap}
+.reg-btn{padding:.26rem .72rem;border-radius:6px;border:1.5px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);font-family:inherit;white-space:nowrap}
+.reg-btn:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary))}
+.reg-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.reg-btn.active[data-reg="dfars"]{background:#1a5fa0;border-color:#1a5fa0}
+.reg-btn.active[data-reg="afars"]{background:#7b3f00;border-color:#7b3f00}
+[data-theme="dark"] .reg-btn.active{background:var(--secondary);border-color:var(--secondary);color:#0d1117}
+[data-theme="dark"] .reg-btn.active[data-reg="dfars"]{background:#388bfd;border-color:#388bfd}
+[data-theme="dark"] .reg-btn.active[data-reg="afars"]{background:#e3a04f;border-color:#e3a04f;color:#0d1117}
+/* SUBPART CHIPS */
+.subpart-chips{display:flex;flex-wrap:wrap;gap:.28rem;padding:.42rem 0 .1rem;border-top:1px dashed var(--border);width:100%}
+.subpart-chip{display:inline-flex;align-items:center;padding:.18rem .52rem;border-radius:999px;border:1.5px solid var(--border);font-size:.72rem;font-weight:500;cursor:pointer;background:var(--panel);color:var(--muted);transition:all var(--t);white-space:nowrap;user-select:none;font-family:inherit}
+.subpart-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(200,16,46,.06)}
+.subpart-chip.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+/* EMPTY PROMPT */
+.empty-prompt{text-align:center;padding:4rem 1rem;color:var(--muted)}
+.empty-prompt .empty-ico{font-size:3rem;margin-bottom:.75rem}
+.empty-prompt p{font-size:.95rem;margin-bottom:.35rem}
+.empty-prompt .empty-sub{font-size:.8rem;color:var(--faint,var(--muted))}
+/* DIFF DETAIL BOX */
+.diff-detail{margin-top:.45rem;padding:.38rem .55rem;background:var(--bg-2,var(--bg));border:1px dashed var(--border);border-radius:4px;font-size:.82rem;line-height:1.6}
+.diff-detail-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-right:.45rem}
+/* KEYBOARD HINT */
+.kbd-hint{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);font-size:.72rem;color:var(--faint,var(--muted));pointer-events:none;transition:opacity var(--t)}
+.search-bar input:not(:placeholder-shown) ~ .kbd-hint,.search-bar input:focus ~ .kbd-hint{opacity:0}
+
+@media print{
+  header{position:static}
+  aside,.search-section,.view-toggle{display:none!important}
+  .layout{display:block}
+  .r-card{box-shadow:none;break-inside:avoid}
+  .card-body{display:block!important}
+  .card-chevron{display:none}
+  .diff-sbs .diff-grid{grid-template-columns:1fr 1fr}
+  body{background:#fff;color:#000}
+}
+
+/* SEARCH HIGHLIGHT */
+mark.search-hl{background:rgba(255,212,0,.5);color:inherit;border-radius:2px;padding:0 1px}
+[data-theme="dark"] mark.search-hl{background:rgba(255,200,0,.28);color:inherit}
+
+/* LOADING SKELETON */
+@keyframes skel-shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
+.skeleton-card .card-hdr{cursor:default}
+.skeleton-card .card-hdr:hover{background:none}
+.sk-line{display:block;border-radius:4px;background:linear-gradient(90deg,var(--border) 25%,var(--bg-2,var(--bg)) 50%,var(--border) 75%);background-size:800px 100%;animation:skel-shimmer 1.5s ease infinite}
+.sk-badge{height:.72rem;width:6rem;margin-bottom:.42rem}
+.sk-title{height:1.05rem;width:60%;margin-bottom:.35rem}
+.sk-summary{height:.82rem;width:88%}
+
+/* KEYBOARD SHORTCUTS MODAL */
+.kbd-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center}
+.kbd-modal[hidden]{display:none}
+.kbd-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.kbd-modal-box{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;min-width:300px;max-width:420px;box-shadow:var(--shadow-lg);z-index:1}
+.kbd-modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;font-size:.95rem;font-weight:700;color:var(--primary)}
+[data-theme="dark"] .kbd-modal-hdr{color:var(--text)}
+.kbd-modal-close{background:none;border:1px solid var(--border);border-radius:6px;width:28px;height:28px;cursor:pointer;color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;padding:0}
+.kbd-modal-close:hover{background:var(--bg-2);color:var(--text)}
+.kbd-table{width:100%;border-collapse:collapse;font-size:.87rem}
+.kbd-table tr+tr td{border-top:1px solid var(--border)}
+.kbd-table td{padding:.5rem .3rem;color:var(--text-2,var(--text));vertical-align:middle}
+.kbd-table td:first-child{width:130px;white-space:nowrap}
+kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px solid var(--border-2,var(--border));border-bottom-width:2px;border-radius:5px;font-family:Consolas,monospace;font-size:.78rem;color:var(--text);margin-right:.2rem;line-height:1.4}
+.kbd-hint-small{font-size:.72rem;color:var(--faint,var(--muted));margin-top:1rem;text-align:center}
+
+/* CROSS-REFERENCE LINK BUTTONS */
+.ref-link{display:inline;background:none;border:none;padding:0;font:inherit;font-size:inherit;color:var(--blue,var(--secondary));cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;line-height:inherit}
+.ref-link:hover{text-decoration-style:solid;color:var(--primary)}
+
+/* PANE SOURCE FOOTER */
+.pane-source{padding:.3rem .8rem;font-size:.67rem;color:var(--muted);border-top:1px solid var(--border);background:var(--panel-2,var(--bg));font-style:italic}
+
+/* FOOTER DATE */
+.footer-updated{color:var(--faint,var(--muted))}
+
+/* EMPTY-STATE LAUNCHPAD */
+.empty-prompt .qs-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint,var(--muted));margin:1.6rem 0 .55rem}
+.qs-chips{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;max-width:520px;margin:0 auto}
+.qs-chip{padding:.34rem .8rem;border-radius:999px;border:1.5px solid var(--border);background:var(--panel);color:var(--text-2,var(--text));font-size:.8rem;font-weight:500;cursor:pointer;transition:all var(--t);font-family:inherit}
+.qs-chip:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light);transform:translateY(-1px)}
+[data-theme="dark"] .qs-chip:hover{background:rgba(88,166,255,.1)}
+.stat-tiles{display:flex;gap:.65rem;justify-content:center;margin:1.5rem auto 0;max-width:460px}
+.stat-tile{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.75rem .5rem;cursor:pointer;transition:all var(--t);font-family:inherit;text-align:center}
+.stat-tile:hover{border-color:var(--blue,var(--secondary));box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.stat-num{font-size:1.35rem;font-weight:800;color:var(--primary);line-height:1.15}
+[data-theme="dark"] .stat-num{color:var(--secondary)}
+.stat-lbl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:.15rem}
+
+/* DIFF COLOR LEGEND */
+.legend-row{display:flex;gap:.9rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:1.4rem;font-size:.74rem;color:var(--muted)}
+.legend-item{display:inline-flex;align-items:center;gap:.32rem}
+.legend-swatch{display:inline-block;padding:.04rem .34rem;border-radius:3px;font-size:.7rem;font-weight:600}
+.legend-swatch.sw-add{background:var(--add-bg);color:var(--add-text)}
+.legend-swatch.sw-rem{background:var(--rem-bg);color:var(--rem-text);text-decoration:line-through}
+.diff-legend{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;font-size:.72rem;color:var(--muted);margin-bottom:.65rem}
+.diff-legend[hidden]{display:none}
+
+/* SIDEBAR INFO BLOCKS */
+.sb-block{margin-top:1.3rem}
+.sb-block .legend-row{justify-content:flex-start;margin-top:.15rem;gap:.45rem;flex-direction:column;align-items:flex-start}
+.sb-tips{list-style:none;padding:0;margin-top:.15rem}
+.sb-tips li{font-size:.73rem;color:var(--muted);padding:.28rem 0;line-height:1.45;display:flex;gap:.4rem;align-items:baseline}
+.sb-tips kbd{font-size:.68rem;padding:.06rem .32rem;flex-shrink:0}
+
+/* COPY CITATION BUTTON */
+.copy-btn{flex-shrink:0;margin-top:.25rem;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--panel);color:var(--muted);cursor:pointer;font-size:.78rem;display:flex;align-items:center;justify-content:center;transition:all var(--t);opacity:0}
+.r-card:hover .copy-btn,.copy-btn:focus-visible,.copy-btn.copied{opacity:1}
+.copy-btn:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light)}
+.copy-btn.copied{border-color:var(--add-text);color:var(--add-text);background:var(--add-bg)}
+@media(hover:none){.copy-btn{opacity:1}}
+
+/* BACK TO TOP */
+.top-btn{position:fixed;right:1.3rem;bottom:1.3rem;z-index:300;width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:var(--primary);color:#fff;font-size:1.05rem;cursor:pointer;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease}
+.top-btn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.top-btn:hover{background:var(--secondary)}
+[data-theme="dark"] .top-btn{background:var(--secondary);color:#0d1117}
+
+/* OFFSCREEN TEXTAREA (clipboard fallback) */
+.offscreen-ta{position:fixed;left:-9999px;top:0;opacity:0}
+
+/* KEYBOARD FOCUS RINGS */
+.chip:focus-visible,.subpart-chip:focus-visible,.reg-btn:focus-visible,.vbtn:focus-visible,.qs-chip:focus-visible,.stat-tile:focus-visible,.card-hdr:focus-visible,.dark-btn:focus-visible,.top-btn:focus-visible,.info-btn:focus-visible,.related-link:focus-visible,.footer-link:focus-visible{outline:2px solid var(--blue,var(--secondary));outline-offset:2px}
+@media print{.top-btn,.copy-btn{display:none!important}}
+
+/* RELOCATION BADGE + row highlight */
+.reloc-badge{display:inline-block;margin-left:.4rem;font-size:.62rem;font-weight:700;color:var(--blue,var(--secondary));background:var(--blue-light);border:1px solid var(--blue,var(--secondary));border-radius:999px;padding:.02rem .42rem;vertical-align:middle;white-space:nowrap}
+[data-theme="dark"] .reloc-badge{background:rgba(88,166,255,.12)}
+.subpara.relocated{border-color:var(--blue,var(--secondary));background:rgba(0,102,204,.045)}
+[data-theme="dark"] .subpara.relocated{background:rgba(88,166,255,.07)}
+
+/* PANE EDITION SUBTITLE */
+.pane-edition{font-weight:500;font-size:.62rem;text-transform:none;letter-spacing:0;opacity:.72;margin-left:.4rem}
+
+/* SUMMARY-ONLY CLAUSE NOTE */
+.summary-note{border:1px solid var(--border);border-left:3px solid var(--secondary);border-radius:8px;background:var(--panel-2,var(--bg));padding:.7rem .9rem;margin-top:.4rem}
+.summary-note-tag{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--secondary);margin-bottom:.5rem}
+[data-theme="dark"] .summary-note-tag{color:var(--primary)}
+.summary-note-chg{font-size:.9rem;line-height:1.6;color:var(--text);margin-bottom:.55rem}
+.summary-note-leg{font-size:.83rem;line-height:1.55;color:var(--muted)}
+.summary-note-leg strong{color:var(--text-2,var(--text))}
+
+/* PER-ENTRY DATES STRIP */
+.entry-dates{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.1rem 0 .6rem;font-size:.73rem;color:var(--muted)}
+.entry-dates .date-chip{display:inline-flex;align-items:baseline;gap:.25rem}
+.entry-dates .date-chip strong{font-weight:700;color:var(--text-2,var(--text))}
+
+/* RELATED SUPPLEMENTS ROW */
+.related-row{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.15rem 0 .7rem;font-size:.75rem}
+.related-lbl{font-weight:700;color:var(--muted);text-transform:uppercase;font-size:.63rem;letter-spacing:.05em}
+.related-link{display:inline-flex;align-items:center;gap:.32rem;padding:.14rem .52rem;border-radius:6px;border:1px solid var(--border);background:var(--panel);color:var(--text-2,var(--text));cursor:pointer;font-family:inherit;font-size:.74rem;transition:all var(--t)}
+.related-link:hover{border-color:var(--blue,var(--secondary));color:var(--blue,var(--secondary));background:var(--blue-light)}
+.related-link .rl-reg{font-weight:700;font-size:.58rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
+
+/* HEADER INFO BUTTON */
+.info-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,215,80,.4);color:rgba(255,255,255,.9);border-radius:7px;height:34px;padding:0 .62rem;cursor:pointer;font-size:.75rem;font-weight:600;display:flex;align-items:center;gap:.3rem;transition:background var(--t);flex-shrink:0;white-space:nowrap}
+.info-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ABOUT / DATA-CURRENCY MODAL (reuses .kbd-modal shell) */
+.about-box{max-width:580px;max-height:82vh;overflow-y:auto;text-align:left}
+.about-box h4{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:1.15rem 0 .45rem}
+.about-box h4:first-of-type{margin-top:.2rem}
+.about-box p{font-size:.85rem;color:var(--text-2,var(--text));margin-bottom:.5rem;line-height:1.55}
+.ed-table{width:100%;border-collapse:collapse;font-size:.8rem;margin-bottom:.3rem}
+.ed-table td{border:1px solid var(--border);padding:.34rem .5rem;vertical-align:top}
+.ed-table td:first-child{font-weight:600;white-space:nowrap;width:32%}
+.ed-table tr:nth-child(2n) td{background:var(--bg-2,var(--bg))}
+.about-note{font-size:.78rem;color:var(--muted);background:var(--bg-2,var(--bg));border:1px dashed var(--border);border-radius:6px;padding:.55rem .65rem;line-height:1.5;margin-top:.3rem}
+
+/* FOOTER LINK BUTTON */
+.footer-link{background:none;border:none;color:var(--secondary);cursor:pointer;font:inherit;font-size:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;padding:0}
+.footer-link:hover{color:var(--primary)}
+[data-theme="dark"] .footer-link:hover{color:var(--text)}
+@media print{.info-btn,.footer-link{display:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-brand">
+    <div class="hdr-emblem" aria-hidden="true">&#9733;</div>
+    <div class="hdr-title">
+      <h1>FORGE</h1>
+      <p>FAR Overhaul Reference &amp; Guidance Engine &nbsp;&middot;&nbsp; 411th Contract Support Brigade</p>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <span class="hbadge hbadge-rfo">RFO &bull; Eff 17 Apr 2026</span>
+    <span class="hbadge hbadge-count" id="entryCount"></span>
+    <button class="info-btn" id="aboutBtn" aria-label="Data currency and editions">&#8505; Data</button>
+    <button class="dark-btn" id="darkBtn" aria-label="Toggle dark mode">&#9790;</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="sidebar">
+    <div class="sb-title">Contents</div>
+    <select id="tocSelect" class="toc-select" aria-label="Jump to FAR part">
+      <option value="">— All sections —</option>
+    </select>
+    <div class="sb-block">
+      <div class="sb-title">Reading the diff</div>
+      <div class="legend-row">
+        <span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>
+        <span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>
+      </div>
+    </div>
+    <div class="sb-block">
+      <div class="sb-title">Tips</div>
+      <ul class="sb-tips">
+        <li><kbd>/</kbd> jump to search</li>
+        <li><kbd>?</kbd> all shortcuts</li>
+        <li><span>Click a part chip, then a section chip to drill down</span></li>
+        <li><span>Hover a card &amp; click &#9112; to copy its citation</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <div class="search-section">
+      <div class="search-bar">
+        <span class="s-icon">&#128269;</span>
+        <input type="search" id="searchInput" autocomplete="off" spellcheck="false" placeholder=" "
+               aria-label="Search FAR sections and topics">
+        <span class="kbd-hint" aria-hidden="true">press / to search</span>
+        <button class="clear-btn" id="clearBtn" aria-label="Clear search" tabindex="-1">&times;</button>
+      </div>
+      <div class="reg-filter" id="regFilter" role="group" aria-label="Filter by regulation">
+        <button class="reg-btn active" data-reg="all">All Regs</button>
+        <button class="reg-btn" data-reg="far">FAR / RFO</button>
+        <button class="reg-btn" data-reg="dfars">DFARS</button>
+        <button class="reg-btn" data-reg="afars">AFARS</button>
+      </div>
+      <div class="filter-row">
+        <div class="chips" id="chips" role="list" aria-label="Filter by part number"></div>
+        <div class="view-toggle" role="group" aria-label="Comparison view mode">
+          <button class="vbtn active" data-view="sbs">Side by Side</button>
+          <button class="vbtn" data-view="legacy">Legacy Only</button>
+          <button class="vbtn" data-view="rfo">RFO Only</button>
+        </div>
+      </div>
+      <div class="subpart-chips" id="subpartChips" role="list" aria-label="Filter by FAR section" hidden></div>
+    </div>
+    <div class="r-status" id="rStatus" aria-live="polite"></div>
+    <div class="diff-legend" id="diffLegend" hidden>
+      <span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>
+      <span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>
+    </div>
+    <div id="results" role="region" aria-label="FAR comparison results"></div>
+  </main>
+</div>
+
+<button class="top-btn" id="topBtn" aria-label="Back to top" aria-hidden="true" tabindex="-1">&#8593;</button>
+
+<footer>
+  <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
+  Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (RFO — effective 17 Apr 2026, Vol. 1 Parts 1&ndash;51) &bull;
+  <em>For training — verify all citations against official sources before operational use.</em>
+  &bull; <button class="footer-link" id="aboutLink" type="button">Data currency &amp; editions</button>
+  <span id="footerUpdated" class="footer-updated"></span>
+  <br>
+  <span class="footer-credit">Developed by SFC Ho Tony &amp; SFC Napit Rabin &mdash; 411th CSB</span>
+</footer>
+
+<div id="kbdModal" class="kbd-modal" hidden role="dialog" aria-modal="true" aria-labelledby="kbdModalTitle">
+  <div class="kbd-modal-overlay" id="kbdOverlay"></div>
+  <div class="kbd-modal-box">
+    <div class="kbd-modal-hdr">
+      <span id="kbdModalTitle">Keyboard Shortcuts</span>
+      <button class="kbd-modal-close" id="kbdClose" aria-label="Close shortcuts panel">&times;</button>
+    </div>
+    <table class="kbd-table" role="presentation">
+      <tr><td><kbd>/</kbd></td><td>Focus search bar</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Blur search / close panel</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Expand / collapse focused card</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Show this shortcuts panel</td></tr>
+    </table>
+    <p class="kbd-hint-small">Press <kbd>Esc</kbd> or click outside to close</p>
+  </div>
+</div>
+
+<div id="aboutModal" class="kbd-modal" hidden role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
+  <div class="kbd-modal-overlay" id="aboutOverlay"></div>
+  <div class="kbd-modal-box about-box">
+    <div class="kbd-modal-hdr">
+      <span id="aboutModalTitle">Data Currency &amp; Editions</span>
+      <button class="kbd-modal-close" id="aboutClose" aria-label="Close data panel">&times;</button>
+    </div>
+    <div id="aboutBody"></div>
+  </div>
+</div>
+
+<script nonce="rfo2026">
+'use strict';
+
+// ═══════════════════════════════════════════════════════════════════
+//  KNOWLEDGE BASE  — loaded from kb.json at runtime
+// ═══════════════════════════════════════════════════════════════════
+let KB = [];
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  SECURITY UTILITIES
+// ═══════════════════════════════════════════════════════════════════
+function sanitize(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function safeUrl(url) {
+  try {
+    const u = new URL(String(url));
+    if (u.protocol === 'https:' || u.protocol === 'http:') return u.href;
+  } catch(_) {}
+  return '#';
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  DIFF ENGINE
+// ═══════════════════════════════════════════════════════════════════
+function stripMarkers(str) {
+  return String(str)
+    .replace(/\{\{[+\-~](.*?)[+\-~]\}\}/gs, '$1');
+}
+
+function diffTokenize(str) {
+  return str.match(/[A-Za-z0-9']+|[^A-Za-z0-9']+/g) || [];
+}
+
+function normToken(tok) {
+  return tok.toLowerCase().replace(/\s+/g,' ');
+}
+
+function diffTokens(aTokens, bTokens) {
+  const MAX = 600;
+  if (aTokens.length > MAX || bTokens.length > MAX) {
+    return [
+      {type:'rem', text: aTokens.join('')},
+      {type:'add', text: bTokens.join('')}
+    ];
+  }
+  const m = aTokens.length, n = bTokens.length;
+  const dp = Array.from({length: m + 1}, () => new Int16Array(n + 1));
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = normToken(aTokens[i-1]) === normToken(bTokens[j-1])
+        ? dp[i-1][j-1] + 1
+        : Math.max(dp[i-1][j], dp[i][j-1]);
+    }
+  }
+  const ops = [];
+  let i = m, j = n;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && normToken(aTokens[i-1]) === normToken(bTokens[j-1])) {
+      ops.unshift({type:'eq', text: bTokens[j-1]});
+      i--; j--;
+    } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+      ops.unshift({type:'add', text: bTokens[j-1]});
+      j--;
+    } else {
+      ops.unshift({type:'rem', text: aTokens[i-1]});
+      i--;
+    }
+  }
+  const coalesced = [];
+  for (const op of ops) {
+    const last = coalesced[coalesced.length - 1];
+    if (last && last.type === op.type) last.text += op.text;
+    else coalesced.push({type: op.type, text: op.text});
+  }
+  return coalesced;
+}
+
+function renderDiffOps(ops, mode) {
+  const frag = document.createDocumentFragment();
+  for (const op of ops) {
+    if (op.type === 'eq') {
+      frag.appendChild(document.createTextNode(op.text));
+    } else if (op.type === 'rem') {
+      const s = document.createElement('span');
+      s.className = 'rem';
+      s.textContent = op.text;
+      frag.appendChild(s);
+    } else if (op.type === 'add' && mode !== 'legacy') {
+      const s = document.createElement('span');
+      s.className = 'add';
+      s.textContent = op.text;
+      frag.appendChild(s);
+    }
+  }
+  return frag;
+}
+
+function renderPlain(text, mode) {
+  const frag = document.createDocumentFragment();
+  const s = document.createElement('span');
+  if (mode === 'legacy-removed') s.className = 'rem';
+  else if (mode === 'rfo-added') s.className = 'add';
+  s.textContent = text;
+  frag.appendChild(s);
+  return frag;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  BULLET ALIGNMENT (Jaccard)
+// ═══════════════════════════════════════════════════════════════════
+const STOPWORDS = new Set(['a','an','the','of','in','to','and','or','for',
+  'is','are','was','were','be','been','being','have','has','had','do','does',
+  'did','will','would','could','should','may','might','shall','not','this',
+  'that','with','from','at','by','as','on','it','its','if','any','all']);
+
+function wordSet(str) {
+  const tokens = String(str).toLowerCase().match(/[a-z0-9]+/g) || [];
+  return new Set(tokens.filter(t => !STOPWORDS.has(t) && t.length > 1));
+}
+
+function jaccard(a, b) {
+  if (!a.size && !b.size) return 1;
+  let inter = 0;
+  for (const w of a) if (b.has(w)) inter++;
+  return inter / (a.size + b.size - inter);
+}
+
+function alignBullets(legacy, rfo) {
+  const legacySets = legacy.map(b => wordSet(stripMarkers(b.t)));
+  const rfoSets    = rfo.map(b => wordSet(stripMarkers(b.t)));
+  const usedRfo    = new Set();
+  const rows       = [];
+
+  for (let li = 0; li < legacy.length; li++) {
+    let bestJ = -1, bestScore = 0.12;
+    for (let ri = 0; ri < rfo.length; ri++) {
+      if (usedRfo.has(ri)) continue;
+      const s = jaccard(legacySets[li], rfoSets[ri]);
+      if (s > bestScore) { bestScore = s; bestJ = ri; }
+    }
+    if (bestJ >= 0) {
+      usedRfo.add(bestJ);
+      rows.push({kind:'matched', legacy: legacy[li], rfo: rfo[bestJ]});
+    } else {
+      rows.push({kind:'legacy-only', legacy: legacy[li], rfo: null});
+    }
+  }
+  for (let ri = 0; ri < rfo.length; ri++) {
+    if (!usedRfo.has(ri)) rows.push({kind:'rfo-only', legacy: null, rfo: rfo[ri]});
+  }
+  return rows;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  FAR TEXT PARSER
+// ═══════════════════════════════════════════════════════════════════
+// Classify a label like "(a)", "(1)", "(i)" into a level family:
+//   'alpha'   — (a)(b)(c)...(z) lowercase letters
+//   'ALPHA'   — (A)(B)(C)... uppercase letters
+//   'num'     — (1)(2)(3)...
+//   'roman'   — (i)(ii)(iii)... lowercase roman
+//   'other'   — anything else
+function labelLevel(label) {
+  const inner = label.replace(/[()]/g, '');
+  if (/^[ivxlcdm]+$/.test(inner)) return 'roman';
+  if (/^[a-z]$/.test(inner))      return 'alpha';
+  if (/^[A-Z]$/.test(inner))      return 'ALPHA';
+  if (/^\d+$/.test(inner))        return 'num';
+  return 'other';
+}
+
+// Detect the dominant top-level label style for a given text by looking at
+// the first label that appears. We only split paragraphs at that level so
+// sub-bullets (e.g. "(1)" under "(b)") stay inline with their parent.
+function detectTopLevel(rawText) {
+  const m = rawText.match(/^\s*(\([a-zA-Z0-9]{1,4}\))/m);
+  return m ? labelLevel(m[1]) : 'alpha';
+}
+
+function parseFarSubparas(rawText) {
+  const topLevel = detectTopLevel(rawText);
+  const lines = rawText.split('\n');
+  const result = [];
+  let current = null;
+
+  for (const line of lines) {
+    const m = line.match(/^(\s*)(\([a-zA-Z0-9]{1,4}\))\s+(.*)/);
+    // Only treat as a paragraph break if the label is at the TOP LEVEL
+    // for this section. Sub-bullets get folded back into their parent.
+    if (m && m[1].length === 0 && labelLevel(m[2]) === topLevel) {
+      if (current) result.push(current);
+      current = {label: m[2], text: m[3]};
+    } else if (current) {
+      const trimmed = line.trim();
+      if (trimmed) current.text += ' ' + trimmed;
+    } else {
+      const trimmed = line.trim();
+      if (trimmed) result.push({label: '', text: trimmed});
+    }
+  }
+  if (current) result.push(current);
+  return result.filter(p => p.text.trim());
+}
+
+function alignByLabel(legacyParas, rfoParas) {
+  const rfoMap = new Map(rfoParas.map(p => [p.label, p]));
+  const usedRfo = new Set();
+  const rows = [];
+
+  for (const lp of legacyParas) {
+    if (lp.label && rfoMap.has(lp.label)) {
+      const rp = rfoMap.get(lp.label);
+      rows.push({kind:'matched', legacy: lp, rfo: rp});
+      usedRfo.add(lp.label);
+    } else if (lp.label === '') {
+      // preamble — find rfo preamble
+      const rfoPreamble = rfoParas.find(p => p.label === '' && !usedRfo.has(''));
+      if (rfoPreamble) {
+        rows.push({kind:'matched', legacy: lp, rfo: rfoPreamble});
+        usedRfo.add('');
+      } else {
+        rows.push({kind:'legacy-only', legacy: lp, rfo: null});
+      }
+    } else {
+      rows.push({kind:'legacy-only', legacy: lp, rfo: null});
+    }
+  }
+  for (const rp of rfoParas) {
+    if (!usedRfo.has(rp.label)) {
+      rows.push({kind:'rfo-only', legacy: null, rfo: rp});
+    }
+  }
+  return relocateUnmatched(rows);
+}
+
+// Second pass: pair leftover legacy-only + rfo-only paragraphs by CONTENT
+// similarity (not label). A strong match means the text was relocated /
+// renumbered rather than deleted — so we surface the new paragraph number
+// instead of an alarming "no corresponding text" placeholder.
+function relocateUnmatched(rows) {
+  const legIdx = [], rfoIdx = [];
+  rows.forEach((r, i) => {
+    if (r.kind === 'legacy-only') legIdx.push(i);
+    else if (r.kind === 'rfo-only') rfoIdx.push(i);
+  });
+  if (!legIdx.length || !rfoIdx.length) return rows;
+  const rfoSets = rfoIdx.map(i => wordSet(stripMarkers(rows[i].rfo.text)));
+  const usedRfo = new Set();
+  for (const li of legIdx) {
+    // Only flag a true paragraph move: both sides must carry a label
+    // (e.g. (a)→(c)). Unlabeled preamble shifts are structural noise, not
+    // the "renumbered paragraph" case the relocation badge is meant for.
+    if (!rows[li].legacy.label) continue;
+    const lset = wordSet(stripMarkers(rows[li].legacy.text));
+    let bestK = -1, best = 0.34;  // conservative — avoid false relocations
+    for (let k = 0; k < rfoIdx.length; k++) {
+      if (usedRfo.has(k) || !rows[rfoIdx[k]].rfo.label) continue;
+      const s = jaccard(lset, rfoSets[k]);
+      if (s > best) { best = s; bestK = k; }
+    }
+    if (bestK >= 0) {
+      usedRfo.add(bestK);
+      rows[li] = {kind: 'relocated', legacy: rows[li].legacy, rfo: rows[rfoIdx[bestK]].rfo};
+      rows[rfoIdx[bestK]] = null;
+    }
+  }
+  return rows.filter(Boolean);
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  BLOCK BUILDERS
+// ═══════════════════════════════════════════════════════════════════
+function makeSubpara(label, contentFrag, extraClass) {
+  const div = document.createElement('div');
+  div.className = 'subpara' + (extraClass ? ' ' + extraClass : '');
+  if (label) {
+    const pill = document.createElement('span');
+    pill.className = 'plabel';
+    pill.textContent = label;
+    div.appendChild(pill);
+  }
+  const textSpan = document.createElement('span');
+  textSpan.className = 'ptext';
+  textSpan.appendChild(contentFrag);
+  div.appendChild(textSpan);
+  return div;
+}
+
+function makeDiffDetail(diffContent) {
+  const box = document.createElement('div');
+  box.className = 'diff-detail';
+  const lbl = document.createElement('span');
+  lbl.className = 'diff-detail-lbl';
+  lbl.textContent = 'Changes:';
+  box.appendChild(lbl);
+  box.appendChild(diffContent);
+  return box;
+}
+
+function buildPaneSource(srcText) {
+  const div = document.createElement('div');
+  div.className = 'pane-source';
+  div.textContent = '📄 ' + srcText;
+  return div;
+}
+
+// Small edition/date subtitle shown in a pane header so users always know
+// which version is being compared (addresses version-transparency feedback).
+function makePaneEdition(editionText) {
+  const span = document.createElement('span');
+  span.className = 'pane-edition';
+  span.textContent = editionText ? '· ' + editionText : '';
+  return span;
+}
+
+// Per-entry dates strip: RFO effective date (all Vol.1 Parts) plus this
+// Part's issuance / last-updated dates when known (source: acquisition.gov
+// FAR Part & Deviation Guide). Only shown for FAR/RFO entries.
+function makeDatesLine(entry, regType) {
+  if (regType !== 'far') return null;
+  const part = parsePartNum(entry.group);
+  const pd = part && KB_PART_DATES ? KB_PART_DATES[part] : null;
+  const row = document.createElement('div');
+  row.className = 'entry-dates';
+  const chip = (label, val) => {
+    const s = document.createElement('span');
+    s.className = 'date-chip';
+    const b = document.createElement('strong');
+    b.textContent = label + ' ';
+    s.appendChild(b);
+    s.appendChild(document.createTextNode(val));
+    return s;
+  };
+  row.appendChild(chip('📅 RFO effective', KB_RFO_EFFECTIVE + ' (' + KB_RFO_SCOPE + ')'));
+  if (pd && pd.issued)  row.appendChild(chip('· Part ' + part + ' issued', pd.issued));
+  if (pd && pd.updated) row.appendChild(chip('· last updated', pd.updated));
+  return row;
+}
+
+// Jump directly to a specific entry: surface it via search, then expand it.
+function navigateToEntry(entry) {
+  const input = document.getElementById('searchInput');
+  input.value = parseSectionNum(entry.title) || entry.title;
+  resetFilters();
+  runSearch();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  requestAnimationFrame(() => {
+    const card = document.getElementById('result-' + entry.id);
+    if (!card) return;
+    const hdr = card.querySelector('.card-hdr');
+    if (hdr && !card.classList.contains('expanded')) hdr.click();
+    card.scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+}
+
+// Compute the diff once for a matched row and stash it on the row.
+function ensureDiffOps(row) {
+  if (row.ops || (row.kind !== 'matched' && row.kind !== 'relocated')) return;
+  const legacyTokens = diffTokenize(stripMarkers(row.legacy.text));
+  const rfoTokens    = diffTokenize(stripMarkers(row.rfo.text));
+  row.ops = diffTokens(legacyTokens, rfoTokens);
+}
+
+// side === 'legacy' renders legacy pane; side === 'rfo' renders RFO pane.
+// regType ('far'|'dfars'|'afars') drives reg-aware placeholder wording.
+function buildPaneBlock(row, side, regType) {
+  const isLegacy = side === 'legacy';
+  const L = REG_LABELS[regType] || REG_LABELS.far;
+
+  if (row.kind === 'matched' || row.kind === 'relocated') {
+    ensureDiffOps(row);
+    const own = isLegacy ? row.legacy : row.rfo;
+    const sp = makeSubpara(own.label, document.createTextNode(own.text.trim()),
+                           row.kind === 'relocated' ? 'relocated' : '');
+    if (row.kind === 'relocated') {
+      const other = isLegacy ? row.rfo : row.legacy;
+      const badge = document.createElement('span');
+      badge.className = 'reloc-badge';
+      badge.textContent = isLegacy
+        ? '→ now ' + (other.label || 'unlabeled') + ' in ' + L.revisedShort
+        : '← was ' + (other.label || 'unlabeled') + ' in ' + L.legacyShort;
+      sp.appendChild(badge);
+    }
+    const shouldShow = isLegacy
+      ? row.ops.some(o => o.type === 'rem')
+      : row.ops.some(o => o.type === 'add' || o.type === 'rem');
+    if (shouldShow) sp.appendChild(makeDiffDetail(renderDiffOps(row.ops, side)));
+    return sp;
+  }
+  const ownOnly = isLegacy ? 'legacy-only' : 'rfo-only';
+  if (row.kind === ownOnly) {
+    const own = isLegacy ? row.legacy : row.rfo;
+    const mode = isLegacy ? 'legacy-removed' : 'rfo-added';
+    const cls  = isLegacy ? 'unmatched-legacy' : 'unmatched-rfo';
+    return makeSubpara(own.label, renderPlain(own.text.trim(), mode), cls);
+  }
+  // The opposite side has the only entry — render a placeholder note.
+  // Reg-aware and non-alarming: unmatched ≠ deleted (may be renumbered).
+  const other = isLegacy ? row.rfo : row.legacy;
+  const noteText = isLegacy
+    ? '(new in ' + L.revisedShort + ' — no ' + L.legacyShort + ' counterpart)'
+    : '(no direct counterpart in ' + L.revisedShort + ' — may be renumbered or consolidated)';
+  const otherCls = isLegacy ? 'unmatched-rfo' : 'unmatched-legacy';
+  const frag = document.createDocumentFragment();
+  frag.appendChild(Object.assign(document.createElement('em'), {className: 'nochange', textContent: noteText}));
+  return makeSubpara(other.label, frag, otherCls);
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  ENTRY RENDERER
+// ═══════════════════════════════════════════════════════════════════
+function renderEntry(entry) {
+  const view = document.body.dataset.view || 'sbs';
+  const hasFarText = entry.legacyText && entry.rfoText &&
+    !entry.legacyText.startsWith('TODO') && !entry.rfoText.startsWith('TODO');
+
+  const wrap = document.createElement('div');
+  wrap.className = 'diff-wrap diff-' + view;
+  const regType = getGroupRegType(entry.group);
+
+  // Related supplements (cross-supplement navigation: FAR ↔ DFARS ↔ AFARS)
+  const siblings = siblingEntries(entry);
+  if (siblings.length) {
+    const rel = document.createElement('div');
+    rel.className = 'related-row';
+    const lbl = document.createElement('span');
+    lbl.className = 'related-lbl';
+    lbl.textContent = 'Related supplements:';
+    rel.appendChild(lbl);
+    siblings.forEach(sib => {
+      const btn = document.createElement('button');
+      btn.className = 'related-link';
+      btn.type = 'button';
+      const reg = document.createElement('span');
+      reg.className = 'rl-reg';
+      reg.textContent = sib.regType.toUpperCase();
+      btn.appendChild(reg);
+      btn.appendChild(document.createTextNode(parseSectionNum(sib.entry.title) || sib.entry.title));
+      btn.title = 'Jump to ' + sib.entry.title;
+      btn.addEventListener('click', e => { e.stopPropagation(); navigateToEntry(sib.entry); });
+      rel.appendChild(btn);
+    });
+    wrap.appendChild(rel);
+  }
+
+  // Dates strip (RFO effective + per-Part issuance / last-updated)
+  const datesLine = makeDatesLine(entry, regType);
+  if (datesLine) wrap.appendChild(datesLine);
+
+  // Source row
+  const srcRow = document.createElement('div');
+  srcRow.className = 'src-row';
+  (entry.sources || []).forEach(s => {
+    const tag = document.createElement('span');
+    tag.className = 'src-tag';
+    tag.textContent = s;
+    srcRow.appendChild(tag);
+  });
+  (entry.deepLinks || []).forEach(dl => {
+    const a = document.createElement('a');
+    a.className = 'src-link';
+    a.href = safeUrl(dl.url);
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = dl.label;
+    srcRow.appendChild(a);
+  });
+  wrap.appendChild(srcRow);
+
+  // Summary-only entries (large/table-heavy clauses): show a clean change
+  // summary + pointer to the official text instead of a two-pane diff.
+  if (entry.summaryOnly) {
+    const box = document.createElement('div');
+    box.className = 'summary-note';
+    const tag = document.createElement('div');
+    tag.className = 'summary-note-tag';
+    tag.textContent = '📄 Summary of changes — refer to the official text before contract use';
+    box.appendChild(tag);
+    if (entry.rfo && entry.rfo[0]) {
+      const chg = document.createElement('p');
+      chg.className = 'summary-note-chg';
+      chg.textContent = entry.rfo[0].t;
+      box.appendChild(chg);
+    }
+    if (entry.legacy && entry.legacy[0]) {
+      const leg = document.createElement('p');
+      leg.className = 'summary-note-leg';
+      const b = document.createElement('strong');
+      b.textContent = 'Legacy clause: ';
+      leg.appendChild(b);
+      leg.appendChild(document.createTextNode(entry.legacy[0].t));
+      box.appendChild(leg);
+    }
+    wrap.appendChild(box);
+    return wrap;
+  }
+
+  // Stub banner
+  if (!hasFarText && entry.legacyText && entry.legacyText.startsWith('TODO')) {
+    const banner = document.createElement('div');
+    banner.className = 'stub-banner';
+    banner.innerHTML = '&#128203; Real regulatory text not yet loaded — showing editorial summary. Paste sub-paragraph text from your workbook to unlock the full word-level diff.';
+    wrap.appendChild(banner);
+  }
+
+  // Build rows
+  let rows;
+  if (hasFarText) {
+    const legacyParas = parseFarSubparas(entry.legacyText);
+    const rfoParas    = parseFarSubparas(entry.rfoText);
+    rows = alignByLabel(legacyParas, rfoParas);
+  } else {
+    const legBullets = (entry.legacy || []).map(b => ({label: '', text: stripMarkers(b.t), src: b.s}));
+    const rfoBullets = (entry.rfo   || []).map(b => ({label: '', text: stripMarkers(b.t), src: b.s}));
+    rows = alignBullets(
+      legBullets.map(b => ({t: b.text, s: b.src})),
+      rfoBullets.map(b => ({t: b.text, s: b.src}))
+    ).map(r => ({
+      kind: r.kind,
+      legacy: r.legacy ? {label:'', text: r.legacy.t, src: r.legacy.s} : null,
+      rfo:    r.rfo    ? {label:'', text: r.rfo.t,    src: r.rfo.s}    : null
+    }));
+  }
+
+  // Diff grid
+  const grid = document.createElement('div');
+  grid.className = 'diff-grid';
+
+  // Legacy pane
+  const legacyPane = document.createElement('div');
+  legacyPane.className = 'diff-pane legacy-pane';
+  const legHdr = document.createElement('div');
+  legHdr.className = 'pane-hdr';
+  legHdr.innerHTML = REG_LABELS[regType].legacy;
+  legHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.legacy));
+  legacyPane.appendChild(legHdr);
+  const legContent = document.createElement('div');
+  legContent.className = 'pane-content';
+  rows.forEach(row => legContent.appendChild(buildPaneBlock(row, 'legacy', regType)));
+  legacyPane.appendChild(legContent);
+  if (entry.sources?.[0]) legacyPane.appendChild(buildPaneSource(entry.sources[0]));
+
+  // RFO pane
+  const rfoPane = document.createElement('div');
+  rfoPane.className = 'diff-pane rfo-pane';
+  const rfoHdr = document.createElement('div');
+  rfoHdr.className = 'pane-hdr';
+  rfoHdr.innerHTML = REG_LABELS[regType].revised;
+  rfoHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.revised));
+  rfoPane.appendChild(rfoHdr);
+  const rfoContent = document.createElement('div');
+  rfoContent.className = 'pane-content';
+  rows.forEach(row => rfoContent.appendChild(buildPaneBlock(row, 'rfo', regType)));
+  rfoPane.appendChild(rfoContent);
+  if (entry.sources?.[1]) rfoPane.appendChild(buildPaneSource(entry.sources[1]));
+
+  grid.appendChild(legacyPane);
+  grid.appendChild(rfoPane);
+  wrap.appendChild(grid);
+
+  // Linkify cross-references in main text (not inside diff-detail boxes)
+  linkifyRefs(legContent);
+  linkifyRefs(rfoContent);
+
+  return wrap;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  SEARCH & DISPLAY
+// ═══════════════════════════════════════════════════════════════════
+let activeGroup = null;
+let activeSubpart = null;
+let activeRegType = null;
+let chipsExpanded = false;
+let openKbdModal, closeKbdModal;
+
+function getGroupRegType(group) {
+  if (group && group.startsWith('DFARS')) return 'dfars';
+  if (group && group.startsWith('AFARS')) return 'afars';
+  return 'far';
+}
+
+const REG_LABELS = {
+  far:   {legacy: '&#128308; Legacy FAR',   revised: '&#128994; RFO (eff. 17 Apr 2026)', revisedShort: 'RFO',    legacyShort: 'legacy FAR'},
+  dfars: {legacy: '&#128308; Legacy DFARS', revised: '&#128994; Revised DFARS',  revisedShort: 'Revised DFARS', legacyShort: 'legacy DFARS'},
+  afars: {legacy: '&#128308; Legacy AFARS', revised: '&#128994; Revised AFARS',  revisedShort: 'Revised AFARS', legacyShort: 'legacy AFARS'},
+};
+
+// Fallback edition strings — overridden by kb.json meta.versions at load.
+let KB_VERSIONS = {
+  far:   {legacy: 'eCFR 48 CFR · pre-overhaul', revised: 'RFO · eff. 17 Apr 2026'},
+  dfars: {legacy: 'DFARS · FY2020 edition',     revised: 'DFARS · FY2020 edition'},
+  afars: {legacy: 'AFARS · rev. 11 Jul 2025',   revised: 'AFARS · rev. 11 Jul 2025'},
+};
+let KB_CURRENCY = '';
+let KB_MAINT = null;
+
+// RFO effective date + per-Part issuance/last-updated dates (from
+// acquisition.gov's FAR Part & Deviation Guide). Overridden by kb.json meta.
+let KB_RFO_EFFECTIVE = '17 Apr 2026';
+let KB_RFO_SCOPE     = 'Vol. 1 · Parts 1–51';
+let KB_PART_DATES    = {};  // { "6": { issued: "…", updated: "…" }, … }
+
+function parsePartNum(group)    { return group?.match(/^(?:DFARS |AFARS )?Part (\d+)/)?.[1] ?? null; }
+function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.[0-9A-Za-z-]+)/)?.[1] ?? null; }
+
+// ── Cross-supplement sibling index ──────────────────────────────────
+// FAR part N ↔ DFARS part (200+N) ↔ AFARS part (5100+N), same section suffix.
+// e.g. FAR 6.001 ↔ DFARS 206.001 ↔ AFARS 5106.001.
+let KB_SECTION_INDEX = new Map();
+function buildCrossRefIndex() {
+  KB_SECTION_INDEX = new Map();
+  for (const e of KB) {
+    const sec = parseSectionNum(e.title);
+    if (sec) KB_SECTION_INDEX.set(getGroupRegType(e.group) + ':' + sec, e);
+  }
+}
+function siblingEntries(entry) {
+  const sec = parseSectionNum(entry.title);
+  if (!sec || sec.indexOf('.') < 0) return [];
+  const lead = parseInt(sec.slice(0, sec.indexOf('.')), 10);
+  const sub  = sec.slice(sec.indexOf('.') + 1);
+  const rt   = getGroupRegType(entry.group);
+  const farPart = rt === 'dfars' ? lead - 200 : rt === 'afars' ? lead - 5100 : lead;
+  if (!(farPart > 0)) return [];
+  const targets = [['far', farPart], ['dfars', farPart + 200], ['afars', farPart + 5100]];
+  const out = [];
+  for (const [trt, tlead] of targets) {
+    if (trt === rt) continue;
+    const hit = KB_SECTION_INDEX.get(trt + ':' + tlead + '.' + sub);
+    if (hit) out.push({regType: trt, entry: hit});
+  }
+  return out;
+}
+
+function buildSearchIndex() {
+  for (const e of KB) {
+    e._lc = {
+      title:    (e.title    || '').toLowerCase(),
+      id:       (e.id       || '').toLowerCase(),
+      group:    (e.group    || '').toLowerCase(),
+      summary:  (e.summary  || '').toLowerCase(),
+      keywords: (e.keywords || []).map(k => k.toLowerCase()),
+      bullets:  [...(e.legacy || []), ...(e.rfo || [])].map(b => b.t).join(' ').toLowerCase(),
+    };
+  }
+}
+
+function scoreEntry(entry, lowerTerms) {
+  if (!lowerTerms.length) return 1;
+  const lc = entry._lc;
+  let score = 0;
+  for (const t of lowerTerms) {
+    if (lc.title.includes(t))    score += 12;
+    if (lc.id.includes(t))       score += 10;
+    if (lc.keywords.some(k => k.includes(t))) score += 8;
+    if (lc.group.includes(t))    score += 6;
+    if (lc.summary.includes(t))  score += 4;
+    if (lc.bullets.includes(t))  score += 2;
+  }
+  return score;
+}
+
+function showResults(entries) {
+  const container = document.getElementById('results');
+  const status    = document.getElementById('rStatus');
+  container.innerHTML = '';
+  document.getElementById('diffLegend').hidden = !entries.length;
+
+  if (!entries.length) {
+    let msg = 'No matching entries. Try different keywords.';
+    if (activeSubpart) {
+      msg = 'No matches in the selected section. Try clearing the section filter.';
+    } else if (activeRegType && activeGroup) {
+      msg = 'No ' + activeRegType.toUpperCase() + ' entries in "' + activeGroup + '". Try clearing a filter.';
+    } else if (activeRegType) {
+      msg = 'No ' + activeRegType.toUpperCase() + ' entries match your search. Try different keywords.';
+    } else if (activeGroup) {
+      msg = 'No entries in that part match your search. Try fewer keywords.';
+    }
+    container.innerHTML = '<div class="empty"><div class="empty-ico">&#128269;</div><p>' + sanitize(msg) + '</p></div>';
+    status.textContent = 'No results';
+    return;
+  }
+
+  status.textContent = (activeGroup || activeSubpart)
+    ? 'Showing ' + entries.length + ' of ' + KB.length + ' entries'
+    : entries.length + ' entr' + (entries.length === 1 ? 'y' : 'ies');
+
+  entries.forEach((entry) => {
+    const card = document.createElement('div');
+    card.className = 'r-card';
+    card.id = 'result-' + entry.id;
+
+    // Header (clickable)
+    const hdr = document.createElement('div');
+    hdr.className = 'card-hdr';
+    hdr.setAttribute('role', 'button');
+    hdr.setAttribute('tabindex', '0');
+    hdr.setAttribute('aria-expanded', 'false');
+    hdr.setAttribute('aria-controls', 'body-' + entry.id);
+
+    const titleBlk = document.createElement('div');
+    titleBlk.className = 'card-title-blk';
+
+    const badge = document.createElement('div');
+    badge.className = 'card-group-badge';
+    badge.textContent = entry.group;
+
+    const title = document.createElement('div');
+    title.className = 'card-title';
+    title.textContent = entry.title;
+
+    const summary = document.createElement('div');
+    summary.className = 'card-summary';
+    summary.textContent = entry.summary;
+
+    titleBlk.appendChild(badge);
+    titleBlk.appendChild(title);
+    titleBlk.appendChild(summary);
+
+    const chevron = document.createElement('span');
+    chevron.className = 'card-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.textContent = '▼';
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.title = 'Copy citation';
+    copyBtn.setAttribute('aria-label', 'Copy citation: ' + entry.title);
+    copyBtn.textContent = '⧉';
+    copyBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      copyCitation(entry, copyBtn);
+    });
+
+    hdr.appendChild(titleBlk);
+    hdr.appendChild(copyBtn);
+    hdr.appendChild(chevron);
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    body.id = 'body-' + entry.id;
+
+    // Toggle logic
+    function toggle() {
+      const isExpanded = card.classList.contains('expanded');
+      if (!isExpanded && !body.hasChildNodes()) {
+        body.appendChild(renderEntry(entry));
+      }
+      card.classList.toggle('expanded');
+      hdr.setAttribute('aria-expanded', card.classList.contains('expanded'));
+    }
+    hdr.addEventListener('click', toggle);
+    hdr.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target === hdr) { e.preventDefault(); toggle(); } });
+
+    card.appendChild(hdr);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  // Highlight matched search terms in visible card headers
+  const rawQ = document.getElementById('searchInput').value.trim();
+  const hlTerms = rawQ ? rawQ.split(/\s+/) : [];
+  if (hlTerms.length) {
+    container.querySelectorAll('.card-title,.card-summary,.card-group-badge').forEach(el => highlightText(el, hlTerms));
+  }
+}
+
+const QUICK_SEARCHES = ['sole source', 'simplified acquisition', '15.201', 'commercial products', 'set-aside', 'market research'];
+
+function showEmptyState() {
+  const container = document.getElementById('results');
+  const status = document.getElementById('rStatus');
+  document.getElementById('diffLegend').hidden = true;
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'empty-prompt';
+  wrap.innerHTML =
+    '<div class="empty-ico">&#9878;&#65039;</div>' +
+    '<p>Compare any FAR section before and after the RFO overhaul.</p>' +
+    '<p class="empty-sub">Search a topic or section number, or pick a part chip above.</p>' +
+    '<div class="qs-label">Try one of these</div>';
+
+  const qs = document.createElement('div');
+  qs.className = 'qs-chips';
+  QUICK_SEARCHES.forEach(q => {
+    const b = document.createElement('button');
+    b.className = 'qs-chip';
+    b.textContent = q;
+    b.addEventListener('click', () => {
+      document.getElementById('searchInput').value = q;
+      runSearch();
+    });
+    qs.appendChild(b);
+  });
+  wrap.appendChild(qs);
+
+  if (KB.length) {
+    const tiles = document.createElement('div');
+    tiles.className = 'stat-tiles';
+    [['far', 'FAR / RFO'], ['dfars', 'DFARS'], ['afars', 'AFARS']].forEach(([reg, label]) => {
+      const n = KB.filter(e => getGroupRegType(e.group) === reg).length;
+      const tile = document.createElement('button');
+      tile.className = 'stat-tile';
+      tile.title = 'Browse ' + label + ' entries';
+      const num = document.createElement('div');
+      num.className = 'stat-num';
+      num.textContent = n;
+      const lbl = document.createElement('div');
+      lbl.className = 'stat-lbl';
+      lbl.textContent = label;
+      tile.appendChild(num);
+      tile.appendChild(lbl);
+      tile.addEventListener('click', () => {
+        document.querySelector('.reg-btn[data-reg="' + reg + '"]')?.click();
+      });
+      tiles.appendChild(tile);
+    });
+    wrap.appendChild(tiles);
+  }
+
+  const legend = document.createElement('div');
+  legend.className = 'legend-row';
+  legend.innerHTML =
+    '<span class="legend-item"><span class="legend-swatch sw-add">word</span> added in RFO</span>' +
+    '<span class="legend-item"><span class="legend-swatch sw-rem">word</span> removed from legacy</span>';
+  wrap.appendChild(legend);
+
+  container.innerHTML = '';
+  container.appendChild(wrap);
+  status.textContent = pool.length + ' entries available';
+}
+
+function copyCitation(entry, btn) {
+  const text = entry.title + ' — ' + entry.group;
+  const done = () => {
+    btn.classList.add('copied');
+    btn.textContent = '✓';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '⧉'; }, 1400);
+  };
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.className = 'offscreen-ta';
+    document.body.appendChild(ta);
+    ta.select();
+    try { if (document.execCommand('copy')) done(); } catch (e) { /* clipboard unavailable */ }
+    ta.remove();
+  };
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+// Reset group/subpart filter UI to the "All" baseline. Pass {clearRegType: true}
+// to also reset the reg-filter row (used by the global Clear button).
+function resetFilters(opts = {}) {
+  activeGroup = null;
+  activeSubpart = null;
+  document.getElementById('subpartChips').hidden = true;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  const allChip = document.querySelector('#chips .chip');
+  if (allChip) allChip.classList.add('active');
+  const sel = document.getElementById('tocSelect');
+  if (sel) sel.value = '';
+  if (opts.clearRegType) {
+    activeRegType = null;
+    document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
+    const allRegBtn = document.querySelector('.reg-btn[data-reg="all"]');
+    if (allRegBtn) allRegBtn.classList.add('active');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  TEXT-NODE WALK / TRANSFORM
+// ═══════════════════════════════════════════════════════════════════
+// transformFn(textNodeValue) → DocumentFragment|null  (null = skip node)
+function walkTextNodes(el, transformFn, acceptNodeFilter) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, acceptNodeFilter || null);
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+  for (const tn of nodes) {
+    const frag = transformFn(tn.nodeValue);
+    if (frag) tn.parentNode.replaceChild(frag, tn);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  SEARCH HIGHLIGHTING
+// ═══════════════════════════════════════════════════════════════════
+function highlightText(el, terms) {
+  if (!terms.length) return;
+  const lowerTerms = terms.map(t => t.toLowerCase());
+  walkTextNodes(el, text => {
+    const lower = text.toLowerCase();
+    if (!lowerTerms.some(t => lower.includes(t))) return null;
+    const frag = document.createDocumentFragment();
+    let pos = 0;
+    while (pos < text.length) {
+      let best = {idx: text.length, len: 0};
+      for (const t of lowerTerms) {
+        const i = lower.indexOf(t, pos);
+        if (i !== -1 && i < best.idx) best = {idx: i, len: t.length};
+      }
+      if (!best.len) { frag.appendChild(document.createTextNode(text.slice(pos))); break; }
+      if (best.idx > pos) frag.appendChild(document.createTextNode(text.slice(pos, best.idx)));
+      const mark = document.createElement('mark');
+      mark.className = 'search-hl';
+      mark.textContent = text.slice(best.idx, best.idx + best.len);
+      frag.appendChild(mark);
+      pos = best.idx + best.len;
+    }
+    return frag;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  LOADING SKELETON
+// ═══════════════════════════════════════════════════════════════════
+function showSkeleton() {
+  const container = document.getElementById('results');
+  container.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const card = document.createElement('div');
+    card.className = 'r-card skeleton-card';
+    const hdr = document.createElement('div');
+    hdr.className = 'card-hdr';
+    const blk = document.createElement('div');
+    blk.className = 'card-title-blk';
+    ['sk-line sk-badge', 'sk-line sk-title', 'sk-line sk-summary'].forEach(cls => {
+      const d = document.createElement('div');
+      d.className = cls;
+      blk.appendChild(d);
+    });
+    hdr.appendChild(blk);
+    card.appendChild(hdr);
+    container.appendChild(card);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  CROSS-REFERENCE LINKS
+// ═══════════════════════════════════════════════════════════════════
+function triggerSearch(query) {
+  const input = document.getElementById('searchInput');
+  input.value = query;
+  resetFilters();
+  runSearch();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  input.focus();
+}
+
+function linkifyRefs(el) {
+  const REF_RE = /\b(\d{1,2}\.\d{1,4}(?:-\d+)?(?:\([a-z]\))?)\b/g;
+  const acceptNode = node => {
+    let p = node.parentElement;
+    while (p && p !== el) {
+      if (p.classList && (p.classList.contains('diff-detail') || p.classList.contains('ref-link'))) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      p = p.parentElement;
+    }
+    return NodeFilter.FILTER_ACCEPT;
+  };
+  walkTextNodes(el, text => {
+    REF_RE.lastIndex = 0;
+    if (!REF_RE.test(text)) return null;
+    REF_RE.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0, m;
+    while ((m = REF_RE.exec(text)) !== null) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const btn = document.createElement('button');
+      btn.className = 'ref-link';
+      btn.textContent = m[0];
+      btn.title = 'Jump to ' + m[1];
+      const q = m[1];
+      btn.addEventListener('click', e => { e.stopPropagation(); triggerSearch(q); });
+      frag.appendChild(btn);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    return frag;
+  }, acceptNode);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+//  KEYBOARD SHORTCUTS PANEL
+// ═══════════════════════════════════════════════════════════════════
+function initKbdShortcuts() {
+  const modal = document.getElementById('kbdModal');
+  if (!modal) return;
+  const overlay = document.getElementById('kbdOverlay');
+  const closeBtn = document.getElementById('kbdClose');
+  openKbdModal  = () => { modal.hidden = false; closeBtn.focus(); };
+  closeKbdModal = () => { modal.hidden = true; };
+  overlay.addEventListener('click', closeKbdModal);
+  closeBtn.addEventListener('click', closeKbdModal);
+}
+
+// ── Data-currency / editions panel ──────────────────────────────────
+let openAboutModal, closeAboutModal;
+function initAboutModal() {
+  const modal = document.getElementById('aboutModal');
+  if (!modal) return;
+  const overlay  = document.getElementById('aboutOverlay');
+  const closeBtn = document.getElementById('aboutClose');
+  buildAboutBody();
+  openAboutModal  = () => { modal.hidden = false; closeBtn.focus(); };
+  closeAboutModal = () => { modal.hidden = true; };
+  overlay.addEventListener('click', closeAboutModal);
+  closeBtn.addEventListener('click', closeAboutModal);
+  document.getElementById('aboutBtn')?.addEventListener('click', () => openAboutModal());
+  document.getElementById('aboutLink')?.addEventListener('click', () => openAboutModal());
+}
+
+// Builds the panel from meta (versions / currency / maintenance) using only
+// textContent + typed rows — no innerHTML with data, so nothing is injectable.
+function buildAboutBody() {
+  const body = document.getElementById('aboutBody');
+  if (!body) return;
+  body.textContent = '';
+
+  const REG_ROWS = [
+    ['far',   'FAR / RFO'],
+    ['dfars', 'DFARS'],
+    ['afars', 'AFARS'],
+  ];
+  const h = txt => { const e = document.createElement('h4'); e.textContent = txt; return e; };
+  const p = txt => { const e = document.createElement('p');  e.textContent = txt; return e; };
+
+  body.appendChild(h('RFO effective date'));
+  body.appendChild(p(KB_RFO_EFFECTIVE + ' — ' + KB_RFO_SCOPE + '. Individual Parts carry their own issuance and last-updated dates (shown on each entry), sourced from acquisition.gov’s FAR Part & Deviation Guide.'));
+
+  body.appendChild(h('Editions being compared'));
+  const table = document.createElement('table');
+  table.className = 'ed-table';
+  REG_ROWS.forEach(([rt, label]) => {
+    const v = KB_VERSIONS[rt] || {};
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td'); td1.textContent = label;
+    const td2 = document.createElement('td');
+    td2.textContent = 'Legacy: ' + (v.legacy || '—') + '  ·  Revised: ' + (v.revised || '—');
+    tr.appendChild(td1); tr.appendChild(td2);
+    table.appendChild(tr);
+  });
+  body.appendChild(table);
+
+  if (KB_CURRENCY) {
+    body.appendChild(h('Currency'));
+    const note = document.createElement('div');
+    note.className = 'about-note';
+    note.textContent = KB_CURRENCY;
+    body.appendChild(note);
+  }
+
+  if (KB_MAINT) {
+    body.appendChild(h('Update & maintenance'));
+    if (KB_MAINT.owner)   body.appendChild(p('Owner: ' + KB_MAINT.owner));
+    if (KB_MAINT.cadence) body.appendChild(p('Cadence: ' + KB_MAINT.cadence));
+    if (KB_MAINT.process) body.appendChild(p('Process: ' + KB_MAINT.process));
+  }
+
+  body.appendChild(h('Roadmap'));
+  body.appendChild(p('Full three-way side-by-side comparison (RFO ↔ DFARS ↔ AFARS, like the DAU tool) is planned. Today, use the "Related supplements" links inside each entry to jump between a FAR section and its DFARS/AFARS counterparts.'));
+}
+
+function runSearch() {
+  const raw   = document.getElementById('searchInput').value.trim();
+  const terms = raw ? raw.split(/\s+/) : [];
+
+  let pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  if (activeSubpart) pool = pool.filter(e => e.id === activeSubpart);
+  else if (activeGroup) pool = pool.filter(e => e.group === activeGroup);
+
+  if (!terms.length && !activeGroup && !activeSubpart) {
+    showEmptyState();
+    return;
+  }
+
+  if (!terms.length) {
+    showResults(pool);
+    return;
+  }
+
+  const lowerTerms = terms.map(t => t.toLowerCase());
+  const scored = pool
+    .map(e => ({entry: e, score: scoreEntry(e, lowerTerms)}))
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  showResults(scored.map(x => x.entry));
+}
+
+let debounceTimer;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(runSearch, 250);
+});
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.getElementById('searchInput').value = '';
+  resetFilters({clearRegType: true});
+  buildChips();
+  showEmptyState();
+  document.getElementById('searchInput').focus();
+});
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  VIEW TOGGLE
+// ═══════════════════════════════════════════════════════════════════
+document.querySelectorAll('.vbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const view = btn.dataset.view;
+    document.querySelectorAll('.vbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.dataset.view = view;
+    document.querySelectorAll('.r-card.expanded .diff-wrap').forEach(w => {
+      w.classList.remove('diff-sbs', 'diff-legacy', 'diff-rfo');
+      w.classList.add('diff-' + view);
+    });
+  });
+});
+document.body.dataset.view = 'sbs';
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  CHIPS
+// ═══════════════════════════════════════════════════════════════════
+function buildChips() {
+  const container = document.getElementById('chips');
+  container.innerHTML = '';
+  document.getElementById('subpartChips').hidden = true;
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  const groups = [...new Set(pool.map(e => e.group))];
+
+  function makeChipCount(n) {
+    const s = document.createElement('span');
+    s.className = 'chip-cnt';
+    s.textContent = n;
+    return s;
+  }
+
+  function chipLabel(group) {
+    const num = parsePartNum(group);
+    if (num) return num;
+    if (group === 'RFO Overview') return 'RFO';
+    return group.substring(0, 8);
+  }
+
+  const all = document.createElement('button');
+  all.className = 'chip' + (activeGroup === null ? ' active' : '');
+  all.appendChild(document.createTextNode('All'));
+  all.appendChild(makeChipCount(pool.length));
+  all.addEventListener('click', () => {
+    resetFilters();
+    showEmptyState();
+  });
+  container.appendChild(all);
+
+  // Collapse long chip lists behind a "+N more" toggle (mobile-friendly)
+  const CHIP_LIMIT = 14;
+  const activeIdx = groups.indexOf(activeGroup);
+  const collapsed = !chipsExpanded && groups.length > CHIP_LIMIT && activeIdx < CHIP_LIMIT;
+
+  groups.forEach((group, idx) => {
+    const count = pool.filter(e => e.group === group).length;
+    const btn = document.createElement('button');
+    btn.className = 'chip' + (activeGroup === group ? ' active' : '')
+                  + (collapsed && idx >= CHIP_LIMIT ? ' chip-hidden' : '');
+    btn.appendChild(document.createTextNode(chipLabel(group)));
+    btn.appendChild(makeChipCount(count));
+    btn.title = group;
+    btn.addEventListener('click', () => {
+      activeGroup = group;
+      activeSubpart = null;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const sel = document.getElementById('tocSelect');
+      if (sel) sel.value = group;
+      buildSubpartChips(group);
+      runSearch();
+    });
+    container.appendChild(btn);
+  });
+
+  if (groups.length > CHIP_LIMIT) {
+    const moreBtn = document.createElement('button');
+    moreBtn.className = 'chip chip-more';
+    moreBtn.textContent = collapsed ? '+' + (groups.length - CHIP_LIMIT) + ' more' : '− less';
+    moreBtn.setAttribute('aria-expanded', String(!collapsed));
+    moreBtn.addEventListener('click', () => {
+      chipsExpanded = collapsed;
+      buildChips();
+      if (activeGroup) buildSubpartChips(activeGroup);
+    });
+    container.appendChild(moreBtn);
+  }
+}
+
+function buildSubpartChips(group) {
+  const container = document.getElementById('subpartChips');
+  container.innerHTML = '';
+  container.hidden = false;
+
+  const entries = KB.filter(e => e.group === group);
+  const partLabel = parsePartNum(group) || 'Part';
+
+  const clearBtn = document.createElement('button');
+  clearBtn.className = 'subpart-chip' + (activeSubpart ? '' : ' active');
+  clearBtn.textContent = 'All ' + partLabel;
+  clearBtn.addEventListener('click', () => {
+    activeSubpart = null;
+    document.querySelectorAll('.subpart-chip').forEach(c => c.classList.remove('active'));
+    clearBtn.classList.add('active');
+    runSearch();
+  });
+  container.appendChild(clearBtn);
+
+  entries.forEach(entry => {
+    const secLabel = parseSectionNum(entry.title) || entry.title.substring(0, 12);
+    const btn = document.createElement('button');
+    btn.className = 'subpart-chip' + (activeSubpart === entry.id ? ' active' : '');
+    btn.textContent = secLabel;
+    btn.title = entry.title;
+    btn.addEventListener('click', () => {
+      activeSubpart = entry.id;
+      document.querySelectorAll('.subpart-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      runSearch();
+    });
+    container.appendChild(btn);
+  });
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  SIDEBAR TOC SELECT
+// ═══════════════════════════════════════════════════════════════════
+function buildTocSelect() {
+  const sel = document.getElementById('tocSelect');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">— All sections —</option>';
+  const pool = activeRegType ? KB.filter(e => getGroupRegType(e.group) === activeRegType) : KB;
+  const groups = [...new Set(pool.map(e => e.group))];
+  groups.forEach(group => {
+    const opt = document.createElement('option');
+    opt.value = group;
+    opt.textContent = group;
+    sel.appendChild(opt);
+  });
+  sel.value = activeGroup || '';
+}
+
+function onTocSelectChange() {
+  const sel = document.getElementById('tocSelect');
+  resetFilters();
+  if (sel.value) {
+    activeGroup = sel.value;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    buildSubpartChips(activeGroup);
+  }
+  runSearch();
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  DARK MODE
+// ═══════════════════════════════════════════════════════════════════
+function initDarkMode() {
+  const btn = document.getElementById('darkBtn');
+  const stored = localStorage.getItem('rfo-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = stored || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  btn.textContent = theme === 'dark' ? '☀' : '☾';
+
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('rfo-theme', next);
+    btn.textContent = next === 'dark' ? '☀' : '☾';
+  });
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  TYPEWRITER PLACEHOLDER
+// ═══════════════════════════════════════════════════════════════════
+function initTypewriter() {
+  const input = document.getElementById('searchInput');
+  const PHRASES = [
+    'Search "6.001 applicability"…',
+    'Search "commercial products"…',
+    'Search "set-aside rule of two"…',
+    'Search "sole source J&A"…',
+    'Search "simplified acquisition"…',
+    'Search "market research"…',
+    'Search "Part 12 commercial"…',
+  ];
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    input.placeholder = PHRASES[0];
+    return;
+  }
+  let pi = 0, ci = 0, deleting = false;
+  let timer;
+  function tick() {
+    const phrase = PHRASES[pi];
+    if (!deleting) {
+      ci++;
+      input.placeholder = phrase.slice(0, ci);
+      if (ci >= phrase.length) { deleting = true; timer = setTimeout(tick, 1800); return; }
+    } else {
+      ci--;
+      input.placeholder = phrase.slice(0, ci);
+      if (ci <= 0) { deleting = false; pi = (pi + 1) % PHRASES.length; timer = setTimeout(tick, 400); return; }
+    }
+    timer = setTimeout(tick, deleting ? 40 : 60);
+  }
+  input.addEventListener('focus', () => clearTimeout(timer));
+  input.addEventListener('blur',  () => { if (!input.value) timer = setTimeout(tick, 800); });
+  timer = setTimeout(tick, 600);
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════════════════
+(async function init() {
+  initDarkMode();
+  initTypewriter();
+  initKbdShortcuts();
+  document.getElementById('tocSelect')?.addEventListener('change', onTocSelectChange);
+
+  // Back-to-top button
+  const topBtn = document.getElementById('topBtn');
+  topBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  window.addEventListener('scroll', () => {
+    const show = window.scrollY > 500;
+    topBtn.classList.toggle('show', show);
+    topBtn.setAttribute('aria-hidden', String(!show));
+    topBtn.tabIndex = show ? 0 : -1;
+  }, {passive: true});
+
+  // Keyboard shortcuts (/ to search, ? for shortcuts panel, Esc to close)
+  document.addEventListener('keydown', e => {
+    const inp = document.getElementById('searchInput');
+    const modal = document.getElementById('kbdModal');
+    const ae = document.activeElement;
+    const isTyping = ae === inp ||
+                     (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) ||
+                     (ae && ae.isContentEditable);
+    if (e.key === '/' && !isTyping) {
+      e.preventDefault();
+      inp.focus();
+    } else if (e.key === '?' && !isTyping && modal && modal.hidden) {
+      e.preventDefault();
+      openKbdModal && openKbdModal();
+    } else if (e.key === 'Escape') {
+      const aboutModal = document.getElementById('aboutModal');
+      if (aboutModal && !aboutModal.hidden) {
+        closeAboutModal && closeAboutModal();
+      } else if (modal && !modal.hidden) {
+        closeKbdModal && closeKbdModal();
+      } else if (ae === inp) {
+        inp.blur();
+      }
+    }
+  });
+
+  // Regulation filter buttons (wire early)
+  document.querySelectorAll('.reg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!KB.length) return;
+      activeRegType = btn.dataset.reg === 'all' ? null : btn.dataset.reg;
+      activeGroup = null;
+      activeSubpart = null;
+      document.getElementById('subpartChips').hidden = true;
+      document.querySelectorAll('.reg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sel = document.getElementById('tocSelect');
+      if (sel) sel.value = '';
+      buildChips();
+      buildTocSelect();
+      showEmptyState();
+    });
+  });
+
+  // Show loading skeleton
+  showSkeleton();
+  document.getElementById('rStatus').textContent = 'Loading…';
+
+  // Fetch knowledge base
+  try {
+    const res = await fetch('./kb.json');
+    if (!res.ok) throw new Error('Server returned ' + res.status);
+    const data = await res.json();
+    KB = data.entries || [];
+    if (data.meta?.lastUpdated) {
+      const updEl = document.getElementById('footerUpdated');
+      if (updEl) updEl.textContent = ' · Data updated: ' + data.meta.lastUpdated;
+    }
+    if (data.meta?.versions)      KB_VERSIONS = data.meta.versions;
+    if (data.meta?.currencyNote)  KB_CURRENCY = data.meta.currencyNote;
+    if (data.meta?.maintenance)   KB_MAINT    = data.meta.maintenance;
+    if (data.meta?.rfoEffective)  KB_RFO_EFFECTIVE = data.meta.rfoEffective;
+    if (data.meta?.rfoScope)      KB_RFO_SCOPE     = data.meta.rfoScope;
+    if (data.meta?.partDates)     KB_PART_DATES    = data.meta.partDates;
+    buildSearchIndex();
+    buildCrossRefIndex();
+  } catch (err) {
+    document.getElementById('results').innerHTML =
+      '<div class="empty-prompt"><div class="empty-ico">&#9888;</div>' +
+      '<p>Could not load knowledge base.</p>' +
+      '<p class="empty-sub">' + sanitize(err.message) + '</p></div>';
+    document.getElementById('rStatus').textContent = 'Load failed';
+    return;
+  }
+
+  // Entry count badge
+  const countEl = document.getElementById('entryCount');
+  if (countEl) countEl.textContent = KB.length + ' sections';
+
+  buildChips();
+  buildTocSelect();
+  initAboutModal();
+  showEmptyState();
+
+  // Register service worker for offline caching
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

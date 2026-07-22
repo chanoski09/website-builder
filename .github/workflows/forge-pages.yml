@@ -1,0 +1,58 @@
+name: Deploy FORGE to GitHub Pages
+
+# Publishes rfo-knowledge-tool/ to https://chanoski09.github.io/website-builder/
+# so reviewers can open the app with one click — no local server needed.
+on:
+  push:
+    branches:
+      - claude/far-rfo-handoff-plan-ySZSe
+      - main
+    paths:
+      - 'rfo-knowledge-tool/RFO_tool.html'
+      - 'rfo-knowledge-tool/kb.json'
+      - 'rfo-knowledge-tool/sw.js'
+      - '.github/workflows/forge-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish to GitHub Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Stage site files
+        run: |
+          mkdir -p _site
+          cp rfo-knowledge-tool/RFO_tool.html _site/
+          cp rfo-knowledge-tool/kb.json _site/
+          cp rfo-knowledge-tool/sw.js _site/
+          # Serve the app at the bare URL too
+          cp rfo-knowledge-tool/RFO_tool.html _site/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
