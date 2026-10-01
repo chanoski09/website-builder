@@ -12,6 +12,8 @@ on:
       - 'rfo-knowledge-tool/kb.json'
       - 'rfo-knowledge-tool/updates.json'
       - 'rfo-knowledge-tool/sw.js'
+      - 'rfo-knowledge-tool/alternate/**'
+      - 'rfo-knowledge-tool/options.html'
       - '.github/workflows/forge-pages.yml'
   workflow_dispatch:
 
@@ -42,6 +44,8 @@ jobs:
           cp rfo-knowledge-tool/kb.json _site/
           cp rfo-knowledge-tool/updates.json _site/
           cp rfo-knowledge-tool/sw.js _site/
+          cp -R rfo-knowledge-tool/alternate _site/
+          cp rfo-knowledge-tool/options.html _site/
           # Serve the app at the bare URL too
           cp rfo-knowledge-tool/RFO_tool.html _site/index.html
 
