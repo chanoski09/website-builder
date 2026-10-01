@@ -143,8 +143,9 @@ function alignBullets(legacy, rfo) {
 //   'other'   — anything else
 function labelLevel(label) {
   const inner = label.replace(/[()]/g, '');
+  if (/^[a-z]$/.test(inner) && inner !== 'i') return 'alpha';
   if (/^[ivxlcdm]+$/.test(inner)) return 'roman';
-  if (/^[a-z]$/.test(inner))      return 'alpha';
+  if (/^[a-z]$/.test(inner)) return 'alpha';
   if (/^[A-Z]$/.test(inner))      return 'ALPHA';
   if (/^\d+$/.test(inner))        return 'num';
   return 'other';
@@ -161,24 +162,23 @@ function detectTopLevel(rawText) {
 function parseFarSubparas(rawText) {
   const topLevel = detectTopLevel(rawText);
   const lines = rawText.split('\n');
-  const result = [];
-  let current = null;
-
-  for (const line of lines) {
-    const m = line.match(/^(\s*)(\([a-zA-Z0-9]{1,4}\))\s+(.*)/);
-    // Only treat as a paragraph break if the label is at the TOP LEVEL
-    // for this section. Sub-bullets get folded back into their parent.
-    if (m && m[1].length === 0 && labelLevel(m[2]) === topLevel) {
+  const labels = lines.map(line => line.match(/^(\s*)(\([a-zA-Z0-9]{1,4}\))\s*(.*)/));
+  const indents = labels.filter(m => m && labelLevel(m[2]) === topLevel).map(m => m[1].length);
+  const alphaIndentCeiling = indents.length ? Math.max(...indents) : 0;
+  const minimumIndent = indents.length ? Math.min(...indents) : 0;
+  const result = []; let current = null;
+  lines.forEach((line, i) => {
+    const m = labels[i];
+    if (m && (topLevel === 'alpha' || topLevel === 'ALPHA' || m[1].length === minimumIndent) && (labelLevel(m[2]) === topLevel || (topLevel === 'alpha' && m[2] === '(i)' && m[1].length <= alphaIndentCeiling))) {
       if (current) result.push(current);
-      current = {label: m[2], text: m[3]};
-    } else if (current) {
-      const trimmed = line.trim();
-      if (trimmed) current.text += ' ' + trimmed;
-    } else {
-      const trimmed = line.trim();
-      if (trimmed) result.push({label: '', text: trimmed});
+      current = {label:m[2], text:m[3]};
+    } else if (line.trim()) {
+      // PDF wrapping and nested bullets remain attached to their parent.
+      // Consecutive preamble lines are one block rather than one warning per line.
+      if (!current) current = {label:'', text:line.trim()};
+      else current.text += ' ' + line.trim();
     }
-  }
+  });
   if (current) result.push(current);
   return result.filter(p => p.text.trim());
 }

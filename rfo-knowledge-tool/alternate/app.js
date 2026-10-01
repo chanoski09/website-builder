@@ -61,8 +61,18 @@
       rfo:revised[i]?{label:'',text:clean(revised[i].t)}:null
     }));
   }
+  function mappedRows(e,legacy,revised) {
+    if(!e.paragraphMappings)return alignByLabel(legacy,revised);
+    const usedLegacy=new Set(),usedRevised=new Set(),rows=[];
+    const combine=(paragraphs,labels,used)=>{const found=paragraphs.filter(p=>labels.includes(p.label)&&!used.has(p));found.forEach(p=>used.add(p));return found.length?{label:found.map(p=>p.label).join(' + '),text:found.map(p=>p.text).join('\n\n')}:null;};
+    for(const mapping of e.paragraphMappings){const l=combine(legacy,mapping.legacyLabels,usedLegacy),r=combine(revised,mapping.revisedLabels,usedRevised);if(l||r)rows.push({kind:l&&r?'mapped':l?'legacy-only':'rfo-only',legacy:l,rfo:r});}
+    // Keep unreviewed preambles/unpaired source paragraphs without guessing matches.
+    legacy.filter(p=>!usedLegacy.has(p)).forEach(p=>rows.push({kind:'legacy-only',legacy:p,rfo:null}));
+    revised.filter(p=>!usedRevised.has(p)).forEach(p=>rows.push({kind:'rfo-only',legacy:null,rfo:p}));
+    return rows;
+  }
   function comparisonRows(e) {
-    if (state.detail === 'full' && !e.summaryOnly && validText(e.legacyText) && validText(e.rfoText)) return alignByLabel(parseFarSubparas(clean(e.legacyText)), parseFarSubparas(clean(e.rfoText)));
+    if (state.detail === 'full' && !e.summaryOnly && validText(e.legacyText) && validText(e.rfoText)) return mappedRows(e,parseFarSubparas(clean(e.legacyText)),parseFarSubparas(clean(e.rfoText)));
     return overviewRows(e);
   }
   // Exact original text is preserved on each side, including capitalization.
@@ -79,7 +89,7 @@
   }
   function renderEntry() {
     const e = state.entry; if (!e) return;
-    const reg = regType(e), labels = LABELS[reg]; const versions = e.sourceEditions || state.meta.versions?.[reg] || {};
+    const reg = regType(e), labels = [...LABELS[reg]]; if(e.legacyCitation)labels[0]+=' '+e.legacyCitation; if(e.revisedCitation)labels[1]+=' '+e.revisedCitation; const versions = e.sourceEditions || state.meta.versions?.[reg] || {};
     $('breadcrumb').textContent = e.group; $('entryTitle').textContent = e.title; $('entrySubtitle').textContent = e.summaryOnly ? 'Source notice · summary comparison' : labels[0] + ' → ' + labels[1];
     $('summaryText').textContent = e.summary || 'Compare the source text below.';
     $('save').disabled=false;$('save').setAttribute('aria-pressed',String(state.saved.has(e.id)));$('save').textContent=state.saved.has(e.id)?'Saved':'Save';$('share').disabled=false;$('print').disabled=false;
@@ -87,17 +97,27 @@
     const comparison=$('comparison'); comparison.replaceChildren();comparison.classList.toggle('fg-reading',state.layout==='reading');
     const heads=element('div','fg-columnheads'); labels.forEach((name,i)=>{const head=element('div','fg-columnhead'+(i?' fg-rfo-heading':''));head.append(element('strong','',name),element('div','fg-small',i ? versions.revised || (e.effectiveDate?'Effective '+e.effectiveDate:'See official source') : versions.legacy || 'Historical baseline'));heads.append(head);});comparison.append(heads);
     const rows=comparisonRows(e); let visible=0,changed=0;
+    const unaligned = {legacy:[], rfo:[]};
+    if(e.comparisonNote)comparison.append(element('div','mapping-note',e.comparisonNote));
     rows.forEach(row=>{const isChanged=row.kind!=='matched'||row.legacy.text!==row.rfo.text||row.legacy.label!==row.rfo.label;if (isChanged) changed++;
+      if (!row.legacy || !row.rfo) {if(row.legacy)unaligned.legacy.push(row.legacy);if(row.rfo)unaligned.rfo.push(row.rfo);return;}
       if ($('changesOnly').checked&&!isChanged) return;visible++;
       const pair=element('div','fg-row');const ops=row.legacy&&row.rfo&&isChanged&&$('highlight').checked?diffTokens(diffTokenize(row.legacy.text),diffTokenize(row.rfo.text)):null;
       ['legacy','rfo'].forEach((side,index)=>{const own=row[side],other=row[side==='legacy'?'rfo':'legacy'];const cell=element('div','fg-cell');cell.append(element('div','fg-readinglabel',labels[index]));
-        let status=!isChanged?'Unchanged':row.kind==='relocated'?'Likely renumbered · verify':row.kind==='matched'?'Changed':own?'Unmatched source text':'No aligned counterpart';
-        if(own?.label) status=own.label+' · '+status;if(row.kind==='relocated'&&other?.label) status+=' · counterpart '+other.label;
+        let status=!isChanged?'Unchanged':row.kind==='mapped'?'Reviewed topic mapping':row.kind==='relocated'?'Likely renumbered · verify':row.kind==='matched'?'Changed':own?'Unmatched source text':'No aligned counterpart';
+        if(own?.label) status=own.label+' · '+status;if((row.kind==='relocated'||row.kind==='mapped')&&other?.label) status+=' · counterpart '+other.label;
         cell.append(element('span','fg-status'+(isChanged?(index?' after':' before'):''),status));const p=element('p');fillText(p,row,side,ops,isChanged);cell.append(p);pair.append(cell);
       });comparison.append(pair);
     });
-    if (!visible) comparison.append(element('p','fg-cell','No changed rows in this view. Turn off “Changes only” to see all text.'));
-    $('rowCount').textContent = visible+' of '+rows.length+' aligned rows · '+changed+' changed';
+    const unmatched=unaligned.legacy.length+unaligned.rfo.length;
+    if(unmatched){
+      comparison.append(element('p','alignment-note','Some paragraphs could not be paired reliably. They are preserved below; this does not establish that a requirement was added or removed.'));
+      const groups=element('div','unaligned-groups');
+      ['legacy','rfo'].forEach((side,index)=>{if(!unaligned[side].length)return;const detail=element('details','unaligned-group');detail.append(element('summary','',labels[index]+': '+unaligned[side].length+' paragraphs not aligned'));
+        unaligned[side].forEach(para=>{const block=element('div','unaligned-paragraph');if(para.label)block.append(element('span','fg-status',para.label));block.append(element('p','',para.text));detail.append(block);});groups.append(detail);});comparison.append(groups);
+    }
+    if (!visible) comparison.append(element('p','alignment-note',unmatched?'No paired paragraphs in this view. Expand the source groups to read the preserved text.':'No changed rows in this view. Turn off “Changes only” to see all text.'));
+    $('rowCount').textContent = visible+' paired rows shown · '+unmatched+' paragraphs in source groups';
     const fullLoaded=state.detail==='full'&&!e.summaryOnly&&validText(e.legacyText)&&validText(e.rfoText);
     $('contentNote').textContent=fullLoaded?'Full stored source text · alignment is a reading aid, not a legal determination.':state.detail==='full'?'Full source text is not loaded for this entry. Showing its editorial summary.':'Editorial overview · not regulatory quotations.';
     $('procedures').hidden=!e.supplementalText?.text;$('procedureTitle').textContent=e.supplementalText?.label || 'Supplementary procedure';$('procedureText').textContent=e.supplementalText?.text || '';
@@ -105,6 +125,7 @@
   }
   function renderSources(e,reg) {
     const body=$('sourceBody');body.replaceChildren();
+    if(e.comparisonNote) body.append(element('p','',e.comparisonNote));
     if(e.sourceNote) body.append(element('p','',e.sourceNote));
     if(e.effectiveDate) body.append(element('p','','Entry effective date: '+e.effectiveDate));
     if(reg==='far'){const part=e.group.match(/^Part (\d+)/)?.[1];const dates=state.meta.partDates?.[part];if(dates)body.append(element('p','','Part source issued '+dates.issued+(dates.updated?'; updated '+dates.updated:'')));
@@ -133,11 +154,11 @@
   async function load() {
     $('loadError').hidden=true;all('[data-screen]')[0].setAttribute('aria-busy','true');
     try {
-      const responses=await Promise.all([fetch('../kb.json',{cache:'no-cache'}),fetch('../updates.json',{cache:'no-cache'})]);
+      const responses=await Promise.all([fetch('../kb.json',{cache:'no-cache'}),fetch('../updates.json',{cache:'no-cache'}),fetch('./mappings.json',{cache:'no-cache'})]);
       if(responses.some(r=>!r.ok))throw new Error('Knowledge-base request failed. Check your connection and retry.');
-      const [base,updates]=await Promise.all(responses.map(r=>r.json()));
+      const [base,updates,mappings]=await Promise.all(responses.map(r=>r.json()));
       if(!Array.isArray(base.entries)||!Array.isArray(updates.entries)||!updates.meta)throw new Error('Invalid knowledge-base format.');
-      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));state.entries=[...map.values()];state.byId=map;state.meta=updates.meta;
+      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta=updates.meta;
       state.entries.forEach(e=>{e.summary=e.summary||'';e.searchText=[e.title,e.group,e.summary,...e.keywords||[],e.legacyText,e.rfoText,e.supplementalText?.text].filter(Boolean).join(' ').toLowerCase();});
       $('dataStatus').textContent=state.entries.length.toLocaleString()+' sections · reviewed '+state.meta.lastUpdated;
       buildGroups();search();renderUpdates();
