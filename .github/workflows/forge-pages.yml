@@ -10,6 +10,7 @@ on:
     paths:
       - 'rfo-knowledge-tool/RFO_tool.html'
       - 'rfo-knowledge-tool/kb.json'
+      - 'rfo-knowledge-tool/updates.json'
       - 'rfo-knowledge-tool/sw.js'
       - '.github/workflows/forge-pages.yml'
   workflow_dispatch:
@@ -39,6 +40,7 @@ jobs:
           mkdir -p _site
           cp rfo-knowledge-tool/RFO_tool.html _site/
           cp rfo-knowledge-tool/kb.json _site/
+          cp rfo-knowledge-tool/updates.json _site/
           cp rfo-knowledge-tool/sw.js _site/
           # Serve the app at the bare URL too
           cp rfo-knowledge-tool/RFO_tool.html _site/index.html

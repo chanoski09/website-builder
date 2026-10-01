@@ -9,7 +9,7 @@ A hosted single-file HTML app for the **411th Contract Support Brigade** compari
 | File | Purpose |
 |------|---------|
 | `RFO_tool.html` | App shell — styles, markup, all JavaScript logic |
-| `kb.json` | All 64 knowledge-base entries — **edit this to update content** |
+| `kb.json` | Knowledge-base entries, source editions, and `meta.updates` release notes — **edit this to update content** |
 
 The app fetches `kb.json` at load time. Update the JSON, push to GitHub, and every visitor gets fresh data on their next page load. No app code changes needed.
 
@@ -60,7 +60,7 @@ RFO_tool.html
 1. Open `kb.json` in GitHub → click pencil icon
 2. Find entry by `id` (Ctrl+F)
 3. Replace `"TODO: paste..."` in `legacyText` / `rfoText` with actual regulatory text
-4. Commit to `main` → done. FORGE serves updated data on next page load.
+4. Commit to the FORGE source branch for GitHub Pages, or `main` for cPanel. FORGE fetches current data while online and uses its cached copy while offline.
 
 ### Add a new entry
 1. Copy any existing entry block in `kb.json`
@@ -77,6 +77,29 @@ Use `\n` for line breaks within JSON strings:
 ## Monthly Reminder
 A GitHub Action (`.github/workflows/forge-data-reminder.yml`) automatically opens an issue on the 1st of every month listing the sources to check and step-by-step update instructions.
 
+## Updates / New (added 1 October 2026)
+
+The front-page section is built from `meta.updates` in `kb.json`. Each record has
+an `id`, project `date`, `title`, `summary`, `status` (`effective`, `proposed`, or
+`project`), `details`, `entryIds`, and official `links`. Use `sourceDate`,
+`effectiveDate`, and `commentDeadline` where applicable. Never label publication
+dates or project refresh dates as a blanket regulatory effective date.
+
+- Selected DFARS entries: codified Acquisition.gov Change 7 May 2026. These are
+  not separately verified DoD RFO deviation text.
+- Selected Army AFARS / PGI entries: official Army edition effective 31 August
+  2026, newer than the AFARS edition still displayed on Acquisition.gov.
+- Award schedule confirmation: PGI 5105.302(a)(2), 8 p.m. Eastern the day before
+  proposed award. Initial announcement package: (a)(1), noon Eastern three
+  business days before award. Formal ODASA(P) approval remains required.
+- CAS final-rule notices: effective 1 October 2026. FAR/RFO text is not silently
+  rewritten from these notices or from proposed rules.
+
+Entry-specific `sourceEditions` override the global pane subtitles. `sourceNote`
+explains renumbering, topic counterparts, and any source limits. Keep the historic
+left pane and refresh only verified current text. Search also retains former
+AFARS citations after renumbering. See `SOURCE_REVIEW_2026-10-01.md` for sources.
+
 ## Security Constraints (must never remove)
 | Item | Location | Why |
 |------|----------|-----|
@@ -88,3 +111,11 @@ A GitHub Action (`.github/workflows/forge-data-reminder.yml`) automatically open
 ## PR / Branch
 - Branch: `claude/far-rfo-handoff-plan-ySZSe`
 - PR: `chanoski09/website-builder#2`
+
+## Publication data layout
+
+`kb.json` preserves the large historical baseline. `updates.json` contains current
+metadata and the 19 refreshed/new entries, merged by ID at load time. Edit
+`updates.json` for current entries and front-page release notes. Both files are
+required for deployment and offline caching. This avoids replacing the 5 MB
+baseline through the connector.

@@ -390,6 +390,31 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 .footer-link:hover{color:var(--primary)}
 [data-theme="dark"] .footer-link:hover{color:var(--text)}
 @media print{.info-btn,.footer-link{display:none!important}}
+.updates-section{margin:0 0 1.25rem;padding:1.1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow-xs)}
+.updates-heading{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.4rem;margin-bottom:.35rem}
+.updates-heading h2{font-size:1.05rem;margin:0;color:var(--primary)}
+.updates-heading time,.updates-intro{font-size:.75rem;color:var(--muted)}
+.updates-intro{margin:0 0 .9rem;line-height:1.5}
+.updates-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.update-card{min-width:0;padding:.9rem;border:1px solid var(--border);border-radius:9px;background:var(--panel-2)}
+.update-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;font-size:.65rem;color:var(--muted);margin-bottom:.45rem}
+.update-badge{border-radius:4px;padding:.15rem .4rem;font-weight:700;letter-spacing:.02em;background:var(--blue-light);color:var(--blue)}
+.update-badge.effective{background:var(--add-bg);color:var(--add-text)}
+.update-badge.proposed{background:var(--rem-bg);color:var(--rem-text)}
+.update-card h3{font-size:.86rem;line-height:1.45;margin:0 0 .45rem}
+.update-card p,.update-card li{font-size:.77rem;line-height:1.6;color:var(--text-2)}
+.update-card p{margin:0 0 .55rem}
+.update-card summary{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--blue);padding:.25rem 0}
+.update-card ul{padding-left:1.1rem;margin:.5rem 0}
+.update-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.65rem}
+.update-link{font:inherit;font-size:.73rem;color:var(--blue);background:none;border:0;padding:.15rem 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.update-link:focus-visible,.update-card summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.source-note{padding:.65rem .8rem;border-left:3px solid var(--blue);background:var(--blue-light);font-size:.78rem;line-height:1.6;margin:0 0 .8rem;color:var(--text)}
+.source-excerpt{margin:.7rem 0;padding:.8rem;border:1px solid var(--border);border-radius:8px;background:var(--panel-2);font-size:.78rem;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.supplement-procedure{margin:0 0 .85rem}
+.supplement-procedure summary{font-size:.8rem;font-weight:700;color:var(--blue);cursor:pointer;padding:.35rem 0}
+@media(max-width:700px){.updates-grid{grid-template-columns:1fr}.updates-section{padding:.8rem}}
+@media print{.updates-section{display:none}}
 </style>
 </head>
 <body>
@@ -403,7 +428,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
     </div>
   </div>
   <div class="hdr-right">
-    <span class="hbadge hbadge-rfo">RFO &bull; Eff 17 Apr 2026</span>
+    <span class="hbadge hbadge-rfo">RFO &bull; Model deviations</span>
     <span class="hbadge hbadge-count" id="entryCount"></span>
     <button class="info-btn" id="aboutBtn" aria-label="Data currency and editions">&#8505; Data</button>
     <button class="dark-btn" id="darkBtn" aria-label="Toggle dark mode">&#9790;</button>
@@ -435,6 +460,14 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
   </aside>
 
   <main>
+    <section class="updates-section" id="updatesSection" aria-labelledby="updatesTitle" hidden>
+      <div class="updates-heading">
+        <h2 id="updatesTitle">Updates / New</h2>
+        <time id="updatesDate"></time>
+      </div>
+      <p class="updates-intro">What changed in FORGE. Source dates and rule status are shown separately; proposed rules do not replace current requirements.</p>
+      <div class="updates-grid" id="updatesGrid"></div>
+    </section>
     <div class="search-section">
       <div class="search-bar">
         <span class="s-icon">&#128269;</span>
@@ -472,7 +505,7 @@ kbd{display:inline-block;padding:.15rem .42rem;background:var(--bg-2);border:1px
 
 <footer>
   <strong>FORGE</strong> &bull; FAR Overhaul Reference &amp; Guidance Engine &bull; 411th Contract Support Brigade &bull;
-  Sources: eCFR (48 C.F.R.) &amp; FAR Overhaul (RFO — effective 17 Apr 2026, Vol. 1 Parts 1&ndash;51) &bull;
+  Sources: eCFR (48 C.F.R.), RFO model deviations, DFARS &amp; Army AFARS/PGI &bull;
   <em>For training — verify all citations against official sources before operational use.</em>
   &bull; <button class="footer-link" id="aboutLink" type="button">Data currency &amp; editions</button>
   <span id="footerUpdated" class="footer-updated"></span>
@@ -724,30 +757,27 @@ function parseFarSubparas(rawText) {
 }
 
 function alignByLabel(legacyParas, rfoParas) {
-  const rfoMap = new Map(rfoParas.map(p => [p.label, p]));
+  // A label can recur under different numbered sections. Never overwrite or
+  // drop a paragraph just because an earlier section also used (a) or (b).
+  const rfoMap = new Map();
+  for (const p of rfoParas) {
+    if (!rfoMap.has(p.label)) rfoMap.set(p.label, []);
+    rfoMap.get(p.label).push(p);
+  }
   const usedRfo = new Set();
   const rows = [];
 
   for (const lp of legacyParas) {
-    if (lp.label && rfoMap.has(lp.label)) {
-      const rp = rfoMap.get(lp.label);
+    if (rfoMap.get(lp.label)?.length) {
+      const rp = rfoMap.get(lp.label).shift();
       rows.push({kind:'matched', legacy: lp, rfo: rp});
-      usedRfo.add(lp.label);
-    } else if (lp.label === '') {
-      // preamble — find rfo preamble
-      const rfoPreamble = rfoParas.find(p => p.label === '' && !usedRfo.has(''));
-      if (rfoPreamble) {
-        rows.push({kind:'matched', legacy: lp, rfo: rfoPreamble});
-        usedRfo.add('');
-      } else {
-        rows.push({kind:'legacy-only', legacy: lp, rfo: null});
-      }
+      usedRfo.add(rp);
     } else {
       rows.push({kind:'legacy-only', legacy: lp, rfo: null});
     }
   }
   for (const rp of rfoParas) {
-    if (!usedRfo.has(rp.label)) {
+    if (!usedRfo.has(rp)) {
       rows.push({kind:'rfo-only', legacy: null, rfo: rp});
     }
   }
@@ -853,7 +883,11 @@ function makeDatesLine(entry, regType) {
     s.appendChild(document.createTextNode(val));
     return s;
   };
-  row.appendChild(chip('📅 RFO effective', KB_RFO_EFFECTIVE + ' (' + KB_RFO_SCOPE + ')'));
+  if (entry.effectiveDate) {
+    row.appendChild(chip('Effective', entry.effectiveDate));
+    return row;
+  }
+  row.appendChild(chip('📅 RFO source baseline', KB_RFO_EFFECTIVE + ' (' + KB_RFO_SCOPE + ')'));
   if (pd && pd.issued)  row.appendChild(chip('· Part ' + part + ' issued', pd.issued));
   if (pd && pd.updated) row.appendChild(chip('· last updated', pd.updated));
   return row;
@@ -863,7 +897,7 @@ function makeDatesLine(entry, regType) {
 function navigateToEntry(entry) {
   const input = document.getElementById('searchInput');
   input.value = parseSectionNum(entry.title) || entry.title;
-  resetFilters();
+  resetFilters({clearRegType: true});
   runSearch();
   window.scrollTo({top: 0, behavior: 'smooth'});
   requestAnimationFrame(() => {
@@ -990,6 +1024,25 @@ function renderEntry(entry) {
   });
   wrap.appendChild(srcRow);
 
+  if (entry.sourceNote) {
+    const note = document.createElement('div');
+    note.className = 'source-note';
+    note.textContent = entry.sourceNote;
+    wrap.appendChild(note);
+  }
+  if (entry.supplementalText?.text) {
+    const procedure = document.createElement('details');
+    procedure.className = 'supplement-procedure';
+    const heading = document.createElement('summary');
+    heading.textContent = entry.supplementalText.label || 'Current supplementary procedure';
+    procedure.appendChild(heading);
+    const excerpt = document.createElement('div');
+    excerpt.className = 'source-excerpt';
+    excerpt.textContent = entry.supplementalText.text;
+    procedure.appendChild(excerpt);
+    wrap.appendChild(procedure);
+  }
+
   // Summary-only entries (large/table-heavy clauses): show a clean change
   // summary + pointer to the official text instead of a two-pane diff.
   if (entry.summaryOnly) {
@@ -997,7 +1050,9 @@ function renderEntry(entry) {
     box.className = 'summary-note';
     const tag = document.createElement('div');
     tag.className = 'summary-note-tag';
-    tag.textContent = '📄 Summary of changes — refer to the official text before contract use';
+    tag.textContent = entry.effectiveDate
+      ? '📄 Final rule update · effective ' + entry.effectiveDate + ' — refer to the official text before contract use'
+      : '📄 Summary of changes — refer to the official text before contract use';
     box.appendChild(tag);
     if (entry.rfo && entry.rfo[0]) {
       const chg = document.createElement('p');
@@ -1009,7 +1064,7 @@ function renderEntry(entry) {
       const leg = document.createElement('p');
       leg.className = 'summary-note-leg';
       const b = document.createElement('strong');
-      b.textContent = 'Legacy clause: ';
+      b.textContent = 'Historical baseline: ';
       leg.appendChild(b);
       leg.appendChild(document.createTextNode(entry.legacy[0].t));
       box.appendChild(leg);
@@ -1055,7 +1110,7 @@ function renderEntry(entry) {
   const legHdr = document.createElement('div');
   legHdr.className = 'pane-hdr';
   legHdr.innerHTML = REG_LABELS[regType].legacy;
-  legHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.legacy));
+  legHdr.appendChild(makePaneEdition(entry.sourceEditions?.legacy || KB_VERSIONS[regType]?.legacy));
   legacyPane.appendChild(legHdr);
   const legContent = document.createElement('div');
   legContent.className = 'pane-content';
@@ -1069,7 +1124,7 @@ function renderEntry(entry) {
   const rfoHdr = document.createElement('div');
   rfoHdr.className = 'pane-hdr';
   rfoHdr.innerHTML = REG_LABELS[regType].revised;
-  rfoHdr.appendChild(makePaneEdition(KB_VERSIONS[regType]?.revised));
+  rfoHdr.appendChild(makePaneEdition(entry.sourceEditions?.revised || KB_VERSIONS[regType]?.revised));
   rfoPane.appendChild(rfoHdr);
   const rfoContent = document.createElement('div');
   rfoContent.className = 'pane-content';
@@ -1119,11 +1174,84 @@ let KB_VERSIONS = {
 let KB_CURRENCY = '';
 let KB_MAINT = null;
 
-// RFO effective date + per-Part issuance/last-updated dates (from
+// RFO source baseline + per-Part issuance/last-updated dates (from
 // acquisition.gov's FAR Part & Deviation Guide). Overridden by kb.json meta.
 let KB_RFO_EFFECTIVE = '17 Apr 2026';
 let KB_RFO_SCOPE     = 'Vol. 1 · Parts 1–51';
 let KB_PART_DATES    = {};  // { "6": { issued: "…", updated: "…" }, … }
+
+// Release notes are maintained in kb.json. Build with text nodes and safe URLs.
+function buildUpdates(meta) {
+  const section = document.getElementById('updatesSection');
+  const grid = document.getElementById('updatesGrid');
+  const records = Array.isArray(meta?.updates) ? meta.updates : [];
+  grid.replaceChildren();
+  section.hidden = !records.length;
+  const date = document.getElementById('updatesDate');
+  date.dateTime = meta?.lastUpdated || '';
+  date.textContent = meta?.lastUpdated ? 'Project updated ' + meta.lastUpdated : '';
+  for (const record of records) {
+    const card = document.createElement('article');
+    card.className = 'update-card';
+    const row = document.createElement('div');
+    row.className = 'update-meta';
+    const badge = document.createElement('span');
+    const status = ['effective', 'proposed', 'project'].includes(record.status) ? record.status : 'project';
+    badge.className = 'update-badge ' + status;
+    badge.textContent = {effective:'Effective rule / guidance', proposed:'Proposed — not final', project:'Project update'}[status];
+    row.appendChild(badge);
+    if (record.sourceDate) {
+      const source = document.createElement('time');
+      source.dateTime = record.sourceDate;
+      source.textContent = 'Source: ' + record.sourceDate;
+      row.appendChild(source);
+    }
+    card.appendChild(row);
+    const title = document.createElement('h3');
+    title.textContent = record.title || 'FORGE update';
+    card.appendChild(title);
+    const summary = document.createElement('p');
+    summary.textContent = record.summary || '';
+    card.appendChild(summary);
+    const details = document.createElement('details');
+    const toggle = document.createElement('summary');
+    toggle.textContent = 'Details & official sources';
+    details.appendChild(toggle);
+    const list = document.createElement('ul');
+    for (const text of record.details || []) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      list.appendChild(li);
+    }
+    details.appendChild(list);
+    const actions = document.createElement('div');
+    actions.className = 'update-actions';
+    for (const id of record.entryIds || []) {
+      const entry = KB.find(e => e.id === id);
+      if (!entry) continue;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'update-link';
+      button.textContent = 'View ' + (parseSectionNum(entry.title) || entry.title.split(' — ')[0]);
+      button.addEventListener('click', () => navigateToEntry(entry));
+      actions.appendChild(button);
+    }
+    for (const source of record.links || []) {
+      const url = safeUrl(source.url);
+      if (!url || url === '#') continue;
+      const anchor = document.createElement('a');
+      anchor.className = 'update-link';
+      anchor.textContent = source.label || 'Official source';
+      anchor.href = url;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      actions.appendChild(anchor);
+    }
+    details.appendChild(actions);
+    card.appendChild(details);
+    grid.appendChild(card);
+  }
+}
 
 function parsePartNum(group)    { return group?.match(/^(?:DFARS |AFARS )?Part (\d+)/)?.[1] ?? null; }
 function parseSectionNum(title) { return title?.match(/^(?:FAR|DFARS|AFARS)\s+(\d+\.[0-9A-Za-z-]+)/)?.[1] ?? null; }
@@ -1560,8 +1688,8 @@ function buildAboutBody() {
   const h = txt => { const e = document.createElement('h4'); e.textContent = txt; return e; };
   const p = txt => { const e = document.createElement('p');  e.textContent = txt; return e; };
 
-  body.appendChild(h('RFO effective date'));
-  body.appendChild(p(KB_RFO_EFFECTIVE + ' — ' + KB_RFO_SCOPE + '. Individual Parts carry their own issuance and last-updated dates (shown on each entry), sourced from acquisition.gov’s FAR Part & Deviation Guide.'));
+  body.appendChild(h('RFO source baseline'));
+  body.appendChild(p(KB_RFO_EFFECTIVE + ' — ' + KB_RFO_SCOPE + '. This is a source baseline, not a government-wide effective date. Agency deviations determine implementation. Individual Parts carry their own issuance and update dates.'));
 
   body.appendChild(h('Editions being compared'));
   const table = document.createElement('table');
@@ -1927,6 +2055,17 @@ function initTypewriter() {
     const res = await fetch('./kb.json');
     if (!res.ok) throw new Error('Server returned ' + res.status);
     const data = await res.json();
+    const updateResponse = await fetch('./updates.json');
+    if (!updateResponse.ok) throw new Error('Update data returned ' + updateResponse.status);
+    const updates = await updateResponse.json();
+    const replacements = new Map(updates.entries.map(entry => [entry.id, entry]));
+    data.entries = data.entries.map(entry => {
+      const replacement = replacements.get(entry.id);
+      replacements.delete(entry.id);
+      return replacement || entry;
+    });
+    data.entries.push(...replacements.values());
+    data.meta = updates.meta;
     KB = data.entries || [];
     if (data.meta?.lastUpdated) {
       const updEl = document.getElementById('footerUpdated');
@@ -1935,11 +2074,12 @@ function initTypewriter() {
     if (data.meta?.versions)      KB_VERSIONS = data.meta.versions;
     if (data.meta?.currencyNote)  KB_CURRENCY = data.meta.currencyNote;
     if (data.meta?.maintenance)   KB_MAINT    = data.meta.maintenance;
-    if (data.meta?.rfoEffective)  KB_RFO_EFFECTIVE = data.meta.rfoEffective;
+    if (data.meta?.rfoBaseline || data.meta?.rfoEffective) KB_RFO_EFFECTIVE = data.meta.rfoBaseline || data.meta.rfoEffective;
     if (data.meta?.rfoScope)      KB_RFO_SCOPE     = data.meta.rfoScope;
     if (data.meta?.partDates)     KB_PART_DATES    = data.meta.partDates;
     buildSearchIndex();
     buildCrossRefIndex();
+    buildUpdates(data.meta);
   } catch (err) {
     document.getElementById('results').innerHTML =
       '<div class="empty-prompt"><div class="empty-ico">&#9888;</div>' +
