@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; object-src 'none'">
+<title>FORGE — Alternate Comparison Workspace</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="./compare-core.js" defer></script><script src="./app.js" defer></script>
+</head>
+<body id="forge-app">
+<a class="skip-link" href="#workspace">Skip to comparison</a>
+<header class="fg-header">
+  <div class="fg-brand"><div class="fg-emblem" aria-hidden="true">▤</div><div><strong>FORGE</strong><span class="fg-small">Alternate comparison workspace · 411th CSB</span></div></div>
+  <nav class="fg-topnav" aria-label="Workspace"><button type="button" data-page="compare" aria-pressed="true">Compare</button><button type="button" data-page="updates" aria-pressed="false">Updates / New</button><a href="../">Original version ↗</a></nav>
+  <button type="button" id="theme" aria-label="Switch color theme">Theme</button>
+</header>
+<div class="fg-shell">
+<aside class="fg-sidebar" aria-label="Section navigator">
+  <div><label class="fg-kicker" for="search">Find a section</label><div class="fg-search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Citation, topic, or keyword" autocomplete="off"></div></div>
+  <div class="filters"><label for="reg">Regulation</label><select id="reg"><option value="all">All regulations</option><option value="far">FAR / RFO</option><option value="dfars">DFARS</option><option value="afars">AFARS</option><option value="cas">CAS notices</option></select><label for="group">Part</label><select id="group"><option value="">All parts</option></select><label class="fg-check"><input type="checkbox" id="savedOnly">Saved sections only</label><button id="clear" type="button">Clear filters</button></div>
+  <div><div class="fg-kicker">Sections</div><p id="resultCount" class="fg-small" role="status">Loading knowledge base…</p><nav class="fg-sectionlist" id="sectionList" aria-label="Matching sections"></nav><div class="pagination"><button type="button" id="prev">Previous</button><span id="pageCount" class="fg-small"></span><button type="button" id="next">Next</button></div></div>
+  <div class="fg-sidebar-note"><div class="fg-kicker">Same content · different interface</div><p class="fg-small" id="dataStatus"></p><a href="../options.html">Compare both designs ↗</a></div>
+</aside>
+<main class="fg-main" id="workspace" tabindex="-1">
+  <div id="loadError" class="fg-summary" hidden role="alert"><h1>Unable to load FORGE</h1><p id="errorText"></p><button id="retry" type="button">Retry</button><a href="../">Open the original version</a></div>
+  <section data-screen="compare" aria-busy="true">
+    <div class="fg-breadcrumb" id="breadcrumb">Acquisition reference workspace</div>
+    <div class="fg-titlebar"><div><h1 id="entryTitle">Loading sections…</h1><span class="fg-small" id="entrySubtitle">Loading the same knowledge base used by the original version.</span></div><div class="entry-actions"><button type="button" id="save" aria-pressed="false" disabled>Save</button><button type="button" id="share" disabled>Copy link</button><button type="button" id="print" disabled>Print</button></div></div>
+    <div class="fg-summary" id="changeSummary"><h2>What changed</h2><p id="summaryText">The full reference content will appear here.</p></div>
+    <div class="fg-toolbar"><div class="fg-segment" aria-label="Content detail"><button type="button" data-detail="overview" aria-pressed="true">Overview</button><button type="button" data-detail="full" aria-pressed="false">Full text</button></div><div class="fg-mode-options"><div class="fg-segment" aria-label="Comparison layout"><button type="button" data-layout="aligned" aria-pressed="true">Side by side</button><button type="button" data-layout="reading" aria-pressed="false">Reading</button></div><label class="fg-check"><input type="checkbox" id="changesOnly">Changes only</label><label class="fg-check"><input type="checkbox" id="highlight" checked>Highlight</label></div></div>
+    <div class="fg-compare" id="comparison"></div>
+    <div class="fg-footnote"><span id="contentNote"></span><span id="rowCount"></span></div>
+    <details id="procedures" hidden><summary id="procedureTitle">Supplementary procedure</summary><div id="procedureText" class="source-excerpt"></div></details>
+    <details id="sources"><summary>Sources &amp; applicability</summary><div class="fg-sourcebody" id="sourceBody"></div></details>
+    <div id="related" class="related-links"></div>
+  </section>
+  <section data-screen="updates" hidden><div class="fg-breadcrumb">FORGE · Release notes</div><h1>Updates / New</h1><p class="fg-small" id="updatesDate"></p><div class="fg-updates" id="releaseNotes"></div></section>
+  <footer class="fg-bottom"><span>FORGE · Alternate design for leadership review</span><span id="announcement" aria-live="polite"></span></footer>
+</main>
+</div>
+<noscript><p>Enable JavaScript to use FORGE’s search and comparison tools.</p></noscript>
+</body>
+</html>
