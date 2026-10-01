@@ -52,7 +52,14 @@
     if (focus) { $('workspace').focus({preventScroll:true}); $('workspace').scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }
   }
   function overviewRows(e) {
-    return alignBullets(e.legacy || [], e.rfo || []).map(r => ({kind:r.kind, legacy:r.legacy ? {label:'',text:clean(r.legacy.t)} : null,rfo:r.rfo ? {label:'',text:clean(r.rfo.t)} : null}));
+    // Editorial bullets describe the same section; compare them in their stored order.
+    // This is distinct from paragraph-level legal-text alignment.
+    const legacy=e.legacy||[], revised=e.rfo||[];
+    return Array.from({length:Math.max(legacy.length,revised.length)},(_,i)=>({
+      kind:legacy[i]&&revised[i]?'matched':legacy[i]?'legacy-only':'rfo-only',
+      legacy:legacy[i]?{label:'',text:clean(legacy[i].t)}:null,
+      rfo:revised[i]?{label:'',text:clean(revised[i].t)}:null
+    }));
   }
   function comparisonRows(e) {
     if (state.detail === 'full' && !e.summaryOnly && validText(e.legacyText) && validText(e.rfoText)) return alignByLabel(parseFarSubparas(clean(e.legacyText)), parseFarSubparas(clean(e.rfoText)));
@@ -64,7 +71,7 @@
     const own = side === 'legacy' ? row.legacy : row.rfo;
     if (!own) {p.className = 'no-match';p.textContent = 'No directly aligned counterpart. Text may be new, renumbered, or consolidated; verify the source.';return;}
     if (!$('highlight').checked || !isChanged) {p.textContent = own.text; return;}
-    if (!ops) {p.append(element(side==='legacy'?'del':'ins','',own.text)); return;}
+    if (!ops) {p.className='fg-highlight'+(side==='rfo'?' after':'');p.textContent=own.text; return;}
     for (const op of ops) {
       if (op.type === 'eq') p.append(document.createTextNode(side==='legacy'?op.legacyText:op.text));
       else if ((side==='legacy'&&op.type==='rem')||(side==='rfo'&&op.type==='add')) p.append(element(side==='legacy'?'del':'ins','',op.text));
