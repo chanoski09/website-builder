@@ -164,12 +164,13 @@ function parseFarSubparas(rawText) {
   const lines = rawText.split('\n');
   const labels = lines.map(line => line.match(/^(\s*)(\([a-zA-Z0-9]{1,4}\))\s*(.*)/));
   const indents = labels.filter(m => m && labelLevel(m[2]) === topLevel).map(m => m[1].length);
-  const alphaIndentCeiling = indents.length ? Math.max(...indents) : 0;
+  const alphaAnchors = labels.filter(m => m && /^\([abefghjknopqrstuwyz]\)$/.test(m[2])).map(m => m[1].length);
+  const alphaIndentCeiling = alphaAnchors.length ? Math.max(...alphaAnchors) : indents.length ? Math.min(...indents) : 0;
   const minimumIndent = indents.length ? Math.min(...indents) : 0;
   const result = []; let current = null;
   lines.forEach((line, i) => {
     const m = labels[i];
-    if (m && (topLevel === 'alpha' || topLevel === 'ALPHA' || m[1].length === minimumIndent) && (labelLevel(m[2]) === topLevel || (topLevel === 'alpha' && m[2] === '(i)' && m[1].length <= alphaIndentCeiling))) {
+    if (m && (topLevel === 'alpha' ? m[1].length <= alphaIndentCeiling : topLevel === 'ALPHA' || m[1].length === minimumIndent) && (labelLevel(m[2]) === topLevel || (topLevel === 'alpha' && m[2] === '(i)' && m[1].length <= alphaIndentCeiling))) {
       if (current) result.push(current);
       current = {label:m[2], text:m[3]};
     } else if (line.trim()) {
