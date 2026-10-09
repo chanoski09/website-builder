@@ -33,7 +33,7 @@
     const terms=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
     const fields=searchFields(e), field=fields.find(x=>terms.every(t=>x.text.toLowerCase().includes(t)))||fields.find(x=>terms.some(t=>x.text.toLowerCase().includes(t)));
     if(!field)return null;
-    const text=clean(field.text).replace(/\s+/g,' ');const i=Math.max(0,text.toLowerCase().indexOf(terms[0]));const start=Math.max(0,i-70);
+    const text=clean(field.text).replace(/\s+/g,' ');const needle=text.toLowerCase().includes(query.toLowerCase().trim())?query.toLowerCase().trim():[...terms].sort((a,b)=>b.length-a.length).find(t=>text.toLowerCase().includes(t));const i=Math.max(0,text.toLowerCase().indexOf(needle));const start=Math.max(0,i-70);
     return {label:field.label,text:(start?'…':'')+text.slice(start,start+240)+(text.length>start+240?'…':'')};
   }
   function highlighted(text,query) {
