@@ -26,6 +26,27 @@
     groups.sort((a,b) => a.localeCompare(b, undefined, {numeric:true})).forEach(g => $('group').add(new Option(g, g)));
     if (groups.includes(previous)) $('group').value = previous;
   }
+  function searchFields(e) {
+    return [{label:'Title',text:e.title},{label:'Summary',text:e.summary},...['legacy','rfo'].flatMap(side=>(e[side]||[]).map(x=>({label:side==='legacy'?'Legacy overview':'Revised overview',text:x.t}))),{label:'Legacy source text',text:e.legacyText},{label:'Revised source text',text:e.rfoText},{label:e.supplementalText?.label||'Supplementary procedure',text:e.supplementalText?.text},{label:'Source note',text:e.sourceNote}].filter(x=>validText(x.text));
+  }
+  function excerpt(e, query) {
+    const terms=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const fields=searchFields(e), field=fields.find(x=>terms.every(t=>x.text.toLowerCase().includes(t)))||fields.find(x=>terms.some(t=>x.text.toLowerCase().includes(t)));
+    if(!field)return null;
+    const text=clean(field.text).replace(/\s+/g,' ');const i=Math.max(0,text.toLowerCase().indexOf(terms[0]));const start=Math.max(0,i-70);
+    return {label:field.label,text:(start?'…':'')+text.slice(start,start+240)+(text.length>start+240?'…':'')};
+  }
+  function highlighted(text,query) {
+    const span=element('span');const terms=query.trim().split(/\s+/).filter(Boolean).sort((a,b)=>b.length-a.length);
+    if(!terms.length){span.textContent=text;return span;}
+    const escaped=terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));const re=new RegExp('('+escaped.join('|')+')','gi');
+    let last=0;for(const match of text.matchAll(re)){span.append(document.createTextNode(text.slice(last,match.index)),element('mark','',match[0]));last=match.index+match[0].length;}span.append(document.createTextNode(text.slice(last)));return span;
+  }
+  function resultButton(e,query) {
+    const b=element('button','search-result');b.type='button';b.dataset.entry=e.id;b.append(element('strong','',e.title));const hit=excerpt(e,query);
+    if(hit){b.append(element('span','fg-small',hit.label),highlighted(hit.text,query));}else b.append(element('span','fg-small',e.summary));
+    b.addEventListener('click',()=>{if(query)state.detail='full';openEntry(e.id,true);});return b;
+  }
   function search(resetPage = true) {
     if (resetPage) state.page = 0;
     const terms = $('search').value.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -40,9 +61,10 @@
     if (!list.length) nav.append(element('p', 'fg-small', $('savedOnly').checked ? 'No saved sections match. Save a section or clear the filters.' : 'No matches. Try a topic or clear the filters.'));
     list.forEach(e => {const b = element('button'); b.type = 'button'; b.dataset.entry = e.id; b.setAttribute('aria-current',String(e.id === state.entry?.id));
       const citation = sectionNumber(e); b.append(element('span','',citation ? regType(e).toUpperCase() + ' ' + citation : e.title), element('span','fg-small',citation ? e.title.split(' — ').slice(1).join(' — ') || e.title : e.group));
-      b.addEventListener('click',()=>openEntry(e.id, true));nav.append(b);
+      const query=$('search').value.trim();if(query){const hit=excerpt(e,query);if(hit){b.append(element('span','fg-small',hit.label),highlighted(hit.text,query));}}b.addEventListener('click',()=>{if(query)state.detail='full';openEntry(e.id,true);});nav.append(b);
     });
     const pages = Math.max(1,Math.ceil(state.results.length/PAGE_SIZE)); $('pageCount').textContent = (state.page+1) + ' / ' + pages;
+    const query=$('search').value.trim();$('searchResults').replaceChildren();$('searchScope').textContent=state.results.length+' sections match across stored titles, summaries, and source text. Filters: '+$('reg').selectedOptions[0].textContent+($('group').value?' · '+$('group').value:'');if(query){list.forEach(e=>$('searchResults').append(resultButton(e,query)));if(!list.length)$('searchResults').append(element('p','','No matching text. Try fewer words or clear filters.'));}
     $('prev').disabled = state.page === 0; $('next').disabled = state.page+1 >= pages;
   }
   function openEntry(id, focus = false) {
@@ -132,8 +154,25 @@
       body.append(element('p','','RFO model deviations require applicable agency implementation. Project update dates do not establish blanket regulatory effective dates.'));
     }
     (e.sources||[]).forEach((s,i)=>body.append(element('p','',(i===0?'Legacy / baseline: ':i===1?'Revised source: ':'Source: ')+s)));
-    (e.deepLinks||[]).forEach(s=>{const a=link(s.label,s.url);if(a)body.append(a);});
+    $('entrySources').replaceChildren();sectionLinks(e,reg).forEach(s=>{const a=link(s.label,s.url);if(a)body.append(a);const visible=link(s.label,s.url);if(visible)$('entrySources').append(visible);});
     if(state.meta.currencyNote)body.append(element('p','',state.meta.currencyNote));
+  }
+  const RESOURCES=[
+    {label:'DARS — Defense Acquisition Regulations System',url:'https://www.acq.osd.mil/dpap/dars/index.html'},
+    {label:'DARS — current DFARS and PGI',url:'https://www.acq.osd.mil/dpap/dars/dfarspgi/current/index.html'},
+    {label:'DARS — current class deviations',url:'https://www.acq.osd.mil/dpap/dars/class_deviations.html'},
+    {label:'DARS — DFARS RFO class deviations',url:'https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html'},
+    {label:'Acquisition.gov — FAR',url:'https://www.acquisition.gov/browse/index/far'},
+    {label:'Acquisition.gov — FAR overhaul',url:'https://www.acquisition.gov/far-overhaul'},
+    {label:'Army — AFARS and PGI',url:'https://www.army.mil/armycontracting'}
+  ];
+  function sectionLinks(e,reg) {
+    const links=[...e.deepLinks||[]],number=e.legacyCitation||sectionNumber(e);
+    if(number&&reg==='far')links.push({label:'Codified FAR '+number,url:'https://www.acquisition.gov/far/'+number});
+    if(number&&reg==='dfars')links.push({label:'Acquisition.gov DFARS '+number,url:'https://www.acquisition.gov/dfars/'+number},RESOURCES[1],RESOURCES[2],RESOURCES[3]);
+    if(number&&reg==='far'){const part=Number((e.revisedCitation||sectionNumber(e)).split('.')[0]);links.push({label:'RFO model deviation — Part '+part,url:'https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-'+part},RESOURCES[3]);}
+    if(reg==='afars')links.push(RESOURCES[6]);
+    const seen=new Set();return links.filter(x=>{if(seen.has(x.url))return false;seen.add(x.url);return true;});
   }
   function renderRelated(e) {
     $('related').replaceChildren();const number=sectionNumber(e);if(!number)return;
@@ -152,32 +191,43 @@
     }
   }
   async function load() {
-    $('loadError').hidden=true;all('[data-screen]')[0].setAttribute('aria-busy','true');
+    $('loadError').hidden=true;document.querySelector('[data-screen=compare]').setAttribute('aria-busy','true');
     try {
       const responses=await Promise.all([fetch('../kb.json',{cache:'no-cache'}),fetch('../updates.json',{cache:'no-cache'}),fetch('./mappings.json',{cache:'no-cache'})]);
       if(responses.some(r=>!r.ok))throw new Error('Knowledge-base request failed. Check your connection and retry.');
       const [base,updates,mappings]=await Promise.all(responses.map(r=>r.json()));
       if(!Array.isArray(base.entries)||!Array.isArray(updates.entries)||!updates.meta)throw new Error('Invalid knowledge-base format.');
       const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta=updates.meta;
-      state.entries.forEach(e=>{e.summary=e.summary||'';e.searchText=[e.title,e.group,e.summary,...e.keywords||[],e.legacyText,e.rfoText,e.supplementalText?.text].filter(Boolean).join(' ').toLowerCase();});
+      state.entries.forEach(e=>{e.summary=e.summary||'';e.searchText=[...searchFields(e).map(x=>x.text),e.group,...e.keywords||[]].filter(Boolean).join(' ').toLowerCase();});
       $('dataStatus').textContent=state.entries.length.toLocaleString()+' sections · reviewed '+state.meta.lastUpdated;
       buildGroups();search();renderUpdates();
       let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{id='';}
       openEntry(state.byId.has(id)?id:state.entries[0].id);
-      all('[data-screen]')[0].setAttribute('aria-busy','false');
+      document.querySelector('[data-screen=compare]').setAttribute('aria-busy','false');
     } catch(error) {$('loadError').hidden=false;$('errorText').textContent=error.message;all('[data-screen]').forEach(e=>e.hidden=true);$('resultCount').textContent='Data unavailable';announce('Unable to load knowledge base.');}
   }
   try {const stored=JSON.parse(localStorage.getItem('forge-alt-saved')||'[]');if(Array.isArray(stored))state.saved=new Set(stored.filter(x=>typeof x==='string'));const theme=localStorage.getItem('forge-alt-theme');if(['light','dark'].includes(theme))document.documentElement.dataset.theme=theme;} catch { /* Storage is optional. */ }
   all('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
   all('[data-detail]').forEach(b=>b.addEventListener('click',()=>{state.detail=b.dataset.detail;renderEntry();}));all('[data-layout]').forEach(b=>b.addEventListener('click',()=>{state.layout=b.dataset.layout;renderEntry();}));
   ['changesOnly','highlight'].forEach(id=>$(id).addEventListener('change',renderEntry));
-  let searchTimer;$('search').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>search(),120);});$('reg').addEventListener('change',()=>{$('group').value='';buildGroups();search();});$('group').addEventListener('change',()=>search());$('savedOnly').addEventListener('change',()=>search());
-  $('clear').addEventListener('click',()=>{$('search').value='';$('reg').value='all';$('group').value='';$('savedOnly').checked=false;buildGroups();search();});
+  let searchTimer;$('search').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{$('reg').value='all';$('group').value='';$('savedOnly').checked=false;buildGroups();search();if($('search').value.trim())showPage('search');else showPage('compare');},120);});$('reg').addEventListener('change',()=>{$('group').value='';buildGroups();search();});$('group').addEventListener('change',()=>search());$('savedOnly').addEventListener('change',()=>search());
+  $('clear').addEventListener('click',()=>{$('search').value='';$('reg').value='all';$('group').value='';$('savedOnly').checked=false;buildGroups();search();showPage('compare');});
   $('prev').addEventListener('click',()=>{state.page--;search(false);});$('next').addEventListener('click',()=>{state.page++;search(false);});
   $('save').addEventListener('click',()=>{if(!state.entry)return;const id=state.entry.id;state.saved.has(id)?state.saved.delete(id):state.saved.add(id);let persisted=true;try{localStorage.setItem('forge-alt-saved',JSON.stringify([...state.saved]));}catch{persisted=false;}renderEntry();search(false);announce((state.saved.has(id)?'Section saved':'Section removed from saved')+(persisted?' on this device.':' for this session only; device storage is unavailable.'));});
   $('share').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);announce('Section link copied.');}catch{announce('Copy is unavailable. Select and copy the address-bar link.');}});$('print').addEventListener('click',()=>window.print());
   $('theme').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme==='dark'||(!document.documentElement.dataset.theme&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=dark?'light':'dark';try{localStorage.setItem('forge-alt-theme',document.documentElement.dataset.theme);}catch{}announce('Switched to '+document.documentElement.dataset.theme+' theme.');});
   $('retry').addEventListener('click',()=>{showPage('compare');load();});window.addEventListener('hashchange',()=>{try{openEntry(decodeURIComponent(location.hash.slice(1)));}catch{}});
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$('search').focus();}});
-  load();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  function syncTheme(){const dark=document.documentElement.dataset.theme==='dark'||(!document.documentElement.dataset.theme&&window.matchMedia('(prefers-color-scheme: dark)').matches);$('theme').textContent=dark?'☀ Switch to Light':'☾ Switch to Dark';$('theme').setAttribute('aria-label',$('theme').textContent);}
+  $('theme').addEventListener('click',syncTheme);syncTheme();
+  RESOURCES.forEach(r=>{const a=link(r.label,r.url);if(a)$('resourceLinks').append(a);});
+  const guide=$('welcome');let guideFocus;
+  function openGuide(){guideFocus=document.activeElement;if(guide.showModal)guide.showModal();else guide.setAttribute('open','');$('startGuide').focus();}
+  function closeGuide(){if(guide.close)guide.close();else guide.removeAttribute('open');try{localStorage.setItem('forge-alt-guide-v1','seen');}catch{}guideFocus?.focus();}
+  $('help').addEventListener('click',openGuide);$('closeGuide').addEventListener('click',closeGuide);$('startGuide').addEventListener('click',closeGuide);guide.addEventListener('cancel',e=>{e.preventDefault();closeGuide();});
+  try{if(localStorage.getItem('forge-alt-guide-v1')!=='seen')openGuide();}catch{openGuide();}
+  function askOpen(open){$('askPanel').hidden=!open;$('askToggle').setAttribute('aria-expanded',String(open));(open?$('askInput'):$('askToggle')).focus();}
+  $('askToggle').addEventListener('click',()=>askOpen($('askPanel').hidden));$('askClose').addEventListener('click',()=>askOpen(false));$('askPanel').addEventListener('keydown',e=>{if(e.key==='Escape')askOpen(false);});
+  $('askForm').addEventListener('submit',e=>{e.preventDefault();const query=$('askInput').value.trim();const stop=new Set(['what','is','the','a','an','for','how','do','does','when','are','to','of','in','about','tell','me','and','can']);const terms=query.toLowerCase().split(/[^a-z0-9.-]+/).filter(t=>t&&!stop.has(t));const ranked=state.entries.map(entry=>({entry,score:terms.reduce((n,t)=>n+(entry.searchText.includes(t)?1:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);$('askResults').replaceChildren();if(!terms.length||!ranked.length){$('askResults').append(element('p','','No relevant stored excerpt found. Try a citation or a specific topic.'));return;} $('askResults').append(element('p','fg-small','Closest stored sections — verify the complete source and applicability.'));ranked.slice(0,5).forEach(x=>$('askResults').append(resultButton(x.entry,terms.join(' '))));});
+  load();if('serviceWorker'  in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();

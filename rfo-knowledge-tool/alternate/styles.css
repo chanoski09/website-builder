@@ -131,3 +131,17 @@ body#forge-app{margin:0;border-radius:0;overflow:visible;min-height:100vh}
 #forge-app .unaligned-paragraph p{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:6px;font-size:14px;line-height:1.75}
 #forge-app .fg-reading .unaligned-groups{grid-template-columns:1fr}
 @media(max-width:760px){#forge-app .unaligned-groups{grid-template-columns:1fr}}
+
+/* Search, welcome guide, and local database finder. */
+#theme {border:2px solid var(--fg-gold);font-weight:700;min-height:44px;white-space:nowrap}
+.search-result {display:flex;flex-direction:column;text-align:left;gap:.5rem;width:100%;padding:1rem;margin:.5rem 0;line-height:1.5}
+#sectionList button {overflow-wrap:anywhere} mark {background:#f5df9e;color:#252015;padding:0 .1rem}
+dialog {max-width:640px;width:calc(100% - 2rem);max-height:85vh;overflow:auto;background:var(--fg-panel);color:var(--fg-ink);border:1px solid var(--fg-line);border-radius:12px;padding:2rem;line-height:1.7}
+dialog::backdrop {background:rgba(0,0,0,.6)} .dialog-close {float:right} .welcome-symbol {font-size:2.5rem;text-align:center} dialog li {margin:.75rem 0}
+.ask-launcher {position:fixed;bottom:1rem;right:1rem;z-index:20;font-weight:700;padding:.75rem 1rem;box-shadow:0 2px 12px #0003}
+.ask-panel {position:fixed;right:1rem;bottom:5rem;z-index:21;width:min(400px,calc(100vw - 2rem));max-height:70vh;overflow:auto;background:var(--fg-panel);color:var(--fg-ink);border:1px solid var(--fg-line);border-radius:8px;padding:1rem;box-shadow:0 4px 24px #0003}
+.ask-panel input {width:100%;margin:.5rem 0;min-height:44px} #entrySources {margin:.75rem 0} #resourceLinks {display:grid;gap:1rem}
+@media(max-width:600px){.fg-header{flex-wrap:wrap}dialog{padding:1rem}.fg-topnav{flex-wrap:wrap}}
+@media print{dialog,.ask-launcher,.ask-panel{display:none!important}}
+
+#forge-app #theme{border:2px solid var(--fg-gold);min-height:44px;font-weight:700} #forge-app .search-result{display:flex;align-items:stretch;justify-content:flex-start;flex-direction:column;text-align:left;padding:1rem} #forge-app dialog p{margin:.75rem 0} #forge-app .ask-panel h2{font-size:18px} #forge-app .fg-bottom{padding-bottom:4rem}
