@@ -25,3 +25,6 @@ The alternate now recognizes indented parent paragraphs, groups wrapped preamble
 - Ask FORGE is local ranked retrieval across the loaded corpus: no AI model, API key, outgoing questions, or tokens. It returns stored excerpts; it cannot infer authoritative legal answers.
 - DARS is included for current DFARS/PGI, class deviations and DFARS RFO deviations; Acquisition.gov remains the FAR/RFO source. DARS pages returned HTTP 502 in this review; no unverified regulatory text or source currency dates were changed.
 - ChatGPT biweekly task: Sundays 09:00 America/Chicago starting October 11, 2026, every two weeks. It verifies sources, updates/publishes if tools are available, and reports blockers otherwise. This is not an unattended scrape in the browser.
+
+## October 10 — AI agent integration (activation pending)
+Ask FORGE now uses conversational model responses through a server-only tool-calling agent in `forge-agent/worker.mjs`. The model searches and reads the corpus, uses recent conversation history, and produces explanatory text with section citations. No search-only fallback is presented as AI. The endpoint is intentionally empty until secure AI credentials and server deployment are available. API-backed behavior is verified with mocked responses, not a live model. Activation instructions and API contract are in `forge-agent/README.md`.

@@ -145,3 +145,5 @@ dialog::backdrop {background:rgba(0,0,0,.6)} .dialog-close {float:right} .welcom
 @media print{dialog,.ask-launcher,.ask-panel{display:none!important}}
 
 #forge-app #theme{border:2px solid var(--fg-gold);min-height:44px;font-weight:700} #forge-app .search-result{display:flex;align-items:stretch;justify-content:flex-start;flex-direction:column;text-align:left;padding:1rem} #forge-app dialog p{margin:.75rem 0} #forge-app .ask-panel h2{font-size:18px} #forge-app .fg-bottom{padding-bottom:4rem}
+
+#forge-app .chat-message{padding:1rem 0;border-bottom:1px solid var(--fg-line)}#forge-app .chat-message p{white-space:pre-wrap;margin-top:.5rem}#forge-app .chat-message.user{color:var(--fg-muted)}
