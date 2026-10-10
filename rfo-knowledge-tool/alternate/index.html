@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; object-src 'none'">
+<title>FORGE — Alternate Comparison Workspace</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="./compare-core.js" defer></script><script src="./app.js" defer></script>
+</head>
+<body id="forge-app">
+<a class="skip-link" href="#workspace">Skip to comparison</a>
+<header class="fg-header">
+  <div class="fg-brand"><div class="fg-emblem" aria-hidden="true">▤</div><div><strong>FORGE</strong><span class="fg-small">FAR Overhaul Reference &amp; Guidance Engine</span></div></div>
+  <nav class="fg-topnav" aria-label="Workspace"><button type="button" data-page="compare" aria-pressed="true">Compare</button><button type="button" data-page="resources" aria-pressed="false">Resources</button><button type="button" id="help">How to use</button><button type="button" data-page="updates" aria-pressed="false">Updates / New</button></nav>
+  <button type="button" id="theme" aria-label="Switch color theme">☀ Light / ☾ Dark</button>
+</header>
+<div class="fg-shell">
+<aside class="fg-sidebar" aria-label="Section navigator">
+  <div><label class="fg-kicker" for="search">Search all FORGE content</label><div class="fg-search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search titles, source text, or keywords" autocomplete="off"></div></div>
+  <div class="filters"><label for="reg">Regulation</label><select id="reg"><option value="all">All regulations</option><option value="far">FAR / RFO</option><option value="dfars">DFARS</option><option value="afars">AFARS</option><option value="cas">CAS notices</option></select><label for="group">Part</label><select id="group"><option value="">All parts</option></select><label class="fg-check"><input type="checkbox" id="savedOnly">Saved sections only</label><button id="clear" type="button">Clear filters</button></div>
+  <div><div class="fg-kicker">Sections</div><p id="resultCount" class="fg-small" role="status">Loading knowledge base…</p><nav class="fg-sectionlist" id="sectionList" aria-label="Matching sections"></nav><div class="pagination"><button type="button" id="prev">Previous</button><span id="pageCount" class="fg-small"></span><button type="button" id="next">Next</button></div></div>
+  <div class="fg-sidebar-note"><div class="fg-kicker">Same content · different interface</div><p class="fg-small" id="dataStatus"></p><a href="../options.html">Compare both designs ↗</a></div>
+</aside>
+<main class="fg-main" id="workspace" tabindex="-1">
+  <div id="loadError" class="fg-summary" hidden role="alert"><h1>Unable to load FORGE</h1><p id="errorText"></p><button id="retry" type="button">Retry</button><a href="../">Open the original version</a></div>
+  <section data-screen="search" hidden><h1>Search results</h1><p id="searchScope" class="fg-small"></p><nav id="searchResults" aria-label="Full-text search results"></nav></section>
+  <section data-screen="resources" hidden><h1>Official resources</h1><p>Check codified regulations, agency deviations, effective dates, and applicability separately. Linked pages are live; FORGE contains stored excerpts and is not a real-time mirror.</p><div id="resourceLinks" class="fg-sourcebody"></div><p class="fg-small">Biweekly review scheduled for Sundays at 9 a.m. Central, starting October 11, 2026. A review date does not mean every section has been validated.</p></section>
+  <section data-screen="compare" aria-busy="true">
+    <div class="fg-breadcrumb" id="breadcrumb">Acquisition reference workspace</div>
+    <div class="fg-titlebar"><div><h1 id="entryTitle">Loading sections…</h1><span class="fg-small" id="entrySubtitle">Loading the same knowledge base used by the original version.</span></div><div class="entry-actions"><button type="button" id="save" aria-pressed="false" disabled>Save</button><button type="button" id="share" disabled>Copy link</button><button type="button" id="print" disabled>Print</button></div></div>
+    <div id="entrySources" class="update-links" aria-label="Official section links"></div>
+    <div class="fg-summary" id="changeSummary"><h2>What changed</h2><p id="summaryText">The full reference content will appear here.</p></div>
+    <div class="fg-toolbar"><div class="fg-segment" aria-label="Content detail"><button type="button" data-detail="overview" aria-pressed="true">Overview</button><button type="button" data-detail="full" aria-pressed="false">Full text</button></div><div class="fg-mode-options"><div class="fg-segment" aria-label="Comparison layout"><button type="button" data-layout="aligned" aria-pressed="true">Side by side</button><button type="button" data-layout="reading" aria-pressed="false">Reading</button></div><label class="fg-check"><input type="checkbox" id="changesOnly">Changes only</label><label class="fg-check"><input type="checkbox" id="highlight" checked>Highlight</label></div></div>
+    <div class="fg-compare" id="comparison"></div>
+    <div class="fg-footnote"><span id="contentNote"></span><span id="rowCount"></span></div>
+    <details id="procedures" hidden><summary id="procedureTitle">Supplementary procedure</summary><div id="procedureText" class="source-excerpt"></div></details>
+    <details id="sources"><summary>Sources &amp; applicability</summary><div class="fg-sourcebody" id="sourceBody"></div></details>
+    <div id="related" class="related-links"></div>
+  </section>
+  <section data-screen="updates" hidden><div class="fg-breadcrumb">FORGE · Release notes</div><h1>Updates / New</h1><p class="fg-small" id="updatesDate"></p><div class="fg-updates" id="releaseNotes"></div></section>
+  <footer class="fg-bottom"><span>FORGE · Alternate design for leadership review</span><span id="announcement" aria-live="polite"></span></footer>
+</main>
+</div>
+<dialog id="welcome" aria-labelledby="welcomeTitle"><button id="closeGuide" type="button" class="dialog-close" aria-label="Close guide">Close ✕</button><div class="welcome-symbol" aria-hidden="true">⚖</div><h1 id="welcomeTitle">Welcome to FORGE</h1><p>Compare any FAR section before and after the RFO overhaul.</p><p class="fg-small">Search a topic or section number, or pick a part in the navigator.</p><ol><li><strong>Search across the database.</strong> Results show matching text from titles, summaries, and stored regulatory text. Select an excerpt to open its section.</li><li><strong>Compare requirements.</strong> Choose Overview or Full text, then Side by side or Reading. Expand unaligned source groups for preserved paragraphs.</li><li><strong>Verify the source.</strong> Use official section links and Sources &amp; applicability to check dates, deviations, and scope.</li><li><strong>Make it yours.</strong> Switch Light / Dark, save sections on this device, copy a section link, or print.</li></ol><p class="fg-small">Alignment and summaries are reading aids. Confirm applicable requirements with the official source.</p><button id="startGuide" type="button">Start exploring</button></dialog>
+<button id="askToggle" class="ask-launcher" type="button" aria-expanded="false" aria-controls="askPanel">Ask FORGE ⌕</button><section id="askPanel" class="ask-panel" hidden aria-labelledby="askTitle"><div class="fg-titlebar"><h2 id="askTitle">Ask FORGE</h2><button id="askClose" type="button" aria-label="Close Ask FORGE">✕</button></div><p class="fg-small">AI acquisition assistant · explains and compares FORGE sources with citations. Use public, unclassified information only.</p><form id="askForm"><label for="askInput">Ask a question about FORGE</label><input id="askInput" type="text" maxlength="3000" placeholder="e.g. What must I do before announcing an award?" required><button id="askSend" type="submit" disabled>Send</button></form><p id="askStatus" class="fg-small" role="status">Connecting to the AI service…</p><button id="askReset" type="button">New conversation</button><div id="askResults" role="log" aria-live="polite"></div></section>
+<noscript><p>Enable JavaScript to use FORGE’s search and comparison tools.</p></noscript>
+</body>
+</html>
