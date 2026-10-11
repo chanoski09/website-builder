@@ -164,7 +164,9 @@
     {label:'DARS — DFARS RFO class deviations',url:'https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html'},
     {label:'Acquisition.gov — FAR',url:'https://www.acquisition.gov/browse/index/far'},
     {label:'Acquisition.gov — FAR overhaul',url:'https://www.acquisition.gov/far-overhaul'},
-    {label:'Army — AFARS and PGI',url:'https://www.army.mil/armycontracting'}
+    {label:'Army — AFARS and PGI',url:'https://www.army.mil/armycontracting'},
+    {label:'Acquisition.gov — DFARS publication index',url:'https://www.acquisition.gov/dfars'},
+    {label:'Acquisition.gov — DFARS PGI publication index',url:'https://www.acquisition.gov/dfarspgi'}
   ];
   function sectionLinks(e,reg) {
     const links=[...e.deepLinks||[]],number=e.legacyCitation||sectionNumber(e);
@@ -181,9 +183,9 @@
     if(related.length){$('related').append(element('span','fg-small','Related part topics:'));related.forEach(x=>{const b=element('button','',x.title);b.type='button';b.addEventListener('click',()=>openEntry(x.id,true));$('related').append(b);});}
   }
   function renderUpdates() {
-    $('releaseNotes').replaceChildren();const release=element('article','fg-update');release.append(element('h2','','October 9 — Search, guide, and official resources'),element('p','','Search now shows highlighted matches from stored text across FORGE. Added a first-use guide, clearer light/dark controls, DARS resources, section source links, and the no-token Ask FORGE database finder. Biweekly resource review scheduled; no regulatory text was revalidated in this interface release.'));$('releaseNotes').append(release);$('updatesDate').textContent='Project review: '+(state.meta.lastUpdated||'See source notes');
+    $('releaseNotes').replaceChildren();const release=element('article','fg-update');release.append(element('h2','','October 9 — Search, guide, and official resources'),element('p','','Search now shows highlighted matches from stored text across FORGE. Added a first-use guide, clearer light/dark controls, DARS resources, section source links, and the no-token Ask FORGE database finder. Biweekly resource review scheduled; no regulatory text was revalidated in this interface release.'));$('releaseNotes').append(release);$('updatesDate').textContent='Stored text review: '+(state.meta.lastUpdated||'See source notes')+(state.meta.resourceReview?' · Resource check: '+state.meta.resourceReview.checkedOn+' ('+state.meta.resourceReview.status+')':'');
     for (const note of state.meta.updates||[]) {
-      const article=element('article','fg-update'); const meta=element('div','fg-update-meta');meta.append(element('span','fg-state '+(note.status==='proposed'?'fg-proposed':note.status==='effective'?'fg-effective':''),note.status==='proposed'?'Proposed — not final':note.status==='effective'?'Effective source':'Project update'),element('span','',note.effectiveDate?'Effective '+note.effectiveDate:note.sourceDate?'Source '+note.sourceDate:note.date||''));
+      const article=element('article','fg-update'); const meta=element('div','fg-update-meta');meta.append(element('span','fg-state '+(note.status==='proposed'?'fg-proposed':note.status==='effective'?'fg-effective':''),note.status==='proposed'?'Proposed — not final':note.status==='effective'?'Effective source':note.status==='review-partial'?'Partial source review':'Project update'),element('span','',note.effectiveDate?'Effective '+note.effectiveDate:note.sourceDate?'Source '+note.sourceDate:note.date||''));
       article.append(meta,element('h2','',note.title),element('p','',note.summary));
       if(note.details?.length){const d=element('details');d.append(element('summary','','Details'));const list=element('ul');note.details.forEach(text=>list.append(element('li','',text)));d.append(list);article.append(d);}
       const links=element('div','update-links');(note.links||[]).forEach(s=>{const a=link(s.label,s.url);if(a)links.append(a);});article.append(links);
@@ -197,7 +199,7 @@
       if(responses.some(r=>!r.ok))throw new Error('Knowledge-base request failed. Check your connection and retry.');
       const [base,updates,mappings]=await Promise.all(responses.map(r=>r.json()));
       if(!Array.isArray(base.entries)||!Array.isArray(updates.entries)||!updates.meta)throw new Error('Invalid knowledge-base format.');
-      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta=updates.meta;
+      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta={...updates.meta,resourceReview:mappings.resourceReview,updates:[...(mappings.updates||[]),...(updates.meta.updates||[])]};
       state.entries.forEach(e=>{e.summary=e.summary||'';e.searchText=[...searchFields(e).map(x=>x.text),e.group,...e.keywords||[]].filter(Boolean).join(' ').toLowerCase();});
       $('dataStatus').textContent=state.entries.length.toLocaleString()+' sections · reviewed '+state.meta.lastUpdated;
       buildGroups();search();renderUpdates();
