@@ -84,6 +84,18 @@
   },
   "updates": [
     {
+      "id": "chat-interface-2026-10-13",
+      "date": "2026-10-13",
+      "status": "project",
+      "title": "October 13 — A friendlier Ask FORGE chat",
+      "summary": "Ask FORGE now has a welcome screen, suggested questions, message bubbles, a multiline composer, source buttons, and a clear retry action.",
+      "details": [
+        "The OpenAI runtime secret and deployed backend are connected. A live test on October 13 returned an AI provider rate-limit response; successful AI answers have not yet been verified.",
+        "Enter sends a question; Shift + Enter adds a line. Start a fresh conversation with the + button.",
+        "This interface update does not revalidate regulatory text or add new deviation memoranda."
+      ]
+    },
+    {
       "id": "resource-review-2026-10-11",
       "date": "2026-10-11",
       "status": "review-partial",
