@@ -84,6 +84,17 @@
   },
   "updates": [
     {
+      "id": "ai-credit-error-2026-10-14",
+      "date": "2026-10-14",
+      "status": "project",
+      "title": "October 14 — AI billing status clarified",
+      "summary": "Fixed an exhausted API credit balance being shown as a temporary rate limit. AI replies pause with a clear billing message; database search and comparison remain available.",
+      "details": [
+        "A diagnostic request returned credit_balance_exhausted with type insufficient_quota. OpenAI API billing must be updated before replies can resume.",
+        "No API key, billing setting, model, or regulatory source text changed in this fix."
+      ]
+    },
+    {
       "id": "chat-interface-2026-10-13",
       "date": "2026-10-13",
       "status": "project",

@@ -10,9 +10,9 @@ test('ungrounded no-tool response is rejected',async()=>{await assert.rejects(ru
 test('requests reject wrong origin, missing credentials and invalid input',async()=>{const handler=createHandler({corpus:async()=>data});const request=(body,origin='https://chanoski09.github.io')=>new Request('https://test/api/chat',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify(body)});assert.equal((await handler(request({},'https://other.test'),env)).status,403);assert.equal((await handler(request({}),{})).status,503);assert.equal((await handler(request({messages:[{role:'system',content:'bad'}]}),env)).status,400);});
 test('search spans the corpus',()=>assert.equal(searchCorpus(data,'8 p.m.')[0].id,entry.id));
 test('API failures distinguish quota, rate limits, authentication and model access without leaking messages',async()=>{
- for(const [status,apiCode,expected] of [[429,'insufficient_quota','AI_QUOTA'],[429,'rate_limit_exceeded','AI_BUSY'],[401,'invalid_api_key','AI_AUTH'],[404,'model_not_found','AI_ACCESS']]){
-  const handler=createHandler({corpus:async()=>data,fetcher:async()=>Response.json({error:{code:apiCode,message:'private upstream detail'}},{status})});
+ for(const [status,apiCode,expected,apiType] of [[429,'credit_balance_exhausted','AI_CREDITS','insufficient_quota'],[429,null,'AI_QUOTA','insufficient_quota'],[429,'insufficient_quota','AI_QUOTA'],[429,'rate_limit_exceeded','AI_BUSY'],[401,'invalid_api_key','AI_AUTH'],[404,'model_not_found','AI_ACCESS']]){
+  const handler=createHandler({corpus:async()=>data,fetcher:async()=>Response.json({error:{code:apiCode,type:apiType,message:'private upstream detail'}},{status})});
   const req=new Request('https://test/api/chat',{method:'POST',headers:{Origin:'https://chanoski09.github.io','Content-Type':'application/json','CF-Connecting-IP':String(status)+apiCode},body:JSON.stringify({messages:[{role:'user',content:'Explain this section'}]})});
-  const result=await (await handler(req,env)).json();assert.equal(result.code,expected);assert(!result.error.includes('private upstream detail'));
+  const response=await handler(req,env);assert.equal(response.status,['AI_CREDITS','AI_QUOTA'].includes(expected)?503:expected==='AI_BUSY'?429:502);const result=await response.json();assert.equal(result.code,expected);assert(!result.error.includes('private upstream detail'));
  }
 });

@@ -1,6 +1,6 @@
 # Ask FORGE AI backend
 
-Prepared, not yet activated. GitHub Pages serves the website; this server-only Worker supplies actual AI answers via the OpenAI Responses API. It gives the model tools to search all stored FORGE entries, read section comparisons/PGI/source dates, and review update notices. The model can call tools multiple times before generating an explanation. Follow-ups include recent conversation history. Answers link to read sections; unknown citation IDs and answers without tool use are rejected.
+Deployed to the Cloudflare website-builder Worker; Option 2 is connected. As of October 14, live AI answers remain blocked by an exhausted OpenAI API credit balance. The runtime secret is configured; API credits and a successful end-to-end answer check are still required. GitHub Pages serves the website; this server-only Worker supplies actual AI answers via the OpenAI Responses API. It gives the model tools to search all stored FORGE entries, read section comparisons/PGI/source dates, and review update notices. The model can call tools multiple times before generating an explanation. Follow-ups include recent conversation history. Answers link to read sections; unknown citation IDs and answers without tool use are rejected.
 
 ## Activation
 
@@ -15,3 +15,5 @@ POST `/api/chat`: `{messages: [{role: "user"|"assistant", content: string}], sec
 Source freshness: fetch and merge public kb.json, updates.json, and mappings.json server-side, cached five minutes. The model cannot verify live official sites or compensate for missing/unreviewed deviations. These limitations are included in its instructions.
 
 Validation: `node --test tests/forge-agent.test.mjs`. Mocked model responses validate tool calls, grounded answers/citations, missing credentials, input rejection, and CORS; a live AI answer must be checked after activation.
+
+Deploy from the repository root using wrangler.jsonc. Credit exhaustion returns AI_CREDITS / HTTP 503, other quota failures return AI_QUOTA / HTTP 503, and only temporary rate limits return AI_BUSY / HTTP 429. Provider messages and credentials are never returned to clients.
