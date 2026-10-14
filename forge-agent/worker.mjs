@@ -27,7 +27,11 @@ export async function runAgent({messages,sectionId,data,env,fetcher=fetch}){
  const cited=new Map();let toolCalls=0;
  for(let round=0;round<5;round++){
   const response=await fetcher('https://api.openai.com/v1/responses',{method:'POST',headers:{Authorization:'Bearer '+env.OPENAI_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({model:env.OPENAI_MODEL,instructions:INSTRUCTIONS,input,tools:TOOLS,max_output_tokens:1800,store:false}),signal:AbortSignal.timeout(45000)});
-  if(!response.ok)throw new Error(response.status===429?'AI_BUSY':'AI_UNAVAILABLE');
+  if(!response.ok){
+   let errorCode;try{errorCode=(await response.json()).error?.code;}catch{}
+   const code=errorCode==='insufficient_quota'?'AI_QUOTA':response.status===401?'AI_AUTH':response.status===429?'AI_BUSY':errorCode==='model_not_found'||response.status===403?'AI_ACCESS':response.status===400?'AI_REQUEST_REJECTED':'AI_UNAVAILABLE';
+   throw new Error(code);
+  }
   const result=await response.json();if(!Array.isArray(result.output))throw new Error('AI_INVALID_RESPONSE');
   input.push(...result.output);const calls=result.output.filter(x=>x.type==='function_call');
   if(!calls.length){const answer=result.output.filter(x=>x.type==='message').flatMap(x=>x.content||[]).filter(x=>x.type==='output_text').map(x=>x.text).join('\n');if(!answer||!toolCalls)throw new Error('AI_UNGROUNDED_RESPONSE');
@@ -63,6 +67,8 @@ export function createHandler({fetcher=fetch,corpus=getCorpus}={}){return async(
   const bytes=new Uint8Array(size);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}const body=JSON.parse(new TextDecoder().decode(bytes));
   if(!Array.isArray(body.messages)||!body.messages.length||body.messages.length>10||body.messages.some(m=>!['user','assistant'].includes(m.role)||typeof m.content!=='string'||!m.content.trim()||m.content.length>3000)||body.messages.at(-1).role!=='user')return send({error:'Invalid conversation'},400);
   const data=await corpus(fetcher);const answer=await runAgent({messages:body.messages,sectionId:body.sectionId,data,env,fetcher});return send(answer);
- }catch(e){if(e instanceof SyntaxError)return send({error:'Invalid JSON'},400);return send({error:e.message?.startsWith('CORPUS')?'FORGE sources could not be loaded. Please try again.':'The AI could not produce a verified response. Please try again.'},502);}
+ }catch(e){if(e instanceof SyntaxError)return send({error:'Invalid JSON'},400);const errors={AI_QUOTA:'OpenAI API credits or project quota are unavailable. The site owner must check API billing and limits.',AI_AUTH:'OpenAI rejected the configured API key. The site owner must check the runtime secret.',AI_BUSY:'The AI service is rate limited. Please wait and try again.',AI_ACCESS:'The configured AI model or project is not accessible. The site owner must check model access.',AI_REQUEST_REJECTED:'The AI service rejected the request configuration. The site owner must review it.',AI_INVALID_CITATION:'The AI answer contained an unverified citation. Please retry.',AI_UNGROUNDED_RESPONSE:'The AI did not complete a source-grounded answer. Please retry.',AI_TOOL_LIMIT:'The AI reached its source-reading limit. Try asking about one section.',AI_UNAVAILABLE:'The AI service is temporarily unavailable. Please try again.'};
+   const code=Object.hasOwn(errors,e.message)?e.message:e.message?.startsWith('CORPUS')?'CORPUS_UNAVAILABLE':'AI_RESPONSE_FAILED';
+   return send({error:errors[code]||(code==='CORPUS_UNAVAILABLE'?'FORGE sources could not be loaded. Please try again.':'The AI could not produce a verified response. Please try again.'),code},code==='AI_BUSY'?429:502);}
 };}
 export default {fetch:createHandler()};
