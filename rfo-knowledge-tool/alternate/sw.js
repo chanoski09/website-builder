@@ -1,6 +1,6 @@
 'use strict';
 // A separate scope/cache preserves the original application's offline behavior.
-const CACHE='forgealt-v6-2026-10-13';
+const CACHE='forgealt-v7-2026-10-13';
 const FILES=['./','./index.html','./styles.css','./compare-core.js','./app.js','./mappings.json','./agent-config.json','../kb.json','../updates.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forgealt-')&&k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
