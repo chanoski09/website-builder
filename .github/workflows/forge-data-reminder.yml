@@ -1,0 +1,50 @@
+name: FORGE Monthly Data Update Reminder
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'   # 1st of every month at 09:00 UTC
+  workflow_dispatch:        # allow manual trigger
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create monthly update issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const now = new Date();
+            const month = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+            const body = [
+              '## Monthly FORGE Data Review — ' + month,
+              '',
+              'The RFO is still in development. Check the sources below for any new or revised content, then update `rfo-knowledge-tool/kb.json` accordingly.',
+              '',
+              '### Sources to check',
+              '- [ ] **FAR Overhaul (RFO)** — https://www.acquisition.gov/far-overhaul',
+              '- [ ] **DFARS changes** — https://www.acquisition.gov/dfars',
+              '- [ ] **AFARS changes** — https://www.acquisition.gov/afars',
+              '- [ ] **DAR Council notices** — https://www.acquisition.gov/dar-council',
+              '',
+              '### How to update kb.json',
+              '1. Open `rfo-knowledge-tool/kb.json` in GitHub (click the file → pencil icon)',
+              '2. Find the entry by `id` (e.g. `"far-6-001"`)',
+              '3. Replace the `"legacyText"` and `"rfoText"` `"TODO: paste..."` values with the actual regulatory text',
+              '4. Commit directly to `main` — FORGE will serve the updated data on the next page load',
+              '',
+              '### Adding a new entry',
+              'Copy any existing entry block in `kb.json`, assign a new `id`, update all fields, and add it to the array.',
+              '',
+              '> Opened automatically by the FORGE monthly reminder workflow.',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `FORGE data review — ${month}`,
+              body,
+              labels: ['forge-data-update'],
+            });

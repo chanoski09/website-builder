@@ -1,0 +1,53 @@
+name: Deploy FORGE to cPanel
+
+# Runs whenever kb.json, the HTML app, or the service worker change on main
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rfo-knowledge-tool/RFO_tool.html'
+      - 'rfo-knowledge-tool/kb.json'
+      - 'rfo-knowledge-tool/sw.js'
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: FTP upload to cPanel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy FORGE files to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # ── Credentials (set these in GitHub → Settings → Secrets) ──
+          server:   ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+
+          # ── Paths ──────────────────────────────────────────────────
+          # Local folder to sync (relative to repo root)
+          local-dir: ./rfo-knowledge-tool/
+
+          # Remote folder on your cPanel server
+          # Example: /public_html/forge/  or  /public_html/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+
+          # Use FTPS (explicit TLS) — required by most cPanel hosts
+          protocol: ftps
+
+          # Only upload files that changed (fast incremental deploys)
+          dangerous-clean-slate: false
+
+          # Files to skip uploading
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/CLAUDE.md
+            **/*.md
+            **/.ftp-deploy-sync-state.json

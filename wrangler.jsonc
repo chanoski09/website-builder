@@ -1,0 +1,10 @@
+{
+  "name": "website-builder",
+  "main": "forge-agent/worker.mjs",
+  "compatibility_date": "2026-10-09",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://chanoski09.github.io",
+    "OPENAI_MODEL": "gpt-5-mini"
+  }
+}

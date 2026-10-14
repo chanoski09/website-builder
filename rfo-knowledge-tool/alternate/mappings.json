@@ -1,0 +1,150 @@
+{
+  "reviewed": "2026-10-01",
+  "entries": {
+    "far-14-205": {
+      "legacyText": "14.202-4 Bid samples.\n(a) Policy.\n    (1) Bidders shall not be required to furnish bid samples unless there are characteristics of the product that cannot be described adequately in the specification or purchase description.\n    (2) Bid samples will be used only to determine the responsiveness of the bid and will not be used to determine a bidder’s ability to produce the required items.\n    (3) Bid samples may be examined for any required characteristic, whether or not such characteristic is adequately described in the specification, if listed in accordance with paragraph (d)(1)(ii) of this section.\n    (4) Bids will be rejected as nonresponsive if the sample fails to conform to each of the characteristics listed in the invitation.\n(b) When to use. The use of bid samples would be appropriate for products that must be suitable from the standpoint of balance, facility of use, general \"feel,\" color, pattern, or other characteristics that cannot be described adequately in the specification. However, when more than a minor portion of the characteristics of the product cannot be adequately described in the specification, products should be acquired by two-step sealed bidding or negotiation, as appropriate.\n(c) Justification. The reasons why acceptable products cannot be acquired without the submission of bid samples shall be set forth in the contract file, except where the submission is required by the formal specifications (Federal, Military, or other) applicable to the acquisition.\n(d) Requirements for samples in invitations for bids.\n    (1) Invitations for bids shall -\n        (i) State the number and, if appropriate, the size of the samples to be submitted and otherwise fully describe the samples required; and\n        (ii) List all the characteristics for which the samples will be examined.\n    (2) If bid samples are required, see 14.201-6 (o).\n(e) Waiver of requirement for bid samples.\n    (1) The requirement for furnishing bid samples may be waived when a bidder offers a product previously or currently being contracted for or tested by the Government and found to comply with specification requirements conforming in every material respect with those in the current invitation for bids. When the requirement may be waived, see 14.201-6 (o)(2).\n    (2) Where samples required by a Federal, Military, or other formal specification are not considered necessary and a waiver of the sample requirements of the specification has been authorized, a statement shall be included in the invitation that notwithstanding the requirements of the specification, samples will not be required.\n(f) Unsolicited samples. Bid samples furnished with a bid that are not required by the invitation generally will not be considered as qualifying the bid and will be disregarded. However, the bid sample will not be disregarded if it is clear from the bid or accompanying papers that the bidder’s intention was to qualify the bid. (See 14.404-2 (d) if the qualification does not conform to the solicitation.)\n(g) Handling bid samples.\n    (1) Samples that are not destroyed in testing shall be returned to bidders at their request and expense, unless otherwise specified in the invitation.\n    (2) Disposition instructions shall be requested from bidders and samples disposed of accordingly.\n    (3) Samples ordinarily will be returned collect to the address from which received if disposition instructions are not received within 30 days. Small items may be returned by mail, postage prepaid.\n    (4) Samples that are to be retained for inspection purposes in connection with deliveries shall be transmitted to the inspecting activity concerned, with instructions to retain the sample until completion of the contract or until disposition instructions are furnished.\n    (5) Where samples are consumed or their usefulness is impaired by tests, they will be disposed of as scrap unless the bidder requests their return.",
+      "legacy": [
+        {
+          "t": "Bidders shall not be required to furnish bid samples unless there are characteristics of the product that cannot be described adequately in the specification or purchase description.",
+          "s": "FAR 14.202-4(a)(1)"
+        }
+      ],
+      "legacyCitation": "14.202-4",
+      "revisedCitation": "14.205",
+      "summary": "Bid samples compared by topic across renumbered sections: Legacy FAR 14.202-4 alongside RFO 14.205.",
+      "comparisonNote": "Verified topic mapping: Legacy FAR 14.202-4 (Bid samples) → RFO 14.205 (Bid samples). Legacy FAR 14.205 addresses presolicitation notices and is not the bid-sample counterpart. This alternate-only correction preserves the original knowledge-base files.",
+      "sourceEditions": {
+        "legacy": "FAR 14.202-4 · FAC 2026-01 · checked 1 Oct 2026",
+        "revised": "RFO 14.205 · existing stored model-deviation text"
+      },
+      "sources": [
+        "Acquisition.gov · FAR 14.202-4 · Bid samples",
+        "Acquisition.gov · RFO Part 14 · 14.205 Bid samples"
+      ],
+      "deepLinks": [
+        {
+          "label": "Legacy FAR 14.202-4 — Bid samples",
+          "url": "https://www.acquisition.gov/far/14.202-4"
+        },
+        {
+          "label": "RFO Part 14 — Bid samples at 14.205",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-14"
+        }
+      ],
+      "paragraphMappings": [
+        {
+          "legacyLabels": [
+            "(a)",
+            "(b)"
+          ],
+          "revisedLabels": [
+            "(a)"
+          ]
+        },
+        {
+          "legacyLabels": [
+            "(d)"
+          ],
+          "revisedLabels": [
+            "(b)"
+          ]
+        },
+        {
+          "legacyLabels": [
+            "(e)"
+          ],
+          "revisedLabels": [
+            "(c)"
+          ]
+        },
+        {
+          "legacyLabels": [
+            "(f)"
+          ],
+          "revisedLabels": [
+            "(d)"
+          ]
+        },
+        {
+          "legacyLabels": [
+            "(g)"
+          ],
+          "revisedLabels": [
+            "(e)"
+          ]
+        }
+      ]
+    }
+  },
+  "resourceReview": {
+    "checkedOn": "2026-10-11",
+    "status": "partial",
+    "textVerifiedThrough": "2026-10-01",
+    "scope": "Source edition and RFO publication-date checks; Army award-announcement topic spot check. DARS deviation review incomplete."
+  },
+  "updates": [
+    {
+      "id": "ai-credit-error-2026-10-14",
+      "date": "2026-10-14",
+      "status": "project",
+      "title": "October 14 — AI billing status clarified",
+      "summary": "Fixed an exhausted API credit balance being shown as a temporary rate limit. AI replies pause with a clear billing message; database search and comparison remain available.",
+      "details": [
+        "A diagnostic request returned credit_balance_exhausted with type insufficient_quota. OpenAI API billing must be updated before replies can resume.",
+        "No API key, billing setting, model, or regulatory source text changed in this fix."
+      ]
+    },
+    {
+      "id": "chat-interface-2026-10-13",
+      "date": "2026-10-13",
+      "status": "project",
+      "title": "October 13 — A friendlier Ask FORGE chat",
+      "summary": "Ask FORGE now has a welcome screen, suggested questions, message bubbles, a multiline composer, source buttons, and a clear retry action.",
+      "details": [
+        "The OpenAI runtime secret and deployed backend are connected. A live test on October 13 returned an AI provider rate-limit response; successful AI answers have not yet been verified.",
+        "Enter sends a question; Shift + Enter adds a line. Start a fresh conversation with the + button.",
+        "This interface update does not revalidate regulatory text or add new deviation memoranda."
+      ]
+    },
+    {
+      "id": "resource-review-2026-10-11",
+      "date": "2026-10-11",
+      "status": "review-partial",
+      "title": "October 11 — Resource review; DARS verification pending",
+      "summary": "Accessible official source editions match the recorded baselines. No regulatory text or topic mappings changed. DARS could not be retrieved, so current class-deviation coverage remains unverified.",
+      "details": [
+        "FAR index: FAC 2026-01, effective March 13, 2026. Acquisition.gov DFARS and DFARS PGI indexes: Change May 7, 2026. These are publication-edition checks, not a paragraph-by-paragraph certification.",
+        "RFO guide still lists July 1, 2026 updates for Parts 16 and 52, matching recorded part dates. Model deviations remain separate from codified FAR and require applicable agency implementation.",
+        "Army Connect still links AFARS and PGI effective August 31, 2026. AFARS 5105.302 still directs award reporting to PGI 5105.302 and references 2024-O0005; this reference does not verify that deviation's current status.",
+        "DARS index, current DFARS/PGI and class-deviation listing returned access errors. No individual deviation memorandum was imported; effective dates, applicability and supersession must be verified before inclusion.",
+        "Stored regulatory text was last reviewed October 1, 2026. Proposals remain labeled proposed, not effective rules."
+      ],
+      "links": [
+        {
+          "label": "FAR publication index",
+          "url": "https://www.acquisition.gov/browse/index/far"
+        },
+        {
+          "label": "DFARS publication index",
+          "url": "https://www.acquisition.gov/dfars"
+        },
+        {
+          "label": "DFARS PGI publication index",
+          "url": "https://www.acquisition.gov/dfarspgi"
+        },
+        {
+          "label": "RFO parts and deviation guidance",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide"
+        },
+        {
+          "label": "Army AFARS and PGI",
+          "url": "https://www.army.mil/armycontracting"
+        },
+        {
+          "label": "DARS current class deviations — retrieval pending",
+          "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        }
+      ]
+    }
+  ]
+}
