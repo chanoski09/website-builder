@@ -1,0 +1,329 @@
+{
+  "brief_version": "1.0",
+  "business_name": "6 to 9 Dental, PLLC",
+  "archetype": "The Helper (with Challenger energy)",
+  "archetype_reasoning": "This practice is built around radical accessibility — walk-ins, evenings, weekends, sliding scale, fearful patients welcome. That's pure Helper: calming, clarity-first, patient-centered. But they're also a Challenger in the SA dental market, because they break every convention (no appointment needed, open when others close, spa-level comfort at budget prices). The design must feel warm enough to reduce anxiety AND confident enough to signal that 6 years of 'America's Best Dentist' is earned. Competitors default to clinical white — we diverge with warmth. This is the neighborhood hero who also happens to be the most decorated dentist in the city.",
+
+  "design_direction": {
+    "name": "Warm South Texas Authority",
+    "metaphor": "A beautifully maintained neighborhood clinic that's quietly been winning national awards for six years — unpretentious on the outside, exceptional on the inside. Like walking into a trusted neighbor's living room and discovering they're a world-class surgeon.",
+    "rationale": "The teal (#237D82) from the existing site is the one brand asset worth inheriting — it signals healthcare trust and calm. We evolve it rather than abandon it. Warm cream replaces the clinical gray background, immediately signaling welcome over sterility. Amber becomes the CTA and emergency accent, referencing San Antonio's golden hour light and creating urgency without alarm. DM Serif Display for headings gives Dr. Humphrey's credentials the gravitas they've earned, while Plus Jakarta Sans body copy stays warm and approachable for anxious patients scanning for reassurance.",
+    "direction_candidates_evaluated": [
+      {
+        "name": "Warm South Texas Authority",
+        "metaphor": "Award-winning neighborhood clinic — unpretentious exterior, world-class interior",
+        "why_it_fits": "Retains teal equity, amber CTAs signal warmth + urgency for walk-in/emergency positioning, serif display font elevates Dr. Humphrey's credentials without feeling corporate",
+        "risk": "Amber + teal can feel dated if executed poorly — must be precise with saturation values",
+        "selected": true
+      },
+      {
+        "name": "Accessible Modern Care",
+        "metaphor": "Bright urgent-care clinic — clean, fast, clear",
+        "why_it_fits": "Clean white + teal reads modern and clinical-positive",
+        "risk": "Too generic for a practice with this much character and award recognition; misses the community warmth entirely",
+        "selected": false
+      },
+      {
+        "name": "Compassionate Clinic",
+        "metaphor": "Soft wellness spa — sage, cream, gentle",
+        "why_it_fits": "Reduces dental anxiety visually",
+        "risk": "Positions as upscale/premium — wrong signal for a sliding-scale, budget-accessible, walk-in practice serving working-class South SA families",
+        "selected": false
+      }
+    ]
+  },
+
+  "color_system": {
+    "mode": "light",
+    "background": {
+      "name": "Warm Cream",
+      "hex": "#FEFBF5",
+      "role": "Page background — warm off-white replacing the dated #EEEEEE gray. Signals welcome, not sterility."
+    },
+    "surface": {
+      "name": "Clean White",
+      "hex": "#FFFFFF",
+      "role": "Cards, panels, modals — pure white for maximum contrast against warm cream sections"
+    },
+    "foreground": {
+      "name": "Deep Tide",
+      "hex": "#1A2B2C",
+      "role": "Primary text — teal-inflected near-black; connects visually to brand teal while maintaining WCAG AA contrast (>16:1 on cream)"
+    },
+    "muted": {
+      "name": "Coastal Slate",
+      "hex": "#6B8085",
+      "role": "Secondary text, borders, dividers, placeholder text"
+    },
+    "brand_primary": {
+      "name": "Reef Teal",
+      "hex": "#1A7F86",
+      "role": "Signature brand color — evolved from existing #237D82 (slightly more vivid and confident). Used for section backgrounds, nav, headings, icons. The through-line of brand identity."
+    },
+    "brand_accent": {
+      "name": "Golden Hour",
+      "hex": "#E8924A",
+      "role": "CTAs, emergency/walk-in callouts, award badges, interactive highlights. Warm amber — references San Antonio's golden light, creates urgency without alarm. Contrasts beautifully against both teal and cream."
+    }
+  },
+
+  "typography": {
+    "display_font": {
+      "name": "DM Serif Display",
+      "source": "Google Fonts",
+      "weight": "400 (regular — the font is inherently bold at display sizes)",
+      "feeling": "Elegant authority with warmth — not stiff corporate serif, not informal script. At 72px it commands respect. At 48px it feels like a trusted voice. Perfect vehicle for 'America's Best Dentist' without feeling cold or academic."
+    },
+    "body_font": {
+      "name": "Plus Jakarta Sans",
+      "source": "Google Fonts",
+      "weight": "400 (body), 600 (subheadings), 700 (labels, nav)",
+      "feeling": "Warm, modern, human. Rounded terminals prevent the clinical sharpness of Inter or Roboto. Highly readable at 16–18px. Pairs with DM Serif via contrast: serif gravitas headlines, humanist sans warmth in body."
+    },
+    "accent_font": {
+      "name": "DM Mono",
+      "source": "Google Fonts",
+      "weight": "400, 500",
+      "use_case": "Award year callouts ('2021 · 2022 · 2023 · 2024 · 2025 · 2026'), stat numbers ('15+ 5-star reviews'), hours display, badge text. Monospaced precision reads as clinical rigor — perfect contrast for the credential and award content."
+    },
+    "type_scale": {
+      "xs": "0.75rem / 12px — captions, badges, legal",
+      "sm": "0.875rem / 14px — secondary body, nav links",
+      "base": "1rem / 16px — primary body",
+      "md": "1.125rem / 18px — lead paragraph, service descriptions",
+      "lg": "1.5rem / 24px — card headings, section subheads",
+      "xl": "2rem / 32px — section headings (Plus Jakarta Sans 700)",
+      "2xl": "3rem / 48px — major section headings (DM Serif Display)",
+      "3xl": "4.5rem / 72px — hero heading desktop",
+      "display": "clamp(3.5rem, 7vw, 6rem) — hero display, award callouts"
+    }
+  },
+
+  "layout": {
+    "navigation": "Sticky header — transparent on scroll-top over hero, solid Reef Teal on scroll. Left: logo. Center: nav links (Home, Services, About, Testimonials, Contact). Right: 'Book Your Visit' amber pill button + phone number.",
+    "max_content_width": "1280px",
+    "card_style": "rounded-xl (16px radius), white fill, subtle shadow (0 2px 16px rgba(26,43,44,0.08)), no border — floating card feel signals modern and premium",
+    "button_style": "Pill-shaped (999px radius) — friendly and approachable, not clinical. Primary: Golden Hour amber fill, Deep Tide text. Secondary: Reef Teal outline, Reef Teal text. Ghost: transparent, white text for dark sections.",
+    "dividers": "None — section color blocks handle separation. No horizontal rules or wave SVGs.",
+    "image_treatment": "Hero: full-bleed photo with Deep Tide overlay (60% opacity) to ensure text legibility. Content sections: constrained (max 600px wide), rounded-2xl (24px radius), subtle shadow. Team: circular crop for portraits.",
+    "spacing_density": "generous",
+    "spacing_unit": "8px",
+    "section_padding": "120px vertical on desktop, 80px on tablet, 60px on mobile"
+  },
+
+  "homepage_sections": [
+    {
+      "order": 1,
+      "name": "Hero",
+      "layout_pattern": "Full-bleed centered overlay",
+      "bg": "Full-width photo of welcoming dental office interior or smiling diverse patient — warm, not clinical. Deep Tide overlay at 65% opacity.",
+      "headline": "San Antonio's Most Awarded Dental Office — Open When Others Aren't",
+      "subheadline": "Walk-ins welcome · Evenings & weekends · Sliding scale pricing that works for your budget",
+      "cta_primary": "Book Your Visit",
+      "cta_secondary": "Call (210) 333-6911",
+      "animation": "Headline fades up from 20px below with 0.6s ease-out. Subheadline follows 0.2s delayed. CTAs follow 0.4s delayed.",
+      "dominant_element": "72px DM Serif Display headline, white text, centered",
+      "trust_signal": "Small badge below CTAs: '★ America's Best Dentist 2021–2026'"
+    },
+    {
+      "order": 2,
+      "name": "Award Trust Bar",
+      "layout_pattern": "Full-width horizontal ticker / static bar",
+      "bg": "Reef Teal (#1A7F86)",
+      "headline": "America's Best Dentist Award · 2021 · 2022 · 2023 · 2024 · 2025 · 2026",
+      "subheadline": "San Antonio Magazine Top Doc · Texas Dental Society Member · ADA Certified",
+      "animation": "Clip-reveal left-to-right on scroll entry",
+      "dominant_element": "DM Mono white text, star icons, award year pills",
+      "note": "This is the credibility anchor — front and center, immediately after the hero, setting the authority baseline before the first CTA ask"
+    },
+    {
+      "order": 3,
+      "name": "The 3 Reasons",
+      "layout_pattern": "3-column equal grid",
+      "bg": "Warm Cream (#FEFBF5)",
+      "headline": "Dental Care That Works Around Your Life",
+      "subheadline": "We built this practice for people who couldn't find a dentist that worked for them.",
+      "columns": [
+        {
+          "icon": "clock",
+          "title": "Open Evenings & Weekends",
+          "body": "Monday–Saturday, including evenings until 8pm or 9pm. Never miss work for a dental appointment again."
+        },
+        {
+          "icon": "door-open",
+          "title": "Walk-Ins & Same-Day Care",
+          "body": "Emergency or just finally ready? Walk in today. No appointment needed. We'll see you."
+        },
+        {
+          "icon": "dollar-sign",
+          "title": "Sliding Scale Pricing",
+          "body": "Most PPOs accepted. Great cash prices. Sliding scale copays. Care Credit available. We work with your budget."
+        }
+      ],
+      "animation": "Staggered fade-up, 0.15s between each card",
+      "dominant_element": "Large Lucide icons (Reef Teal), DM Serif Display card headings"
+    },
+    {
+      "order": 4,
+      "name": "Comfort Promise",
+      "layout_pattern": "Split 50/50 — photo left, feature list right",
+      "bg": "Deep Tide (#1A2B2C) dark section",
+      "headline": "Going to the Dentist Doesn't Have to Be Scary",
+      "subheadline": "Fearful patients are our specialty. We've designed every detail around your comfort.",
+      "features": [
+        "Massage chairs in every bay",
+        "Personal TV at every chair",
+        "Nitrous oxide (laughing gas) available",
+        "Pillows, blankets, sunglasses, lip balm",
+        "Latex and mercury free office",
+        "Low-radiation technology"
+      ],
+      "animation": "Photo slides in from left. Feature list fades up staggered from right.",
+      "dominant_element": "Warm photo of comfortable dental bay; checkmark feature list in white on deep teal",
+      "note": "White text throughout — golden hour accent on checkmarks"
+    },
+    {
+      "order": 5,
+      "name": "Services Grid",
+      "layout_pattern": "3×2 card grid (6 cards)",
+      "bg": "Clean White (#FFFFFF)",
+      "headline": "Everything You Need, All in One Office",
+      "subheadline": "Most procedures done in-house. Referrals when you need a specialist.",
+      "cards": [
+        { "icon": "alert-circle", "title": "Emergency Dentistry", "body": "Walk-in today. Same-day care for pain, broken teeth, and dental emergencies." },
+        { "icon": "heart", "title": "General Dentistry", "body": "Cleanings, fillings, X-rays, and preventive care for the whole family." },
+        { "icon": "smile", "title": "Cosmetic Dentistry", "body": "Veneers, whitening, Invisalign, and bonding to give you a smile you love." },
+        { "icon": "anchor", "title": "Dental Implants", "body": "Nobel Biocare implants — placement and restoration in-house." },
+        { "icon": "wind", "title": "Sedation Dentistry", "body": "Nitrous oxide and oral sedation for a stress-free experience." },
+        { "icon": "wrench", "title": "Restorations", "body": "Crowns, bridges, dentures, root canals, and periodontal therapy." }
+      ],
+      "animation": "Cards fade up in 2-row sequence on scroll",
+      "dominant_element": "White rounded-xl cards, Reef Teal icons, DM Serif Display card titles"
+    },
+    {
+      "order": 6,
+      "name": "Dr. Humphrey Feature",
+      "layout_pattern": "Split — photo left, content right (reversed from section 4)",
+      "bg": "Warm Cream (#FEFBF5)",
+      "headline": "Meet San Antonio's Most Decorated Dentist",
+      "subheadline": "Dr. V.P. Humphrey, DDS — University of the Pacific School of Dentistry · UC Berkeley",
+      "content_points": [
+        "America's Best Dentist Award — 6 consecutive years (2021–2026)",
+        "San Antonio Magazine Top Doc 2020",
+        "American Board of Laser Surgery Certified",
+        "International Academy of Facial Aesthetics",
+        "Level 1 Sedation Permit",
+        "Invisalign & Implant Restoration Certified"
+      ],
+      "animation": "Photo clip-reveals from bottom. Credential list counts up DM Mono style on scroll.",
+      "dominant_element": "Doctor portrait (circular), DM Serif Display headline, credential badges in Reef Teal pills",
+      "note": "This section rescues Dr. Humphrey's credentials from the buried sub-page paragraph and makes them a centerpiece conversion asset"
+    },
+    {
+      "order": 7,
+      "name": "Patient Love",
+      "layout_pattern": "3-column testimonial cards",
+      "bg": "Reef Teal (#1A7F86) dark section",
+      "headline": "What Our Patients Say",
+      "subheadline": "15+ years of San Antonio families coming back — and bringing their friends.",
+      "featured_testimonials": [
+        { "quote": "Dr. Humphrey is amazing. I will never ever go anywhere else for all my dental needs.", "name": "Patricia D.", "source": "Yelp", "stars": 5 },
+        { "quote": "The massage chairs, cool shades, personal TVs — the entire experience was top notch!", "name": "Kim S.", "source": "Yelp", "stars": 5 },
+        { "quote": "I've always feared going to the dentist. Dr. Arredondo knew exactly how to treat me with zero pain. Now I can't wait for my 6-month checkup.", "name": "Darling B.", "source": "Facebook", "stars": 5 }
+      ],
+      "animation": "Cards slide in from right with 0.2s stagger",
+      "dominant_element": "White quote cards with amber star ratings, source badges (Yelp/Google/Facebook)",
+      "note": "White cards on teal background — high contrast, high readability"
+    },
+    {
+      "order": 8,
+      "name": "Emergency Walk-In CTA",
+      "layout_pattern": "Full-bleed centered, high impact",
+      "bg": "Golden Hour (#E8924A) amber",
+      "headline": "Tooth Emergency? We're Open Right Now.",
+      "subheadline": "No appointment needed. Walk in today — our dentists are ready for you.",
+      "cta_primary": "(210) 333-6911 — Call Now",
+      "cta_secondary": "View Hours & Location",
+      "animation": "Pulse animation on phone number on hover. Section fades in on scroll.",
+      "dominant_element": "Large phone number in DM Serif Display, Deep Tide text on amber background",
+      "note": "Highest-urgency CTA section — amber background is the only full-bleed amber use on the page, making it unmissable"
+    },
+    {
+      "order": 9,
+      "name": "Location & Hours",
+      "layout_pattern": "Split — map left, info + form right",
+      "bg": "Clean White (#FFFFFF)",
+      "headline": "Come See Us",
+      "address": "2603 SE Military Dr #103, San Antonio, TX 78223",
+      "hours": "Tue 10–8 · Wed 9–5 · Thu 10–8 · Fri 10–4 · Sat 9–6",
+      "note": "Hours to be confirmed/reconciled — contact form redesigned as functional working form",
+      "animation": "Map fades in. Form slides up from below.",
+      "dominant_element": "Google Maps embed (rounded-xl), clean contact form with Reef Teal focus states"
+    },
+    {
+      "order": 10,
+      "name": "Footer",
+      "layout_pattern": "4-column + copyright bar",
+      "bg": "Deep Tide (#1A2B2C)",
+      "columns": ["Logo + tagline + phone", "Services links", "Practice links", "Location + social"],
+      "copyright": "© 2026 6 to 9 Dental, PLLC · All rights reserved",
+      "animation": "None — footer is functional, not animated",
+      "accent": "Thin Reef Teal top border"
+    }
+  ],
+
+  "tone_and_copy": {
+    "voice": ["warm", "direct", "reassuring", "community-proud"],
+    "headline_style": "Transformation-first: lead with the patient outcome or relief, not the service. 'Tooth Emergency? We're Open Right Now' beats 'Emergency Dental Services Available'.",
+    "cta_language": "Action + time: 'Book Your Visit', 'Walk In Today', 'Call Now', 'We'll See You Today'. Avoid: 'Learn More', 'Get Started', 'Submit'.",
+    "avoid": [
+      "Clinical stock photography (blue-gloved hands, extracted teeth, isolated equipment)",
+      "Jargon without translation (write 'Root Canal' then immediately add 'Pain relief, usually 1 visit')",
+      "Corporate voice — this practice is a neighborhood hero, not a hospital chain",
+      "Fear-based copy ('Don't ignore tooth pain — it gets worse') — this audience is already anxious",
+      "Generic dental clichés ('Your smile is our priority', 'We care about your health')"
+    ]
+  },
+
+  "design_rules": {
+    "always": [
+      "Lead every section with a patient outcome or relief — not a feature or service name",
+      "Show Dr. Humphrey's awards prominently — 6 consecutive years is extraordinary social proof that the current site buries",
+      "Golden Hour amber is reserved exclusively for emergency/walk-in CTAs and the trust bar — don't dilute it",
+      "Every CTA must include the phone number as a secondary option — South SA audience converts heavily by phone",
+      "Maintain generous whitespace — the practice's warmth should breathe through the layout",
+      "Use DM Mono for any number, year, or stat — it adds precision and credibility",
+      "Images must show people (patients, staff) — not equipment or teeth closeups"
+    ],
+    "never": [
+      "Never use the original #EEEEEE gray background — it reads dated and cold",
+      "Never bury awards or credentials in body copy paragraphs — they are visual design assets, use them as such",
+      "Never use more than 2 fonts on any single page (DM Serif Display + Plus Jakarta Sans; DM Mono for accent only)",
+      "Never use clinical stock photography — it contradicts the comfort positioning",
+      "Never show more than 3 primary navigation items on mobile — hamburger menu for full nav",
+      "Never use Reef Teal and Golden Hour adjacent to each other at full saturation — always separate with white or cream",
+      "Never leave the contact form without confirmation state — broken forms destroyed trust on the current site"
+    ]
+  },
+
+  "pencil_variables": {
+    "colorPrimary": "#1A7F86",
+    "colorAccent": "#E8924A",
+    "colorBackground": "#FEFBF5",
+    "colorSurface": "#FFFFFF",
+    "colorText": "#1A2B2C",
+    "colorMuted": "#6B8085",
+    "fontDisplay": "DM Serif Display",
+    "fontBody": "Plus Jakarta Sans",
+    "fontAccent": "DM Mono",
+    "borderRadius": "16px",
+    "spacingUnit": "8px",
+    "heroHeight": "100vh",
+    "maxContentWidth": "1280px",
+    "navHeight": "80px"
+  },
+
+  "pencil_note": "Pencil app was not connected at time of brief generation. Variables above are ready to be applied when website-rebuilder opens a Pencil document. Run mcp__pencil__get_editor_state and mcp__pencil__set_variables as first steps in rebuilder.",
+
+  "brief_summary": "Complete visual overhaul for 6 to 9 Dental — a Helper/Challenger archetype practice that is South San Antonio's most awarded dental office hiding behind a 2016 Wix template. Direction: 'Warm South Texas Authority'. Palette: Reef Teal (#1A7F86) + Golden Hour amber (#E8924A) on Warm Cream (#FEFBF5). Fonts: DM Serif Display (authority headings) + Plus Jakarta Sans (warm body) + DM Mono (awards/stats). 10-section homepage leads with a full-bleed hero proclaiming their award record, immediately followed by a trust bar of all 6 consecutive Best Dentist years. Section flow: hero → awards → 3 accessibility reasons → comfort promise → services → Dr. Humphrey spotlight → testimonials → emergency CTA → location. Primary CTA is always the phone number or walk-in call — this audience converts by phone. The new site should make a dental-anxious, budget-conscious South SA working parent feel seen and safe within 5 seconds."
+}

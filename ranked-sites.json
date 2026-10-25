@@ -1,0 +1,141 @@
+{
+  "search_date": "2026-03-25T08:46:00.000Z",
+  "queries_used": [
+    "San Antonio Texas dentist dental office website small practice 78201-78205",
+    "San Antonio TX dentist family dentistry since 2005/2003/2000 established 1998",
+    "San Antonio TX dentist 'call us today' 'our office' small practice local",
+    "dentist San Antonio TX website copyright 2016/2017/2018"
+  ],
+  "industries_searched": ["dental offices", "family dentistry", "cosmetic dentistry"],
+  "total_candidates_evaluated": 11,
+  "total_confirmed_stale": 1,
+  "pipeline_ready_count": 1,
+  "sites": [
+    {
+      "rank": 1,
+      "url": "https://www.vphumphrey2dds.com/",
+      "business_name": "6 to 9 Dental, PLLC",
+      "industry_guess": "General & Cosmetic Dentistry",
+      "staleness": {
+        "confirmed": true,
+        "copyright_year": 2016,
+        "last_modified_header": "03/25/2026 08:45:16",
+        "cms_generator": null,
+        "old_tech_markers": ["iframes detected", "placeholder slider text never filled in (\"Write your caption here\")"],
+        "signals_count": 3
+      },
+      "visual_scores": {
+        "wordiness": 10,
+        "visual_catchiness": 3,
+        "design_era": 2,
+        "typography": 3,
+        "cta_clarity": 0,
+        "total": 18
+      },
+      "wordiness_data": {
+        "total_word_count": 711,
+        "above_fold_words": null,
+        "image_count": 8,
+        "text_to_visual_ratio": 88.9
+      },
+      "design_problems": [
+        "Copyright 2016 — 10 years out of date",
+        "Slider images show placeholder text: 'Write your caption here' — template was never completed",
+        "No <h1> tag present — zero heading hierarchy",
+        "Zero CTAs above the fold — visitors have no obvious next step",
+        "No hero image — opening visual impression is a broken/uncaptioned image carousel",
+        "Iframes embedded — legacy architecture pattern",
+        "Dense service listing with no visual hierarchy or icons",
+        "Body font (Source Sans Pro) applied inconsistently with no typographic scale"
+      ],
+      "visual_description": "Homepage opens with an image slider where every slide caption reads 'Write your caption here Button Slide title' — clearly an unfinished website-builder template. Below is a wall of text listing every dental service in one unbroken block. No prominent hero, no headline, no obvious call-to-action button. Footer shows © 2016. The page reads like a draft that was never launched properly.",
+      "screenshot_timestamp": "2026-03-25T08:45:16.000Z",
+      "redesign_priority": "critical",
+      "pipeline_ready": true
+    },
+    {
+      "rank": 2,
+      "url": "https://www.hildebrandfamilydental.com/",
+      "business_name": "Hildebrand Family Dental Care",
+      "industry_guess": "Family & Cosmetic Dentistry",
+      "staleness": {
+        "confirmed": false,
+        "copyright_year": null,
+        "last_modified_header": "03/25/2026 08:43:52",
+        "cms_generator": null,
+        "old_tech_markers": ["visible content dated 2013"],
+        "signals_count": 1
+      },
+      "visual_scores": {
+        "wordiness": 5,
+        "visual_catchiness": 25,
+        "design_era": 8,
+        "typography": 15,
+        "cta_clarity": 9,
+        "total": 62
+      },
+      "wordiness_data": {
+        "total_word_count": 967,
+        "above_fold_words": null,
+        "image_count": 30,
+        "text_to_visual_ratio": 32.2
+      },
+      "design_problems": [
+        "Over 900 words on homepage — content-heavy, low scannability",
+        "Content dated to 2013 still visible on page",
+        "Only 1 staleness signal — borderline stale, not pipeline-ready"
+      ],
+      "visual_description": "Site has hero image and 3 above-fold CTAs — visually more engaging than Rank 1, but homepage word count exceeds 900 and some content dates to 2013.",
+      "screenshot_timestamp": "2026-03-25T08:43:52.000Z",
+      "redesign_priority": "low",
+      "pipeline_ready": false
+    },
+    {
+      "rank": 3,
+      "url": "https://www.dentalplacetx.com/",
+      "business_name": "Dental Place TX",
+      "industry_guess": "General Dentistry",
+      "staleness": {
+        "confirmed": false,
+        "copyright_year": null,
+        "last_modified_header": "03/25/2026 08:46:17",
+        "cms_generator": null,
+        "old_tech_markers": ["iframes detected"],
+        "signals_count": 1
+      },
+      "visual_scores": {
+        "wordiness": 10,
+        "visual_catchiness": 10,
+        "design_era": 8,
+        "typography": 9,
+        "cta_clarity": 15,
+        "total": 52
+      },
+      "wordiness_data": {
+        "total_word_count": 683,
+        "above_fold_words": null,
+        "image_count": 4,
+        "text_to_visual_ratio": 170.8
+      },
+      "design_problems": [
+        "Only 4 images — very low visual content",
+        "Iframes detected — old architecture",
+        "Insufficient staleness signals to confirm for pipeline"
+      ],
+      "visual_description": "Uses iframes and has very few images (only 4). Text-heavy with minimal visual engagement. Not confirmed stale by 2+ signals.",
+      "screenshot_timestamp": "2026-03-25T08:46:17.000Z",
+      "redesign_priority": "medium",
+      "pipeline_ready": false
+    }
+  ],
+  "skipped_sites": [
+    {"url": "https://www.inspiredentalsa.com/", "reason": "Blocked by Cloudflare"},
+    {"url": "https://www.familydentistrysa.com/", "reason": "WordPress 6.4.8 — modern, not stale"},
+    {"url": "https://www.ferrofamilydentistry.com/", "reason": "Modern design, no staleness signals"},
+    {"url": "https://www.chandlerdentalcenter.com/", "reason": "Copyright 2026 — current"},
+    {"url": "https://safamilydentist.com/", "reason": "WordPress 6.8.3 / Copyright 2026 — current"},
+    {"url": "https://www.biancasanchezdds.com/", "reason": "Copyright 2026 — current"},
+    {"url": "https://www.jonesandassociatesdds.com/", "reason": "Copyright 2026, last modified March 2026 — current"}
+  ],
+  "summary": "Evaluated 11 dental office websites in San Antonio, TX. Only 1 site (vphumphrey2dds.com / 6 to 9 Dental) confirmed stale by 3+ signals: copyright 2016, iframes, and an unfinished website-builder template with placeholder slider captions still live on the homepage. Score: 18/100 — CRITICAL priority. Handing off to redesign pipeline."
+}
