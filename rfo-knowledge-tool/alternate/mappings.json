@@ -77,12 +77,104 @@
     }
   },
   "resourceReview": {
-    "checkedOn": "2026-10-11",
+    "checkedOn": "2026-10-25",
     "status": "partial",
     "textVerifiedThrough": "2026-10-01",
-    "scope": "Source edition and RFO publication-date checks; Army award-announcement topic spot check. DARS deviation review incomplete."
+    "scope": "Official publication-edition checks, RFO proposal deadline review, and Army PGI 5105.302 spot check. DARS memorandum retrieval incomplete.",
+    "pendingVerification": [
+      {
+        "identifier": "2024-O0006 Revision 2",
+        "listedSourceDate": "2026-10-07",
+        "topic": "Russian fossil fuel and fossil fuel business operations",
+        "verification": "Official indexed listing only; full memorandum, effective date, applicability and supersession not verified.",
+        "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+      },
+      {
+        "identifier": "2026-O0028 Revision 1",
+        "listedSourceDate": "2026-10-22",
+        "topic": "RFO Part 12 / DFARS Part 212",
+        "verification": "Official indexed listing indicates an October 22 update; full memorandum, effective date, applicability and topic mappings not verified.",
+        "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+      }
+    ]
   },
   "updates": [
+    {
+      "id": "resource-review-2026-10-25",
+      "date": "2026-10-25",
+      "status": "review-partial",
+      "title": "October 25 — Resource review and deviation watch",
+      "summary": "Accessible official publication editions match the recorded baselines. No regulatory text or topic mappings changed. Two DARS revision leads await full-memorandum verification.",
+      "details": [
+        "FAR index: FAC 2026-01, effective March 13, 2026. Acquisition.gov DFARS and DFARS PGI indexes: Change May 7, 2026. These are edition checks, not a complete content certification.",
+        "Army Connect links AFARS and PGI effective August 31, 2026. PGI 5105.302 still requires submission by noon ET three business days before proposed award, formal ODASA(P) approval for reportable awards, and schedule confirmation by 8 p.m. ET the day before proposed award. These requirements were already stored.",
+        "Official indexed DARS listing: 2024-O0006 Revision 2, Russian fossil fuel/business operations, dated October 7, 2026. Official indexed RFO listing: Part 12 / DFARS Part 212 update dated October 22, 2026, associated with 2026-O0028 Revision 1.",
+        "DARS pages and memorandum retrieval returned access errors. Indexed dates are not verified effective dates. Full contents, applicability, supersession and topic mappings remain unverified; no individual memorandum was imported.",
+        "September RFO proposals remain proposed, not effective. Their listed October 19 comment deadline has passed, while Acquisition.gov still labels them Open; verify each docket for extensions. Stored regulatory-text review remains October 1, 2026."
+      ],
+      "links": [
+        {
+          "label": "FAR publication index",
+          "url": "https://www.acquisition.gov/browse/index/far"
+        },
+        {
+          "label": "DFARS and PGI editions",
+          "url": "https://www.acquisition.gov/dfars"
+        },
+        {
+          "label": "DFARS PGI publication index",
+          "url": "https://www.acquisition.gov/dfarspgi"
+        },
+        {
+          "label": "Army AFARS and PGI",
+          "url": "https://www.army.mil/armycontracting"
+        },
+        {
+          "label": "Army PGI — award announcement at 5105.302",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "DARS class deviations — verification pending",
+          "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        },
+        {
+          "label": "DARS RFO deviations — verification pending",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        },
+        {
+          "label": "RFO model deviations and publication dates",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide"
+        },
+        {
+          "label": "Proposed FAR cases and comment dockets",
+          "url": "https://www.acquisition.gov/requesting_comments"
+        }
+      ]
+    },
+    {
+      "id": "rfo-september-proposals",
+      "date": "2026-10-25",
+      "sourceDate": "2026-09-18",
+      "commentDeadline": "2026-10-19",
+      "status": "proposed",
+      "title": "September RFO proposals — listed October 19 deadline has passed",
+      "summary": "The published October 19, 2026 comment deadline is past. Acquisition.gov still labels these cases Open; check the official dockets for any extension. These remain proposals, not effective rules.",
+      "details": [
+        "FAR Case 2026-003: Parts 8, 12, 13, 15, 38, 44, 51, and 52.",
+        "FAR Case 2026-006: Parts 16, 17, 35, and 52.",
+        "FAR Case 2026-010: Parts 14, 28, 36, and 52.",
+        "FAR Case 2026-011: Parts 9, 27, 47, and 52.",
+        "Published 18 September 2026; comments due 19 October 2026. Proposed, not final.",
+        "Reviewed October 25, 2026: no extension or final-rule determination is established by this review. The Open label and elapsed deadline must not be treated as proof of current docket status."
+      ],
+      "entryIds": [],
+      "links": [
+        {
+          "label": "Official cases and comment links",
+          "url": "https://www.acquisition.gov/requesting_comments"
+        }
+      ]
+    },
     {
       "id": "ai-credit-error-2026-10-14",
       "date": "2026-10-14",

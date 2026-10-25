@@ -199,7 +199,7 @@
       if(responses.some(r=>!r.ok))throw new Error('Knowledge-base request failed. Check your connection and retry.');
       const [base,updates,mappings]=await Promise.all(responses.map(r=>r.json()));
       if(!Array.isArray(base.entries)||!Array.isArray(updates.entries)||!updates.meta)throw new Error('Invalid knowledge-base format.');
-      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta={...updates.meta,resourceReview:mappings.resourceReview,updates:[...(mappings.updates||[]),...(updates.meta.updates||[])]};
+      const map=new Map(base.entries.map(e=>[e.id,e]));updates.entries.forEach(e=>map.set(e.id,e));for(const [id,patch] of Object.entries(mappings.entries||{})){if(map.has(id))map.set(id,{...map.get(id),...patch});}state.entries=[...map.values()];state.byId=map;state.meta={...updates.meta,resourceReview:mappings.resourceReview,updates:[...(mappings.updates||[]),...(updates.meta.updates||[]).filter(note=>!(mappings.updates||[]).some(override=>override.id===note.id))]};
       state.entries.forEach(e=>{e.summary=e.summary||'';e.searchText=[...searchFields(e).map(x=>x.text),e.group,...e.keywords||[]].filter(Boolean).join(' ').toLowerCase();});
       $('dataStatus').textContent=state.entries.length.toLocaleString()+' sections · reviewed '+state.meta.lastUpdated;
       buildGroups();search();renderUpdates();
