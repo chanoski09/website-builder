@@ -166,7 +166,8 @@
     {label:'Acquisition.gov — FAR overhaul',url:'https://www.acquisition.gov/far-overhaul'},
     {label:'Army — AFARS and PGI',url:'https://www.army.mil/armycontracting'},
     {label:'Acquisition.gov — DFARS publication index',url:'https://www.acquisition.gov/dfars'},
-    {label:'Acquisition.gov — DFARS PGI publication index',url:'https://www.acquisition.gov/dfarspgi'}
+    {label:'Acquisition.gov — DFARS PGI publication index',url:'https://www.acquisition.gov/dfarspgi'},
+    {label:'FAR Companion v3.0 — non-regulatory advisory guidance (October 30, 2026)',url:'https://www.acquisition.gov/sites/default/files/page_file_uploads/far-companion.pdf'}
   ];
   function sectionLinks(e,reg) {
     const links=[...e.deepLinks||[]],number=e.legacyCitation||sectionNumber(e);
@@ -185,7 +186,7 @@
   function renderUpdates() {
     $('releaseNotes').replaceChildren();const release=element('article','fg-update');release.append(element('h2','','October 9 — Search, guide, and official resources'),element('p','','Search now shows highlighted matches from stored text across FORGE. Added a first-use guide, clearer light/dark controls, DARS resources, section source links, and the no-token Ask FORGE database finder. Biweekly resource review scheduled; no regulatory text was revalidated in this interface release.'));$('releaseNotes').append(release);$('updatesDate').textContent='Stored text review: '+(state.meta.lastUpdated||'See source notes')+(state.meta.resourceReview?' · Resource check: '+state.meta.resourceReview.checkedOn+' ('+state.meta.resourceReview.status+')':'');
     for (const note of state.meta.updates||[]) {
-      const article=element('article','fg-update'); const meta=element('div','fg-update-meta');meta.append(element('span','fg-state '+(note.status==='proposed'?'fg-proposed':note.status==='effective'?'fg-effective':''),note.status==='proposed'?'Proposed — not final':note.status==='effective'?'Effective source':note.status==='review-partial'?'Partial source review':'Project update'),element('span','',note.effectiveDate?'Effective '+note.effectiveDate:note.sourceDate?'Source '+note.sourceDate:note.date||''));
+      const article=element('article','fg-update'); const meta=element('div','fg-update-meta');meta.append(element('span','fg-state '+(note.status==='proposed'?'fg-proposed':note.status==='effective'?'fg-effective':''),note.status==='proposed'?'Proposed — not final':note.status==='effective'?'Effective source':note.status==='review-partial'?'Partial source review':note.status==='guidance'?'Non-regulatory guidance':'Project update'),element('span','',note.effectiveDate?'Effective '+note.effectiveDate:note.sourceDate?'Source '+note.sourceDate:note.date||''));
       article.append(meta,element('h2','',note.title),element('p','',note.summary));
       if(note.details?.length){const d=element('details');d.append(element('summary','','Details'));const list=element('ul');note.details.forEach(text=>list.append(element('li','',text)));d.append(list);article.append(d);}
       const links=element('div','update-links');(note.links||[]).forEach(s=>{const a=link(s.label,s.url);if(a)links.append(a);});article.append(links);

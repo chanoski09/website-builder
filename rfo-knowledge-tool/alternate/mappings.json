@@ -77,10 +77,10 @@
     }
   },
   "resourceReview": {
-    "checkedOn": "2026-10-25",
+    "checkedOn": "2026-11-08",
     "status": "partial",
     "textVerifiedThrough": "2026-10-01",
-    "scope": "Official publication-edition checks, RFO proposal deadline review, and Army PGI 5105.302 spot check. DARS memorandum retrieval incomplete.",
+    "scope": "Official publication-edition checks and FAR Companion v3.0 release/disclaimer verification. DARS memorandum retrieval incomplete.",
     "pendingVerification": [
       {
         "identifier": "2024-O0006 Revision 2",
@@ -96,9 +96,89 @@
         "verification": "Official indexed listing indicates an October 22 update; full memorandum, effective date, applicability and topic mappings not verified.",
         "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
       }
-    ]
+    ],
+    "guidanceVerified": {
+      "title": "FAR Companion Version 3.0",
+      "publicationDate": "2026-10-30",
+      "classification": "Non-regulatory advisory guidance; no mandates or regulatory effective date",
+      "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/far-companion.pdf"
+    }
   },
   "updates": [
+    {
+      "id": "far-companion-v3-2026-11-08",
+      "date": "2026-11-08",
+      "sourceDate": "2026-10-30",
+      "status": "guidance",
+      "title": "FAR Companion v3.0 — updated advisory guidance",
+      "summary": "Added official links to Version 3.0, published October 30, 2026. The Companion provides non-regulatory advice; it creates no mandatory compliance requirements.",
+      "details": [
+        "The official PDF cover and change log identify Version 3.0 dated October 30, 2026. Its About and Disclaimer sections identify advisory guidance without legal authority or mandates.",
+        "The release announcement describes expanded industry engagement, evaluation and past-performance advice; commercial, modular and construction contracting guidance; and contract administration and closeout practices.",
+        "The Companion supplements acquisition practice. It does not amend codified FAR, establish an agency deviation, or turn a proposed rule into an effective rule. No regulatory text or topic mappings changed."
+      ],
+      "links": [
+        {
+          "label": "FAR Companion v3.0 — official PDF (advisory guidance)",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/far-companion.pdf"
+        },
+        {
+          "label": "October 30 release announcement",
+          "url": "https://www.acquisition.gov/content/far-overhaul-far-companion-guide-version-3.0"
+        }
+      ]
+    },
+    {
+      "id": "resource-review-2026-11-08",
+      "date": "2026-11-08",
+      "status": "review-partial",
+      "title": "November 8 — Source review; DARS verification remains pending",
+      "summary": "Added the newly published FAR Companion resource. Accessible FAR, DFARS/PGI and Army publication indexes match the October 25 recorded editions.",
+      "details": [
+        "FAR: FAC 2026-01, effective March 13, 2026. Acquisition.gov DFARS and DFARS PGI: Change May 7, 2026. Army Connect: AFARS and PGI effective August 31, 2026. Edition checks do not certify all text.",
+        "DARS index, current DFARS/PGI, class-deviation and RFO-deviation pages, and the 2026-O0028 Revision 1 memorandum returned access errors. The October 7 and October 22 revision leads remain pending; full contents, effective dates, applicability and supersession are unverified. No memorandum was imported.",
+        "Acquisition.gov still lists the four September proposals with October 19, 2026 comment deadlines and Open labels. Their docket status and any extension remain undetermined. Proposals remain separate from effective rules.",
+        "Stored regulatory-text review remains October 1, 2026. November 8 is the resource-check date, not a regulatory effective date."
+      ],
+      "links": [
+        {
+          "label": "FAR publication index",
+          "url": "https://www.acquisition.gov/browse/index/far"
+        },
+        {
+          "label": "DFARS and PGI editions",
+          "url": "https://www.acquisition.gov/dfars"
+        },
+        {
+          "label": "DFARS PGI publication index",
+          "url": "https://www.acquisition.gov/dfarspgi"
+        },
+        {
+          "label": "Army AFARS and PGI",
+          "url": "https://www.army.mil/armycontracting"
+        },
+        {
+          "label": "Army PGI — award announcement at 5105.302",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "DARS class deviations — verification pending",
+          "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        },
+        {
+          "label": "DARS RFO deviations — verification pending",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        },
+        {
+          "label": "RFO model deviations and publication dates",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide"
+        },
+        {
+          "label": "Proposed FAR cases and comment dockets",
+          "url": "https://www.acquisition.gov/requesting_comments"
+        }
+      ]
+    },
     {
       "id": "resource-review-2026-10-25",
       "date": "2026-10-25",
