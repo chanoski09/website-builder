@@ -1,0 +1,184 @@
+{
+  "scout_version": "1.0",
+  "url": "https://www.vphumphrey2dds.com/",
+  "scraped_at": "2026-03-25T08:50:00.000Z",
+
+  "business": {
+    "name": "6 to 9 Dental, PLLC (also branded as '6 to 9 Dental Texas')",
+    "type": "local-service",
+    "industry": "General & Cosmetic Dentistry — independent multi-dentist practice",
+    "model": "Local service business: in-person dental care, walk-in and appointment-based",
+    "size_estimate": "small (2-10)",
+    "geography": "local",
+    "founding_signals": "Copyright 2016 on site; Dr. Humphrey credentials date to UC Berkeley / UOP Dental; awards from 2019 onward suggest practice operating since at least ~2010–2015"
+  },
+
+  "offer": {
+    "primary": "General & emergency dentistry — walk-ins welcome, open evenings and weekends, same-day care available",
+    "secondary": [
+      "Cosmetic dentistry: veneers, teeth whitening, Invisalign, bonding",
+      "Restorative: crowns, bridges, dentures, dental implants (Nobel Biocare)",
+      "Endodontics: root canal therapy and re-treatment",
+      "Oral surgery: wisdom teeth, periodontal surgery",
+      "Sedation dentistry: nitrous oxide (N2O), oral sedation referrals",
+      "TMD therapy and night guards",
+      "Oral cancer screening and biopsies",
+      "Pediatric dental referrals",
+      "Patient financing and sliding-scale copays accepted"
+    ],
+    "price_tier": "budget",
+    "differentiators": [
+      "Open evenings and weekends — rare for dental practices",
+      "Walk-ins and same-day emergency care",
+      "Sliding scale copays, most PPOs accepted, great cash prices",
+      "Latex and mercury free office",
+      "Massage chairs, personal TVs in each bay, sunglasses, pillows, blankets — spa-like comfort",
+      "Nitrous oxide for anxious patients; fearful patients explicitly welcomed",
+      "Dr. Humphrey: America's Best Dentist Award 2021–2026, Top Doc SA Magazine, multiple specialty certifications",
+      "Multiple licensed dentists on staff",
+      "Near freeway access, free parking"
+    ],
+    "cta_primary": "Call Us +1(210)333-6911",
+    "cta_secondary": "Walk in today / Make an appointment"
+  },
+
+  "audience": {
+    "primary_persona": "Cost-conscious working families and individuals in South San Antonio (78223 zip) who face barriers to dental care — insurance gaps, schedule conflicts, dental anxiety, urgent pain — and need a practice that meets them where they are",
+    "pain_points": [
+      "Can't get a same-day appointment at other offices",
+      "Dental anxiety and fear",
+      "No dental insurance or out-of-network coverage",
+      "Can't take time off work during standard 9-5 hours",
+      "Bad prior dental experiences",
+      "Emergency/severe tooth pain with nowhere to go"
+    ],
+    "aspirations": [
+      "Affordable, comfortable dental experience",
+      "A beautiful, healthy smile",
+      "A dentist they can trust and keep coming back to",
+      "Feeling welcome and not judged"
+    ],
+    "trust_signals_used": [
+      "America's Best Dentist Award 2021, 2022, 2023, 2024, 2025, 2026 — Dr. Humphrey",
+      "San Antonio Magazine Top Doc Award 2020",
+      "Top Dentist Award 2019, 2020, 2021, 2024",
+      "ADA and Texas Dental Society membership",
+      "International Academy of Facial Aesthetics certification",
+      "American Board of Laser Surgery certification",
+      "Invisalign and implant restoration certified",
+      "Level 1 Sedation Permit",
+      "15+ genuine named Yelp, Facebook, and Google testimonials with specific praise",
+      "Multiple dentists on staff (4 named DDS/DMD)"
+    ],
+    "language_register": "friendly"
+  },
+
+  "brand_voice": {
+    "tone_words": ["warm", "accessible", "reassuring"],
+    "tagline": "None detected",
+    "personality_notes": "Community-first, welcoming to anxious and underserved patients. Language is casual and conversational ('Don't worry if we're not in your network', 'Fearful patients welcome too!'). Genuine warmth shows in testimonials — staff remembered by first name, patients feel like family. The practice punches far above its website's visual impression."
+  },
+
+  "current_design": {
+    "era_estimate": "2013–2016 Wix website-builder era — characteristic font stack (Mate SC, Playball, Alike), slider with default placeholder captions, iframe architecture",
+    "platform_guess": "Wix",
+    "colors_extracted": [
+      "rgb(238, 238, 238) — body/page background (light gray)",
+      "rgb(30, 30, 30) — dark near-black (nav/header elements)",
+      "rgb(255, 255, 255) — white",
+      "rgb(35, 125, 130) — teal/dark cyan (headings)"
+    ],
+    "fonts_extracted": [
+      "Mate SC (headings — serif small-caps, decorative)",
+      "Source Sans Pro (body — modern, readable)",
+      "Playball (decorative/accent — script)",
+      "Alike (serif — inconsistent secondary)",
+      "FontAwesome (icons)"
+    ],
+    "body_bg": "rgb(238, 238, 238)",
+    "heading_color": "rgb(35, 125, 130)",
+    "primary_action_color": "rgb(240, 240, 240)",
+    "typography_quality": "poor",
+    "layout_quality": "poor",
+    "mobile_quality": "poor",
+    "overall_design_grade": "D",
+    "design_problems": [
+      "Homepage slider shows unedited placeholder text: 'Write your caption here Button Slide title' — never completed after template purchase",
+      "No <h1> tag on homepage — zero SEO heading hierarchy",
+      "Zero call-to-action buttons visible above the fold",
+      "Contact form shows broken error state: 'Oops, there was an error sending your message' — form is non-functional",
+      "Hours inconsistency: homepage lists Mon/Tue/Wed/Thu/Sat hours; Contact page lists Tue/Wed/Thu/Fri/Sat (no Mon, adds Fri, removes Sat)",
+      "Body background is flat medium gray (#EEEEEE) — dated, low-contrast, uninviting for a healthcare brand",
+      "Dense unformatted text blocks — no icons, no cards, no visual hierarchy to help users scan services",
+      "No before/after gallery despite prominent cosmetic dentistry claims",
+      "No online booking integration — 2026 patients expect online scheduling",
+      "iframes embedded — legacy architecture",
+      "Copyright 2016 — 10 years out of date; signals neglect to visitors",
+      "Button styles: near-invisible (bg: #F0F0F0, text: black) — no contrast, no visual weight",
+      "Multiple decorative fonts (Mate SC + Playball + Alike) used without clear system — feels cluttered",
+      "No hero image or welcome photograph — first impression is a broken slider",
+      "Dr. Humphrey's impressive credential list buried in an unformatted paragraph block on a sub-page"
+    ],
+    "design_strengths": [
+      "Teal accent (#237D82) is appropriate for healthcare — calming, trustworthy, with some warmth",
+      "Source Sans Pro as body font is readable and modern",
+      "Navigation structure is comprehensive (11 pages of real content exists)",
+      "Testimonials page has 15+ genuine, specific reviews — strong social proof that the site fails to surface"
+    ]
+  },
+
+  "content": {
+    "pages_scraped": [
+      "/ (Homepage)",
+      "/our-team (About Us / Services Overview)",
+      "/about-the-practice (Our History — Dr. Humphrey credentials, staff roster)",
+      "/treatments (Full treatment menu with case examples)",
+      "/testimonials (15+ patient reviews)",
+      "/contact-us (Location, hours, contact form)"
+    ],
+    "navigation_items": [
+      "Home",
+      "About the Practice",
+      "Our History",
+      "Treatments",
+      "Nitrous Oxide",
+      "General Dentistry",
+      "Testimonials",
+      "Dental Advice",
+      "Doctor's Articles",
+      "Contact Us",
+      "Patient Forms"
+    ],
+    "key_messages": [
+      "Walk-ins and emergencies welcome, same-day care available",
+      "Open evenings and weekends — 'hours that fit your schedule'",
+      "Affordable: sliding scale copays, most PPOs, great cash prices",
+      "Fearful patients explicitly welcome — comfort amenities (massage chairs, TVs, N2O)",
+      "Latex and mercury free, low radiation technology",
+      "Dr. Humphrey: America's Best Dentist 2021–2026, Top Doc San Antonio Magazine",
+      "Both general and specialty-level procedures in-house",
+      "State of the art equipment, beautiful modern office (per practice description)"
+    ],
+    "content_gaps": [
+      "No before/after smile gallery — critical for cosmetic dentistry conversions",
+      "No online booking system or scheduling widget",
+      "No pricing page or 'new patient special' landing page (despite mentioning specials in body copy)",
+      "No blog content despite 'Dental Advice' and 'Doctor's Articles' nav items (appears empty)",
+      "Dr. Humphrey's 6-year run of America's Best Dentist awards not prominently featured on homepage",
+      "No staff photos — practice has named team members but no faces shown",
+      "No emergency dental landing page despite 'Emergency Dentist Available' being a top differentiator",
+      "Hours conflict between homepage and contact page — unresolved inconsistency"
+    ],
+    "content_strengths": [
+      "15+ authentic testimonials with specific details, named doctors, and emotional reactions",
+      "Comprehensive treatment list covering nearly every general and cosmetic service",
+      "Dr. Humphrey's credentials list is genuinely impressive (6 consecutive Best Dentist awards)",
+      "Referral network listed — shows commitment to patient care beyond the office",
+      "Strong 'fearful patient' positioning — clearly understood and serves this audience",
+      "Comfort amenities (massage chairs, TVs, N2O) are memorable and differentiating"
+    ]
+  },
+
+  "redesign_urgency": "complete-overhaul",
+  "scout_summary": "6 to 9 Dental is a genuinely strong practice hiding behind a catastrophically outdated website. Dr. Humphrey has won America's Best Dentist six consecutive years (2021–2026), the practice has 15+ enthusiastic patient reviews, and offers rare differentiators (walk-in evenings/weekends, massage chairs, sliding-scale pricing, mercury-free). But the website tells none of this story effectively. The homepage greets visitors with unedited Wix placeholder text ('Write your caption here'), no headline, no hero image, and a broken contact form. The teal color palette is the one salvageable design asset. Everything else needs to be rebuilt from scratch around the practice's three core strengths: accessibility (walk-in/emergency/evening-weekend), affordability (sliding scale/PPO), and authority (Dr. Humphrey's award-winning credentials). The redesign should target South San Antonio families who are price-sensitive, schedule-constrained, or dental-anxious — and show them immediately that this practice was built for them."
+}

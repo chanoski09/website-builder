@@ -1,0 +1,1321 @@
+{
+  "meta": {
+    "lastUpdated": "2026-10-01",
+    "description": "FORGE Knowledge Base — FAR vs RFO comparison entries for 411th CSB",
+    "version": "1.1",
+    "entryCount": 1129,
+    "versions": {
+      "far": {
+        "legacy": "eCFR 48 CFR · pre-overhaul baseline",
+        "revised": "RFO model deviations · selected Part updates through 1 Jul 2026"
+      },
+      "dfars": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "Codified DFARS · Change 7 May 2026 · selected entries refreshed"
+      },
+      "afars": {
+        "legacy": "AFARS · rev. 11 Jul 2025",
+        "revised": "Army AFARS / PGI · effective 31 Aug 2026 · selected entries refreshed"
+      }
+    },
+    "currencyNote": "Project updated 1 October 2026. FAR/RFO text retains its existing model-deviation baseline; agency implementation dates vary. September 2026 proposed rules are tracked separately and are not treated as effective regulation. Selected DFARS entries use the codified 7 May 2026 edition, not DoD RFO deviations. Selected AFARS/PGI entries use the Army 31 August 2026 edition, newer than the July 2025 edition still displayed on Acquisition.gov. CAS notices reflect final rules effective 1 October 2026. This review does not certify every FAR paragraph as current; verify the applicable agency deviation and official text before operational use.",
+    "maintenance": {
+      "owner": "411th CSB — SFC Ho Tony & SFC Napit Rabin",
+      "cadence": "Reviewed monthly (an automated reminder issue opens on the 1st) and on major RFO/DFARS/AFARS releases.",
+      "process": "Edit kb.json for content and meta.updates for the front-page release notes. Preserve historical baseline text, cite current sources and effective dates, and keep proposed rules separate. GitHub Pages deploys on the FORGE source branch; cPanel deploys on main."
+    },
+    "rfoScope": "Vol. 1 · Parts 1–51",
+    "partDates": {
+      "1": {
+        "issued": "2 May 2025",
+        "updated": "16 Mar 2026"
+      },
+      "2": {
+        "issued": "28 Oct 2025",
+        "updated": ""
+      },
+      "3": {
+        "issued": "11 Sep 2025",
+        "updated": ""
+      },
+      "4": {
+        "issued": "14 Aug 2025",
+        "updated": ""
+      },
+      "5": {
+        "issued": "8 Aug 2025",
+        "updated": "16 Mar 2026"
+      },
+      "6": {
+        "issued": "27 Jun 2025",
+        "updated": ""
+      },
+      "7": {
+        "issued": "4 Sep 2025",
+        "updated": ""
+      },
+      "8": {
+        "issued": "14 Aug 2025",
+        "updated": "29 Aug 2025"
+      },
+      "9": {
+        "issued": "21 Aug 2025",
+        "updated": "20 Apr 2026"
+      },
+      "10": {
+        "issued": "22 May 2025",
+        "updated": "16 Mar 2026"
+      },
+      "11": {
+        "issued": "18 Jun 2025",
+        "updated": ""
+      },
+      "12": {
+        "issued": "14 Aug 2025",
+        "updated": "20 Apr 2026"
+      },
+      "13": {
+        "issued": "18 Sep 2025",
+        "updated": ""
+      },
+      "14": {
+        "issued": "25 Sep 2025",
+        "updated": ""
+      },
+      "15": {
+        "issued": "30 Sep 2025",
+        "updated": ""
+      },
+      "16": {
+        "issued": "30 Sep 2025",
+        "updated": "1 Jul 2026"
+      },
+      "17": {
+        "issued": "11 Sep 2025",
+        "updated": ""
+      },
+      "18": {
+        "issued": "12 Jun 2025",
+        "updated": ""
+      },
+      "19": {
+        "issued": "26 Sep 2025",
+        "updated": "20 Feb 2026"
+      },
+      "22": {
+        "issued": "30 Sep 2025",
+        "updated": "20 Apr 2026"
+      },
+      "23": {
+        "issued": "30 Sep 2025",
+        "updated": ""
+      },
+      "24": {
+        "issued": "4 Sep 2025",
+        "updated": ""
+      },
+      "25": {
+        "issued": "30 Sep 2025",
+        "updated": "16 Mar 2026"
+      },
+      "26": {
+        "issued": "8 Aug 2025",
+        "updated": ""
+      },
+      "27": {
+        "issued": "11 Sep 2025",
+        "updated": ""
+      },
+      "28": {
+        "issued": "28 Aug 2025",
+        "updated": ""
+      },
+      "29": {
+        "issued": "17 Jul 2025",
+        "updated": ""
+      },
+      "30": {
+        "issued": "28 Aug 2025",
+        "updated": ""
+      },
+      "31": {
+        "issued": "17 Jul 2025",
+        "updated": ""
+      },
+      "32": {
+        "issued": "30 Sep 2025",
+        "updated": ""
+      },
+      "33": {
+        "issued": "21 Aug 2025",
+        "updated": ""
+      },
+      "34": {
+        "issued": "2 May 2025",
+        "updated": ""
+      },
+      "35": {
+        "issued": "24 Jul 2025",
+        "updated": ""
+      },
+      "36": {
+        "issued": "24 Jul 2025",
+        "updated": ""
+      },
+      "37": {
+        "issued": "25 Sep 2025",
+        "updated": ""
+      },
+      "38": {
+        "issued": "14 Aug 2025",
+        "updated": ""
+      },
+      "39": {
+        "issued": "12 Jun 2025",
+        "updated": ""
+      },
+      "40": {
+        "issued": "14 Aug 2025",
+        "updated": ""
+      },
+      "41": {
+        "issued": "25 Sep 2025",
+        "updated": ""
+      },
+      "42": {
+        "issued": "30 Sep 2025",
+        "updated": ""
+      },
+      "43": {
+        "issued": "12 Jun 2025",
+        "updated": ""
+      },
+      "44": {
+        "issued": "4 Sep 2025",
+        "updated": ""
+      },
+      "45": {
+        "issued": "11 Sep 2025",
+        "updated": ""
+      },
+      "46": {
+        "issued": "21 Aug 2025",
+        "updated": ""
+      },
+      "47": {
+        "issued": "25 Sep 2025",
+        "updated": ""
+      },
+      "48": {
+        "issued": "28 Aug 2025",
+        "updated": ""
+      },
+      "49": {
+        "issued": "21 Aug 2025",
+        "updated": ""
+      },
+      "50": {
+        "issued": "31 Jul 2025",
+        "updated": ""
+      },
+      "51": {
+        "issued": "14 Aug 2025",
+        "updated": ""
+      },
+      "52": {
+        "issued": "28 Oct 2025",
+        "updated": "1 Jul 2026"
+      },
+      "53": {
+        "issued": "30 Sep 2025",
+        "updated": ""
+      }
+    },
+    "lastSourceReview": "2026-10-01",
+    "rfoBaseline": "17 Apr 2026",
+    "updates": [
+      {
+        "id": "army-award-confirmation",
+        "date": "2026-10-01",
+        "sourceDate": "2026-08-31",
+        "status": "effective",
+        "title": "Army award schedule: confirm the day before",
+        "summary": "New FORGE entry: confirm with ODASA(P) by 8 p.m. ET the day before proposed award. Submit the initial package by noon ET three business days before award.",
+        "details": [
+          "AFARS / PGI Part 5105 revised 29 June 2026; verified in the edition effective 31 August 2026.",
+          "Former AFARS 5105.303 procedures are now under AFARS / PGI 5105.302. Formal ODASA(P) approval remains required for actions meeting the reporting threshold.",
+          "The day-before requirement is schedule confirmation, not public announcement of the award."
+        ],
+        "entryIds": [
+          "afars-5105-302"
+        ],
+        "links": [
+          {
+            "label": "Official Army PGI",
+            "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+          },
+          {
+            "label": "Official Army AFARS",
+            "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+          }
+        ]
+      },
+      {
+        "id": "cas-final-rules",
+        "date": "2026-10-01",
+        "sourceDate": "2026-09-01",
+        "effectiveDate": "2026-10-01",
+        "status": "effective",
+        "title": "CAS final rules take effect October 1",
+        "summary": "Added CAS coverage / disclosure threshold changes and the CAS 407 rescission, with transition cautions and links to the final rules.",
+        "details": [
+          "Basic applicability: $35 million; full coverage and disclosure thresholds: $100 million, subject to exemptions and transition rules.",
+          "CAS 407 is removed and reserved; retained requirements move to CAS 418. Both rules take effect 1 October 2026."
+        ],
+        "entryIds": [
+          "cas-thresholds-2026",
+          "cas-407-2026"
+        ],
+        "links": [
+          {
+            "label": "Acquisition.gov release",
+            "url": "https://www.acquisition.gov/content/cost-accounting-standards-board-issues-two-new-final-rules"
+          },
+          {
+            "label": "Threshold final rule",
+            "url": "https://www.federalregister.gov/documents/2026/09/01/2026-17901/increase-of-monetary-thresholds-and-other-matters-related-to-cost-accounting-standards-program"
+          },
+          {
+            "label": "CAS 407 final rule",
+            "url": "https://www.federalregister.gov/documents/2026/09/01/2026-17903/conformance-of-cost-accounting-standards-to-generally-accepted-accounting-principles-for-cas-407-use"
+          }
+        ]
+      },
+      {
+        "id": "rfo-september-proposals",
+        "date": "2026-10-01",
+        "sourceDate": "2026-09-18",
+        "commentDeadline": "2026-10-19",
+        "status": "proposed",
+        "title": "September RFO proposals — comments due October 19",
+        "summary": "Added tracking for four proposed-rule packages. These proposals do not replace FORGE’s current model-deviation text.",
+        "details": [
+          "FAR Case 2026-003: Parts 8, 12, 13, 15, 38, 44, 51, and 52.",
+          "FAR Case 2026-006: Parts 16, 17, 35, and 52.",
+          "FAR Case 2026-010: Parts 14, 28, 36, and 52.",
+          "FAR Case 2026-011: Parts 9, 27, 47, and 52.",
+          "Published 18 September 2026; comments due 19 October 2026. Proposed, not final."
+        ],
+        "entryIds": [],
+        "links": [
+          {
+            "label": "Official cases and comment links",
+            "url": "https://www.acquisition.gov/requesting_comments"
+          }
+        ]
+      },
+      {
+        "id": "source-refresh",
+        "date": "2026-10-01",
+        "status": "project",
+        "title": "DFARS / AFARS sources and dates refreshed",
+        "summary": "Refreshed all 8 existing DFARS and 8 existing AFARS topic cards; corrected citations and separated project update dates from source editions.",
+        "details": [
+          "Historical comparison text is preserved; current DFARS text comes from Acquisition.gov Change 7 May 2026. Army text comes from AFARS effective 31 August 2026.",
+          "AFARS reorganized sections and moved procedures into PGI. Topic counterparts and old citation search terms are shown on affected cards.",
+          "Corrected the DFARS 225.7002 title to Berry Amendment; specialty metals are separately addressed at 225.7003.",
+          "The FAR/RFO corpus has not been universally recertified. A project update date is not a blanket regulatory effective date."
+        ],
+        "entryIds": [],
+        "links": [
+          {
+            "label": "DFARS current edition",
+            "url": "https://www.acquisition.gov/dfars"
+          },
+          {
+            "label": "Army official publications",
+            "url": "https://www.army.mil/armycontracting"
+          }
+        ]
+      }
+    ]
+  },
+  "entries": [
+    {
+      "id": "dfars-206-001",
+      "group": "DFARS Part 206 — Competition Requirements",
+      "title": "DFARS 206.001 — Applicability",
+      "keywords": [
+        "dfars",
+        "206",
+        "competition",
+        "dod",
+        "defense",
+        "applicability"
+      ],
+      "summary": "Current 206.001 Applicability. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-206-competition-requirements"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "206.001 Applicability.\n(b) As authorized by 10 U.S.C. 1091, contracts awarded to individuals using the procedures at 237.104 (b)(ii) are exempt\nfrom the competition requirements of FAR Part 6.\n206.001-70 Exception for prototype projects for follow-on production contracts.\n(a) Also excepted from this part are follow-on production contracts for products developed pursuant to the “other\ntransactions” authority of 10 U.S.C. 4022 for prototype projects, when the contracting officer receives sufficient\ndocumentation from the agreements officer issuing the other transaction agreement for the prototype project that—\n(1) The other transaction solicitation and agreement included provisions for a follow-on production contract (10 U.S.C.\n4022(f)(1)); and\n(2) Where applicable, the threshold at 10 U.S.C. 4022(a)(2)(C) and the requirements at 10 U.S.C. 4022(f)(2)(A) and\n(B) have been met.\n(b) See PGI 206.001-70 for additional guidance.",
+      "rfoText": "206.001 Applicability.\n(b) As authorized by 10 U.S.C. 1091, contracts awarded to individuals using the procedures at 237.104 (b)(ii) are exempt from the competition requirements of FAR Part 6.\n206.001-70 Exception for prototype projects for follow-on production contracts.\n(a) Also excepted from this part are follow-on production contracts for products developed pursuant to the “other transactions” authority of 10 U.S.C. 4022 for prototype projects, when the contracting officer receives sufficient documentation from the agreements officer issuing the other transaction agreement for the prototype project that—\n(1) The other transaction solicitation and agreement included provisions for a follow-on production contract (10 U.S.C. 4022(f)(1)); and\n(2) Where applicable, the threshold at 10 U.S.C. 4022(a)(2)(C) and the requirements at 10 U.S.C. 4022(f)(2)(A) and (B) have been met.\n(b) See PGI 206.001-70 for additional guidance.",
+      "legacy": [
+        {
+          "t": "DoD sole-source J&A approval thresholds: up to $750K (Contracting Officer), $15M (Head of Contracting Activity), above $15M (Service Acquisition Executive).",
+          "s": "DFARS 206.304"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-212-001",
+      "group": "DFARS Part 212 — Commercial Products/Services",
+      "title": "DFARS 212.102 — Applicability of FAR Part 12 Procedures",
+      "keywords": [
+        "dfars",
+        "212",
+        "commercial",
+        "products",
+        "services",
+        "defense",
+        "acquisition",
+        "item determination"
+      ],
+      "summary": "Current 212.102 Applicability. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-212-acquisition-commercial-products-and-commercial-services"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "212.102 Applicability.\n(a)(i) Use of FAR part 12 procedures. Use of FAR part 12 procedures is based on—\n(A) A determination that an item is a commercial product or commercial service (see paragraph (a)(iii) of this\nsection); or\n(B) Applicability of one of the following statutes that provide for treatment as a commercial product or\ncommercial service and use of FAR part 12 procedures, even though the item may not meet the definition of “commercial\nproduct” or “commercial service” at FAR 2.101 and does not require a commercial product or commercial service\ndetermination:\n(1) 41 U.S.C. 1903 - Supplies or services to be used to facilitate defense against or recovery from cyber,\nnuclear, biological, chemical, or radiological attack pursuant to FAR 12.102(f).\n(2) 10 U.S.C. 3457 - Supplies or services from nontraditional defense contractors pursuant to 212.102 (a)\n(iv).\n(3) 10 U.S.C. 3458 – Supplies or services resulting from a commercial solutions opening pursuant to\nsubpart 212.70.\n(ii) Prior use of FAR part 12 procedures.\n(A) Pursuant to 10 U.S.C. 3456(c), except as provided in paragraph (a)(ii)(B) of this section or unless the\nitem was acquired pursuant to paragraph (a)(i)(B) of this section, if the Commercial Item Database (for website see PGI\n212.102(a)(iii)(A)(1)) contains a prior commerciality determination, or the contracting officer has other evidence that an\nitem has previously been acquired by DoD using commercial product and commercial service acquisition procedures under\nFAR part 12, then the prior contract shall serve as a prior determination that an item is a commercial product or commercial\nservice. The contracting officer shall document the file accordingly.\n(B)(1) If the item to be acquired meets the criteria in paragraph (a)(ii)(A) of this section, the item may not\nbe acquired using other than FAR part 12 procedures unless the head of the contracting activity issues a determination as\nspecified in paragraph (a)(ii)(B)(2)(ii) of this section.\n(2) Pursuant to 10 U.S.C. 3703(d)(1), the contracting officer may presume that a prior commercial product\nor commercial service determination made by a military department, a defense agency, or another component of DoD shall\nserve as a determination for subsequent procurements of such item. In accordance with 10 U.S.C. 3703(d) and 10 U.S.C.\n3456(c), if the contracting officer questions a prior determination to use FAR part 12 procedures and instead chooses to\nproceed with a procurement of an item previously determined to be a commercial product and commercial service using\nprocedures other than FAR part 12 procedures, the contracting officer shall request a review by the head of the contracting\nactivity that will conduct the procurement. Not later than 30 days after receiving a request for review, the head of the\ncontracting activity shall—\n(i) Confirm that the prior use of FAR part 12 procedures was appropriate and still applicable; or\n(ii) Issue a determination that the prior use of FAR part 12 procedures was improper or that it is\nno longer appropriate to acquire the item using FAR part 12 procedures, with a written explanation of the basis for the\ndetermination.\n(iii) Commercial product or commercial service determination. Unless the procedures in paragraph (a)(ii) of this\nsection are applicable, when using FAR part 12 procedures for acquisitions of commercial products and commercial services\npursuant to 212.102(a)(i)(A) that exceed the simplified acquisition threshold , the contracting officer shall—\n(A) Determine in writing that the acquisition meets the \"commercial product\" or \"commercial service\" definition\nin FAR 2.101. See 234.7002(b) and (c) for subsystems of major weapon systems and components and spare parts of major\nweapon systems and of subsystems of major weapon systems;\n\n212.102\n\nDEFENSE FEDERAL ACQUISITION REGULATION\n\n(B) Include the written determination in the contract file; and\n(C) Obtain approval at one level above the contracting officer when a commercial product or commercial service\ndetermination relies on paragraphs (1)(ii), (3), or (4), or (6) of the “commercial product” definition at FAR 2.101 or paragraph\n(2) of the \"commercial service\" definition at FAR 2.101; and\n(D) Follow the procedures and guidance at PGI 212.102 (a)(iii) regarding file documentation and commercial\nproduct or commercial service determinations.\n(iv) Nontraditional defense contractors. In accordance with 10 U.S.C. 3457, contracting officers—\n(A) Except as provided in paragraph (a)(iv)(B) of this section, may treat supplies and services provided by\nnontraditional defense contractors as commercial products or commercial services. This permissive authority is intended to\nenhance defense innovation and investment, enable DoD to acquire items that otherwise might not have been available, and\ncreate incentives for nontraditional defense contractors to do business with DoD. It is not intended to recategorize current\nnoncommercial other than commercial products or commercial services; however, when appropriate, contracting officers may\nconsider applying commercial product or commercial service procedures to the procurement of supplies and services from\nbusiness segments that meet the definition of “nontraditional defense contractor” even though they have been established\nunder traditional defense contractors. The decision to apply commercial product and commercial service procedures to the\nprocurement of supplies and services from nontraditional defense contractors does not require a commercial product or\ncommercial service determination and does not mean the item is commercial;\n(B) Shall treat services provided by a business unit that is a nontraditional defense contractor as commercial\nservices, to the extent that such services use the same pool of employees as used for commercial customers and are priced\nusing methodology similar to methodology used for commercial pricing; and\n(C) Shall document the file when treating supplies or services from a nontraditional defense contractor as\ncommercial products or commercial services in accordance with paragraph (a)(iv)(A) or (B) of this section.\n(v) Commercial item guidebook. For a link to the commercial item guidebook, see PGI 212.102(a)(v).",
+      "rfoText": "212.102 Applicability.\n(a)(i) Use of FAR part 12 procedures. Use of FAR part 12 procedures is based on—\n(A) A determination that an item is a commercial product or commercial service (see paragraph (a)(iii) of this section); or\n(B) Applicability of one of the following statutes that provide for treatment as a commercial product or commercial service and use of FAR part 12 procedures, even though the item may not meet the definition of “commercial product” or “commercial service” at FAR 2.101 and does not require a commercial product or commercial service determination:\n(1) 41 U.S.C. 1903 - Supplies or services to be used to facilitate defense against or recovery from cyber, nuclear, biological, chemical, or radiological attack pursuant to FAR 12.102(f).\n(2) 10 U.S.C. 3457 - Supplies or services from nontraditional defense contractors pursuant to 212.102 (a)(iv).\n(3) 10 U.S.C. 3458 – Supplies or services resulting from a commercial solutions opening pursuant to subpart 212.70.\n(ii) Prior use of FAR part 12 procedures.\n(A) Pursuant to 10 U.S.C. 3456(c), except as provided in paragraph (a)(ii)(B) of this section or unless the item was acquired pursuant to paragraph (a)(i)(B) of this section, if the Commercial Item Database (for website see PGI 212.102(a)(iii)(A)(1)) contains a prior commerciality determination, or the contracting officer has other evidence that an item has previously been acquired by DoD using commercial product and commercial service acquisition procedures under FAR part 12, then the prior contract shall serve as a prior determination that an item is a commercial product or commercial service. The contracting officer shall document the file accordingly.\n(B)(1) If the item to be acquired meets the criteria in paragraph (a)(ii)(A) of this section, the item may not be acquired using other than FAR part 12 procedures unless the head of the contracting activity issues a determination as specified in paragraph (a)(ii)(B)(2)(ii) of this section.\n(2) Pursuant to 10 U.S.C. 3703(d)(1), the contracting officer may presume that a prior commercial product or commercial service determination made by a military department, a defense agency, or another component of DoD shall serve as a determination for subsequent procurements of such item. In accordance with 10 U.S.C. 3703(d) and 10 U.S.C. 3456(c), if the contracting officer questions a prior determination to use FAR part 12 procedures and instead chooses to proceed with a procurement of an item previously determined to be a commercial product and commercial service using procedures other than FAR part 12 procedures, the contracting officer shall request a review by the head of the contracting activity that will conduct the procurement. Not later than 30 days after receiving a request for review, the head of the contracting activity shall—\n(i) Confirm that the prior use of FAR part 12 procedures was appropriate and still applicable; or\n(ii) Issue a determination that the prior use of FAR part 12 procedures was improper or that it is no longer appropriate to acquire the item using FAR part 12 procedures, with a written explanation of the basis for the determination.\n(iii) Commercial product or commercial service determination. Unless the procedures in paragraph (a)(ii) of this section are applicable, when using FAR part 12 procedures for acquisitions of commercial products and commercial services pursuant to 212.102(a)(i)(A) that exceed the simplified acquisition threshold , the contracting officer shall—\n(A) Determine in writing that the acquisition meets the \"commercial product\" or \"commercial service\" definition in FAR 2.101. See 234.7002(b) and (c) for subsystems of major weapon systems and components and spare parts of major weapon systems and of subsystems of major weapon systems;\n(B) Include the written determination in the contract file; and\n(C) Obtain approval at one level above the contracting officer when a commercial product or commercial service determination relies on paragraphs (1)(ii), (3), or (4), or (6) of the “commercial product” definition at FAR 2.101 or paragraph (2) of the \"commercial service\" definition at FAR 2.101; and\n(D) Follow the procedures and guidance at PGI 212.102 (a)(iii) regarding file documentation and commercial product or commercial service determinations.\n(iv) Nontraditional defense contractors. In accordance with 10 U.S.C. 3457, contracting officers—\n(A) Except as provided in paragraph (a)(iv)(B) of this section, may treat supplies and services provided by nontraditional defense contractors as commercial products or commercial services. This permissive authority is intended to enhance defense innovation and investment, enable DoD to acquire items that otherwise might not have been available, and create incentives for nontraditional defense contractors to do business with DoD. It is not intended to recategorize current noncommercial other than commercial products or commercial services; however, when appropriate, contracting officers may consider applying commercial product or commercial service procedures to the procurement of supplies and services from business segments that meet the definition of “nontraditional defense contractor” even though they have been established under traditional defense contractors. The decision to apply commercial product and commercial service procedures to the procurement of supplies and services from nontraditional defense contractors does not require a commercial product or commercial service determination and does not mean the item is commercial;\n(B) Shall treat services provided by a business unit that is a nontraditional defense contractor as commercial services, to the extent that such services use the same pool of employees as used for commercial customers and are priced using methodology similar to methodology used for commercial pricing; and\n(C) Shall document the file when treating supplies or services from a nontraditional defense contractor as commercial products or commercial services in accordance with paragraph (a)(iv)(A) or (B) of this section.\n(v) Commercial item guidebook. For a link to the commercial item guidebook, see PGI 212.102(a)(v).",
+      "legacy": [
+        {
+          "t": "DoD required a written determination that a product/service met the commercial item definition before using Part 12 procedures; SPE waiver required otherwise.",
+          "s": "DFARS 212.102"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-213-001",
+      "group": "DFARS Part 213 — Simplified Acquisition",
+      "title": "DFARS 213.301 — Governmentwide Commercial Purchase Card",
+      "keywords": [
+        "dfars",
+        "213",
+        "simplified",
+        "micro-purchase",
+        "purchase card",
+        "GPC",
+        "gpc",
+        "threshold"
+      ],
+      "summary": "Current 213.301 Governmentwide commercial purchase card. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-213-simplified-acquisition-procedures"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "213.301 Governmentwide commercial purchase card.\nFollow the procedures at PGI 213.301 for authorizing, establishing, and operating a Governmentwide commercial\npurchase card program.\n(1) “United States,” as used in this section, means the 50 States and the District of Columbia, the Commonwealth of\nPuerto Rico, the Virgin Islands, the Commonwealth of the Northern Mariana Islands, Guam, American Samoa, Wake Island,\nJohnston Island, Canton Island, the outer Continental Shelf, and any other place subject to the jurisdiction of the United\nStates (but not including leased bases).\n(2) An individual appointed in accordance with 201.603-3 (a) also may use the Governmentwide commercial purchase\ncard to make a purchase that exceeds the micro-purchase threshold but does not exceed $25,000, if—\n(i) The purchase—\n(A) Is made outside the United States for use outside the United States; and\n(B) Is for a commercial product or commercial service; but\n(C) Is not for work to be performed by employees recruited within the United States;\n(D) Is not for supplies or services originating from, or transported from or through, sources identified in FAR",
+      "rfoText": "213.301 Governmentwide commercial purchase card.\nFollow the procedures at PGI 213.301 for authorizing, establishing, and operating a Governmentwide commercial purchase card program.\n(1) “United States,” as used in this section, means the 50 States and the District of Columbia, the Commonwealth of Puerto Rico, the Virgin Islands, the Commonwealth of the Northern Mariana Islands, Guam, American Samoa, Wake Island, Johnston Island, Canton Island, the outer Continental Shelf, and any other place subject to the jurisdiction of the United States (but not including leased bases).\n(2) An individual appointed in accordance with 201.603-3 (a) also may use the Governmentwide commercial purchase card to make a purchase that exceeds the micro-purchase threshold but does not exceed $25,000, if—\n(i) The purchase—\n(A) Is made outside the United States for use outside the United States; and\n(B) Is for a commercial product or commercial service; but\n(C) Is not for work to be performed by employees recruited within the United States;\n(D) Is not for supplies or services originating from, or transported from or through, sources identified in FAR Subpart 25.7;\n(E) Is not for ball or roller bearings as end items;\n(F) Does not require access to classified or Privacy Act information; and\n(G) Does not require transportation of supplies by sea; and\n(ii) The individual making the purchase—\n(A) Is authorized and trained in accordance with agency procedures;\n(B) Complies with the requirements of FAR 8.002 in making the purchase; and\n(C) Seeks maximum practicable competition for the purchase in accordance with FAR 13.104(b).\n(3) A contracting officer supporting a contingency operation as defined in 10 U.S.C. 101(a)(13) or a humanitarian or peacekeeping operation as defined in 10 U.S.C. 3015(2) also may use the Governmentwide commercial purchase card to make a purchase that exceeds the micro-purchase threshold but does not exceed the simplified acquisition threshold, if—\n(i) The supplies or services being purchased are immediately available;\n(ii) One delivery and one payment will be made; and\n(iii) The requirements of paragraphs (2)(i) and (ii) of this section are met.\n(4) The contracting officer shall not authorize the Governmentwide commercial purchase card as a method of payment during any contract period of performance if the contract includes the clause at FAR 52.229-12, Tax on Certain Foreign Procurements, unless the contract also includes the clause at 252.229-7014, Full Exemption from Two-Percent Excise Tax on Certain Foreign Procurements, indicating that the contractor is fully exempt from the tax.\n(5) Guidance on DoD purchase, travel, and fuel card programs is available in the “Department of Defense Government Charge Card Guidebook for Establishing and Managing Purchase, Travel, and Fuel Card Programs” at https://www.acq.osd.mil/asda/dpc/ce/pc/docs-guides.html . Additional guidance on the fuel card programs is available at https://www.dla.mil/Energy/Offers/Products/GovernmentFuel/.\n(6) When the Governmentwide commercial purchase card is used as a method of payment for contracts or orders, follow the procedures at 232.7002 Policy.(a)(5) and PGI 242.302 Contract administration functions.(a)(13)(B)(3).",
+      "legacy": [
+        {
+          "t": "Micro-purchase threshold for DoD is $10,000 inside U.S.; mandatory GPC use for purchases at or below micro-purchase threshold; SAP ceiling $250,000 for DoD.",
+          "s": "DFARS 213.301/213.201"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-215-001",
+      "group": "DFARS Part 215 — Contracting by Negotiation",
+      "title": "DFARS 215.403-1 — Certified Cost or Pricing Data Requirements (TINA)",
+      "keywords": [
+        "dfars",
+        "215",
+        "tina",
+        "truth in negotiations",
+        "certified cost",
+        "pricing data",
+        "threshold",
+        "negotiations"
+      ],
+      "summary": "Current 215.403-1 Prohibition on obtaining certified cost or pricing data (10 U.S.C. chapter 271 and 41 U.S.C. chapter 35). Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-215-contracting-negotiation"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "215.403-1 Prohibition on obtaining certified cost or pricing data (10 U.S.C. chapter 271 and 41 U.S.C. chapter 35).\n(b) Exceptions to certified cost or pricing data requirements.\n(i) Follow the procedures at PGI 215.403-1 (b).\n(ii) Submission of certified cost or pricing data shall not be required in the case of a contract, subcontract, or\nmodification of a contract or subcontract to the extent such data relates to an indirect offset.\n(c) Standards for exceptions from certified cost or pricing data requirements.\n(1) Adequate price competition.\n(A) For acquisitions under dual or multiple source programs—\n(1) The determination of adequate price competition must be made on a case-by-case basis. Even when\nadequate price competition exists, in certain cases it may be appropriate to obtain additional data to assist in price analysis;\nand\n(2)Adequate price competition normally exists when—\n(i) Prices are solicited across a full range of step quantities, normally including a 0-100 percent split,\nfrom at least two offerors that are individually capable of producing the full quantity; and\n(ii) The reasonableness of all prices awarded is clearly established on the basis of price analysis (see\nFAR 15.404-1(b)).\n(B) If only one offer is received in response to a competitive solicitation, see 215.371-3.\n(3) Commercial products or commercial services.\n(A) Follow the procedures at PGI (c)(3)(A) for pricing commercial products or commercial services, except see\n234.7002(e) for pricing commercial subsystems of major weapon systems and components and spare parts of major weapon\nsystems and of subsystems of major weapon systems.\n(B) When applying the commercial product or commercial service exception under FAR 15.403-1(b)(3), see\n212.102(a)(ii) regarding prior commercial product or commercial service determinations.\n(4) Waivers.\n(A) The head of the contracting activity may, without power of delegation, apply the exceptional circumstances\nauthority when a determination is made that—",
+      "rfoText": "215.403-1 Prohibition on obtaining certified cost or pricing data (10 U.S.C. chapter 271 and 41 U.S.C. chapter 35).\n(b) Exceptions to certified cost or pricing data requirements.\n(i) Follow the procedures at PGI 215.403-1 (b).\n(ii) Submission of certified cost or pricing data shall not be required in the case of a contract, subcontract, or modification of a contract or subcontract to the extent such data relates to an indirect offset.\n(c) Standards for exceptions from certified cost or pricing data requirements.\n(1) Adequate price competition.\n(A) For acquisitions under dual or multiple source programs—\n(1) The determination of adequate price competition must be made on a case-by-case basis. Even when adequate price competition exists, in certain cases it may be appropriate to obtain additional data to assist in price analysis; and\n(2)Adequate price competition normally exists when—\n(i) Prices are solicited across a full range of step quantities, normally including a 0-100 percent split, from at least two offerors that are individually capable of producing the full quantity; and\n(ii) The reasonableness of all prices awarded is clearly established on the basis of price analysis (see FAR 15.404-1(b)).\n(B) If only one offer is received in response to a competitive solicitation, see 215.371-3.\n(3) Commercial products or commercial services.\n(A) Follow the procedures at PGI (c)(3)(A) for pricing commercial products or commercial services, except see 234.7002(e) for pricing commercial subsystems of major weapon systems and components and spare parts of major weapon systems and of subsystems of major weapon systems.\n(B) When applying the commercial product or commercial service exception under FAR 15.403-1(b)(3), see 212.102(a)(ii) regarding prior commercial product or commercial service determinations.\n(4) Waivers.\n(A) The head of the contracting activity may, without power of delegation, apply the exceptional circumstances authority when a determination is made that—\n(1) The property or services cannot reasonably be obtained under the contract, subcontract, or modification, without the granting of the waiver;\n(2) The price can be determined to be fair and reasonable without the submission of certified cost or pricing data; and\n(3) There are demonstrated benefits to granting the waiver. Follow the procedures at PGI 215.403-1 (c)(4)(A) for determining when an exceptional case waiver is appropriate, for approval of such waivers, for partial waivers, and for waivers applicable to unpriced supplies or services.\n(B) By November 30th of each year, departments and agencies shall provide a report to the Office of the Principal Director, Defense Pricing, Contracting, and Acquisition Policy, (Price, Cost and Finance), of all waivers granted under FAR 15.403-1(b)(4), during the previous fiscal year, for any contract, subcontract, or modification expected to have a value of $25 million or more. See PGI 215.403-1(c)(4)(B) for the format and guidance for the report.\n(C) DoD has waived the requirement for submission of certified cost or pricing data for the Canadian Commercial Corporation and its subcontractors (but see 215.408 (3) and 225.870-4 (c)).\n(D) DoD has waived certified cost or pricing data requirements for nonprofit organizations (including educational institutions) on cost-reimbursement-no-fee contracts. The contracting officer shall require—\n(1) Submission of data other than certified cost or pricing data to the extent necessary to determine price reasonableness and cost realism; and\n(2) Certified cost or pricing data from subcontractors that are not nonprofit organizations when the subcontractor’s proposal exceeds the certified cost or pricing data threshold at FAR 15.403-4(a)(1).",
+      "legacy": [
+        {
+          "t": "TINA threshold at $2M; certified cost or pricing data required above threshold unless exception applies (adequate price competition, catalog/market price, waiver).",
+          "s": "DFARS 215.403-1"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-219-001",
+      "group": "DFARS Part 219 — Small Business Programs",
+      "title": "DFARS 219.502-2 — Total Small Business Set-Asides",
+      "keywords": [
+        "dfars",
+        "219",
+        "small business",
+        "set-aside",
+        "rule of two",
+        "osa",
+        "office of small business",
+        "defense"
+      ],
+      "summary": "Current 219.502-2 Total Small business set-asides. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-219-small-business-programs"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "219.502-2 Total Small business set-asides.\nUnless the contracting officer determines that the criteria for set-aside cannot be met, set aside for small business concerns\nacquisitions for—\n(1) Construction, including maintenance and repairs, under $3.5 million;\n(2) Dredging under $2 million; and\n(3) Architect-engineer services for military construction or family housing projects under $1 million (10 U.S.C. 2855).",
+      "rfoText": "219.502-2 Total Small business set-asides.\nUnless the contracting officer determines that the criteria for set-aside cannot be met, set aside for small business concerns acquisitions for—\n(1) Construction, including maintenance and repairs, under $3.5 million;\n(2) Dredging under $2 million; and\n(3) Architect-engineer services for military construction or family housing projects under $1 million (10 U.S.C. 2855).",
+      "legacy": [
+        {
+          "t": "DoD mandated coordination with OSBP before setting aside acquisitions above $150K; rule of two applied with additional DoD guidance on expectation of fair market price.",
+          "s": "DFARS 219.502-2"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-225-001",
+      "group": "DFARS Part 225 — Foreign Acquisition",
+      "title": "DFARS 225.7002 — Berry Amendment: Food, Clothing, Fabrics, Tools, and Flags",
+      "keywords": [
+        "dfars",
+        "225",
+        "specialty metals",
+        "berry amendment",
+        "buy american",
+        "foreign acquisition",
+        "titanium",
+        "steel",
+        "Berry Amendment",
+        "food",
+        "clothing",
+        "flags"
+      ],
+      "summary": "Current 225.7002 Restrictions on food, clothing, fabrics, hand or measuring tools, and flags. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-225-foreign-acquisition"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "225.7002 Restrictions on food, clothing, fabrics, hand or measuring tools, and flags.\n225.7002-1 Restrictions.\n(a) The following restrictions implement 10 U.S.C. 4862 (the “Berry Amendment”). Except as provided in subsection\n225.7002-2 , do not acquire—\n(1) Any of the following items, either as end products or components, unless the items have been grown, reprocessed,\nreused, or produced in the United States:\n(i) Food.\n(ii) Clothing and the materials and components thereof, other than sensors, electronics, or other items added to, and\nnot normally associated with, clothing and the materials and components thereof. Clothing includes items such as outerwear,\nheadwear, underwear, nightwear, footwear, hosiery, handwear, belts, badges, and insignia. For additional guidance and\nexamples, see PGI 225.7002-1 (a)(1)(ii).\n(iii)(A) Tents and the structural components of tents;\n(B) Tarpaulins; or\n(C) Covers.\n(iv) Cotton and other natural fiber products.\n(v) Woven silk or woven silk blends.\n(vi) Spun silk yarn for cartridge cloth.\n(vii) Synthetic fabric or coated synthetic fabric, including all textile fibers and yarns that are for use in such fabrics.\n\nDEFENSE FEDERAL ACQUISITION REGULATION\n\n(viii) Canvas products.\n(ix) Wool (whether in the form of fiber or yarn or contained in fabrics, materials, or manufactured articles).\n(x) Any item of individual equipment (Product or Service Code (PSC) 8465) manufactured from or containing any\nof the fibers, yarns, fabrics, or materials listed in this paragraph (a)(1).\n(2) Hand or measuring tools, unless the tools were produced in the United States. For additional guidance, see PGI\n225.7002-1 (a)(2).\n(b) In accordance with section 8123 of the Department of Defense Appropriations Act, 2014 (Pub. L. 113-76, division\nC, title VIII), and the same provision in subsequent Defense appropriations acts, except as provided in 225.7002-2 , do\nnot acquire a flag of the United States (PSC 8345), unless such flag, including the materials and components thereof, is\nmanufactured in the United States, consistent with the requirements at10 U.S.C. 4862. This restriction does not apply to the\nacquisition of any end items or components related to flying or displaying the flag (e.g., flag poles and accessories).\n225.7002-2 Exceptions.\nAcquisitions in the following categories are not subject to the restrictions in 225.7002-1:\n(a) Acquisitions not exceeding $200,000, except for athletic footwear purchased by DoD for use by members of the Army,\nNavy, Air Force, or Marine Corps upon their initial entry into the Armed Forces (37 U.S.C. 418(b)(4)).\n(b) Acquisitions of any of the items in 225.7002-1, if the secretary concerned determines that items grown, reprocessed,\nreused, or produced in the United States cannot be acquired as and when needed in a satisfactory quality and sufficient\nquantity at U.S. market prices. (See the requirement in 205.301 for synopsis within 7 days after contract award when using\nthis exception.)\n(1) The following officials are authorized, without power of redelegation, to make such a domestic nonavailability\ndetermination:\n(i) The Under Secretary of Defense (Acquisition and Sustainment).\n(ii) The Secretary of the Army.\n(iii) The Secretary of the Navy.\n(iv) The Secretary of the Air Force.\n(v) The Director of the Defense Logistics Agency.\n(2) The supporting documentation for the determination shall include an analysis and written certification by the\nrequiring activity, with specificity, why alternatives that would not require a domestic nonavailability determination are\nunacceptable.\n(3) Defense agencies other than the Defense Logistics Agency shall follow the procedures at PGI 225.7002-2 (b)(3)\nwhen submitting a request for a domestic nonavailability determination.\n(c) Acquisitions of items listed in FAR 25.104(a).\n(d) Acquisitions outside the United States in support of combat operations.\n(e) Acquisitions of perishable foods by or for activities located outside the United States for personnel of those activities.\n(f) Acquisitions of food or hand or measuring tools—\n(1) In support of contingency operations; or\n(2) For which the use of other than competitive procedures has been approved on the basis of unusual and compelling\nurgency in accordance with FAR 6.302-2.\n(g) Emergency acquisitions by activities located outside the United States for personnel of those activities.\n(h) Acquisitions by vessels in foreign waters.\n(i) Acquisitions of items specifically for commissary resale.\n(j) Acquisitions of incidental amounts of cotton, other natural fibers, or wool incorporated in an end product, for which the\nestimated value of the cotton, other natural fibers, or wool—\n(1) Is not more than 10 percent of the total price of the end product; and\n(2) Does not exceed the threshold at 225.7002-2(a).\n(k) Acquisitions of waste and byproducts of cotton or wool fiber for use in the production of propellants and explosives.\n(l) Acquisitions of foods manufactured or processed in the United States, regardless of where the foods (and any\ncomponent if applicable) were grown or produced. However, in accordance with section 8118 of the DoD Appropriations Act\nfor Fiscal Year 2005 (Pub. L. 108-287), this exception does not apply to fish, shellfish, or seafood manufactured or processed\nin the United States or fish, shellfish, or seafood contained in foods manufactured or processed in the United States.\n(m) Acquisitions of fibers and yarns that are for use in synthetic fabric or coated synthetic fabric (but not the purchase of\nthe synthetic or coated synthetic fabric itself), if—",
+      "rfoText": "225.7002 Restrictions on food, clothing, fabrics, hand or measuring tools, and flags.\n225.7002-1 Restrictions.\n(a) The following restrictions implement 10 U.S.C. 4862 (the “Berry Amendment”). Except as provided in subsection 225.7002-2 , do not acquire—\n(1) Any of the following items, either as end products or components, unless the items have been grown, reprocessed, reused, or produced in the United States:\n(i) Food.\n(ii) Clothing and the materials and components thereof, other than sensors, electronics, or other items added to, and not normally associated with, clothing and the materials and components thereof. Clothing includes items such as outerwear, headwear, underwear, nightwear, footwear, hosiery, handwear, belts, badges, and insignia. For additional guidance and examples, see PGI 225.7002-1 (a)(1)(ii).\n(iii)(A) Tents and the structural components of tents;\n(B) Tarpaulins; or\n(C) Covers.\n(iv) Cotton and other natural fiber products.\n(v) Woven silk or woven silk blends.\n(vi) Spun silk yarn for cartridge cloth.\n(vii) Synthetic fabric or coated synthetic fabric, including all textile fibers and yarns that are for use in such fabrics.\n(viii) Canvas products.\n(ix) Wool (whether in the form of fiber or yarn or contained in fabrics, materials, or manufactured articles).\n(x) Any item of individual equipment (Product or Service Code (PSC) 8465) manufactured from or containing any of the fibers, yarns, fabrics, or materials listed in this paragraph (a)(1).\n(2) Hand or measuring tools, unless the tools were produced in the United States. For additional guidance, see PGI 225.7002-1 (a)(2).\n(b) In accordance with section 8123 of the Department of Defense Appropriations Act, 2014 (Pub. L. 113-76, division C, title VIII), and the same provision in subsequent Defense appropriations acts, except as provided in 225.7002-2 , do not acquire a flag of the United States (PSC 8345), unless such flag, including the materials and components thereof, is manufactured in the United States, consistent with the requirements at10 U.S.C. 4862. This restriction does not apply to the acquisition of any end items or components related to flying or displaying the flag (e.g., flag poles and accessories).\n225.7002-2 Exceptions.\nAcquisitions in the following categories are not subject to the restrictions in 225.7002-1:\n(a) Acquisitions not exceeding $200,000, except for athletic footwear purchased by DoD for use by members of the Army, Navy, Air Force, or Marine Corps upon their initial entry into the Armed Forces (37 U.S.C. 418(b)(4)).\n(b) Acquisitions of any of the items in 225.7002-1, if the secretary concerned determines that items grown, reprocessed, reused, or produced in the United States cannot be acquired as and when needed in a satisfactory quality and sufficient quantity at U.S. market prices. (See the requirement in 205.301 for synopsis within 7 days after contract award when using this exception.)\n(1) The following officials are authorized, without power of redelegation, to make such a domestic nonavailability determination:\n(i) The Under Secretary of Defense (Acquisition and Sustainment).\n(ii) The Secretary of the Army.\n(iii) The Secretary of the Navy.\n(iv) The Secretary of the Air Force.\n(v) The Director of the Defense Logistics Agency.\n(2) The supporting documentation for the determination shall include an analysis and written certification by the requiring activity, with specificity, why alternatives that would not require a domestic nonavailability determination are unacceptable.\n(3) Defense agencies other than the Defense Logistics Agency shall follow the procedures at PGI 225.7002-2 (b)(3) when submitting a request for a domestic nonavailability determination.\n(c) Acquisitions of items listed in FAR 25.104(a).\n(d) Acquisitions outside the United States in support of combat operations.\n(e) Acquisitions of perishable foods by or for activities located outside the United States for personnel of those activities.\n(f) Acquisitions of food or hand or measuring tools—\n(1) In support of contingency operations; or\n(2) For which the use of other than competitive procedures has been approved on the basis of unusual and compelling urgency in accordance with FAR 6.302-2.\n(g) Emergency acquisitions by activities located outside the United States for personnel of those activities.\n(h) Acquisitions by vessels in foreign waters.\n(i) Acquisitions of items specifically for commissary resale.\n(j) Acquisitions of incidental amounts of cotton, other natural fibers, or wool incorporated in an end product, for which the estimated value of the cotton, other natural fibers, or wool—\n(1) Is not more than 10 percent of the total price of the end product; and\n(2) Does not exceed the threshold at 225.7002-2(a).\n(k) Acquisitions of waste and byproducts of cotton or wool fiber for use in the production of propellants and explosives.\n(l) Acquisitions of foods manufactured or processed in the United States, regardless of where the foods (and any component if applicable) were grown or produced. However, in accordance with section 8118 of the DoD Appropriations Act for Fiscal Year 2005 (Pub. L. 108-287), this exception does not apply to fish, shellfish, or seafood manufactured or processed in the United States or fish, shellfish, or seafood contained in foods manufactured or processed in the United States.\n(m) Acquisitions of fibers and yarns that are for use in synthetic fabric or coated synthetic fabric (but not the purchase of the synthetic or coated synthetic fabric itself), if—\n(1) The fabric is to be used as a component of an end product that is not a textile product. Examples of textile products, made in whole or in part of fabric, include—\n(i) Draperies, floor coverings, furnishings, and bedding (Product or Service Group (PSG) 72, Household and Commercial Furnishings and Appliances);\n(ii) Items made in whole or in part of fabric in PSG 83, Textile/leather/furs/apparel/findings/tents/flags, or PSG 84, Clothing, Individual Equipment and Insignia;\n(iii) Upholstered seats (whether for household, office, or other use); and\n(iv) Parachutes ( PSG 1670); or\n(2) The fibers and yarns are para-aramid fibers and continuous filament para-aramid yarns manufactured in a qualifying country.\n(n) Acquisitions of chemical warfare protective clothing when the acquisition furthers an agreement with a qualifying country. (See 225.003 (10) and the requirement in 205.301 for synopsis within 7 days after contract award when using this exception.)\n(o) Acquisitions that are interagency, State, or local purchases that are executed by DoD as a result of the transfer of contracts from the General Services Administration or for which DoD serves as an item manager for products on behalf of the General Services Administration. According to section 897 of the National Defense Authorization Act for Fiscal Year 2016 (Pub. L. 114-92), such contracts shall not be subject to requirements under subchapter II of chapter 385, United States Code (including 10 U.S.C. 4862), to the extent such contracts are for purchases of products by other Federal agencies or State or local governments.\n225.7002-3 Contract clauses.\nUnless an exception at 225.7002-2 applies—\n(a) Use the clause at 252.225-7012 , Preference for Certain Domestic Commodities, in solicitations and contracts, including solicitations and contracts using FAR part 12 procedures for the acquisition of commercial products and commercial services.\n(b) Use the clause at 252.225-7015 , Restriction on Acquisition of Hand or Measuring Tools, in solicitations and contracts, including solicitations and contracts using FAR part 12 procedures for the acquisition of commercial products and commercial services, that exceed the threshold at 225.7002-2(a) that require delivery of hand or measuring tools.\n(c) Use the clause at 252.225-7006 , Acquisition of the American Flag, in solicitations and contracts, including solicitations and contracts using FAR part 12 procedures for the acquisition of commercial products and commercial services, that are for the acquisition of the American flag, with an estimated value that exceeds the threshold at 225.7002-2(a).",
+      "legacy": [
+        {
+          "t": "Specialty metals (titanium, steel alloys, tungsten) used in DoD weapons systems must be melted or produced in the U.S. or qualifying countries; exceptions for commercial items and de minimis.",
+          "s": "DFARS 225.7002"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "225.7002 concerns the Berry Amendment. Specialty metals are addressed separately at 225.7003; the former card title was incorrect."
+    },
+    {
+      "id": "dfars-237-001",
+      "group": "DFARS Part 237 — Service Contracting",
+      "title": "DFARS 237.102 — Service Contracting Policy",
+      "keywords": [
+        "dfars",
+        "237",
+        "personal services",
+        "inherently governmental",
+        "service contract",
+        "prohibition",
+        "defense"
+      ],
+      "summary": "Current 237.102 Policy. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/part-237-service-contracting"
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "237.102 Policy.\n(b)(1) Preference for certain commercial services. See 212.272 for procedures for implementation of the preference\nfor commercial facilities-related services, knowledge-based services (except engineering services), medical services, or\ntransportation services, as required by section 876 of the National Defense Authorization Act for Fiscal Year 2017 (Pub. L.\n114-328).\n(2) Public-private competitions. See PGI 207.302 for information on the Governmentwide moratorium and restrictions\non public-private competitions conducted pursuant to Office of Management and Budget (OMB) Circular A-76.\n(c) In addition to the prohibition on award of contracts for the performance of inherently governmental functions,\ncontracting officers shall not award contracts for functions that are exempt from private sector performance. See 207.503 (e)\nfor the associated documentation requirement.\n(e) Program officials shall obtain assistance from contracting officials through the Peer Review process at 201.170 .",
+      "rfoText": "237.102 Policy.\n(b)(1) Preference for certain commercial services. See 212.272 for procedures for implementation of the preference for commercial facilities-related services, knowledge-based services (except engineering services), medical services, or transportation services, as required by section 876 of the National Defense Authorization Act for Fiscal Year 2017 (Pub. L. 114-328).\n(2) Public-private competitions. See PGI 207.302 for information on the Governmentwide moratorium and restrictions on public-private competitions conducted pursuant to Office of Management and Budget (OMB) Circular A-76.\n(c) In addition to the prohibition on award of contracts for the performance of inherently governmental functions, contracting officers shall not award contracts for functions that are exempt from private sector performance. See 207.503 (e) for the associated documentation requirement.\n(e) Program officials shall obtain assistance from contracting officials through the Peer Review process at 201.170 .\n237.102-70 Prohibition on contracting for firefighting or security-guard functions.\n(a) Under 10 U.S.C. 2465, the DoD is prohibited from entering into contracts for the performance of firefighting or security-guard functions at any military installation or facility unless—\n(1) The contract is to be carried out at a location outside the United States and its outlying areas at which members of the armed forces would have to be used for the performance of firefighting or security-guard functions at the expense of unit readiness;\n(2) The contract will be carried out on a Government-owned but privately operated installation;\n(3) The contract (or renewal of a contract) is for the performance of a function under contract on September 24, 1983; or\n(4) The contract—\n(i) Is for the performance of firefighting functions;\n(ii) Is for a period of 1 year or less; and\n(iii) Covers only the performance of firefighting functions that, in the absence of the contract, would have to be performed by members of the armed forces who are not readily available to perform such functions by reason of a deployment.\n(b) Under Section 2907 of Pub. L. 103-160, this prohibition does not apply to services at installations being closed (see Subpart 237.74).\n(c)(1) Under section 332 of Public Law 107-314, as amended by section 333 of Public Law 109-364 and section 343 of Public Law 110-181, this prohibition does not apply to any contract that is entered into for any increased performance of security-guard functions at a military installation or facility undertaken in response to the terrorist attacks on the United States on September 11, 2001, if–\n(i) Without the contract, members of the Armed Forces are or would be used to perform the increased security-guard functions;\n(ii) The agency has determined that—\n(A) Recruiting and training standards for the personnel who are to perform the security-guard functions are comparable to the recruiting and training standards for DoD personnel who perform the same security-guard functions;\n(B) Contractor personnel performing such functions will be effectively supervised, reviewed, and evaluated; and\n(C) Performance of such functions will not result in a reduction in the security of the installation or facility;\n(iii) Contract performance will not extend beyond September 30, 2012; and\n(iv) The total number of personnel employed to perform security-guard functions under all contracts entered into pursuant to this authority does not exceed the following limitations:\n(A) For fiscal year 2007, the total number of such personnel employed under such contracts on October 1, 2006.\n(B) For fiscal year 2008, the number equal to 90 percent of the total number of such personnel employed under such contracts on October 1, 2006.\n(C) For fiscal year 2009, the number equal to 80 percent of the total number of such personnel employed under such contracts on October 1, 2006.\n(D) For fiscal year 2010, the number equal to 70 percent of the total number of such personnel employed under such contracts on October 1, 2006.\n(E) For fiscal year 2011, the number equal to 60 percent of the total number of such personnel employed under such contracts on October 1, 2006.\n(F) For fiscal year 2012, the number equal to 50 percent of the total number of such personnel employed under such contracts on October 1, 2006.\n(2) Follow the procedures at PGI 237.102-70 (c) to ensure that the personnel limitations specified in paragraph (c)(1)(iv) of this subsection are not exceeded.\n237.102-71 Limitation on service contracts for military flight simulators.\n(a) Definitions. As used in this subsection—\n(1) “Military flight simulator” means any system to simulate the form, fit, and function of a military aircraft that has no commonly available commercial variant.\n(2) “Service contract” means any contract entered into by DoD, the principal purpose of which is to furnish services in the United States through the use of service employees as defined in 41 U.S.C. 6701.\n(b) Under Section 832 of Pub. L. 109-364, as amended by Section 883(b) of Pub. L. 110-181, DoD is prohibited from entering into a service contract to acquire a military flight simulator. However, the Secretary of Defense may waive this prohibition with respect to a contract, if the Secretary—\n(1) Determines that a waiver is in the national interest; and\n(2) Provides an economic analysis to the congressional defense committees at least 30 days before the waiver takes effect. This economic analysis shall include, at a minimum—\n(i) A clear explanation of the need for the contract; and\n(ii) An examination of at least two alternatives for fulfilling the requirements that the contract is meant to fulfill, including the following with respect to each alternative:\n(A) A rationale for including the alternative.\n(B) A cost estimate of the alternative and an analysis of the quality of each cost estimate.\n(C) A discussion of the benefits to be realized from the alternative.\n(D) A best value determination of each alternative and a detailed explanation of the life-cycle cost calculations used in the determination.\n(c) When reviewing requirements or participating in acquisition planning that would result in a military department or defense agency acquiring a military flight simulator, the contracting officer shall notify the program officials of the prohibition in paragraph (b) of this subsection. If the program officials decide to request a waiver from the Secretary of Defense under paragraph (b) of this subsection, the contracting officer shall follow the procedures at PGI 237.102-71 .\n237.102-72 Contracts for management services.\nIn accordance with Section 802 of the National Defense Authorization Act for Fiscal Year 2008 (Pub. L. 110-181), DoD may award a contract for the acquisition of services the primary purpose of which is to perform acquisition support functions with respect to the development or production of a major system, only if—\n(a) The contract prohibits the contractor from performing inherently governmental functions;\n(b) The DoD organization responsible for the development or production of the major system ensures that Federal employees are responsible for determining—\n(1) Courses of action to be taken in the best interest of the Government; and\n(2) Best technical performance for the warfighter; and\n(c) The contract requires that the prime contractor for the contract may not advise or recommend the award of a contract or subcontract for the development or production of the major system to an entity owned in whole or in part by the prime contractor.\n237.102-73 Prohibition on contracts for services of senior mentors.\nDoD is prohibited from entering into contracts for the services of senior mentors. See PGI 237.102-73 for references to DoD policy and implementation guidance.\n237.102-74 Taxonomy for the acquisition of services, and supplies and equipment.\nSee PGI 237.102-74 for further guidance on the taxonomy for the acquisition of services and the acquisition of supplies and equipment.\n237.102-75 Defense Acquisition Guidebook.\nSee PGI 237.102-75 for information on the Defense Acquisition Guidebook, Chapter 10, Acquisition of Services.\n237.102-76 Acquisition of computer software and computer software documentation under services contracts.\n(a) See 227.7202 for policy on the acquisition of commercial computer software and commercial computer software documentation for services contracts that require the development or modification of commercial computer software.\n(b) See 227.7203 for policy on the acquisition of other than commercial computer software and other than commercial computer software documentation for services contracts that require the development or modification of other than commercial computer software.\n237.102-77 Reserved.\n237.102-78 Market research report guide for improving the tradecraft in services acquisition.\nSee PGI 210.070 for guidance on use of the market research report guide to conduct and document market research for service acquisitions.\n237.102-79 Private sector notification requirements in support of in-sourcing actions.\nIn accordance with 10 U.S.C. 2463, contracting officers shall provide written notification to affected incumbent contractors of Government in-sourcing determinations. Notification shall be provided within 20 business days of the contracting officer's receipt of a decision from the cognizant component in-sourcing program official. The notification will summarize the requiring official's final determination as to why the service is being in-sourced and shall be coordinated with the component's in-sourcing program official. No formal hiring or contract-related actions may be initiated prior to such notification, except for preliminary internal actions associated with hiring or contract modification. See the OASD (RFM) memorandum entitled “Private Sector Notification Requirements in Support of In-sourcing Actions,” dated January 29, 2013, for further information, which is available at PGI 237.102-79 .",
+      "legacy": [
+        {
+          "t": "DoD prohibited personal services unless specifically authorized by statute; annual contractor manpower reporting via Army CMR system required for all service contracts.",
+          "s": "DFARS 237.102"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "dfars-252-001",
+      "group": "DFARS Part 252 — Solicitation Provisions & Clauses",
+      "title": "DFARS 252.204-7012 — Safeguarding Covered Defense Information and Cyber Incident Reporting",
+      "keywords": [
+        "dfars",
+        "252",
+        "cmmc",
+        "cybersecurity",
+        "CDI",
+        "CUI",
+        "safeguarding",
+        "clause",
+        "NIST 800-171"
+      ],
+      "summary": "Current 252.204-7012 Safeguarding Covered Defense Information and Cyber Incident Reporting. Historical text is retained for comparison; current text verified 1 October 2026.",
+      "deepLinks": [
+        {
+          "label": "Current DFARS source",
+          "url": "https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting."
+        }
+      ],
+      "sources": [
+        "DFARS · FY2020 historical baseline",
+        "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+      ],
+      "legacyText": "252.204-7012 Safeguarding Covered Defense Information and Cyber Incident Reporting.\nAs prescribed in 204.7304 (c), use the following clause:\nSAFEGUARDING COVERED DEFENSE INFORMATION AND CYBER INCIDENT REPORTING (MAY 2024)\n(a) Definitions. As used in this clause—\n“Adequate security” means protective measures that are commensurate with the consequences and probability of loss,\nmisuse, or unauthorized access to, or modification of information.\n“Compromise” means disclosure of information to unauthorized persons, or a violation of the security policy of a system,\nin which unauthorized intentional or unintentional disclosure, modification, destruction, or loss of an object, or the copying of\ninformation to unauthorized media may have occurred.\n“Contractor attributional/proprietary information” means information that identifies the contractor(s), whether directly\nor indirectly, by the grouping of information that can be traced back to the contractor(s) (e.g., program description, facility\nlocations), personally identifiable information, as well as trade secrets, commercial or financial information, or other\ncommercially sensitive information that is not customarily shared outside of the company.\n“Controlled technical information” means technical information with military or space application that is subject to\ncontrols on the access, use, reproduction, modification, performance, display, release, disclosure, or dissemination. Controlled\ntechnical information would meet the criteria, if disseminated, for distribution statements B through F using the criteria set\nforth in DoD Instruction 5230.24, Distribution Statements on Technical Documents. The term does not include information\nthat is lawfully publicly available without restrictions.\n“Covered contractor information system” means an unclassified information system that is owned, or operated by or for, a\ncontractor and that processes, stores, or transmits covered defense information.\n“Covered defense information” means unclassified controlled technical information or other information, as described\nin the Controlled Unclassified Information (CUI) Registry at http://www.archives.gov/cui/registry/category-list.html, that\nrequires safeguarding or dissemination controls pursuant to and consistent with law, regulations, and Governmentwide\npolicies, and is—\n(1) Marked or otherwise identified in the contract, task order, or delivery order and provided to the contractor by or on\nbehalf of DoD in support of the performance of the contract; or\n(2) Collected, developed, received, transmitted, used, or stored by or on behalf of the contractor in support of the\nperformance of the contract.\n“Cyber incident” means actions taken through the use of computer networks that result in a compromise or an actual or\npotentially adverse effect on an information system and/or the information residing therein.\n“Forensic analysis” means the practice of gathering, retaining, and analyzing computer-related data for investigative\npurposes in a manner that maintains the integrity of the data.\n“Information system” means a discrete set of information resources organized for the collection, processing, maintenance,\nuse, sharing, dissemination, or disposition of information.\n“Malicious software” means computer software or firmware intended to perform an unauthorized process that will have\nadverse impact on the confidentiality, integrity, or availability of an information system. This definition includes a virus,\nworm, Trojan horse, or other code-based entity that infects a host, as well as spyware and some forms of adware.\n“Media” means physical devices or writing surfaces including, but is not limited to, magnetic tapes, optical disks,\nmagnetic disks, large-scale integration memory chips, and printouts onto which covered defense information is recorded,\nstored, or printed within a covered contractor information system.\n‘‘Operationally critical support’’ means supplies or services designated by the Government as critical for airlift, sealift,\nintermodal transportation services, or logistical support that is essential to the mobilization, deployment, or sustainment of the\nArmed Forces in a contingency operation.\n“Rapidly report” means within 72 hours of discovery of any cyber incident.",
+      "rfoText": "252.204-7012 Safeguarding Covered Defense Information and Cyber Incident Reporting.\nAs prescribed in 204.7304 (c), use the following clause:\nSAFEGUARDING COVERED DEFENSE INFORMATION AND CYBER INCIDENT REPORTING (MAY 2024)\n(a) Definitions. As used in this clause—\n“Adequate security” means protective measures that are commensurate with the consequences and probability of loss, misuse, or unauthorized access to, or modification of information.\n“Compromise” means disclosure of information to unauthorized persons, or a violation of the security policy of a system, in which unauthorized intentional or unintentional disclosure, modification, destruction, or loss of an object, or the copying of information to unauthorized media may have occurred.\n“Contractor attributional/proprietary information” means information that identifies the contractor(s), whether directly or indirectly, by the grouping of information that can be traced back to the contractor(s) (e.g., program description, facility locations), personally identifiable information, as well as trade secrets, commercial or financial information, or other commercially sensitive information that is not customarily shared outside of the company.\n“Controlled technical information” means technical information with military or space application that is subject to controls on the access, use, reproduction, modification, performance, display, release, disclosure, or dissemination. Controlled technical information would meet the criteria, if disseminated, for distribution statements B through F using the criteria set forth in DoD Instruction 5230.24, Distribution Statements on Technical Documents. The term does not include information that is lawfully publicly available without restrictions.\n“Covered contractor information system” means an unclassified information system that is owned, or operated by or for, a contractor and that processes, stores, or transmits covered defense information.\n“Covered defense information” means unclassified controlled technical information or other information, as described in the Controlled Unclassified Information (CUI) Registry at http://www.archives.gov/cui/registry/category-list.html, that requires safeguarding or dissemination controls pursuant to and consistent with law, regulations, and Governmentwide policies, and is—\n(1) Marked or otherwise identified in the contract, task order, or delivery order and provided to the contractor by or on behalf of DoD in support of the performance of the contract; or\n(2) Collected, developed, received, transmitted, used, or stored by or on behalf of the contractor in support of the performance of the contract.\n“Cyber incident” means actions taken through the use of computer networks that result in a compromise or an actual or potentially adverse effect on an information system and/or the information residing therein.\n“Forensic analysis” means the practice of gathering, retaining, and analyzing computer-related data for investigative purposes in a manner that maintains the integrity of the data.\n“Information system” means a discrete set of information resources organized for the collection, processing, maintenance, use, sharing, dissemination, or disposition of information.\n“Malicious software” means computer software or firmware intended to perform an unauthorized process that will have adverse impact on the confidentiality, integrity, or availability of an information system. This definition includes a virus, worm, Trojan horse, or other code-based entity that infects a host, as well as spyware and some forms of adware.\n“Media” means physical devices or writing surfaces including, but is not limited to, magnetic tapes, optical disks, magnetic disks, large-scale integration memory chips, and printouts onto which covered defense information is recorded, stored, or printed within a covered contractor information system.\n‘‘Operationally critical support’’ means supplies or services designated by the Government as critical for airlift, sealift, intermodal transportation services, or logistical support that is essential to the mobilization, deployment, or sustainment of the Armed Forces in a contingency operation.\n“Rapidly report” means within 72 hours of discovery of any cyber incident.\n“Technical information” means technical data or computer software, as those terms are defined in the clause at DFARS 252.227-7013 , Rights in Technical Data—Other Than Commercial Products and Commercial Services, regardless of whether or not the clause is incorporated in this solicitation or contract. Examples of technical information include research and engineering data, engineering drawings, and associated lists, specifications, standards, process sheets, manuals, technical reports, technical orders, catalog-item identifications, data sets, studies and analyses and related information, and computer software executable code and source code.\n(b) Adequate security. The Contractor shall provide adequate security on all covered contractor information systems. To provide adequate security, the Contractor shall implement, at a minimum, the following information security protections:\n(1) For covered contractor information systems that are part of an Information Technology (IT) service or system operated on behalf of the Government, the following security requirements apply:\n(i) Cloud computing services shall be subject to the security requirements specified in the clause 252.239-7010 , Cloud Computing Services, of this contract.\n(ii) Any other such IT service or system (i.e., other than cloud computing) shall be subject to the security requirements specified elsewhere in this contract.\n(2) For covered contractor information systems that are not part of an IT service or system operated on behalf of the Government and therefore are not subject to the security requirement specified at paragraph (b)(1) of this clause, the following security requirements apply:\n(i) Except as provided in paragraph (b)(2)(ii) of this clause, the covered contractor information system shall be subject to the security requirements in National Institute of Standards and Technology (NIST) Special Publication (SP) 800-171, “Protecting Controlled Unclassified Information in Nonfederal Information Systems and Organizations” (available via the internet at https://csrc.nist.gov/publications/sp800) in effect at the time the solicitation is issued or as authorized by the Contracting Officer.\n(ii)(A) The Contractor shall implement NIST SP 800-171, as soon as practical, but not later than December 31, 2017. For all contracts awarded prior to October 1, 2017, the Contractor shall notify the DoD Chief Information Officer (CIO), via email at osd.dibcsia@mail.mil, within 30 days of contract award, of any security requirements specified by NIST SP 800-171 not implemented at the time of contract award.\n(B) The Contractor shall submit requests to vary from NIST SP 800-171 in writing to the Contracting Officer, for consideration by the DoD CIO. The Contractor need not implement any security requirement adjudicated by an authorized representative of the DoD CIO to be nonapplicable or to have an alternative, but equally effective, security measure that may be implemented in its place.\n(C) If the DoD CIO has previously adjudicated the contractor’s requests indicating that a requirement is not applicable or that an alternative security measure is equally effective, a copy of that approval shall be provided to the Contracting Officer when requesting its recognition under this contract.\n(D) If the Contractor intends to use an external cloud service provider to store, process, or transmit any covered defense information in performance of this contract, the Contractor shall require and ensure that the cloud service provider meets security requirements equivalent to those established by the Government for the Federal Risk and Authorization Management Program (FedRAMP) Moderate baseline (https://www.fedramp.gov/documents-templates/) and that the cloud service provider complies with requirements in paragraphs (c) through (g) of this clause for cyber incident reporting, malicious software, media preservation and protection, access to additional information and equipment necessary for forensic analysis, and cyber incident damage assessment.\n(3) Apply other information systems security measures when the Contractor reasonably determines that information systems security measures, in addition to those identified in paragraphs (b)(1) and (2) of this clause, may be required to provide adequate security in a dynamic environment or to accommodate special circumstances (e.g., medical devices) and any individual, isolated, or temporary deficiencies based on an assessed risk or vulnerability. These measures may be addressed in a system security plan.\n(c) Cyber incident reporting requirement.\n(1) When the Contractor discovers a cyber incident that affects a covered contractor information system or the covered defense information residing therein, or that affects the contractor’s ability to perform the requirements of the contract that are designated as operationally critical support and identified in the contract, the Contractor shall—\n(i) Conduct a review for evidence of compromise of covered defense information, including, but not limited to, identifying compromised computers, servers, specific data, and user accounts. This review shall also include analyzing covered contractor information system(s) that were part of the cyber incident, as well as other information systems on the Contractor’s network(s), that may have been accessed as a result of the incident in order to identify compromised covered defense information, or that affect the Contractor’s ability to provide operationally critical support; and\n(ii) Rapidly report cyber incidents to DoD at https://dibnet.dod.mil.\n(2) Cyber incident report. The cyber incident report shall be treated as information created by or for DoD and shall include, at a minimum, the required elements at https://dibnet.dod.mil.\n(3) Medium assurance certificate requirement.In order to report cyber incidents in accordance with this clause, the Contractor or subcontractor shall have or acquire a DoD-approved medium assurance certificate to report cyber incidents. For information on obtaining a DoD-approved medium assurance certificate, see https://public.cyber.mil/eca/.\n(d) Malicious software. When the Contractor or subcontractors discover and isolate malicious software in connection with a reported cyber incident, submit the malicious software to DoD Cyber Crime Center (DC3) in accordance with instructions provided by DC3 or the Contracting Officer. Do not send the malicious software to the Contracting Officer.\n(e) Media preservation and protection. When a Contractor discovers a cyber incident has occurred, the Contractor shall preserve and protect images of all known affected information systems identified in paragraph (c)(1)(i) of this clause and all relevant monitoring/packet capture data for at least 90 days from the submission of the cyber incident report to allow DoD to request the media or decline interest.\n(f) Access to additional information or equipment necessary for forensic analysis.Upon request by DoD, the Contractor shall provide DoD with access to additional information or equipment that is necessary to conduct a forensic analysis.\n(g) Cyber incident damage assessment activities. If DoD elects to conduct a damage assessment, the Contracting Officer will request that the Contractor provide all of the damage assessment information gathered in accordance with paragraph (e) of this clause.\n(h) DoD safeguarding and use of contractor attributional/proprietary information. The Government shall protect against the unauthorized use or release of information obtained from the contractor (or derived from information obtained from the contractor) under this clause that includes contractor attributional/proprietary information, including such information submitted in accordance with paragraph (c). To the maximum extent practicable, the Contractor shall identify and mark attributional/proprietary information. In making an authorized release of such information, the Government will implement appropriate procedures to minimize the contractor attributional/proprietary information that is included in such authorized release, seeking to include only that information that is necessary for the authorized purpose(s) for which the information is being released.\n(i) Use and release of contractor attributional/proprietary information not created by or for DoD. Information that is obtained from the contractor (or derived from information obtained from the contractor) under this clause that is not created by or for DoD is authorized to be released outside of DoD—\n(1) To entities with missions that may be affected by such information;\n(2) To entities that may be called upon to assist in the diagnosis, detection, or mitigation of cyber incidents;\n(3) To Government entities that conduct counterintelligence or law enforcement investigations;\n(4) For national security purposes, including cyber situational awareness and defense purposes (including with Defense Industrial Base (DIB) participants in the program at 32 CFR part 236); or\n(5) To a support services contractor (“recipient”) that is directly supporting Government activities under a contract that includes the clause at 252.204-7009 , Limitations on the Use or Disclosure of Third-Party Contractor Reported Cyber Incident Information.\n(j) Use and release of contractor attributional/proprietary information created by or for DoD. Information that is obtained from the contractor (or derived from information obtained from the contractor) under this clause that is created by or for DoD (including the information submitted pursuant to paragraph (c) of this clause) is authorized to be used and released outside of DoD for purposes and activities authorized by paragraph (i) of this clause, and for any other lawful Government purpose or activity, subject to all applicable statutory, regulatory, and policy based restrictions on the Government’s use and release of such information.\n(k) The Contractor shall conduct activities under this clause in accordance with applicable laws and regulations on the interception, monitoring, access, use, and disclosure of electronic communications and data.\n(l) Other safeguarding or reporting requirements. The safeguarding and cyber incident reporting required by this clause in no way abrogates the Contractor’s responsibility for other safeguarding or cyber incident reporting pertaining to its unclassified information systems as required by other applicable clauses of this contract, or as a result of other applicable U.S. Government statutory or regulatory requirements.\n(m) Subcontracts. The Contractor shall—\n(1) Include this clause, including this paragraph (m), in subcontracts, or similar contractual instruments, for operationally critical support, or for which subcontract performance will involve covered defense information, including subcontracts for commercial products or commercial services, without alteration, except to identify the parties. The Contractor shall determine if the information required for subcontractor performance retains its identity as covered defense information and will require protection under this clause, and, if necessary, consult with the Contracting Officer; and\n(2) Require subcontractors to—\n(i) Notify the prime Contractor (or next higher-tier subcontractor) when submitting a request to vary from a NIST SP 800-171 security requirement to the Contracting Officer, in accordance with paragraph (b)(2)(ii)(B) of this clause; and\n(ii) Provide the incident report number, automatically assigned by DoD, to the prime Contractor (or next higher-tier subcontractor) as soon as practicable, when reporting a cyber incident to DoD as required in paragraph (c) of this clause.\n(End of clause)",
+      "legacy": [
+        {
+          "t": "Required contractors handling CDI to implement NIST SP 800-171 controls; 72-hour cyber incident reporting to DoD; flow-down to subcontractors mandatory.",
+          "s": "DFARS 252.204-7012"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Current selected provision reloaded from Acquisition.gov. This is the codified DFARS edition; it is not a separate DoD RFO model deviation.",
+          "s": "Acquisition.gov DFARS Change 7 May 2026 · verified 1 Oct 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "DFARS · FY2020 edition",
+        "revised": "DFARS · Change 7 May 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "This clause addresses covered defense information and incident reporting. CMMC requirements must be checked separately, including DFARS 252.204-7021."
+    },
+    {
+      "id": "afars-5101-001",
+      "group": "AFARS Part 5101 — General",
+      "title": "AFARS 5101.402-2 — Contracting Officer Responsibilities and Legal Coordination",
+      "keywords": [
+        "afars",
+        "5101",
+        "contracting officer",
+        "responsibility",
+        "authority",
+        "army",
+        "HCA",
+        "PARC",
+        "MICC",
+        "AFARS 5101.602-2",
+        "AFARS 5101.402-2"
+      ],
+      "summary": "Contracting Officer Responsibilities and Legal Coordination. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5101.602 Contracting officers.\n\n5101.602-2 Responsibilities.\n\n(a) Refer to AFARS 5132.7 for instructions with regard to ensuring funds are available.",
+      "rfoText": "5101.402-2 Responsibilities.\n5101.402-290 Legal coordination.\nContracting officers will obtain legal reviews as required by applicable regulations and AFARS\nPGI 5101.402-290. Include legal counsel as a member of the acquisition team throughout the\nacquisition process.\n5101.402-291 Ordering officer appointments.\n(a) Policy. The individual at AFARS 5101.403-1 appointing an ordering officer will state in the\nappointment letter that the ordering officer’s authority may not be delegated further.\n(b) Appointment and termination authority. An appointing official may appoint an ordering\nofficer, pursuant to AFARS PGI 5101.403-290 (a) through (f), when the official determines\nthat the appointment is essential for the operation of the contracting mission.",
+      "legacy": [
+        {
+          "t": "Army HCA delegated authority to PCOs at specified dollar thresholds; MICC contracting officers subject to PARC oversight for acquisitions above $10M.",
+          "s": "AFARS 5101.602-2"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Contracting Officer Responsibilities and Legal Coordination. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5101.602-2. Current Army citation: AFARS 5101.402-2. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5106-001",
+      "group": "AFARS Part 5106 — Competition Requirements",
+      "title": "AFARS 5106.003 — Advocates for Competition",
+      "keywords": [
+        "afars",
+        "5106",
+        "competition",
+        "advocate",
+        "army",
+        "J&A",
+        "sole source",
+        "competition advocate",
+        "AFARS 5106.302-1",
+        "AFARS 5106.003"
+      ],
+      "summary": "Advocates for Competition. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5106.302-1 Only one responsible source and no other supplies or services will satisfy agency requirements.\n\n(a)(2)(i)(1) The HCA shall make the determination at DFARS 206.302-1(a)(2)(i)(1). See \nAppendix GG\nfor further delegation.\n\n(d) The HCA may waive the requirements as stated in DFARS and DFARS PGI 206.302-1(d). See \nAppendix GG",
+      "rfoText": "5106.003 – Advocates for Competition\n(a)(1) The Deputy Assistant Secretary of the Army for Procurement serves as the Army\nAdvocate for Competition (AAFC).\n(2) Command Advocates for Competition (CAFC). Heads of contracting activities (HCAs)\nshall appoint at least one CAFC for each contracting activity. In addition, the HCA shall appoint\na local advocate for competition wherever there is a small business specialist appointed for that\norganization. See Appendix GG.\n(3) See AFARS PGI 5106.003.\n(b)(2) Command advocates for competition must submit an annual report to the AAFC (see\naddress at AFARS PGI 5101.290(b)(2)) no later than November 15 of each year. The report\nmust include the elements at FAR 6.502(b)(2).",
+      "legacy": [
+        {
+          "t": "Army Competition Advocate reviews and approves sole-source justifications; field activity competition advocates required for all Army contracting offices above $50M annual spend.",
+          "s": "AFARS 5106.501"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Advocates for Competition. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5106.302-1. Current Army citation: AFARS 5106.003. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5107-001",
+      "group": "AFARS Part 5107 — Acquisition Planning",
+      "title": "AFARS 5107.104 — General Procedures for Acquisition Planning",
+      "keywords": [
+        "afars",
+        "5107",
+        "acquisition plan",
+        "army",
+        "HA",
+        "PARC",
+        "milestone",
+        "program management",
+        "AFARS 5107.104",
+        "AFARS 5107.104"
+      ],
+      "summary": "General Procedures for Acquisition Planning. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5107.104 General procedures.\n\n(a)(i)  Each HCA must establish procedures for forecasting all significant, as defined by a specified monetary threshold,\nor sensitive contracting requirements anticipated for the upcoming fiscal year.\n\n(ii)  These procedures will include procurement milestones and other management parameters for all proposed contract actions\nthat the acquisition planning system will cover, including those proposed requirements for which DFARS 207.103(d)(ii) does\nnot require written acquisition plans.\n\n(iii)  These procedures should allow sufficient time for development of an acquisition plan; preparation of solicitations,\nincluding any necessary coordination with requiring and technical elements; receipt and evaluation of bids or proposals; audits;\nnegotiation; boards or business clearance reviews; source selection and preparation of contractual documents in an orderly\nand timely manner.\n\n(iv)  HCAs should establish due dates for submission of procurement requests requiring action by the end of the fiscal year\nto the contracting office.  Exceptions to established due dates must be minimized and require authorization at a level not\nlower than the chief of the contracting office.\n\n(v)  In acquisitions where sole source approvals are necessary, acquisition planning must provide appropriate opportunities\nfor the following:\n\n(A)  Involving Defense Contract Management Agency and Defense Contract Audit Agency early in the acquisition process.\n\n(B)  Obtaining appropriate contractor input for use in the development of the acquisition strategy.\n\n(C)  Establishing a Government and contractor team, including individuals with execution responsibility as well as reviewers,\ncommitted on a real-time basis to streamline the acquisition process and maintain open communications.\n\n(D)  Teaming of Government and contractor personnel in development of the proposal and model contract, leading to agreement\non contractor effort and costs associated with the task(s).\n\n(E)  Teaming of the Government and contractor personnel during post-award contract performance to improve communications and\ndevelop efficient contract administration.",
+      "rfoText": "5107.104 General procedures.\n5107.104-70 General procedures.\n(a) See AFARS PGI 5107.104-70 for best practices when forecasting all significant, as defined\nby a specified monetary threshold, or sensitive contracting requirements anticipated for the\nupcoming fiscal year.\n(b) See Appendix GG for further delegation of DFARS PGI 207.104-70(b)(2)(vii)(C)(8)(iv).",
+      "legacy": [
+        {
+          "t": "Written acquisition plans required for all acquisitions above $10M; PARC approval required above $100M; AAE notification required for ACAT programs.",
+          "s": "AFARS 5107.104"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "General Procedures for Acquisition Planning. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5107.104. Current Army citation: AFARS 5107.104. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5115-001",
+      "group": "AFARS Part 5115 — Contracting by Negotiation",
+      "title": "AFARS 5115.408 — Negotiation Documentation",
+      "keywords": [
+        "afars",
+        "5115",
+        "negotiation",
+        "source selection",
+        "SSEB",
+        "cost realism",
+        "BAFO",
+        "army",
+        "AFARS 5115.408",
+        "AFARS 5115.408"
+      ],
+      "summary": "Negotiation Documentation. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5115.403 Obtaining certified cost or pricing data.",
+      "rfoText": "5115.408 Documentation.\n5115.408-190 Prenegotiation objectives.\nThe contracting officer may consolidate the prenegotiation memorandum and price negotiation\nmemorandum (POM/PNM) for competitive or non-competitive acquisitions. However, the\ncontracting officer must still comply with FAR 15.408-1 and DFARS PGI 215.408-1 and obtain\nwritten approval of the prenegotiation objectives before negotiation of any pricing action. See\nAFARS PGI 5115.408-190.\n5115.408-290 Documenting the negotiation.\n(a) When utilizing a consolidated POM/PNM, the contracting officer must ensure the POM/PNM\ncontains all required content for both documents, in accordance with FAR 15.408 and DFARS\nPGI 215.408.\n(b) If the final negotiated price is within a range specifically approved as the prenegotiation\nobjective, and if negotiations did not present information that calls into question the\nreasonableness of the previously approved price range, the written approval obtained under\nAFARS 5115.408-190 may also serve as the approval for the consolidated POM/PNM. The\napproved POM/PNM may be used in determining the negotiated price to be fair and reasonable.\nNotwithstanding this subsection, the contracting officer still must obtain all other required pre-\naward approvals.",
+      "legacy": [
+        {
+          "t": "Army SSEB must include technical, cost, and past performance panels; SSA must be independent of SSEB for acquisitions above $100M; Army Contracting Guide provides mandatory templates.",
+          "s": "AFARS 5115.303"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Negotiation Documentation. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5115.408. Current Army citation: AFARS 5115.408. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5119-001",
+      "group": "AFARS Part 5119 — Small Business Programs",
+      "title": "AFARS 5119.102 — Small Business Coordination and DD Form 2579",
+      "keywords": [
+        "afars",
+        "5119",
+        "small business",
+        "OSBP",
+        "army",
+        "goals",
+        "set-aside",
+        "8a",
+        "HUBZone",
+        "SDVOSB",
+        "WOSB",
+        "AFARS 5119.201",
+        "AFARS 5119.102"
+      ],
+      "summary": "Small Business Coordination and DD Form 2579. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5119.201 General policy.\n\n(c)(8) At those contracting activities where the Small Business\nAdministration (SBA) has assigned a procurement center representative (PCR), a small\nbusiness professional serves as the designated small business technical advisor. The\nContracting officer’s Representative (COR), or primary technical point of contact for the\nrequirement when a COR is not required, shall assist the PCR and address technical aspects\nof the acquisition when requested by the small business professional.\n\n(10)(B)(i) The Contracting officer shall prepare and submit the DD Form 2579 and supporting documentation to the assigned small business\nspecialist for all acquisitions above the micro-purchase threshold except Phase I or Phase II acquisitions for the Small Business\nInnovation Research (SBIR) and Small Business Technology Transfer (STTR) \nprograms. The DD Form 2579 shall include the small business specialist’s recommendation for actions including, but not limited\nto: all Federal Acquisition Regulation (FAR) parts 13, 14, and 15 actions, all orders placed against FAR 8.405-3 blanket purchase\nagreements, General Services Administration Federal Supply Schedule orders, and all delivery and task orders under multiple\naward, indefinite delivery indefinite quantity (IDIQ) contracts. Neither small business coordination nor a DD Form 2579 is\nrequired when the contracting office complies with the small business reservation under the simplified acquisition threshold\nat FAR 19.502-2(a). The Virtual Contracting Enterprise (VCE)-2579, DD2579 Small Business Coordination module) shall be used\nfor all DD Form 2579 submissions. The original DD Form 2579 shall remain in the VCE Paperless Contract File (PCF) with a copy\nfurnished to the SBA PCR and the activity small business specialist. The DD Form 2579 shall be approved by all parties including\nthe SBA PCR when required, prior to issuing a solicitation or notice of proposed contract action.\n\n(ii) VCE-2579 automatically assigns a Control Number for each DD Form 2579. The small business specialist must review and sign\nto their concurrence/non-concurrence on the DD Form 2579. If the SBA PCR lacks the necessary security clearance to review\nthe DD Form 2579, the Contracting officer shall contact the SBA office serving the area where the contracting office is located\nfor assistance. \n\n(iii) The DD Form 2579 must be made available only to personnel\nwho have a “need to know” until the contract is awarded. Copies distributed outside the\nArmy, including SBA PCR coordination, must be marked “Controlled Unclassified\nInformation.”",
+      "rfoText": "5119.102 Coordination.\n(a) See AFARS PGI 5119.102(a) for roles and responsibilities.\n(f)(1) See Appendix GG for further delegation.\n(3) See AFARS PGI 5119.5102(f)(3) for SBA appeals to the agency head.\n5119.102-90 Coordination.\nThe Virtual Contracting Enterprise DD2579 Small Business Coordination module (VCE-2579)\nshall be used for all DD Form 2579 submissions. See AFARS PGI 5119.102-90 for DD Form\n2579 procedures.",
+      "legacy": [
+        {
+          "t": "Army OSBP must review all acquisitions above $150K not already set aside; annual goals reported to ASA(ALT); mandatory small business specialist review for IDIQ task orders.",
+          "s": "AFARS 5119.201"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Small Business Coordination and DD Form 2579. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5119.201. Current Army citation: AFARS 5119.102. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5131-001",
+      "group": "AFARS Part 5131 — Contract Cost Principles",
+      "title": "AFARS 5131.205 — Selected Costs and Compensation",
+      "keywords": [
+        "afars",
+        "5131",
+        "business systems",
+        "MMAS",
+        "IPPE",
+        "EVMS",
+        "earned value",
+        "cost accounting",
+        "DCAA",
+        "AFARS 5131.201",
+        "AFARS 5131.205"
+      ],
+      "summary": "Selected Costs and Compensation. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "[AFARS 5131.201 — not available in current AFARS epub. The AFARS does not currently supplement FAR 31.201 directly. See AFARS 5131.205 for selected cost supplemental provisions. Visit acquisition.gov/afars Part 5131.]",
+      "rfoText": "5131.205 Selected costs.\n5131.205-6 Compensation for personal services.\n(f)(6)(ii) Severance pay. See Appendix GG for further delegation.\n(o)(4)(iii) Limitation on allowability of compensation. See Appendix GG for further delegation.",
+      "legacy": [
+        {
+          "t": "The historical card contained an editorial placeholder rather than verified regulatory text. Consult the historical source for the former provision.",
+          "s": "AFARS · 11 Jul 2025 historical baseline"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Selected Costs and Compensation. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5131.201. Current Army citation: AFARS 5131.205. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5137-001",
+      "group": "AFARS Part 5137 — Service Contracting",
+      "title": "AFARS 5137.890 — Oversight of Services Acquisition",
+      "keywords": [
+        "afars",
+        "5137",
+        "service contract",
+        "CMR",
+        "contractor manpower",
+        "inherently governmental",
+        "army",
+        "CMRA",
+        "AFARS 5137.102",
+        "AFARS 5137.890"
+      ],
+      "summary": "Oversight of Services Acquisition. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "5137.102-90 Policy.\n\n5137.102-90 Policy.\n\nDepartment of Defense Instruction (DoDI) 5000.74, Defense Acquisition Services, dated 5 January 2016, is the primary authority\nfor service acquisitions.\n\n5137.104 Personal services contracts.\n\n(b)(i) The head of the contracting activity (HCA) will make the determination as required by DFARS 237.104(b)(i) to authorize\ncontracts pursuant to 10 U.S.C. 129b and 5 U.S.C. 3109. See \nAppendix GG \nfor further delegation. When a blanket determination and findings (D&F) applies, the Contracting officer will include in\nthe contract file a copy of the blanket D&F and a statement signed by the Contracting officer clearly showing why the blanket\nD&F is applicable to the proposed contract. \n\n(ii)(C)(2) The HCA for the U.S. Army Medical Command must approve requirements for services at DFARS 237.104(b)(ii)(C)(2). See \nAppendix GG\nfor further delegation.\n\n(iii)(A)(2) The HCA will make the determination as required by DFARS 237.104(b)(iii) to authorize contracts pursuant to 10\nU.S.C. 129b(d). See \nAppendix GG\n\n(S-90) Contracting officers will ensure that purchase requests for personal services in the areas listed in DA Pamphlet 25-91\n(Visual Information\n\n5137.112 Government use of private sector temporaries.\n\nDirect questions about acquisition of these services to the civilian personnel office.\n\n5137.113-1 Waiver of cost allowability limitations.\n\n(a) The Assistant Secretary of the Army (Acquisition, Logistics and Technology) has authority to make the determination at\nFAR 37.113-1. See \nAppendix GG\nfor further delegation.",
+      "rfoText": "5137.890 Oversight of services acquisition.\n5137.890-1 Applicability.\n(a) Oversight of services acquisition is the shared responsibility of requiring activities,\ncontracting activities, and the Office of the ASA(ALT).\n(b) Except as provided in DoDI 5000.74, paragraph 1.1. b, this section applies to:\n(i) Service acquisitions, including any service acquisition determined to be of special interest\nby the Under Secretary of Defense for Acquisition, Technology, and Logistics (USD(AT&L)),\nthe ASA(ALT), the Deputy Assistant Secretary of the Army (Procurement) (DASA(P)), and the\nSenior Services Manager (SSM).\n(ii) Task orders executed within a service acquisition reviewed pursuant to this subpart do not\nrequire a separate acquisition strategy or review, provided the Contracting officer issues the task\norder consistent with any conditions specified by the acquisition strategy decision authority. A\nseparate acquisition strategy may be executed for complex task orders.\n5137.890-2 Review thresholds.\n(a) See Appendix GG for delegations. Special interest programs may be designated by the\nUSD(AT&L) regardless of the estimated dollar value.\n(b) After approval of the acquisition strategy, the Contracting officer may release the final\nsolicitation, subject to the separate peer review process outlined in DFARS 201.170 and in\nAFARS 5101.170, and any other required local reviews.\n5137.890-3 Review procedures.\nThe HCA shall establish procedures for reviews of service acquisitions as delegated. For service\nacquisitions requiring USD(AT&L), DASA(P) or SSM review and approval, submit the\nacquisition strategy to the addressee at AFARS PGI 5101.290(b)(4). At a minimum, the strategy\nwill contain all the information included at AFARS PGI 5137.890-4.\n5137.890-4 Independent Management Reviews\nSee AFARS PGI 5101.170-3 for Independent Management Reviews requirements.",
+      "legacy": [
+        {
+          "t": "All Army service contracts must include CMRA reporting requirement; contractors report labor hours, functions, and inherently governmental adjacency annually; CO must review reports.",
+          "s": "AFARS 5137.102"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Oversight of Services Acquisition. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5137.102. Current Army citation: AFARS 5137.890. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5152-001",
+      "group": "AFARS Part 5152 — Solicitation Provisions & Clauses",
+      "title": "AFARS 5152.101 — Control of Nonstandard Clauses and Provisions",
+      "keywords": [
+        "afars",
+        "5152",
+        "clause",
+        "provision",
+        "army unique",
+        "local clause",
+        "MICC",
+        "installation",
+        "AFARS 5152.225-5900",
+        "AFARS 5152.101"
+      ],
+      "summary": "Control of Nonstandard Clauses and Provisions. Selected current Army text verified against the 31 August 2026 edition.",
+      "deepLinks": [
+        {
+          "label": "Official Army AFARS (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Official Army PGI (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army source publications",
+          "url": "https://www.army.mil/armycontracting"
+        }
+      ],
+      "sources": [
+        "AFARS · 11 Jul 2025 historical baseline",
+        "Army AFARS · effective 31 Aug 2026"
+      ],
+      "legacyText": "[AFARS 5152.225-5900 — Army-unique clauses and local provisions. Not available in current epub export. See acquisition.gov/afars Part 5152 for current clause text.]",
+      "rfoText": "5152.101 Using Part 5152.\n(b) Numbering.\n(2) Provisions or clauses that supplement the FAR.\n(i)(C) Requests for approval of nonstandard clauses or provisions which are\ndeviations, one time and recurring, must be processed in accordance with 5101.3.\n(ii)(A) The Office of the Deputy Assistant Secretary of the Army (Procurement)\n(ODASA(P)) will assign clause and provision numbers for the AFARS and Army\nsuborganizational level clauses in accordance with Appendix FF, the Department of the Army\nPlan for Control of Nonstandard Clauses.",
+      "legacy": [
+        {
+          "t": "The historical card contained an editorial placeholder rather than verified regulatory text. Consult the historical source for the former provision.",
+          "s": "AFARS · 11 Jul 2025 historical baseline"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "Control of Nonstandard Clauses and Provisions. Selected current Army text verified against the 31 August 2026 edition.",
+          "s": "Army AFARS · effective 31 Aug 2026"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 / historical entry",
+        "revised": "AFARS · 31 Aug 2026"
+      },
+      "reviewedOn": "2026-10-01",
+      "sourceNote": "Historical card: AFARS 5152.225-5900. Current Army citation: AFARS 5152.101. The Army reorganized provisions and moved procedures into PGI. These are selected topic counterparts, not a claim that every paragraph maps one-to-one. Historical placeholders are not authoritative text."
+    },
+    {
+      "id": "afars-5105-302",
+      "group": "AFARS Part 5105 — Publicizing Contract Actions",
+      "title": "AFARS 5105.302 — Public Announcement and Day-Before Award Confirmation",
+      "keywords": [
+        "award announcement",
+        "announcement of awards",
+        "day before award",
+        "5105.303",
+        "5105.302",
+        "congressional notification",
+        "ODASA(P)",
+        "8 p.m.",
+        "8 pm",
+        "three business days",
+        "VCE"
+      ],
+      "summary": "Confirm the award schedule with ODASA(P) by 8 p.m. Eastern the day before proposed award. The initial VCE announcement package remains due by noon Eastern three business days before award; formal approval is required for actions meeting the reporting threshold.",
+      "deepLinks": [
+        {
+          "label": "Army AFARS 5105.302 (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/2f80cf4d/afars-combined-31aug2026.pdf"
+        },
+        {
+          "label": "Army PGI 5105.302 (31 Aug 2026)",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf#page=22"
+        },
+        {
+          "label": "Historical AFARS 5105.303",
+          "url": "https://www.acquisition.gov/afars/5105.303-announcement-contract-awards."
+        }
+      ],
+      "sources": [
+        "Acquisition.gov AFARS 5105.303 · 11 Jul 2025",
+        "Army AFARS / PGI 5105.302 · Part revised 29 Jun 2026 · edition effective 31 Aug 2026"
+      ],
+      "legacyText": "5105.303 Announcement of contract awards.\n(a) Public announcement.\n(i) In addition to the contractual actions identified in DFARS 205.303, report all contractual actions of significance or interest to the United States Congress, the Army, and the local community.\n(ii)(1) The Contracting officer shall submit an announcement of contract award to the Office of the Deputy Assistant Secretary of the Army (Procurement) (ODASA(P)) no later than noon (12:00 p.m., Washington, DC, time) three business days (including the date of submission) prior to the date of the proposed award. For example: when an award is anticipated on Thursday, the ODASA(P) must receive the announcement no later than noon, Washington DC time, on the preceding Tuesday. Contracting officers will submit the request along with required supporting information via the Virtual Contracting Enterprise (VCE) portal at https://vceportal.army.mil . A Contracting officer will not award a contract that meets the reporting threshold at DFARS 205.303(a)(i) without formal ODASA(P) approval. If the Contracting officer has not received approval of the request by 2:30 p.m., Washington, DC time, on the day before the desired date of contract award, the Contracting officer will contact the ODASA(P) at usarmy.pentagon.hqda-asa-alt.list.congressional-notification@army.mil to inquire into the status of the approval.\n(2) Contracting officers shall confirm the award schedule with ODASA(P) by noon of the proposed award date using the email address in paragraph (a)(ii)(1). If the schedule is anticipated to slip, a new award date must be established.\n(3) When a contract action is to be awarded under the authority of FAR 6.302-2 and the senior contracting official (SCO) determines that it may be impracticable to comply with the requirements of DFARS 205.303(a)(ii)(A) and (B), the SCO, without power to delegate further, shall:\n(i) Immediately notify the DASA(P) by email, with a copy furnished to the HCA, that explains the circumstances and requests authority to make the award in advance of compliance with DFARS 205.303(a)(ii)(A) and (B); and\n(ii) Authorize the Contracting officer to award the contract only upon written approval by the DASA(P) or, in the DASA(P)’s absence, the senior official within the ODASA(P).\n(4) The Contracting officer will submit the standard announcement under paragraph (a)(ii)(1) of this section to the ODASA(P) no later than one business day after the award. In addition to the information specified in the automated tool, the Contracting officer will add a one-line comment in the “Description” field that describes the nature of the urgency that precluded advance notification to the Office of the Assistant Secretary of Defense (Public Affairs) (OASD(PA)).\n(5) In accordance with 10 U.S.C. 2316, do not release the identity or location of the awardee to any individual, including a Member of Congress, until OASD(PA) makes the public announcement.\n(6) Paragraph (a)(ii)(3) of this section is the only authorized Army-level exception to DFARS 205.303(a)(ii)(A) and (B). No contracting activity-level deviation from this provision may be authorized.\n(iii) The ODASA(P) informs the Office of the Chief Legislative Liaison who in turn informs the members of Congress in whose state or district the contractor is located and performing the contractual requirements, and the Office of the Chief of Public Affairs who in turn notifies OASD(PA).",
+      "rfoText": "5105.302 Public announcement.\n(a) Requirement.\n(i) In addition to the contractual actions identified in DFARS 205.302, report all\ncontractual actions of significance or interest to the United States Congress, the Army, and the\nlocal community.\n(1) See PGI 5105.302(a) for reporting and submission.\n(2) When a contract action is to be awarded under the authority of FAR 6.103-2\n(unusual and compelling urgency) and the senior contracting official (SCO) determines that it\nmay be impracticable to comply with the requirements of DFARS PGI 205.302(a)(ii)(A) and\n(B), the SCO, without power to delegate further, shall:\n(i) Immediately notify the DASA(P) by email, with a copy furnished to the head\nof the contracting activity, that explains the circumstances and requests authority to make the\naward in advance of compliance with DFARS PGI 205.302(a)(ii)(A) and (B); and\n(ii) Authorize the Contracting officer to award the contract only upon written\napproval by the DASA(P) or, in the DASA(P)’s absence, the senior official within the\nODASA(P).\n(iii) The Contracting officer will submit the standard announcement (see PGI\n5105.302(a)) to the ODASA(P) no later than one business day after the award. The Contracting\nofficer will add a one-line comment in the “Description” field that describes the nature of the\nurgency that precluded advance notification to the Office of the Assistant Secretary of Defense\n(Public Affairs) (OASD(PA)).\n(3) Paragraph (a)(i)(2) of this section is the only authorized Army-level exception to\nDFARS PGI 205.302(a)(ii)(A) and (B). No contracting activity-level deviation from this\nprovision may be authorized.\n(ii) The ODASA(P) coordinates notification of contract award to members of Congress\nin whose state or district the contractor is located and OASD(PA).\n(b) See AFARS PGI 5105.302(a)(3) for Congressional notification requirements when utilizing\nthe authorities conferred by paragraphs (B) – (G) of DPCAP Class Deviation 2024-O0005 –\nTemporary Authorizations for Covered Contracts related to Ukraine, Taiwan, and Isreal.",
+      "legacy": [
+        {
+          "t": "The former 5105.303(a)(ii)(2) required confirming the award schedule by noon on the proposed award date. It also required advance package submission and formal ODASA(P) approval.",
+          "s": "AFARS 5105.303 (11 Jul 2025)"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "PGI 5105.302(a)(2) moves award-schedule confirmation to 8 p.m. ET the day before proposed award. Package submission remains noon ET three business days before award under (a)(1). Formal ODASA(P) approval remains required. The urgency exception requires written DASA(P) approval; the follow-up report is due within one business day after award.",
+          "s": "Army AFARS / PGI 5105.302 (31 Aug 2026)"
+        }
+      ],
+      "sourceEditions": {
+        "legacy": "AFARS · 11 Jul 2025 · 5105.303",
+        "revised": "AFARS + PGI · 31 Aug 2026 · 5105.302"
+      },
+      "sourceNote": "The day-before deadline is for confirming the award schedule with ODASA(P), not initial package submission or public release. Current procedures are in AFARS PGI 5105.302. Acquisition.gov still displays the older 5105.303 text; the Army source is newer.",
+      "reviewedOn": "2026-10-01",
+      "supplementalText": {
+        "label": "Current PGI 5105.302 — deadlines and reporting procedures",
+        "text": "5105.302 Public announcement.\n(a) Requirement.\n(1) The contracting officer shall submit an announcement of contract award to the Office of\nthe Deputy Assistant Secretary of the Army (Procurement) (ODASA(P)) no later than 12:00 p.m.\nEastern Time zone (ET) three business days prior to the date of the proposed award.\n(i) Contracting officers will submit the request along with required supporting\ninformation via the Virtual Contracting Enterprise (VCE) portal at https://vce.army.mil.\n(ii) Contracting officers will not award a contract that meets the reporting threshold at\nDFARS 205.302(a)(i) without formal ODASA(P) approval. If the Contracting officer has not\nreceived approval, the contracting officer will contact the ODASA(P) at usarmy.pentagon.hqda-\nasa-alt.list.congressional-notification@army.mil for status.\n(2) Contracting officers shall confirm the award schedule with ODASA(P) by 8 p.m. ET the\nday before the proposed award date using the email address in paragraph (a)(1)(ii). If the\nschedule is anticipated to slip, a new award date must be established.\n(3) Instructions for Congressional Notification Requirement When Utilizing the Authorities\nConferred by paragraphs (B) – (G) of DPCAP Class Deviation 2024- O0005— Temporary\nAuthorizations for Covered Contracts Related to Ukraine, Taiwan, and Israel; Workload\nForecasting Instructions\n(i) When using the authority at paragraph (B) of DPCAP Class Deviation 2024-O0005 –\nTemporary Authorization for Covered Contracts Related to Ukraine, Taiwan, and Israel,\nsubparagraph (H)(1) of the class deviation requires written Congressional and DPCAP\nnotification not later than seven days before contract award. Contracting officers shall use the\ntemplate located in the Army Templates and Guides on PAM for the notification.\n(ii) When using the authorities at paragraphs (B) thorough (G) of DPCAP Class Deviation\n2024- O0005 – Temporary Authorization for Covered Contracts Related to Ukraine, Taiwan, and\nIsrael, subparagraph (H)(2) of the class deviation requires written Congressional and DPCAP\nnotification within seven days after contract award. Contracting officers shall use the template\nlocated in the Army Templates and Guides on PAM for the notification.\n(iii) Contracting Officers shall submit congressional defense and DPCAP notification for\nHQDA review, coordination, and/or approval via ETMS2 to the ODASA(P) directorate listed at\nAFARS PGI 5101.290(b)(2) within one-day after award to meet the congressional defense\ncommittee requirement. Furthermore, to forecast workload requirements, the ODASA(P) will\ntask Commands via the Enterprise Task Management Software Solution (ETMS2) bi-weekly to\nprovide a listing of applicable actions. A template will be provided in ETMS2 to collect the\nfollowing information for all applicable actions.\n(a) Program name.\n(b) Contract number, and modification number, if applicable.\n(c) Total estimated contract value (including options).\n(d) Contracting activity name and DoDAAC.\n(e) Contractor name and Commercial and Government Entity (CAGE) code.\n(f) Quantities and/or period of performance.\n(g) Reason for using the authority.\n(h) Expected outcome of using the authority, including estimated reductions in schedule."
+      }
+    },
+    {
+      "id": "cas-thresholds-2026",
+      "group": "Part 30 — Cost Accounting Standards",
+      "title": "CAS — Coverage Thresholds and Indefinite-Delivery Contracts",
+      "keywords": [
+        "CAS",
+        "cost accounting",
+        "35 million",
+        "100 million",
+        "threshold",
+        "indefinite delivery",
+        "IDC",
+        "9903.201"
+      ],
+      "summary": "Effective 1 October 2026: the basic CAS applicability threshold becomes $35 million; full coverage and disclosure thresholds become $100 million, subject to exemptions and transition conditions.",
+      "summaryOnly": true,
+      "status": "effective",
+      "effectiveDate": "2026-10-01",
+      "deepLinks": [
+        {
+          "label": "Final rule — 91 FR 56056",
+          "url": "https://www.federalregister.gov/documents/2026/09/01/2026-17901/increase-of-monetary-thresholds-and-other-matters-related-to-cost-accounting-standards-program"
+        },
+        {
+          "label": "Acquisition.gov announcement",
+          "url": "https://www.acquisition.gov/content/cost-accounting-standards-board-issues-two-new-final-rules"
+        }
+      ],
+      "sources": [
+        "91 FR 56056 · published 1 Sep 2026",
+        "91 FR 56056 · effective 1 Oct 2026"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "The basic monetary threshold was $2.5 million, with a $7.5 million trigger-contract concept; full coverage and disclosure thresholds were $50 million.",
+          "s": "91 FR 56056"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "The final rule raises basic CAS applicability to $35 million, removes the $7.5 million trigger-contract concept, and raises full coverage / disclosure thresholds to $100 million. Apply exemptions and thresholds at each order for multiple-award IDCs and at the contract ceiling for single-award IDCs. Existing contracts are not automatically exempted: the transition provisions require an eligible business unit without unresolved CAS noncompliances and timing tied to its next full cost accounting period.",
+          "s": "91 FR 56056"
+        }
+      ],
+      "sourceNote": "CAS Board rule under 48 CFR Chapter 99; this update notice does not replace FAR Part 30 text or amend existing contracts automatically.",
+      "reviewedOn": "2026-10-01"
+    },
+    {
+      "id": "cas-407-2026",
+      "group": "Part 30 — Cost Accounting Standards",
+      "title": "CAS 407 — Rescinded; Selected Requirements Moved to CAS 418",
+      "keywords": [
+        "CAS",
+        "cost accounting",
+        "2026",
+        "October 1",
+        "cas-407-2026",
+        "threshold",
+        "407",
+        "418"
+      ],
+      "summary": "Effective 1 October 2026: CAS 407 is removed and reserved; retained standard-costing requirements move to CAS 418 and definitions are updated.",
+      "summaryOnly": true,
+      "status": "effective",
+      "effectiveDate": "2026-10-01",
+      "deepLinks": [
+        {
+          "label": "Final rule — 91 FR 56061",
+          "url": "https://www.federalregister.gov/documents/2026/09/01/2026-17903/conformance-of-cost-accounting-standards-to-generally-accepted-accounting-principles-for-cas-407-use"
+        },
+        {
+          "label": "Acquisition.gov announcement",
+          "url": "https://www.acquisition.gov/content/cost-accounting-standards-board-issues-two-new-final-rules"
+        }
+      ],
+      "sources": [
+        "91 FR 56061 · published 1 Sep 2026",
+        "91 FR 56061 · effective 1 Oct 2026"
+      ],
+      "legacyText": "",
+      "rfoText": "",
+      "legacy": [
+        {
+          "t": "CAS 407 separately addressed standard costs for direct material and direct labor.",
+          "s": "91 FR 56061"
+        }
+      ],
+      "rfo": [
+        {
+          "t": "The final rule removes and reserves CAS 407 to reduce overlap with GAAP. It retains production-unit and selected standard-costing requirements in CAS 418 and updates definitions in Part 9903. This does not remove all CAS obligations.",
+          "s": "91 FR 56061"
+        }
+      ],
+      "sourceNote": "CAS Board rule under 48 CFR Chapter 99; this update notice does not replace FAR Part 30 text or amend existing contracts automatically.",
+      "reviewedOn": "2026-10-01"
+    }
+  ]
+}

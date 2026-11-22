@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "rfo-knowledge-tool": {
+      "description": "RFO Knowledge Tool — 411th Contract Support Brigade. Single-file HTML app comparing Legacy FAR vs. RFO (Apr 2025) with word-level diff highlighting.",
+      "workingDirectory": "rfo-knowledge-tool",
+      "primaryFile": "RFO_tool.html"
+    },
+    "website-redesign": {
+      "description": "6 to 9 Dental website redesign — San Antonio TX.",
+      "workingDirectory": "website-redesign",
+      "primaryFile": "index.html"
+    }
+  }
+}

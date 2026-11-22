@@ -1,0 +1,6 @@
+{
+  "name": "forge-agent",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-09",
+  "vars": {"ALLOWED_ORIGIN": "https://chanoski09.github.io"}
+}
