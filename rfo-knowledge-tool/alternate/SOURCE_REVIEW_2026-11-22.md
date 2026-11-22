@@ -14,9 +14,9 @@ The stored corpus does not contain full section entries for FAR 9.104-6 or 42.11
 
 ## DARS source-index review
 
-Current DARS pages returned HTTP 502 when opened. The official indexed listings corroborate the following leads, but full memoranda and attachments remain pending:
+Current DARS pages returned HTTP 502 when opened. The production current class-deviation index confirms the 2026-O0051 and 2024-O0006 Revision 2 leads; the DARS staging index also lists 2027-O0001, which was not confirmed on the production index. Full memoranda and attachments remain pending:
 
-- Class Deviation 2027-O0001, Streamlining Contractor Business Systems, listed November 18, 2026.
+- DARS staging index: Class Deviation 2027-O0001, Streamlining Contractor Business Systems, listed November 18, 2026; the production index did not confirm the listing.
 - Class Deviation 2026-O0051, Implementation of Vendor Threat Mitigation Support Authorities, listed June 11, 2026.
 - Class Deviation 2024-O0006 Revision 2, Russian fossil fuel and fossil fuel business operations, listed October 7, 2026.
 - RFO Class Deviation 2026-O0027 Revision 1 (Part 17/DFARS 217), listed October 7, 2026.
@@ -62,6 +62,7 @@ Army Connect still publishes AFARS and PGI effective August 31, 2026. The PGI 51
 - Army AFARS and PGI: https://www.army.mil/armycontracting
 - Army PGI — August 31, 2026: https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf
 - DARS current class deviations: https://www.acq.osd.mil/dpap/dars/class_deviations.html
+- DARS staging class-deviation index (2027-O0001 lead only): https://acqweb.staging.acqebiz.mil/dpap/dars/class_deviations.html
 - DARS RFO deviations: https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html
 - DARS publication notices: https://www.acq.osd.mil/dpap/dars/change_notices.html
 - DARS current DFARS and PGI: https://www.acq.osd.mil/dpap/dars/dfarspgi/current/index.html

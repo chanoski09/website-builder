@@ -221,8 +221,8 @@
         "identifier": "2027-O0001",
         "listedSourceDate": "2026-11-18",
         "topic": "Streamlining Contractor Business Systems",
-        "verification": "Official current class-deviation listing confirms the title/date; full memo and attachment, applicability, effective date and topic mapping were not retrieved. No text imported.",
-        "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        "verification": "DARS staging index lists the title/date; the production current index did not confirm it. Full memo and attachment, applicability, effective date and topic mapping were not retrieved. No text imported.",
+        "url": "https://acqweb.staging.acqebiz.mil/dpap/dars/class_deviations.html"
       },
       {
         "identifier": "2026-O0051",
@@ -533,7 +533,7 @@
       "summary": "Updated source-index review. No DFARS/PGI/AFARS topic mappings changed; two FAR clause overlays were updated from official model-deviation text.",
       "details": [
         "FAR publication edition: FAC 2026-01, effective 13 March 2026. DFARS and DFARS PGI publication edition: Change 7 May 2026. Army AFARS and PGI: effective 31 August 2026. These are edition checks, not paragraph-by-paragraph certification.",
-        "The current DoD class-deviation listing identifies 2027-O0001 (18 November), 2026-O0051 (11 June), and 2024-O0006 Revision 2 (7 October). Full memos and attachments were not retrieved; no text imported.",
+        "The production current DoD class-deviation listing identifies 2026-O0051 (11 June) and 2024-O0006 Revision 2 (7 October). The DARS staging index lists 2027-O0001 (18 November); the production listing did not confirm it. Full memos and attachments were not retrieved; no text imported.",
         "DARS RFO listings identify 2026-O0028 Revision 1 (Part 12/DFARS 212, 22 October). The memo text indicates immediate effect and replacement DFARS/PGI Part 212, but its superseded-date text (18 December 2026) conflicts with the 22 October listing; full attachments were not retrieved. 2026-O0027 Revision 1 (Part 17/DFARS 217) is listed 7 October, but full attachments remain unverified. 2026-O0052 (Part 270) is listed 4 August; no text imported.",
         "DARS publication notices list the U.S. flags rule (DFARS Case 2024-D013) and military-recruitment-advertising rule (DFARS Case 2024-D022) as proposed rules, and the printed-circuit-board matter (DFARS Case 2022-D011) as an advance notice of proposed rulemaking. None is codified.",
         "September RFO Cases 2026-003, 006, 010 and 011 remain proposed; the 19 October substantive comment deadline passed and no final rule was verified. Separate Paperwork Reduction Act comment notices for Cases 2026-006, 010 and 011 are due 23 November 2026; these are information-collection comments, not changes to the substantive proposed rules.",

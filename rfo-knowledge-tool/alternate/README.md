@@ -34,7 +34,7 @@ Ask FORGE now uses conversational model responses through a server-only tool-cal
 
 - Updated alternate-only FAR 52.209-7 and 52.209-9 model-deviation text from Acquisition.gov's Part 52 text updated November 17, 2026. The text uses SAM.gov Workspace Integrity Records. The model text is not codified; agency-specific implementation is required. DoD adoption was not verified.
 - GSA's November 16 supplements apply to GSA procurements. The DARS listing still shows DoD Part 9/DFARS 209 and Part 42/DFARS 242 deviations without a revised listing; the alternate does not assume DoD adoption.
-- DARS source-index leads for 2027-O0001, 2026-O0051, 2024-O0006 Revision 2, and the October RFO revisions remain pending full memo/attachment verification. No DFARS/PGI/AFARS text or topic mappings were changed.
+- DARS source-index leads for 2026-O0051, 2024-O0006 Revision 2, and the October RFO revisions remain pending full memo/attachment verification. The DARS staging index also lists 2027-O0001 (18 November); the production index did not confirm it. No DFARS/PGI/AFARS text or topic mappings were changed.
 - DARS publication notices for U.S. flags, military recruitment advertising, and printed circuit boards are proposals/ANPR, not codified requirements. The September RFO proposals remain proposed; separate PRA notices are information-collection comments only.
 - The original interface, baseline kb.json, common updates.json, and main service worker remain unchanged. The alternate overlay is dated November 22; baseline stored text review remains October 1, 2026.
 - See SOURCE_REVIEW_2026-11-22.md for sources, limitations, and verification details.
