@@ -2,7 +2,7 @@
 
 The original `RFO_tool.html` remains unchanged at the Pages root. This complete alternate UI is published at `/website-builder/alternate/`. `/website-builder/options.html` provides both leadership-review links.
 
-Both interfaces load the exact same baseline `../kb.json` and reviewed `../updates.json`, merging by entry ID. The alternate currently exposes all 1,129 sections and four release notes. It supports citation/topic/keyword and stored-text search, regulation/part filtering, paginated results, overview/full stored text, paired paragraph alignment, changes-only filtering, highlights, reading layout, saved sections, deep links, printing, theme selection, source notes and supplementary PGI procedures.
+Both interfaces load the exact same baseline `../kb.json` and reviewed `../updates.json`, merging by entry ID. The alternate currently exposes all 1,129 sections and four common release notes, plus alternate-only source-review notes. It supports citation/topic/keyword and stored-text search, regulation/part filtering, paginated results, overview/full stored text, paired paragraph alignment, changes-only filtering, highlights, reading layout, saved sections, deep links, printing, theme selection, source notes and supplementary PGI procedures.
 
 No sample regulatory text from the mockup is used. Entries without full stored text clearly show editorial summaries; the redesign does not expand or certify the underlying regulatory coverage. Overview bullets are paired in their stored order; full source text uses paragraph alignment. Unmatched paragraphs are displayed without deletion/addition markup. Unmatched paragraphs and likely renumbering are marked as alignment observations, not assertions of legal deletion. The comparison core is derived from the original parser/alignment implementation; equal diff tokens retain the original capitalization for each side.
 
@@ -28,3 +28,13 @@ The alternate now recognizes indented parent paragraphs, groups wrapped preamble
 
 ## October 10 — AI agent integration (activation pending)
 Ask FORGE now uses conversational model responses through a server-only tool-calling agent in `forge-agent/worker.mjs`. The model searches and reads the corpus, uses recent conversation history, and produces explanatory text with section citations. No search-only fallback is presented as AI. The endpoint is intentionally empty until secure AI credentials and server deployment are available. API-backed behavior is verified with mocked responses, not a live model. Activation instructions and API contract are in `forge-agent/README.md`.
+
+
+## November 22, 2026 — SAM Integrity Records model-deviation overlay and partial source review
+
+- Updated alternate-only FAR 52.209-7 and 52.209-9 model-deviation text from Acquisition.gov's Part 52 text updated November 17, 2026. The text uses SAM.gov Workspace Integrity Records. The model text is not codified; agency-specific implementation is required. DoD adoption was not verified.
+- GSA's November 16 supplements apply to GSA procurements. The DARS listing still shows DoD Part 9/DFARS 209 and Part 42/DFARS 242 deviations without a revised listing; the alternate does not assume DoD adoption.
+- DARS source-index leads for 2027-O0001, 2026-O0051, 2024-O0006 Revision 2, and the October RFO revisions remain pending full memo/attachment verification. No DFARS/PGI/AFARS text or topic mappings were changed.
+- DARS publication notices for U.S. flags, military recruitment advertising, and printed circuit boards are proposals/ANPR, not codified requirements. The September RFO proposals remain proposed; separate PRA notices are information-collection comments only.
+- The original interface, baseline kb.json, common updates.json, and main service worker remain unchanged. The alternate overlay is dated November 22; baseline stored text review remains October 1, 2026.
+- See SOURCE_REVIEW_2026-11-22.md for sources, limitations, and verification details.

@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-01",
+  "reviewed": "2026-11-22",
   "entries": {
     "far-14-205": {
       "legacyText": "14.202-4 Bid samples.\n(a) Policy.\n    (1) Bidders shall not be required to furnish bid samples unless there are characteristics of the product that cannot be described adequately in the specification or purchase description.\n    (2) Bid samples will be used only to determine the responsiveness of the bid and will not be used to determine a bidder’s ability to produce the required items.\n    (3) Bid samples may be examined for any required characteristic, whether or not such characteristic is adequately described in the specification, if listed in accordance with paragraph (d)(1)(ii) of this section.\n    (4) Bids will be rejected as nonresponsive if the sample fails to conform to each of the characteristics listed in the invitation.\n(b) When to use. The use of bid samples would be appropriate for products that must be suitable from the standpoint of balance, facility of use, general \"feel,\" color, pattern, or other characteristics that cannot be described adequately in the specification. However, when more than a minor portion of the characteristics of the product cannot be adequately described in the specification, products should be acquired by two-step sealed bidding or negotiation, as appropriate.\n(c) Justification. The reasons why acceptable products cannot be acquired without the submission of bid samples shall be set forth in the contract file, except where the submission is required by the formal specifications (Federal, Military, or other) applicable to the acquisition.\n(d) Requirements for samples in invitations for bids.\n    (1) Invitations for bids shall -\n        (i) State the number and, if appropriate, the size of the samples to be submitted and otherwise fully describe the samples required; and\n        (ii) List all the characteristics for which the samples will be examined.\n    (2) If bid samples are required, see 14.201-6 (o).\n(e) Waiver of requirement for bid samples.\n    (1) The requirement for furnishing bid samples may be waived when a bidder offers a product previously or currently being contracted for or tested by the Government and found to comply with specification requirements conforming in every material respect with those in the current invitation for bids. When the requirement may be waived, see 14.201-6 (o)(2).\n    (2) Where samples required by a Federal, Military, or other formal specification are not considered necessary and a waiver of the sample requirements of the specification has been authorized, a statement shall be included in the invitation that notwithstanding the requirements of the specification, samples will not be required.\n(f) Unsolicited samples. Bid samples furnished with a bid that are not required by the invitation generally will not be considered as qualifying the bid and will be disregarded. However, the bid sample will not be disregarded if it is clear from the bid or accompanying papers that the bidder’s intention was to qualify the bid. (See 14.404-2 (d) if the qualification does not conform to the solicitation.)\n(g) Handling bid samples.\n    (1) Samples that are not destroyed in testing shall be returned to bidders at their request and expense, unless otherwise specified in the invitation.\n    (2) Disposition instructions shall be requested from bidders and samples disposed of accordingly.\n    (3) Samples ordinarily will be returned collect to the address from which received if disposition instructions are not received within 30 days. Small items may be returned by mail, postage prepaid.\n    (4) Samples that are to be retained for inspection purposes in connection with deliveries shall be transmitted to the inspecting activity concerned, with instructions to retain the sample until completion of the contract or until disposition instructions are furnished.\n    (5) Where samples are consumed or their usefulness is impaired by tests, they will be disposed of as scrap unless the bidder requests their return.",
@@ -74,26 +74,189 @@
           ]
         }
       ]
+    },
+    "far-52-209-7": {
+      "summary": "RFO model-deviation text updated 17 November 2026: the offeror's responsibility information is posted to SAM.gov Workspace Integrity Records. Not codified; agency adoption required.",
+      "rfoText": "As prescribed at 9.104-7(b), insert the following provision:\n\nInformation Regarding Responsibility Matters (Date)\n\n(a) Definitions. As used in this provision—\nAdministrative proceeding means a non-judicial process that is adjudicatory in nature in order to make a determination of fault or liability (e.g., Securities and Exchange Commission Administrative Proceedings, Civilian Board of Contract Appeals Proceedings, and Armed Services Board of Contract Appeals Proceedings). This includes administrative proceedings at the Federal and State level but only in connection with performance of a Federal contract or grant.\nIt does not include agency actions such as contract audits, site visits, corrective plans, or inspection of deliverables.\nFederal contracts and grants with total value greater than $10,000,000 means—\n(1) The total value of all current, active contracts and grants, including all priced options; and\n(2) The total value of all current, active orders including all priced options under indefinite-delivery, indefinite-quantity, 8(a), or requirements contracts (including task and delivery and multiple-award Schedules).\nPrincipal means an officer, director, owner, partner, or a person having primary management or supervisory responsibilities within a business entity (e.g., general manager; plant manager; head of a division or business segment; and similar positions).\n\n(b) The offeror □ has □ does not have current active Federal contracts and grants with total value greater than $10,000,000.\n\n(c) If the offeror checked \"has\" in paragraph (b) of this provision, the offeror represents, by submission of this offer, that the information in the integrity records part of the SAM.gov Workspace is current, accurate, and complete as of the date of submission of this offer with regard to the following information:\n(1) Whether the offeror, and/or any of its principals, has or has not, within the last five years, in connection with the award to or performance by the offeror of a Federal contract or grant, been the subject of a proceeding, at the Federal or State level that resulted in any of the following dispositions:\n(i) In a criminal proceeding, a conviction.\n(ii) In a civil proceeding, a finding of fault and liability that results in the payment of a monetary fine, penalty, reimbursement, restitution, or damages of $5,000 or more.\n(iii) In an administrative proceeding, a finding of fault and liability that results in—\n(A) The payment of a monetary fine or penalty of $5,000 or more; or\n(B) The payment of a reimbursement, restitution, or damages in excess of $100,000.\n(iv) In a criminal, civil, or administrative proceeding, a disposition of the matter by consent or compromise with an acknowledgment of fault by the Contractor if the proceeding could have led to any of the outcomes specified in paragraphs (c)(1)(i), (c)(1)(ii), or (c)(1)(iii) of this provision.\n(2) If the offeror has been involved in the last five years in any of the occurrences listed in (c)(1) of this provision, whether the offeror has provided the requested information with regard to each occurrence.\n\n(d) The offeror shall post the information in paragraphs (c)(1)(i) through (c)(1)(iv) of this provision in the integrity records part of the SAM.gov Workspace as required through maintaining an active registration in the System for Award Management, which can be accessed via https://www.sam.gov (see 52.204-7).\n\n(End of provision)",
+      "rfo": [
+        {
+          "t": "Offeror represents that SAM.gov Workspace Integrity Records are current, accurate, and complete for specified criminal, civil, and administrative proceedings; the offeror posts the information in SAM Workspace.",
+          "s": "Acquisition.gov FAR Overhaul Part 52 — model deviation text updated 17 Nov 2026"
+        }
+      ],
+      "keywords": [
+        "52.209-7",
+        "information",
+        "regarding",
+        "responsibility",
+        "matters",
+        "SAM.gov",
+        "Workspace",
+        "Integrity Records",
+        "FAPIIS",
+        "CPARS",
+        "R/Q"
+      ],
+      "comparisonNote": "Model-deviation text updated 17 November 2026. Paragraphs (c) and (d) now reference the integrity-records segment of SAM.gov Workspace. This is not codified FAR and is not automatically effective for every agency; agency implementation is required. DoD adoption is not verified. GSA's supplement applies to GSA procurements. Past-performance reviews remain separate from integrity records.",
+      "sourceNote": "RFO model-deviation text updated 17 November 2026 for the SAM Integrity Records transition. Agency-specific adoption is required; DoD adoption is not verified.",
+      "sourceEditions": {
+        "legacy": "FAR 52.209-7 · stored codified baseline (checked 1 Oct 2026)",
+        "revised": "RFO model deviation text · updated 17 Nov 2026 (agency adoption required)"
+      },
+      "sources": [
+        "eCFR / Acquisition.gov · FAR 52.209-7 · codified baseline",
+        "Acquisition.gov FAR Overhaul Part 52 · updated model-deviation text (17 Nov 2026)",
+        "Acquisition.gov FAR Part 9 and Part 42 model text",
+        "DARS DoD RFO deviation listing · adoption not verified",
+        "GSA RFO supplements · GSA procurements only"
+      ],
+      "deepLinks": [
+        {
+          "label": "RFO Part 52 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        },
+        {
+          "label": "RFO Part 9 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-9"
+        },
+        {
+          "label": "RFO Part 42 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-42"
+        },
+        {
+          "label": "FAR Council announcement — SAM Integrity Records transition",
+          "url": "https://www.acquisition.gov/content/far-updates-align-integrity-records-transition-sam.gov"
+        },
+        {
+          "label": "DARS RFO class deviations — DoD adoption watch",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        },
+        {
+          "label": "GSA RFO Part 9 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-9_Supplement_1-3.pdf"
+        },
+        {
+          "label": "GSA RFO Part 42 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-42_Supplement_1.pdf"
+        }
+      ],
+      "reviewedOn": "2026-11-17"
+    },
+    "far-52-209-9": {
+      "summary": "RFO model-deviation text updated 17 November 2026: contractors update SAM.gov Workspace Integrity Records semiannually. Not codified; agency adoption required.",
+      "rfoText": "As prescribed at 9.104-7(c), insert the following clause:\n\nUpdates of Publicly Available Information Regarding Responsibility Matters (Date)\n\n(a) The Contractor shall update the information in the integrity records part of the SAM.gov Workspace on a semi-annual basis, throughout the life of the contract, by posting the required information in the System for Award Management via https://www.sam.gov.\n\n(b) All information posted in the SAM.gov Workspace on or after April 15, 2011, except past performance reviews, will be publicly available. Integrity records consist of two segments—\n(1) The non-public segment in the SAM Workspace, into which Government officials and the Contractor post information, which can only be viewed by-\n(i) Government personnel and authorized users performing business on behalf of the Government; or\n(ii) The Contractor, when viewing data on itself; and\n(2) The publicly-available segment, to which all data in the non-public segment of the SAM.gov Workspace is automatically transferred after a waiting period of 14 calendar days, except for-\n(i) Past performance reviews required by part 42.\n(ii) Information that was entered prior to April 15, 2011; or\n(iii) Information that is withdrawn during the 14-calendar-day waiting period by the Government official who posted it in accordance with paragraph (c)(1) of this clause.\n\n(c) The Contractor will receive notification when the Government posts new information to the Contractor's record.\n(1) If the Contractor asserts in writing within 7 calendar days, to the Government official who posted the information, that information posted to the non-public segment of the integrity records part of the SAM.gov Workspace is covered by a disclosure exemption under the Freedom of Information Act, the Government official who posted the information must within 7 calendar days remove the posting and resolve the issue in accordance with agency Freedom of Information procedures, prior to reposting the releasable information.\nThe contractor must cite 52.209-9 and request removal within 7 calendar days of the posting to the integrity records part of the SAM.gov Workspace.\n(2) The Contractor will also have an opportunity to post comments regarding information that the Government has posted. The integrity records part of the SAM.gov Workspace will retain the comments as long as the associated information is retained, i.e., for a total period of 6 years. Contractor comments will remain a part of the record unless the Contractor revises them.\n(3) All information posted in the integrity records part of the SAM.gov Workspace, except past performance reviews, will be publicly available (section 3010 of Pub. L. 111-212).\n\n(d) The Government will handle public requests for system information posted prior to April 15, 2011, under Freedom of Information Act procedures, including, where appropriate, procedures promulgated under E.O. 12600.\n\n(End of clause)",
+      "rfo": [
+        {
+          "t": "Contractor updates SAM.gov Workspace Integrity Records semiannually; public availability follows the 14-day transfer, with past-performance reviews excluded.",
+          "s": "Acquisition.gov FAR Overhaul Part 52 — model deviation text updated 17 Nov 2026"
+        }
+      ],
+      "keywords": [
+        "52.209-9",
+        "updates",
+        "publicly",
+        "available",
+        "information",
+        "responsibility",
+        "SAM.gov",
+        "Workspace",
+        "Integrity Records",
+        "FAPIIS",
+        "CPARS",
+        "R/Q"
+      ],
+      "comparisonNote": "Model-deviation text updated 17 November 2026. The clause now directs semiannual updates to SAM.gov Workspace Integrity Records and describes the public/nonpublic segments and 14-day transfer. This is not codified FAR and is not automatically effective for every agency; agency implementation is required. DoD adoption is not verified. GSA's supplement applies to GSA procurements. Past-performance reviews remain separate from integrity records.",
+      "sourceNote": "RFO model-deviation text updated 17 November 2026 for the SAM Integrity Records transition. Agency-specific adoption is required; DoD adoption is not verified.",
+      "sourceEditions": {
+        "legacy": "FAR 52.209-9 · stored codified baseline (checked 1 Oct 2026)",
+        "revised": "RFO model deviation text · updated 17 Nov 2026 (agency adoption required)"
+      },
+      "sources": [
+        "eCFR / Acquisition.gov · FAR 52.209-9 · codified baseline",
+        "Acquisition.gov FAR Overhaul Part 52 · updated model-deviation text (17 Nov 2026)",
+        "Acquisition.gov FAR Part 9 and Part 42 model text",
+        "DARS DoD RFO deviation listing · adoption not verified",
+        "GSA RFO supplements · GSA procurements only"
+      ],
+      "deepLinks": [
+        {
+          "label": "RFO Part 52 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        },
+        {
+          "label": "RFO Part 9 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-9"
+        },
+        {
+          "label": "RFO Part 42 — updated model deviation text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-42"
+        },
+        {
+          "label": "FAR Council announcement — SAM Integrity Records transition",
+          "url": "https://www.acquisition.gov/content/far-updates-align-integrity-records-transition-sam.gov"
+        },
+        {
+          "label": "DARS RFO class deviations — DoD adoption watch",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        },
+        {
+          "label": "GSA RFO Part 9 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-9_Supplement_1-3.pdf"
+        },
+        {
+          "label": "GSA RFO Part 42 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-42_Supplement_1.pdf"
+        }
+      ],
+      "reviewedOn": "2026-11-17"
     }
   },
   "resourceReview": {
-    "checkedOn": "2026-11-08",
+    "checkedOn": "2026-11-22",
     "status": "partial",
     "textVerifiedThrough": "2026-10-01",
-    "scope": "Official publication-edition checks and FAR Companion v3.0 release/disclaimer verification. DARS memorandum retrieval incomplete.",
+    "scope": "Official publication-edition checks and indexed DARS/Army source review. Current DARS pages returned HTTP 502; full DoD memoranda and attachments remain incomplete. Two alternate clause overlays were verified against Acquisition.gov model-deviation text updated 17 November 2026. The stored corpus baseline remains 1 October 2026.",
     "pendingVerification": [
+      {
+        "identifier": "2027-O0001",
+        "listedSourceDate": "2026-11-18",
+        "topic": "Streamlining Contractor Business Systems",
+        "verification": "Official current class-deviation listing confirms the title/date; full memo and attachment, applicability, effective date and topic mapping were not retrieved. No text imported.",
+        "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+      },
+      {
+        "identifier": "2026-O0051",
+        "listedSourceDate": "2026-06-11",
+        "topic": "Implementation of Vendor Threat Mitigation Support Authorities",
+        "verification": "Official current class-deviation listing confirms the title/date; full memo and attachments were not retrieved. No text imported.",
+        "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+      },
       {
         "identifier": "2024-O0006 Revision 2",
         "listedSourceDate": "2026-10-07",
         "topic": "Russian fossil fuel and fossil fuel business operations",
-        "verification": "Official indexed listing only; full memorandum, effective date, applicability and supersession not verified.",
+        "verification": "Official current class-deviation listing confirms revision 2/date; full memo and attachment, effective date, applicability and supersession were not verified. No text imported.",
         "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+      },
+      {
+        "identifier": "2026-O0027 Revision 1",
+        "listedSourceDate": "2026-10-07",
+        "topic": "RFO Part 17 / DFARS Part 217",
+        "verification": "Official RFO-deviation listing confirms revision/date; full memo and attachments were not retrieved. No topic mapping changed.",
+        "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
       },
       {
         "identifier": "2026-O0028 Revision 1",
         "listedSourceDate": "2026-10-22",
         "topic": "RFO Part 12 / DFARS Part 212",
-        "verification": "Official indexed listing indicates an October 22 update; full memorandum, effective date, applicability and topic mappings not verified.",
+        "verification": "Official listing and memo text indicate immediate effect and replacement DFARS/PGI Part 212. The memo's superseded-date text (18 December 2026) conflicts with its 22 October 2026 listing; full attachments were not retrieved. No topic mapping changed.",
+        "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+      },
+      {
+        "identifier": "DoD adoption of SAM Integrity Records transition",
+        "listedSourceDate": "2026-11-17",
+        "topic": "FAR Parts 9/42 and DFARS Parts 209/242",
+        "verification": "Acquisition.gov model text was updated. DARS currently lists DoD RFO deviations 2026-O0042 (Part 9/DFARS 209, 3 February) and 2026-O0050 (Part 42/DFARS 242, 6 March); no revised DoD adoption was verified.",
         "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
       }
     ],
@@ -315,6 +478,116 @@
         {
           "label": "DARS current class deviations — retrieval pending",
           "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        }
+      ]
+    },
+    {
+      "id": "sam-integrity-records-model-deviation-2026-11-22",
+      "date": "2026-11-22",
+      "title": "SAM.gov Integrity Records transition — RFO model deviation text updated",
+      "status": "model-deviation",
+      "sourceDate": "2026-11-17",
+      "summary": "Model deviation text updated 17 November 2026: clauses 52.209-7 and 52.209-9 in this alternate now use SAM.gov Workspace Integrity Records. Not codified; agency adoption required. CPARS remains separate for past-performance reviews. DoD adoption is not confirmed.",
+      "details": [
+        "FAR Council model-deviation text for Part 9 and subpart 42.11 was updated for the Integrity Records transition. Part 52 clauses 52.209-7 and 52.209-9 reflect the SAM.gov Workspace Integrity Records segment.",
+        "The 16 November GSA supplements adopt the updated text for GSA procurements. Other agencies are expected to issue their own implementation. DoD adoption was not verified; the current DARS listing still shows 2026-O0042 (Part 9/DFARS 209) and 2026-O0050 (Part 42/DFARS 242) without a revised listing.",
+        "The stored corpus does not contain full section entries for FAR 9.104-6 or 42.11. This alternate-only patch is limited to the existing 52.209-7 and 52.209-9 entries."
+      ],
+      "links": [
+        {
+          "label": "Acquisition.gov FAR Part 9 model text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-9"
+        },
+        {
+          "label": "Acquisition.gov FAR Part 42 model text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-42"
+        },
+        {
+          "label": "Acquisition.gov FAR Part 52 model text",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide/far-overhaul-part-52"
+        },
+        {
+          "label": "FAR Council SAM Integrity Records transition announcement",
+          "url": "https://www.acquisition.gov/content/far-updates-align-integrity-records-transition-sam.gov"
+        },
+        {
+          "label": "GSA Part 9 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-9_Supplement_1-3.pdf"
+        },
+        {
+          "label": "GSA Part 42 supplement",
+          "url": "https://www.acquisition.gov/sites/default/files/page_file_uploads/GSA_RFO_Deviation_Part-42_Supplement_1.pdf"
+        },
+        {
+          "label": "DARS RFO class-deviation listing",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        }
+      ]
+    },
+    {
+      "id": "resource-review-2026-11-22",
+      "date": "2026-11-22",
+      "title": "November 22 — DARS and Army source review (partial)",
+      "status": "review-partial",
+      "sourceDate": "2026-11-22",
+      "summary": "Updated source-index review. No DFARS/PGI/AFARS topic mappings changed; two FAR clause overlays were updated from official model-deviation text.",
+      "details": [
+        "FAR publication edition: FAC 2026-01, effective 13 March 2026. DFARS and DFARS PGI publication edition: Change 7 May 2026. Army AFARS and PGI: effective 31 August 2026. These are edition checks, not paragraph-by-paragraph certification.",
+        "The current DoD class-deviation listing identifies 2027-O0001 (18 November), 2026-O0051 (11 June), and 2024-O0006 Revision 2 (7 October). Full memos and attachments were not retrieved; no text imported.",
+        "DARS RFO listings identify 2026-O0028 Revision 1 (Part 12/DFARS 212, 22 October). The memo text indicates immediate effect and replacement DFARS/PGI Part 212, but its superseded-date text (18 December 2026) conflicts with the 22 October listing; full attachments were not retrieved. 2026-O0027 Revision 1 (Part 17/DFARS 217) is listed 7 October, but full attachments remain unverified. 2026-O0052 (Part 270) is listed 4 August; no text imported.",
+        "DARS publication notices list the U.S. flags rule (DFARS Case 2024-D013) and military-recruitment-advertising rule (DFARS Case 2024-D022) as proposed rules, and the printed-circuit-board matter (DFARS Case 2022-D011) as an advance notice of proposed rulemaking. None is codified.",
+        "September RFO Cases 2026-003, 006, 010 and 011 remain proposed; the 19 October substantive comment deadline passed and no final rule was verified. Separate Paperwork Reduction Act comment notices for Cases 2026-006, 010 and 011 are due 23 November 2026; these are information-collection comments, not changes to the substantive proposed rules.",
+        "Army Connect still publishes AFARS/PGI effective 31 August 2026; PGI 5105.302 remains the stored award-announcement procedure. No Army source change was verified.",
+        "No DFARS/PGI/AFARS topic mappings changed; only the alternate overlays for FAR 52.209-7 and 52.209-9 were updated. The original interface, baseline kb.json, common updates.json and main service worker remain unchanged."
+      ],
+      "links": [
+        {
+          "label": "FAR publication index",
+          "url": "https://www.acquisition.gov/browse/index/far"
+        },
+        {
+          "label": "DFARS publication index",
+          "url": "https://www.acquisition.gov/dfars"
+        },
+        {
+          "label": "DFARS PGI publication index",
+          "url": "https://www.acquisition.gov/dfarspgi"
+        },
+        {
+          "label": "Army AFARS and PGI",
+          "url": "https://www.army.mil/armycontracting"
+        },
+        {
+          "label": "Army PGI — 31 August 2026",
+          "url": "https://api.army.mil/e2/c/downloads/2026/09/08/999267c5/pgi-combined-31aug2026.pdf"
+        },
+        {
+          "label": "DARS current class deviations",
+          "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"
+        },
+        {
+          "label": "DARS RFO deviations",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfars_far_overhaul_class_deviations.html"
+        },
+        {
+          "label": "DARS publication notices",
+          "url": "https://www.acq.osd.mil/dpap/dars/change_notices.html"
+        },
+        {
+          "label": "DARS current DFARS and PGI",
+          "url": "https://www.acq.osd.mil/dpap/dars/dfarspgi/current/index.html"
+        },
+        {
+          "label": "RFO model deviation guide",
+          "url": "https://www.acquisition.gov/far-overhaul/far-part-deviation-guide"
+        },
+        {
+          "label": "RFO cases and comment dockets",
+          "url": "https://www.acquisition.gov/requesting_comments"
+        },
+        {
+          "label": "FAR Council SAM Integrity Records announcement",
+          "url": "https://www.acquisition.gov/content/far-updates-align-integrity-records-transition-sam.gov"
         }
       ]
     }

@@ -13,6 +13,7 @@ on:
       - 'rfo-knowledge-tool/updates.json'
       - 'rfo-knowledge-tool/sw.js'
       - 'rfo-knowledge-tool/alternate/**'
+      - 'tests/**'
       - 'rfo-knowledge-tool/options.html'
       - '.github/workflows/forge-pages.yml'
   workflow_dispatch:
@@ -36,6 +37,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Run FORGE checks
+        run: |
+          node tests/verify-forge-updates.mjs
+          node --test tests/forge-agent.test.mjs
+          mkdir -p /tmp/forge-test
+          npm install --prefix /tmp/forge-test --no-save jsdom@26
+          NODE_PATH=/tmp/forge-test/node_modules node tests/verify-forge-alternate.cjs
 
       - name: Stage site files
         run: |
